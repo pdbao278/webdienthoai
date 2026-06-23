@@ -1,0 +1,480 @@
+[
+  {
+    "id": "tecno-tecno-phantom-v-fold2-5g",
+    "slug": "tecno-phantom-v-fold2-5g",
+    "hang": "Tecno",
+    "san_pham": "Tecno Phantom V Fold2 5G",
+    "phan_khuc": "flagship",
+    "gia_goc": 26990000,
+    "gia_ban": 25990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại Tecno Phantom V Fold2 5G chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9000+, bộ nhớ trong 512GB.",
+    "man_hinh_cong_nghe": "7.85 inches chính",
+    "man_hinh_kich_thuoc": 7.85,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 50MP + 50MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP + 32MP",
+    "chip": "Dimensity 9000+",
+    "ram_gb": 12,
+    "dung_luong_gb": 512,
+    "he_dieu_hanh": "HiOS 14 (Android 14)",
+    "pin_mah": 5750,
+    "sac_nhanh_w": 70,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 249,
+    "chong_nuoc": "IP54",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Tecno/tecno-phantom-v-fold2-5g/images/front.svg",
+        "data/dienthoai/Tecno/tecno-phantom-v-fold2-5g/images/back.svg",
+        "data/dienthoai/Tecno/tecno-phantom-v-fold2-5g/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Tecno/tecno-phantom-v-fold2-5g/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "battery"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "tecno-tecno-camon-30-premier-5g",
+    "slug": "tecno-camon-30-premier-5g",
+    "hang": "Tecno",
+    "san_pham": "Tecno Camon 30 Premier 5G",
+    "phan_khuc": "tam_trung",
+    "gia_goc": 12990000,
+    "gia_ban": 11990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại Tecno Camon 30 Premier 5G chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8200 Ultimate, bộ nhớ trong 512GB.",
+    "man_hinh_cong_nghe": "6.77 inches",
+    "man_hinh_kich_thuoc": 6.77,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 50MP + 50MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "50MP",
+    "chip": "Dimensity 8200 Ultimate",
+    "ram_gb": 12,
+    "dung_luong_gb": 512,
+    "he_dieu_hanh": "HiOS 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 70,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 210,
+    "chong_nuoc": "IP54",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Tecno/tecno-camon-30-premier-5g/images/front.svg",
+        "data/dienthoai/Tecno/tecno-camon-30-premier-5g/images/back.svg",
+        "data/dienthoai/Tecno/tecno-camon-30-premier-5g/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Tecno/tecno-camon-30-premier-5g/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "camera"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "tecno-tecno-pova-6-pro-5g-256gb",
+    "slug": "tecno-pova-6-pro-5g-256gb",
+    "hang": "Tecno",
+    "san_pham": "Tecno Pova 6 Pro 5G 256GB",
+    "phan_khuc": "gaming",
+    "gia_goc": 7490000,
+    "gia_ban": 6990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại Tecno Pova 6 Pro 5G 256GB chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 6080 (Thiết kế LED mecha), bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.78 inches",
+    "man_hinh_kich_thuoc": 6.78,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "108MP + 2MP + 0.08MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Dimensity 6080 (Thiết kế LED mecha)",
+    "ram_gb": 12,
+    "dung_luong_gb": 256,
+    "he_dieu_hanh": "HiOS 14",
+    "pin_mah": 6000,
+    "sac_nhanh_w": 70,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 195,
+    "chong_nuoc": "IP53",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Tecno/tecno-pova-6-pro-5g-256gb/images/front.svg",
+        "data/dienthoai/Tecno/tecno-pova-6-pro-5g-256gb/images/back.svg",
+        "data/dienthoai/Tecno/tecno-pova-6-pro-5g-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Tecno/tecno-pova-6-pro-5g-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "gaming",
+      "battery"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "tecno-tecno-spark-20-pro-plus-256gb",
+    "slug": "tecno-spark-20-pro-plus-256gb",
+    "hang": "Tecno",
+    "san_pham": "Tecno Spark 20 Pro Plus 256GB",
+    "phan_khuc": "tam_trung",
+    "gia_goc": 5490000,
+    "gia_ban": 4990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại Tecno Spark 20 Pro Plus 256GB chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G99 Ultimate, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.78 inches",
+    "man_hinh_kich_thuoc": 6.78,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "108MP + 0.08MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "MediaTek Helio G99 Ultimate",
+    "ram_gb": 8,
+    "dung_luong_gb": 256,
+    "he_dieu_hanh": "HiOS 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 33,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 179,
+    "chong_nuoc": "IP53",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Tecno/tecno-spark-20-pro-plus-256gb/images/front.svg",
+        "data/dienthoai/Tecno/tecno-spark-20-pro-plus-256gb/images/back.svg",
+        "data/dienthoai/Tecno/tecno-spark-20-pro-plus-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Tecno/tecno-spark-20-pro-plus-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "tecno-tecno-camon-30-pro-5g",
+    "slug": "tecno-camon-30-pro-5g",
+    "hang": "Tecno",
+    "san_pham": "Tecno Camon 30 Pro 5G",
+    "phan_khuc": "tam_trung",
+    "gia_goc": 9990000,
+    "gia_ban": 8990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại Tecno Camon 30 Pro 5G chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8200 Ultimate, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.78 inches",
+    "man_hinh_kich_thuoc": 6.78,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 144,
+    "camera_sau": "50MP + 50MP + 2MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "50MP",
+    "chip": "Dimensity 8200 Ultimate",
+    "ram_gb": 12,
+    "dung_luong_gb": 256,
+    "he_dieu_hanh": "HiOS 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 70,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 188,
+    "chong_nuoc": "IP53",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Tecno/tecno-camon-30-pro-5g/images/front.svg",
+        "data/dienthoai/Tecno/tecno-camon-30-pro-5g/images/back.svg",
+        "data/dienthoai/Tecno/tecno-camon-30-pro-5g/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Tecno/tecno-camon-30-pro-5g/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "tecno-tecno-pova-5-pro-5g",
+    "slug": "tecno-pova-5-pro-5g",
+    "hang": "Tecno",
+    "san_pham": "Tecno Pova 5 Pro 5G",
+    "phan_khuc": "gaming",
+    "gia_goc": 5290000,
+    "gia_ban": 4590000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại Tecno Pova 5 Pro 5G chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 6080 (Thiết kế LED 3D), bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.78 inches",
+    "man_hinh_kich_thuoc": 6.78,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 0.08MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "16MP",
+    "chip": "Dimensity 6080 (Thiết kế LED 3D)",
+    "ram_gb": 8,
+    "dung_luong_gb": 256,
+    "he_dieu_hanh": "HiOS 13",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 68,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 212,
+    "chong_nuoc": "Không",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Tecno/tecno-pova-5-pro-5g/images/front.svg",
+        "data/dienthoai/Tecno/tecno-pova-5-pro-5g/images/back.svg",
+        "data/dienthoai/Tecno/tecno-pova-5-pro-5g/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Tecno/tecno-pova-5-pro-5g/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "gaming"
+    ],
+    "specialFeatures": [
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "tecno-tecno-spark-20-128gb",
+    "slug": "tecno-spark-20-128gb",
+    "hang": "Tecno",
+    "san_pham": "Tecno Spark 20 128GB",
+    "phan_khuc": "pho_thong",
+    "gia_goc": 3490000,
+    "gia_ban": 3090000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại Tecno Spark 20 128GB chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.6 inches",
+    "man_hinh_kich_thuoc": 6.6,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "50MP + 0.08MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "MediaTek Helio G85",
+    "ram_gb": 8,
+    "dung_luong_gb": 128,
+    "he_dieu_hanh": "HiOS 13",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 18,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 190,
+    "chong_nuoc": "IP53",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Tecno/tecno-spark-20-128gb/images/front.svg",
+        "data/dienthoai/Tecno/tecno-spark-20-128gb/images/back.svg",
+        "data/dienthoai/Tecno/tecno-spark-20-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Tecno/tecno-spark-20-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "tecno-tecno-pop-8-64gb",
+    "slug": "tecno-pop-8-64gb",
+    "hang": "Tecno",
+    "san_pham": "Tecno Pop 8 64GB",
+    "phan_khuc": "pho_thong",
+    "gia_goc": 2490000,
+    "gia_ban": 2090000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại Tecno Pop 8 64GB chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T606, bộ nhớ trong 64GB.",
+    "man_hinh_cong_nghe": "6.6 inches",
+    "man_hinh_kich_thuoc": 6.6,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "13MP + 0.08MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "8MP",
+    "chip": "Unisoc Tiger T606",
+    "ram_gb": 3,
+    "dung_luong_gb": 64,
+    "he_dieu_hanh": "Android 13 Go (HiOS 13)",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 10,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 184,
+    "chong_nuoc": "Không",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Tecno/tecno-pop-8-64gb/images/front.svg",
+        "data/dienthoai/Tecno/tecno-pop-8-64gb/images/back.svg",
+        "data/dienthoai/Tecno/tecno-pop-8-64gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Tecno/tecno-pop-8-64gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "tecno-tecno-phantom-v-flip2-5g",
+    "slug": "tecno-phantom-v-flip2-5g",
+    "hang": "Tecno",
+    "san_pham": "Tecno Phantom V Flip2 5G",
+    "phan_khuc": "flagship",
+    "gia_goc": 18990000,
+    "gia_ban": 17990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại Tecno Phantom V Flip2 5G chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8020, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.9 inches chính",
+    "man_hinh_kich_thuoc": 6.9,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 50MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Dimensity 8020",
+    "ram_gb": 8,
+    "dung_luong_gb": 256,
+    "he_dieu_hanh": "HiOS 14",
+    "pin_mah": 4720,
+    "sac_nhanh_w": 70,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 196,
+    "chong_nuoc": "Không",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Tecno/tecno-phantom-v-flip2-5g/images/front.svg",
+        "data/dienthoai/Tecno/tecno-phantom-v-flip2-5g/images/back.svg",
+        "data/dienthoai/Tecno/tecno-phantom-v-flip2-5g/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Tecno/tecno-phantom-v-flip2-5g/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "tecno-tecno-spark-go-2024-64gb",
+    "slug": "tecno-spark-go-2024-64gb",
+    "hang": "Tecno",
+    "san_pham": "Tecno Spark Go 2024 64GB",
+    "phan_khuc": "pho_thong",
+    "gia_goc": 2290000,
+    "gia_ban": 1890000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại Tecno Spark Go 2024 64GB chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T606, bộ nhớ trong 64GB.",
+    "man_hinh_cong_nghe": "6.6 inches",
+    "man_hinh_kich_thuoc": 6.6,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "13MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "8MP",
+    "chip": "Unisoc Tiger T606",
+    "ram_gb": 3,
+    "dung_luong_gb": 64,
+    "he_dieu_hanh": "Android 13 Go",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 10,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 185,
+    "chong_nuoc": "Không",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Tecno/tecno-spark-go-2024-64gb/images/front.svg",
+        "data/dienthoai/Tecno/tecno-spark-go-2024-64gb/images/back.svg",
+        "data/dienthoai/Tecno/tecno-spark-go-2024-64gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Tecno/tecno-spark-go-2024-64gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ]
+  }
+]

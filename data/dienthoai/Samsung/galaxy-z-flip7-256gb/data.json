@@ -1,0 +1,47 @@
+{
+  "id": "samsung-galaxy-z-flip7-256gb",
+  "slug": "galaxy-z-flip7-256gb",
+  "hang": "Samsung",
+  "san_pham": "Galaxy Z Flip7 256GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 26990000,
+  "gia_ban": 24990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Galaxy Z Flip7 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.7 inches (Chính) / 3.9 inches (Phụ)",
+  "man_hinh_kich_thuoc": 6.7,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 12MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "10MP",
+  "chip": "Snapdragon 8 Gen 5",
+  "ram_gb": 12,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "Android 16",
+  "pin_mah": 4200,
+  "sac_nhanh_w": 25,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 185,
+  "chong_nuoc": "IPX8 / IP48",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227549/phonestore/products/Samsung/galaxy-z-flip7-256gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227550/phonestore/products/Samsung/galaxy-z-flip7-256gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227551/phonestore/products/Samsung/galaxy-z-flip7-256gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Samsung/galaxy-z-flip7-256gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "aiEdit",
+    "5G",
+    "nfc"
+  ]
+}

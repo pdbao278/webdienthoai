@@ -1,0 +1,51 @@
+{
+  "id": "vivo-vivo-x100-ultra-512gb",
+  "slug": "vivo-x100-ultra-512gb",
+  "hang": "vivo",
+  "san_pham": "vivo X100 Ultra 512GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 28990000,
+  "gia_ban": 24990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại vivo X100 Ultra 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 512GB.",
+  "man_hinh_cong_nghe": "6.78 inches",
+  "man_hinh_kich_thuoc": 6.78,
+  "man_hinh_do_phan_giai": "2K+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 200MP + 50MP Zeiss",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "50MP",
+  "chip": "Snapdragon 8 Gen 3",
+  "ram_gb": 16,
+  "dung_luong_gb": 512,
+  "he_dieu_hanh": "Funtouch OS 14",
+  "pin_mah": 5500,
+  "sac_nhanh_w": 80,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 229,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227613/phonestore/products/vivo/vivo-x100-ultra-512gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227614/phonestore/products/vivo/vivo-x100-ultra-512gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227616/phonestore/products/vivo/vivo-x100-ultra-512gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/vivo/vivo-x100-ultra-512gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "camera",
+    "battery"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

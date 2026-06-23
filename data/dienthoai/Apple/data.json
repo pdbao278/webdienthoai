@@ -1,0 +1,476 @@
+[
+  {
+    "id": "apple-iphone-17-pro-max-256gb",
+    "slug": "iphone-17-pro-max-256gb",
+    "hang": "Apple",
+    "san_pham": "iPhone 17 Pro Max 256GB",
+    "phan_khuc": "flagship",
+    "gia_goc": 35990000,
+    "gia_ban": 33990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại iPhone 17 Pro Max 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A19 Pro (3nm), bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.9 inches",
+    "man_hinh_kich_thuoc": 6.9,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "48MP + 48MP + 48MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "24MP",
+    "chip": "Apple A19 Pro (3nm)",
+    "ram_gb": 12,
+    "dung_luong_gb": 256,
+    "he_dieu_hanh": "iOS 19",
+    "pin_mah": 4852,
+    "sac_nhanh_w": 35,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 221,
+    "chong_nuoc": "IP68",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Apple/iphone-17-pro-max-256gb/images/front.svg",
+        "data/dienthoai/Apple/iphone-17-pro-max-256gb/images/back.svg",
+        "data/dienthoai/Apple/iphone-17-pro-max-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Apple/iphone-17-pro-max-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "camera"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "fast",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "apple-iphone-17-pro-256gb",
+    "slug": "iphone-17-pro-256gb",
+    "hang": "Apple",
+    "san_pham": "iPhone 17 Pro 256GB",
+    "phan_khuc": "flagship",
+    "gia_goc": 31990000,
+    "gia_ban": 29990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại iPhone 17 Pro 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A19 Pro (3nm), bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.3 inches",
+    "man_hinh_kich_thuoc": 6.3,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "48MP + 48MP + 48MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "24MP",
+    "chip": "Apple A19 Pro (3nm)",
+    "ram_gb": 12,
+    "dung_luong_gb": 256,
+    "he_dieu_hanh": "iOS 19",
+    "pin_mah": 3985,
+    "sac_nhanh_w": 30,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 187,
+    "chong_nuoc": "IP68",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Apple/iphone-17-pro-256gb/images/front.svg",
+        "data/dienthoai/Apple/iphone-17-pro-256gb/images/back.svg",
+        "data/dienthoai/Apple/iphone-17-pro-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Apple/iphone-17-pro-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "fast",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "apple-iphone-17-slim-256gb",
+    "slug": "iphone-17-slim-256gb",
+    "hang": "Apple",
+    "san_pham": "iPhone 17 Slim 256GB",
+    "phan_khuc": "flagship",
+    "gia_goc": 33990000,
+    "gia_ban": 31990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại iPhone 17 Slim 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A19 (3nm), bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.6 inches",
+    "man_hinh_kich_thuoc": 6.6,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "48MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "24MP",
+    "chip": "Apple A19 (3nm)",
+    "ram_gb": 8,
+    "dung_luong_gb": 256,
+    "he_dieu_hanh": "iOS 19",
+    "pin_mah": 3500,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 150,
+    "chong_nuoc": "IP68",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Apple/iphone-17-slim-256gb/images/front.svg",
+        "data/dienthoai/Apple/iphone-17-slim-256gb/images/back.svg",
+        "data/dienthoai/Apple/iphone-17-slim-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Apple/iphone-17-slim-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "thin"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "apple-iphone-17-128gb",
+    "slug": "iphone-17-128gb",
+    "hang": "Apple",
+    "san_pham": "iPhone 17 128GB",
+    "phan_khuc": "flagship",
+    "gia_goc": 24990000,
+    "gia_ban": 22990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại iPhone 17 128GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A19 (3nm), bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.1 inches",
+    "man_hinh_kich_thuoc": 6.1,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "48MP + 12MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "24MP",
+    "chip": "Apple A19 (3nm)",
+    "ram_gb": 8,
+    "dung_luong_gb": 128,
+    "he_dieu_hanh": "iOS 19",
+    "pin_mah": 3782,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 172,
+    "chong_nuoc": "IP68",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Apple/iphone-17-128gb/images/front.svg",
+        "data/dienthoai/Apple/iphone-17-128gb/images/back.svg",
+        "data/dienthoai/Apple/iphone-17-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Apple/iphone-17-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "apple-iphone-se-4-128gb",
+    "slug": "iphone-se-4-128gb",
+    "hang": "Apple",
+    "san_pham": "iPhone SE 4 128GB",
+    "phan_khuc": "tam_trung",
+    "gia_goc": 14990000,
+    "gia_ban": 13990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại iPhone SE 4 128GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A18 (3nm), bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.1 inches",
+    "man_hinh_kich_thuoc": 6.1,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "48MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Apple A18 (3nm)",
+    "ram_gb": 8,
+    "dung_luong_gb": 128,
+    "he_dieu_hanh": "iOS 18",
+    "pin_mah": 3279,
+    "sac_nhanh_w": 20,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 165,
+    "chong_nuoc": "IP68",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Apple/iphone-se-4-128gb/images/front.svg",
+        "data/dienthoai/Apple/iphone-se-4-128gb/images/back.svg",
+        "data/dienthoai/Apple/iphone-se-4-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Apple/iphone-se-4-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "apple-iphone-16-pro-max-256gb",
+    "slug": "iphone-16-pro-max-256gb",
+    "hang": "Apple",
+    "san_pham": "iPhone 16 Pro Max 256GB",
+    "phan_khuc": "flagship",
+    "gia_goc": 34990000,
+    "gia_ban": 29590000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại iPhone 16 Pro Max 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A18 Pro (3nm), bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.9 inches",
+    "man_hinh_kich_thuoc": 6.9,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "48MP + 48MP + 12MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Apple A18 Pro (3nm)",
+    "ram_gb": 8,
+    "dung_luong_gb": 256,
+    "he_dieu_hanh": "iOS 18",
+    "pin_mah": 4685,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 227,
+    "chong_nuoc": "IP68",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Apple/iphone-16-pro-max-256gb/images/front.svg",
+        "data/dienthoai/Apple/iphone-16-pro-max-256gb/images/back.svg",
+        "data/dienthoai/Apple/iphone-16-pro-max-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Apple/iphone-16-pro-max-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "camera"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "apple-iphone-16-pro-128gb",
+    "slug": "iphone-16-pro-128gb",
+    "hang": "Apple",
+    "san_pham": "iPhone 16 Pro 128GB",
+    "phan_khuc": "flagship",
+    "gia_goc": 28990000,
+    "gia_ban": 24990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại iPhone 16 Pro 128GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A18 Pro (3nm), bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.3 inches",
+    "man_hinh_kich_thuoc": 6.3,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "48MP + 48MP + 12MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Apple A18 Pro (3nm)",
+    "ram_gb": 8,
+    "dung_luong_gb": 128,
+    "he_dieu_hanh": "iOS 18",
+    "pin_mah": 3582,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 199,
+    "chong_nuoc": "IP68",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Apple/iphone-16-pro-128gb/images/front.svg",
+        "data/dienthoai/Apple/iphone-16-pro-128gb/images/back.svg",
+        "data/dienthoai/Apple/iphone-16-pro-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Apple/iphone-16-pro-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "apple-iphone-16-plus-128gb",
+    "slug": "iphone-16-plus-128gb",
+    "hang": "Apple",
+    "san_pham": "iPhone 16 Plus 128GB",
+    "phan_khuc": "flagship",
+    "gia_goc": 25990000,
+    "gia_ban": 21990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại iPhone 16 Plus 128GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A18 (3nm), bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.7 inches",
+    "man_hinh_kich_thuoc": 6.7,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "48MP + 12MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Apple A18 (3nm)",
+    "ram_gb": 8,
+    "dung_luong_gb": 128,
+    "he_dieu_hanh": "iOS 18",
+    "pin_mah": 4674,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 199,
+    "chong_nuoc": "IP68",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Apple/iphone-16-plus-128gb/images/front.svg",
+        "data/dienthoai/Apple/iphone-16-plus-128gb/images/back.svg",
+        "data/dienthoai/Apple/iphone-16-plus-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Apple/iphone-16-plus-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "apple-iphone-16-128gb",
+    "slug": "iphone-16-128gb",
+    "hang": "Apple",
+    "san_pham": "iPhone 16 128GB",
+    "phan_khuc": "flagship",
+    "gia_goc": 22990000,
+    "gia_ban": 19490000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại iPhone 16 128GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A18 (3nm), bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.1 inches",
+    "man_hinh_kich_thuoc": 6.1,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "48MP + 12MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Apple A18 (3nm)",
+    "ram_gb": 8,
+    "dung_luong_gb": 128,
+    "he_dieu_hanh": "iOS 18",
+    "pin_mah": 3561,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 170,
+    "chong_nuoc": "IP68",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Apple/iphone-16-128gb/images/front.svg",
+        "data/dienthoai/Apple/iphone-16-128gb/images/back.svg",
+        "data/dienthoai/Apple/iphone-16-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Apple/iphone-16-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ]
+  },
+  {
+    "id": "apple-iphone-15-pro-max-256gb",
+    "slug": "iphone-15-pro-max-256gb",
+    "hang": "Apple",
+    "san_pham": "iPhone 15 Pro Max 256GB",
+    "phan_khuc": "flagship",
+    "gia_goc": 32990000,
+    "gia_ban": 26990000,
+    "ton_kho": 50,
+    "mo_ta": "Điện thoại iPhone 15 Pro Max 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A17 Pro (3nm), bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.7 inches",
+    "man_hinh_kich_thuoc": 6.7,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "48MP + 12MP + 12MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Apple A17 Pro (3nm)",
+    "ram_gb": 8,
+    "dung_luong_gb": 256,
+    "he_dieu_hanh": "iOS 17",
+    "pin_mah": 4441,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 221,
+    "chong_nuoc": "IP68",
+    "mau_sac": "Màu tiêu chuẩn thương hiệu",
+    "media": {
+      "images": [
+        "data/dienthoai/Apple/iphone-15-pro-max-256gb/images/front.svg",
+        "data/dienthoai/Apple/iphone-15-pro-max-256gb/images/back.svg",
+        "data/dienthoai/Apple/iphone-15-pro-max-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Apple/iphone-15-pro-max-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "camera"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ]
+  }
+]

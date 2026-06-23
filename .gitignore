@@ -1,0 +1,29 @@
+# Environment variables (API keys, secrets)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# External skill repos
+agent-skills/
+
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

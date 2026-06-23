@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneStore - Giỏ Hàng</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container header-top">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>PhoneStore</span>
+            </a>
+
+            <!-- Search Autocomplete -->
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Tìm kiếm hãng, tên điện thoại, chip xử lý...">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <a href="cart.html" class="header-btn active">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span>Giỏ Hàng</span>
+                    <span class="badge-count cart-count">0</span>
+                </a>
+                <a href="orders.html" class="header-btn">
+                    <i class="fa-regular fa-clipboard"></i>
+                    <span>Đơn Hàng</span>
+                </a>
+                <a href="admin.html" class="header-btn">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>Quản Trị</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container cart-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Trang chủ</a> / <span>Giỏ hàng</span>
+        </div>
+
+        <h1 class="page-title"><i class="fa-solid fa-basket-shopping"></i> Giỏ hàng của bạn</h1>
+
+        <div class="cart-layout" id="cart-layout-container">
+            <!-- Dynamic content loaded via JS -->
+            <div class="cart-items-column">
+                <div class="cart-card">
+                    <div class="cart-header-row">
+                        <span>Sản phẩm</span>
+                        <span>Đơn giá</span>
+                        <span>Số lượng</span>
+                        <span>Thành tiền</span>
+                    </div>
+                    <div id="cart-items-list">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+                <a href="index.html" class="btn-back-to-shop"><i class="fa-solid fa-arrow-left"></i> Tiếp tục chọn sản phẩm</a>
+            </div>
+
+            <div class="cart-summary-column">
+                <div class="summary-card">
+                    <h3 class="summary-title">Tóm tắt đơn hàng</h3>
+                    <div class="summary-row">
+                        <span>Tạm tính</span>
+                        <span id="summary-subtotal">0đ</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Giảm giá</span>
+                        <span id="summary-discount" class="text-discount">0đ</span>
+                    </div>
+                    <div class="summary-row voucher-applied-row" id="voucher-applied-info" style="display: none;">
+                        <span>Mã áp dụng</span>
+                        <span id="applied-voucher-code" class="voucher-code-badge">...</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-row total-row">
+                        <span>Tổng tiền</span>
+                        <span id="summary-total">0đ</span>
+                    </div>
+
+                    <div class="voucher-section">
+                        <label for="voucher-input" class="voucher-label">Nhập mã giảm giá (Voucher)</label>
+                        <div class="voucher-input-wrap">
+                            <input type="text" id="voucher-input" placeholder="Mã giảm giá (ví dụ: GIAM50, TET2026)">
+                            <button id="btn-apply-voucher" class="btn-voucher">Áp dụng</button>
+                        </div>
+                        <p id="voucher-message" class="voucher-msg"></p>
+                    </div>
+
+                    <a href="checkout.html" class="btn-checkout">Tiến hành đặt hàng</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="cart-empty-state" id="cart-empty-state" style="display: none;">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h2>Giỏ hàng của bạn đang trống</h2>
+            <p>Hãy khám phá các dòng điện thoại mới nhất và thêm vào giỏ hàng nhé!</p>
+            <a href="index.html" class="btn-shop-now">Mua sắm ngay</a>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <i class="fa-solid fa-mobile-screen-button"></i> PhoneStore
+                </div>
+                <p class="footer-desc">Hệ thống phân phối điện thoại di động chính hãng theo mô hình Click & Collect. Mang lại trải nghiệm tối giản và thuận tiện nhất.</p>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Chính Sách</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Quy trình Click & Collect</a></li>
+                    <li><a href="#">Bảo mật thông tin</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Hỗ Trợ</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Hotline: 1800.xxxx (Miễn phí)</a></li>
+                    <li><a href="#">Đóng góp ý kiến</a></li>
+                    <li><a href="#">Hệ thống cửa hàng</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 PhoneStore. Thiết kế bởi Antigravity (AI Assistant) theo triết lý Soft & Clean.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation Sticky Bar -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-house"></i>
+                <span>Trang Chủ</span>
+            </a>
+            <a href="cart.html" class="mobile-nav-btn active">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span>Giỏ Hàng</span>
+            </a>
+            <a href="orders.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-clipboard"></i>
+                <span>Đơn Hàng</span>
+            </a>
+            <a href="admin.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Quản Trị</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

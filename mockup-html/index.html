@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneStore - Hệ Thống Cửa Hàng Điện Thoại Soft & Clean</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container header-top">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>PhoneStore</span>
+            </a>
+
+            <!-- Search Autocomplete -->
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Tìm kiếm hãng, tên điện thoại, chip xử lý...">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <a href="cart.html" class="header-btn">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span>Giỏ Hàng</span>
+                    <span class="badge-count cart-count">0</span>
+                </a>
+                <a href="orders.html" class="header-btn">
+                    <i class="fa-solid fa-receipt"></i>
+                    <span>Đơn Hàng</span>
+                </a>
+                <a href="admin.html" class="header-btn">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Admin</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero & Menu Section -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <!-- Left Category Card (HoangHa style) -->
+            <div class="category-card">
+                <div class="category-title">Danh Mục Sản Phẩm</div>
+                <ul class="category-list">
+                    <li class="category-item active">
+                        <a href="#" class="category-link">
+                            <span><i class="fa-solid fa-mobile-button left-icon"></i>Điện thoại</span>
+                            <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                        </a>
+                        <!-- Mega Menu Dropdown -->
+                        <div class="mega-menu">
+                            <div>
+                                <div class="mega-col-title">Thương Hiệu Hot</div>
+                                <ul class="mega-links">
+                                    <li><a href="#">Apple (iPhone)</a></li>
+                                    <li><a href="#">Samsung Galaxy</a></li>
+                                    <li><a href="#">Xiaomi</a></li>
+                                    <li><a href="#">OPPO</a></li>
+                                    <li><a href="#">Vivo</a></li>
+                                    <li><a href="#">Realme</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="mega-col-title">Theo Phân Khúc & Nhu Cầu</div>
+                                <ul class="mega-links">
+                                    <li><a href="#">Điện thoại Flagship (Cao cấp)</a></li>
+                                    <li><a href="#">Phân khúc Tầm Trung</a></li>
+                                    <li><a href="#">Phổ thông Giá Rẻ</a></li>
+                                    <li><a href="#">Gaming Phone chuyên nghiệp</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="category-item disabled">
+                        <a href="#" class="category-link">
+                            <span><i class="fa-solid fa-laptop left-icon"></i>Laptop <i class="fa-solid fa-lock"></i></span>
+                            <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                        </a>
+                        <div class="tooltip">Danh mục Laptop sẽ sớm ra mắt trong Phase 2!</div>
+                    </li>
+                    <li class="category-item disabled">
+                        <a href="#" class="category-link">
+                            <span><i class="fa-solid fa-plug left-icon"></i>Phụ Kiện <i class="fa-solid fa-lock"></i></span>
+                            <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                        </a>
+                        <div class="tooltip">Danh mục Phụ Kiện sẽ sớm ra mắt trong Phase 2!</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Right Banner Carousel -->
+            <div class="banner-carousel">
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active" style="background-image: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);">
+                        <div class="carousel-content">
+                            <span class="carousel-tag">Sản phẩm nổi bật</span>
+                            <h2 class="carousel-title">Galaxy S24 Ultra - Đỉnh cao công nghệ AI</h2>
+                            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Khám phá quyền năng Galaxy AI giúp dịch thuật trực tiếp, tìm kiếm thông minh và chụp zoom chuyên nghiệp.</p>
+                            <button class="carousel-btn">Đặt trước ngay</button>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item" style="background-image: linear-gradient(135deg, #fef2f2 0%, #e0f2fe 100%);">
+                        <div class="carousel-content">
+                            <span class="carousel-tag">Khuyến mãi cực hot</span>
+                            <h2 class="carousel-title">iPhone 15 Pro Max - Khung viền Titanium</h2>
+                            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Sở hữu thiết kế Titanium siêu bền, camera zoom 5x cực đỉnh cùng bộ xử lý A17 Pro mạnh mẽ.</p>
+                            <button class="carousel-btn">Xem chi tiết</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carousel Dots -->
+                <div class="carousel-dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Row -->
+    <section class="brands-row">
+        <div class="container">
+            <div class="brands-container">
+                <div class="brand-card">Apple</div>
+                <div class="brand-card">Samsung</div>
+                <div class="brand-card">Xiaomi</div>
+                <div class="brand-card">OPPO</div>
+                <div class="brand-card">Vivo</div>
+                <div class="brand-card">Realme</div>
+                <div class="brand-card">Honor</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <h2 class="section-title">Danh sách điện thoại</h2>
+                    <!-- Category Tabs (Filter by category) -->
+                    <div class="category-tabs">
+                        <button class="tab-btn active" data-filter="all">Tất cả</button>
+                        <button class="tab-btn" data-filter="flagship">Flagship nổi bật</button>
+                        <button class="tab-btn" data-filter="midrange">Cận cao cấp / Tầm trung</button>
+                        <button class="tab-btn" data-filter="gaming">Cấu hình cao / Gaming</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Top Filter Bar -->
+            <div class="top-filter-bar">
+                <div class="quick-filters-wrap">
+                    <!-- Brand Dropdown -->
+                    <div class="quick-filter-dropdown" id="dropdown-brand">
+                        <button class="quick-filter-btn">Hãng <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="quick-dropdown-menu">
+                            <div class="quick-dropdown-options" data-filter-type="brand">
+                                <label class="quick-option"><input type="checkbox" value="Apple"> Apple (iPhone)</label>
+                                <label class="quick-option"><input type="checkbox" value="Samsung"> Samsung</label>
+                                <label class="quick-option"><input type="checkbox" value="OPPO"> OPPO</label>
+                                <label class="quick-option"><input type="checkbox" value="Xiaomi"> Xiaomi</label>
+                                <label class="quick-option"><input type="checkbox" value="vivo"> vivo</label>
+                                <label class="quick-option"><input type="checkbox" value="realme"> realme</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Price Dropdown -->
+                    <div class="quick-filter-dropdown" id="dropdown-price">
+                        <button class="quick-filter-btn">Giá <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="quick-dropdown-menu">
+                            <div class="quick-dropdown-options" data-filter-type="priceRange">
+                                <label class="quick-option"><input type="radio" name="quickPriceRange" value="all" checked> Tất cả</label>
+                                <label class="quick-option"><input type="radio" name="quickPriceRange" value="under-2m"> Dưới 2 triệu</label>
+                                <label class="quick-option"><input type="radio" name="quickPriceRange" value="2m-4m"> Từ 2 - 4 triệu</label>
+                                <label class="quick-option"><input type="radio" name="quickPriceRange" value="4m-7m"> Từ 4 - 7 triệu</label>
+                                <label class="quick-option"><input type="radio" name="quickPriceRange" value="7m-13m"> Từ 7 - 13 triệu</label>
+                                <label class="quick-option"><input type="radio" name="quickPriceRange" value="13m-20m"> Từ 13 - 20 triệu</label>
+                                <label class="quick-option"><input type="radio" name="quickPriceRange" value="above-20m"> Trên 20 triệu</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nhu cầu Dropdown -->
+                    <div class="quick-filter-dropdown" id="dropdown-needs">
+                        <button class="quick-filter-btn">Nhu cầu <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="quick-dropdown-menu">
+                            <div class="quick-dropdown-options" data-filter-type="needs">
+                                <label class="quick-option"><input type="checkbox" value="gaming"> Chơi game / Cấu hình cao</label>
+                                <label class="quick-option"><input type="checkbox" value="battery"> Pin khủng (Trâu)</label>
+                                <label class="quick-option"><input type="checkbox" value="camera"> Chụp ảnh, quay phim</label>
+                                <label class="quick-option"><input type="checkbox" value="stream"> Livestream</label>
+                                <label class="quick-option"><input type="checkbox" value="thin"> Mỏng nhẹ</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-actions-wrap">
+                    <!-- Master Filter Button -->
+                    <button class="btn-all-filters" id="btnOpenAllFilters">
+                        <i class="fa-solid fa-sliders"></i> Tất cả bộ lọc
+                    </button>
+
+                    <!-- Price Sort Select -->
+                    <select id="sortPriceSelect" class="sort-select">
+                        <option value="default">Sắp xếp</option>
+                        <option value="price-asc">Giá thấp - cao</option>
+                        <option value="price-desc">Giá cao - thấp</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Catalog Layout Wrapper (Only dynamic product grid now) -->
+            <div class="catalog-layout">
+                <main class="catalog-content">
+                    <div class="product-grid" id="homepage-product-grid">
+                        <!-- Dynamic rendered by JS -->
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- MASTER FILTER MODAL POPUP -->
+    <div class="filter-modal-overlay" id="filterModalOverlay">
+        <div class="filter-modal">
+            <!-- Modal Header -->
+            <div class="filter-modal-header">
+                <h2>Tất cả bộ lọc</h2>
+                <button class="btn-close-modal" id="btnCloseModal">
+                    <i class="fa-solid fa-xmark"></i> Đóng
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="filter-modal-body">
+                <!-- 1. Hãng -->
+                <div class="filter-modal-group">
+                    <div class="filter-modal-title">Hãng điện thoại</div>
+                    <div class="chip-container" data-filter-type="brand">
+                        <button class="filter-chip" data-value="Apple">Apple (iPhone)</button>
+                        <button class="filter-chip" data-value="Samsung">Samsung</button>
+                        <button class="filter-chip" data-value="OPPO">OPPO</button>
+                        <button class="filter-chip" data-value="Xiaomi">Xiaomi</button>
+                        <button class="filter-chip" data-value="vivo">vivo</button>
+                        <button class="filter-chip" data-value="realme">realme</button>
+                        <button class="filter-chip" data-value="HONOR">HONOR</button>
+                        <button class="filter-chip" data-value="Tecno">Tecno</button>
+                        <button class="filter-chip" data-value="Nokia">Nokia</button>
+                        <button class="filter-chip" data-value="Masstel">Masstel</button>
+                        <button class="filter-chip" data-value="Mobell">Mobell</button>
+                        <button class="filter-chip" data-value="Nubia">Nubia</button>
+                    </div>
+                </div>
+
+                <!-- 2. Giá -->
+                <div class="filter-modal-group">
+                    <div class="filter-modal-title">Mức giá</div>
+                    <div class="chip-container single-select" data-filter-type="priceRange">
+                        <button class="filter-chip active" data-value="all">Tất cả</button>
+                        <button class="filter-chip" data-value="under-2m">Dưới 2 triệu</button>
+                        <button class="filter-chip" data-value="2m-4m">Từ 2 - 4 triệu</button>
+                        <button class="filter-chip" data-value="4m-7m">Từ 4 - 7 triệu</button>
+                        <button class="filter-chip" data-value="7m-13m">Từ 7 - 13 triệu</button>
+                        <button class="filter-chip" data-value="13m-20m">Từ 13 - 20 triệu</button>
+                        <button class="filter-chip" data-value="above-20m">Trên 20 triệu</button>
+                    </div>
+                    <div class="modal-price-slider">
+                        <span class="control-label">Hoặc chọn giá trần phù hợp:</span>
+                        <div class="slider-display">
+                            <span>0đ</span>
+                            <span id="modal-price-slider-val">65.000.000đ</span>
+                        </div>
+                        <input type="range" id="modalPriceRangeSlider" min="0" max="65000000" step="500000" value="65000000" style="width: 100%;">
+                    </div>
+                </div>
+
+                <!-- 3. Loại máy -->
+                <div class="filter-modal-group">
+                    <div class="filter-modal-title">Loại điện thoại</div>
+                    <div class="chip-container" data-filter-type="type">
+                        <button class="filter-chip" data-value="Android">Android</button>
+                        <button class="filter-chip" data-value="iOS">iPhone (iOS)</button>
+                        <button class="filter-chip" data-value="AI">Điện thoại AI</button>
+                        <button class="filter-chip" data-value="Fold">Điện thoại gập</button>
+                        <button class="filter-chip" data-value="Feature">Điện thoại phổ thông</button>
+                    </div>
+                </div>
+
+                <!-- 4. Nhu cầu -->
+                <div class="filter-modal-group">
+                    <div class="filter-modal-title">Nhu cầu sử dụng</div>
+                    <div class="chip-container" data-filter-type="needs">
+                        <button class="filter-chip" data-value="gaming">Chơi game / Cấu hình cao</button>
+                        <button class="filter-chip" data-value="battery">Pin khủng (Trâu)</button>
+                        <button class="filter-chip" data-value="camera">Chụp ảnh, quay phim</button>
+                        <button class="filter-chip" data-value="stream">Livestream mượt mà</button>
+                        <button class="filter-chip" data-value="thin">Thiết kế mỏng nhẹ</button>
+                    </div>
+                </div>
+
+                <!-- 5. RAM -->
+                <div class="filter-modal-group">
+                    <div class="filter-modal-title">RAM</div>
+                    <div class="chip-container" data-filter-type="ram">
+                        <button class="filter-chip" data-value="3GB">3 GB</button>
+                        <button class="filter-chip" data-value="4GB">4 GB</button>
+                        <button class="filter-chip" data-value="6GB">6 GB</button>
+                        <button class="filter-chip" data-value="8GB">8 GB</button>
+                        <button class="filter-chip" data-value="12GB">12 GB</button>
+                        <button class="filter-chip" data-value="16GB">16 GB</button>
+                    </div>
+                </div>
+
+                <!-- 6. Độ phân giải -->
+                <div class="filter-modal-group">
+                    <div class="filter-modal-title">Độ phân giải</div>
+                    <div class="chip-container" data-filter-type="resolution">
+                        <button class="filter-chip" data-value="QQVGA">QQVGA</button>
+                        <button class="filter-chip" data-value="QVGA">QVGA</button>
+                        <button class="filter-chip" data-value="HD+">HD+</button>
+                        <button class="filter-chip" data-value="FHD+">Full HD+</button>
+                        <button class="filter-chip" data-value="1.5K">1.5K</button>
+                        <button class="filter-chip" data-value="1.5K+">1.5K+</button>
+                        <button class="filter-chip" data-value="2K+">2K+</button>
+                        <button class="filter-chip" data-value="QXGA+">QXGA+</button>
+                        <button class="filter-chip" data-value="Retina">Retina (iPhone)</button>
+                    </div>
+                </div>
+
+                <!-- 7. Tần số quét -->
+                <div class="filter-modal-group">
+                    <div class="filter-modal-title">Tần số quét</div>
+                    <div class="chip-container" data-filter-type="refreshRate">
+                        <button class="filter-chip" data-value="60Hz">60 Hz</button>
+                        <button class="filter-chip" data-value="90Hz">90 Hz</button>
+                        <button class="filter-chip" data-value="120Hz">120 Hz</button>
+                        <button class="filter-chip" data-value="144Hz">144 Hz</button>
+                        <button class="filter-chip" data-value="165Hz">165 Hz</button>
+                    </div>
+                </div>
+
+                <!-- 8. Dung lượng lưu trữ -->
+                <div class="filter-modal-group">
+                    <div class="filter-modal-title">Dung lượng lưu trữ</div>
+                    <div class="chip-container" data-filter-type="storage">
+                        <button class="filter-chip" data-value="64GB">64 GB</button>
+                        <button class="filter-chip" data-value="128GB">128 GB</button>
+                        <button class="filter-chip" data-value="256GB">256 GB</button>
+                        <button class="filter-chip" data-value="512GB">512 GB</button>
+                        <button class="filter-chip" data-value="1TB">1 TB</button>
+                    </div>
+                </div>
+
+                <!-- 9. Pin & Sạc -->
+                <div class="filter-modal-group">
+                    <div class="filter-modal-title">Pin & Sạc</div>
+                    <div class="chip-container" data-filter-type="charging">
+                        <button class="filter-chip" data-value="fast">Sạc nhanh (từ 20W)</button>
+                        <button class="filter-chip" data-value="superFast">Sạc siêu nhanh (từ 60W)</button>
+                        <button class="filter-chip" data-value="wireless">Sạc không dây</button>
+                    </div>
+                </div>
+
+                <!-- 10. Tính năng đặc biệt -->
+                <div class="filter-modal-group">
+                    <div class="filter-modal-title">Tính năng đặc biệt</div>
+                    <div class="chip-container" data-filter-type="specialFeatures">
+                        <button class="filter-chip" data-value="aiEdit">Chỉnh ảnh AI</button>
+                        <button class="filter-chip" data-value="5G">Hỗ trợ 5G</button>
+                        <button class="filter-chip" data-value="waterResist">Kháng nước, bụi</button>
+                        <button class="filter-chip" data-value="face3D">Bảo mật khuôn mặt 3D</button>
+                        <button class="filter-chip" data-value="nfc">Công nghệ NFC</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="filter-modal-footer">
+                <button class="btn-clear-modal" id="btnClearModal">Bỏ chọn</button>
+                <button class="btn-apply-modal" id="btnApplyModal">Xem 0 kết quả</button>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <i class="fa-solid fa-mobile-screen-button"></i> PhoneStore
+                </div>
+                <p class="footer-desc">Hệ thống phân phối điện thoại di động chính hãng theo mô hình Click & Collect. Mang lại trải nghiệm tối giản và thuận tiện nhất.</p>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Chính Sách</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Quy trình Click & Collect</a></li>
+                    <li><a href="#">Bảo mật thông tin</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Hỗ Trợ</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Hotline: 1800.xxxx (Miễn phí)</a></li>
+                    <li><a href="#">Đóng góp ý kiến</a></li>
+                    <li><a href="#">Hệ thống cửa hàng</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 PhoneStore. Thiết kế bởi Antigravity (AI Assistant) theo triết lý Soft & Clean.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation Sticky Bar -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-inner">
+            <a href="#" class="mobile-nav-btn active">
+                <i class="fa-solid fa-house"></i>
+                <span>Trang Chủ</span>
+            </a>
+            <a href="#" class="mobile-nav-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Tìm Kiếm</span>
+            </a>
+            <a href="#" class="mobile-nav-btn">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span>Giỏ Hàng</span>
+            </a>
+            <a href="#" class="mobile-nav-btn">
+                <i class="fa-solid fa-user"></i>
+                <span>Tài Khoản</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

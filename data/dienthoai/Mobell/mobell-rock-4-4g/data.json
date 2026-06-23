@@ -1,0 +1,46 @@
+{
+  "id": "mobell-mobell-rock-4-4g",
+  "slug": "mobell-rock-4-4g",
+  "hang": "Mobell",
+  "san_pham": "Mobell Rock 4 4G",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 750000,
+  "gia_ban": 690000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Mobell Rock 4 4G chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Thiết kế hầm hố chống va đập), bộ nhớ trong 1GB.",
+  "man_hinh_cong_nghe": "2.4 inches",
+  "man_hinh_kich_thuoc": 2.4,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "0.08MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "Không",
+  "chip": "Unisoc T107 (Thiết kế hầm hố chống va đập)",
+  "ram_gb": 1,
+  "dung_luong_gb": 1,
+  "he_dieu_hanh": "Mobell OS",
+  "pin_mah": 3250,
+  "sac_nhanh_w": 5,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 160,
+  "chong_nuoc": "Kháng bụi nước nhẹ",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227309/phonestore/products/Mobell/mobell-rock-4-4g/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227310/phonestore/products/Mobell/mobell-rock-4-4g/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227312/phonestore/products/Mobell/mobell-rock-4-4g/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Mobell/mobell-rock-4-4g/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "5G",
+    "nfc"
+  ]
+}

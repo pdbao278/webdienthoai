@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneStore - Thanh Toán</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container header-top">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>PhoneStore</span>
+            </a>
+
+            <!-- Search Autocomplete -->
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Tìm kiếm hãng, tên điện thoại, chip xử lý...">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <a href="cart.html" class="header-btn">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span>Giỏ Hàng</span>
+                    <span class="badge-count cart-count">0</span>
+                </a>
+                <a href="orders.html" class="header-btn">
+                    <i class="fa-regular fa-clipboard"></i>
+                    <span>Đơn Hàng</span>
+                </a>
+                <a href="admin.html" class="header-btn">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>Quản Trị</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container checkout-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Trang chủ</a> / <a href="cart.html">Giỏ hàng</a> / <span>Thanh toán</span>
+        </div>
+
+        <h1 class="page-title"><i class="fa-solid fa-credit-card"></i> Thông tin đặt hàng trước</h1>
+
+        <div class="checkout-layout" id="checkout-form-container">
+            <!-- Left Side: Form -->
+            <div class="checkout-form-column">
+                <div class="checkout-card">
+                    <h3 class="checkout-section-title"><i class="fa-regular fa-user"></i> 1. Thông tin khách hàng</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="checkout-name" class="required">Họ và tên</label>
+                            <input type="text" id="checkout-name" required placeholder="Nhập họ tên đầy đủ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-phone" class="required">Số điện thoại</label>
+                            <input type="tel" id="checkout-phone" required placeholder="Nhập số điện thoại liên hệ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-email" class="required">Địa chỉ Email</label>
+                            <input type="email" id="checkout-email" required placeholder="Nhập địa chỉ email...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-card">
+                    <h3 class="checkout-section-title"><i class="fa-solid fa-store"></i> 2. Địa điểm & thời gian nhận máy (Click & Collect)</h3>
+                    <div class="branch-selector-box">
+                        <div class="branch-label">Cửa hàng nhận máy duy nhất:</div>
+                        <div class="branch-info-card">
+                            <div class="branch-name"><i class="fa-solid fa-location-dot"></i> PhoneStore Central - Chi nhánh Quận 10</div>
+                            <div class="branch-address">Địa chỉ: 123 Đường 3/2, Phường 11, Quận 10, TP. Hồ Chí Minh</div>
+                            <div class="branch-hours">Giờ hoạt động: 08:30 - 21:30 hàng ngày</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid" style="margin-top: 1.5rem;">
+                        <div class="form-group">
+                            <label for="checkout-date" class="required">Chọn ngày nhận máy</label>
+                            <select id="checkout-date" required>
+                                <!-- Generated dynamically by script -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-time" class="required">Khung giờ nhận máy</label>
+                            <select id="checkout-time" required>
+                                <option value="08:30 - 11:30">Sáng (08:30 - 11:30)</option>
+                                <option value="11:30 - 14:30">Trưa (11:30 - 14:30)</option>
+                                <option value="14:30 - 17:30">Chiều (14:30 - 17:30)</option>
+                                <option value="17:30 - 20:30">Tối (17:30 - 20:30)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 1.25rem;">
+                        <label for="checkout-note">Ghi chú thêm (không bắt buộc)</label>
+                        <textarea id="checkout-note" placeholder="Nhập yêu cầu đặc biệt hoặc ghi chú khác cho nhân viên tại quầy..."></textarea>
+                    </div>
+                </div>
+
+                <div class="checkout-card">
+                    <h3 class="checkout-section-title"><i class="fa-solid fa-wallet"></i> 3. Phương thức thanh toán tại quầy</h3>
+                    <div class="payment-method-box">
+                        <label class="payment-option active">
+                            <input type="radio" name="payment-method" value="counter" checked>
+                            <div class="payment-option-text">
+                                <strong>Thanh toán trực tiếp khi nhận hàng</strong>
+                                <p>Bạn sẽ kiểm tra tình trạng máy, phụ kiện tại quầy và thực hiện thanh toán (Tiền mặt hoặc Quét QR Chuyển khoản) trước khi mang máy về.</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Order items list & button -->
+            <div class="checkout-summary-column">
+                <div class="summary-card">
+                    <h3 class="summary-title">Sản phẩm đặt mua</h3>
+                    <div id="checkout-items-list" class="checkout-items-list">
+                        <!-- Loaded dynamically -->
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-row">
+                        <span>Tạm tính</span>
+                        <span id="checkout-subtotal">0đ</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Giảm giá</span>
+                        <span id="checkout-discount" class="text-discount">0đ</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-row total-row">
+                        <span>Cần thanh toán</span>
+                        <span id="checkout-total">0đ</span>
+                    </div>
+
+                    <button id="btn-submit-order" class="btn-submit-order">Xác nhận đặt hàng trước</button>
+                    <p class="terms-note">Bằng cách nhấp vào nút này, bạn đồng ý đặt trước sản phẩm và sẽ tới nhận máy trong vòng 24 giờ sau thời điểm đã hẹn.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Modal/Popup overlay -->
+        <div class="checkout-success-overlay" id="checkout-success-overlay" style="display: none;">
+            <div class="success-card">
+                <div class="success-icon-wrap">
+                    <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <h2>Đặt hàng trước thành công!</h2>
+                <p class="success-sub">Đơn hàng của bạn đã được ghi nhận trên hệ thống Click & Collect.</p>
+                
+                <div class="success-ticket-box">
+                    <div class="ticket-row">
+                        <span>Mã đơn hàng:</span>
+                        <strong id="ticket-order-id">ORD-XXXXXXXX</strong>
+                    </div>
+                    <div class="ticket-row">
+                        <span>Họ và tên:</span>
+                        <span id="ticket-name">...</span>
+                    </div>
+                    <div class="ticket-row">
+                        <span>Thời gian nhận:</span>
+                        <span id="ticket-time-date">...</span>
+                    </div>
+                    <div class="ticket-row">
+                        <span>Cửa hàng:</span>
+                        <span>PhoneStore Central - Q.10</span>
+                    </div>
+                    <div class="ticket-row total-ticket-row">
+                        <span>Số tiền cần thanh toán:</span>
+                        <strong id="ticket-total">0đ</strong>
+                    </div>
+
+                    <!-- QR code visualization -->
+                    <div class="qr-code-box">
+                        <div class="qr-placeholder">
+                            <i class="fa-solid fa-qrcode"></i>
+                            <div class="qr-text">MÃ QR ĐƠN HÀNG</div>
+                        </div>
+                        <p class="qr-note">Vui lòng chụp màn hình hoặc lưu lại mã QR này để xuất trình cho nhân viên tại quầy khi nhận hàng.</p>
+                    </div>
+                </div>
+
+                <div class="success-actions">
+                    <a href="orders.html" class="btn-view-order-history">Xem lịch sử đơn hàng</a>
+                    <a href="index.html" class="btn-return-home">Quay lại trang chủ</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <i class="fa-solid fa-mobile-screen-button"></i> PhoneStore
+                </div>
+                <p class="footer-desc">Hệ thống phân phối điện thoại di động chính hãng theo mô hình Click & Collect. Mang lại trải nghiệm tối giản và thuận tiện nhất.</p>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Chính Sách</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Quy trình Click & Collect</a></li>
+                    <li><a href="#">Bảo mật thông tin</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Hỗ Trợ</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Hotline: 1800.xxxx (Miễn phí)</a></li>
+                    <li><a href="#">Đóng góp ý kiến</a></li>
+                    <li><a href="#">Hệ thống cửa hàng</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 PhoneStore. Thiết kế bởi Antigravity (AI Assistant) theo triết lý Soft & Clean.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation Sticky Bar -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-house"></i>
+                <span>Trang Chủ</span>
+            </a>
+            <a href="cart.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span>Giỏ Hàng</span>
+            </a>
+            <a href="orders.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-clipboard"></i>
+                <span>Đơn Hàng</span>
+            </a>
+            <a href="admin.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Quản Trị</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

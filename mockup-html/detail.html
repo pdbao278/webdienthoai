@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneStore - Chi Tiết Sản Phẩm & So Sánh</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container header-top">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>PhoneStore</span>
+            </a>
+
+            <!-- Search Autocomplete -->
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Tìm kiếm hãng, tên điện thoại, chip xử lý...">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <a href="cart.html" class="header-btn">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span>Giỏ Hàng</span>
+                    <span class="badge-count cart-count">0</span>
+                </a>
+                <a href="orders.html" class="header-btn">
+                    <i class="fa-solid fa-receipt"></i>
+                    <span>Đơn Hàng</span>
+                </a>
+                <a href="admin.html" class="header-btn">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Admin</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container detail-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Trang chủ</a> / <a href="#">Điện thoại</a> / <span id="breadcrumb-product-name">...</span>
+        </div>
+
+        <!-- Product Main Info (Grid: 2 Columns) -->
+        <div class="product-detail-grid">
+            <!-- Left Column: Gallery & Description -->
+            <div class="detail-left">
+                <div class="gallery-container">
+                    <div class="main-image-wrap">
+                        <!-- main SVG mockup -->
+                        <div id="product-main-media">
+                            <!-- SVG will be injected here dynamically -->
+                        </div>
+                    </div>
+                    <div class="thumbnails-row" id="product-thumbnails">
+                        <!-- Thumbnails will be injected here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Tabs (Description & Review) -->
+                <div class="detail-tabs">
+                    <div class="tabs-header">
+                        <button class="detail-tab-btn active" data-tab="desc">Mô tả sản phẩm</button>
+                        <button class="detail-tab-btn" data-tab="reviews">Đánh giá</button>
+                    </div>
+                    <div class="tabs-content">
+                        <div class="tab-pane active" id="tab-desc">
+                            <h3 class="tab-pane-title">Thông tin sản phẩm</h3>
+                            <p id="product-description">...</p>
+                        </div>
+                        <div class="tab-pane" id="tab-reviews">
+                            <h3 class="tab-pane-title">Khách hàng đánh giá</h3>
+                            <div class="reviews-list" id="reviews-list-container">
+                                <!-- Reviews will be injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Specs, Price, CTA -->
+            <div class="detail-right">
+                <div class="product-header">
+                    <h1 class="detail-title" id="product-name">...</h1>
+                    <div class="detail-meta">
+                        <span class="rating"><i class="fa-solid fa-star"></i> <span id="product-rating-val">4.9</span> (384 đánh giá)</span>
+                        <span class="divider">|</span>
+                        <span class="brand">Hãng: <strong id="product-brand">...</strong></span>
+                    </div>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-row">
+                        <span class="price-current" id="product-price-current">...</span>
+                        <span class="price-old" id="product-price-old">...</span>
+                        <span class="badge-discount" id="product-discount">...</span>
+                    </div>
+                </div>
+
+                <div class="promo-box">
+                    <div class="promo-title"><i class="fa-solid fa-gift"></i> Khuyến mãi cực hot</div>
+                    <ul class="promo-list">
+                        <li>Tặng củ sạc nhanh 45W Type-C chính hãng.</li>
+                        <li>Tặng ốp lưng chính hãng Soft-Touch bảo vệ máy.</li>
+                        <li>Hỗ trợ thu cũ đổi mới trợ giá đến 2.000.000đ.</li>
+                    </ul>
+                </div>
+
+                <div class="cta-group">
+                    <button class="btn-buy-now" id="btn-buy-now">MUA NGAY (Nhận tại cửa hàng)</button>
+                    <div class="cta-secondary-row">
+                        <button class="btn-add-cart" id="btn-add-cart"><i class="fa-solid fa-basket-shopping"></i> Thêm vào giỏ</button>
+                        <button class="btn-scroll-compare" id="btnScrollCompare"><i class="fa-solid fa-code-compare"></i> So sánh cấu hình</button>
+                    </div>
+                </div>
+
+                <div class="quick-specs-box">
+                    <h3 class="specs-title">Cấu hình nổi bật</h3>
+                    <table class="specs-table">
+                        <tr><td>Màn hình</td><td id="spec-screen">...</td></tr>
+                        <tr><td>Hệ điều hành</td><td id="spec-os">...</td></tr>
+                        <tr><td>Chip xử lý</td><td id="spec-chip">...</td></tr>
+                        <tr><td>RAM/ROM</td><td id="spec-ramrom">...</td></tr>
+                        <tr><td>Pin & Sạc</td><td id="spec-battery">...</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM COMPARISON SECTION -->
+        <section class="detail-compare-section" id="compare-section">
+            <h2 class="compare-section-title">So sánh với các dòng điện thoại khác</h2>
+            <p class="compare-section-desc">Chọn sản phẩm liên quan bên dưới hoặc sử dụng thanh tìm kiếm để đưa vào bảng so sánh đối chiếu (tối đa 4 sản phẩm).</p>
+
+            <!-- Compare Selection Controls -->
+            <div class="compare-controls">
+                <div class="related-suggestions">
+                    <span class="control-label">Gợi ý sản phẩm:</span>
+                    <div class="suggestion-chips" id="related-suggestions-chips">
+                        <!-- Suggested product chips will render here dynamically -->
+                    </div>
+                </div>
+
+                <div class="compare-search-box">
+                    <span class="control-label">Tìm kiếm sản phẩm:</span>
+                    <div class="search-input-wrap">
+                        <input type="text" id="compare-search-input" autocomplete="off" placeholder="Nhập tên hãng hoặc dòng sản phẩm...">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <div class="autocomplete-dropdown" id="compare-autocomplete-dropdown">
+                            <!-- Autocomplete list will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table Container -->
+            <div class="compare-table-container">
+                <table class="compare-table" id="compare-table-el">
+                    <thead>
+                        <tr id="compare-row-header">
+                            <th class="spec-label-col">Thông số</th>
+                            <th class="main-product-col" id="compare-header-current">Sản phẩm hiện tại</th>
+                            <!-- Dynamic compared products header will render here -->
+                        </tr>
+                    </thead>
+                    <tbody id="compare-table-body">
+                        <!-- Dynamic comparison specifications rows will render here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <i class="fa-solid fa-mobile-screen-button"></i> PhoneStore
+                </div>
+                <p class="footer-desc">Hệ thống phân phối điện thoại di động chính hãng theo mô hình Click & Collect. Mang lại trải nghiệm tối giản và thuận tiện nhất.</p>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Chính Sách</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Quy trình Click & Collect</a></li>
+                    <li><a href="#">Bảo mật thông tin</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Hỗ Trợ</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Hotline: 1800.xxxx (Miễn phí)</a></li>
+                    <li><a href="#">Đóng góp ý kiến</a></li>
+                    <li><a href="#">Hệ thống cửa hàng</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 PhoneStore. Thiết kế bởi Antigravity (AI Assistant) theo triết lý Soft & Clean.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation Sticky Bar -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-house"></i>
+                <span>Trang Chủ</span>
+            </a>
+            <a href="#" class="mobile-nav-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Tìm Kiếm</span>
+            </a>
+            <a href="#" class="mobile-nav-btn">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span>Giỏ Hàng</span>
+            </a>
+            <a href="#" class="mobile-nav-btn">
+                <i class="fa-solid fa-user"></i>
+                <span>Tài Khoản</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

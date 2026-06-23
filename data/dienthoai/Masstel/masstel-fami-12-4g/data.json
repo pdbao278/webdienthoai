@@ -1,0 +1,45 @@
+{
+  "id": "masstel-masstel-fami-12-4g",
+  "slug": "masstel-fami-12-4g",
+  "hang": "Masstel",
+  "san_pham": "Masstel Fami 12 4G",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 690000,
+  "gia_ban": 590000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Masstel Fami 12 4G chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Bàn phím nổi to rõ), bộ nhớ trong 1GB.",
+  "man_hinh_cong_nghe": "1.77 inches",
+  "man_hinh_kich_thuoc": 1.77,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "Không",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "Không",
+  "chip": "Unisoc T107 (Bàn phím nổi to rõ)",
+  "ram_gb": 1,
+  "dung_luong_gb": 1,
+  "he_dieu_hanh": "Fami OS",
+  "pin_mah": 1400,
+  "sac_nhanh_w": 5,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 98,
+  "chong_nuoc": "Không",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227232/phonestore/products/Masstel/masstel-fami-12-4g/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227233/phonestore/products/Masstel/masstel-fami-12-4g/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227235/phonestore/products/Masstel/masstel-fami-12-4g/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Masstel/masstel-fami-12-4g/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "5G",
+    "nfc"
+  ]
+}

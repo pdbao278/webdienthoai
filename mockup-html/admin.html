@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhoneStore - Quản Trị Hệ Thống</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container header-top">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>PhoneStore</span>
+            </a>
+
+            <!-- Search Autocomplete -->
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Tìm kiếm hãng, tên điện thoại, chip xử lý...">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <a href="cart.html" class="header-btn">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span>Giỏ Hàng</span>
+                    <span class="badge-count cart-count">0</span>
+                </a>
+                <a href="orders.html" class="header-btn">
+                    <i class="fa-regular fa-clipboard"></i>
+                    <span>Đơn Hàng</span>
+                </a>
+                <a href="admin.html" class="header-btn active">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>Quản Trị</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container admin-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Trang chủ</a> / <span>Quản trị hệ thống</span>
+        </div>
+
+        <h1 class="page-title"><i class="fa-solid fa-user-gear"></i> Trang quản trị & vận hành</h1>
+
+        <div class="admin-layout">
+            <!-- Admin Navigation Sidebar -->
+            <aside class="admin-sidebar">
+                <div class="admin-user-profile">
+                    <div class="admin-avatar"><i class="fa-solid fa-circle-user"></i></div>
+                    <div class="admin-info">
+                        <strong>Bao (Admin)</strong>
+                        <span>Chủ cửa hàng</span>
+                    </div>
+                </div>
+                <nav class="admin-nav-menu">
+                    <button class="admin-nav-btn active" data-tab="dashboard">
+                        <i class="fa-solid fa-chart-line"></i> Tổng quan & Thống kê
+                    </button>
+                    <button class="admin-nav-btn" data-tab="orders">
+                        <i class="fa-solid fa-truck-ramp-box"></i> Quản lý Đơn hàng
+                    </button>
+                    <button class="admin-nav-btn" data-tab="products">
+                        <i class="fa-solid fa-mobile-screen"></i> Quản lý Sản phẩm
+                    </button>
+                    <button class="admin-nav-btn" data-tab="vouchers">
+                        <i class="fa-solid fa-ticket"></i> Quản lý Voucher
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Admin Content Panel -->
+            <section class="admin-content-panel">
+                
+                <!-- Tab 1: Dashboard Overview -->
+                <div class="admin-tab-pane active" id="pane-dashboard">
+                    <div class="stat-cards-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-sky-light"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Doanh thu tạm tính</span>
+                                <strong class="stat-value" id="stat-revenue">0đ</strong>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon bg-teal-light"><i class="fa-solid fa-box-open"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Tổng đơn hàng</span>
+                                <strong class="stat-value" id="stat-orders-count">0</strong>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon bg-rose-light"><i class="fa-solid fa-warehouse"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-label">Tổng sản phẩm</span>
+                                <strong class="stat-value" id="stat-products-count">10</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Revenue Chart Placeholder -->
+                    <div class="admin-section-card" style="margin-top: 1.5rem;">
+                        <h3 class="admin-card-title"><i class="fa-solid fa-chart-area"></i> Biểu đồ doanh thu tuần này</h3>
+                        <div class="revenue-chart-box">
+                            <!-- SVG drawing representing a gradient area chart -->
+                            <svg viewBox="0 0 800 200" class="chart-svg">
+                                <defs>
+                                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.25"/>
+                                        <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.0"/>
+                                    </linearGradient>
+                                </defs>
+                                <!-- Grid Lines -->
+                                <line x1="0" y1="50" x2="800" y2="50" stroke="#f1f5f9" stroke-width="1" />
+                                <line x1="0" y1="100" x2="800" y2="100" stroke="#f1f5f9" stroke-width="1" />
+                                <line x1="0" y1="150" x2="800" y2="150" stroke="#f1f5f9" stroke-width="1" />
+                                <!-- Chart Area -->
+                                <path d="M 50,180 Q 150,140 250,150 T 450,90 T 650,80 T 750,50 L 750,180 L 50,180 Z" fill="url(#chartGrad)"/>
+                                <!-- Chart Line -->
+                                <path d="M 50,180 Q 150,140 250,150 T 450,90 T 650,80 T 750,50" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"/>
+                                <!-- Chart Dots -->
+                                <circle cx="50" cy="180" r="5" fill="var(--primary)" stroke="white" stroke-width="2"/>
+                                <circle cx="178" cy="142" r="5" fill="var(--primary)" stroke="white" stroke-width="2"/>
+                                <circle cx="295" cy="151" r="5" fill="var(--primary)" stroke="white" stroke-width="2"/>
+                                <circle cx="452" cy="90" r="5" fill="var(--primary)" stroke="white" stroke-width="2"/>
+                                <circle cx="598" cy="82" r="5" fill="var(--primary)" stroke="white" stroke-width="2"/>
+                                <circle cx="750" cy="50" r="5" fill="var(--primary)" stroke="white" stroke-width="2"/>
+                            </svg>
+                            <div class="chart-labels">
+                                <span>Thứ 2</span>
+                                <span>Thứ 3</span>
+                                <span>Thứ 4</span>
+                                <span>Thứ 5</span>
+                                <span>Thứ 6</span>
+                                <span>Thứ Bảy</span>
+                                <span>Chủ Nhật</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Orders Management -->
+                <div class="admin-tab-pane" id="pane-orders">
+                    <div class="orders-toolbar">
+                        <div class="orders-filter-tabs" id="admin-order-filters">
+                            <button class="admin-filter-btn active" data-status="all">Tất cả</button>
+                            <button class="admin-filter-btn" data-status="Đã đặt">Đã đặt</button>
+                            <button class="admin-filter-btn" data-status="Đang chuẩn bị">Đang chuẩn bị</button>
+                            <button class="admin-filter-btn" data-status="Chờ nhận hàng">Chờ nhận</button>
+                            <button class="admin-filter-btn" data-status="Hoàn thành">Hoàn thành</button>
+                            <button class="admin-filter-btn" data-status="Đã hủy">Đã hủy</button>
+                        </div>
+                        <button class="btn-qr-scan" id="btnAdminQrScanner"><i class="fa-solid fa-qrcode"></i> Quét QR nhận máy</button>
+                    </div>
+
+                    <div class="admin-table-card">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn</th>
+                                    <th>Khách hàng</th>
+                                    <th>Ngày hẹn lấy</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-orders-table-body">
+                                <!-- Dynamic orders loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Products Management -->
+                <div class="admin-tab-pane" id="pane-products">
+                    <div class="toolbar-row">
+                        <h3>Danh sách sản phẩm</h3>
+                        <button class="btn-add-product" id="btnAdminAddProduct"><i class="fa-solid fa-plus"></i> Thêm sản phẩm mới</button>
+                    </div>
+
+                    <div class="admin-table-card">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Hãng</th>
+                                    <th>Phân khúc</th>
+                                    <th>Giá gốc</th>
+                                    <th>Giá khuyến mãi</th>
+                                    <th>Tồn kho</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-products-table-body">
+                                <!-- Dynamic products listed here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Vouchers Management -->
+                <div class="admin-tab-pane" id="pane-vouchers">
+                    <div class="toolbar-row">
+                        <h3>Danh sách mã giảm giá</h3>
+                        <button class="btn-add-voucher" id="btnAdminAddVoucher"><i class="fa-solid fa-plus"></i> Tạo Voucher mới</button>
+                    </div>
+
+                    <div class="admin-table-card">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã Voucher</th>
+                                    <th>Loại giảm giá</th>
+                                    <th>Giá trị</th>
+                                    <th>Giảm tối đa</th>
+                                    <th>Đơn tối thiểu</th>
+                                    <th>Số lượng</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-vouchers-table-body">
+                                <!-- Dynamic vouchers listed here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- Add Voucher Modal Overlay -->
+        <div class="admin-modal-overlay" id="voucher-modal-overlay" style="display: none;">
+            <div class="admin-modal-card">
+                <div class="admin-modal-header">
+                    <h3>Tạo mã giảm giá mới</h3>
+                    <button class="btn-close-admin-modal" id="btn-close-voucher-modal">&times;</button>
+                </div>
+                <div class="admin-modal-body">
+                    <form id="add-voucher-form">
+                        <div class="form-group">
+                            <label for="v-code" class="required">Mã Voucher</label>
+                            <input type="text" id="v-code" required placeholder="Ví dụ: DONGGIA50K...">
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="v-type" class="required">Loại giảm giá</label>
+                                <select id="v-type" required>
+                                    <option value="fixed">Số tiền cố định (đ)</option>
+                                    <option value="percentage">Phần trăm (%)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="v-value" class="required">Mức giảm</label>
+                                <input type="number" id="v-value" required placeholder="Nhập số tiền hoặc %...">
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="v-max">Mức giảm tối đa (đ)</label>
+                                <input type="number" id="v-max" value="0" placeholder="0 nếu không giới hạn...">
+                            </div>
+                            <div class="form-group">
+                                <label for="v-min">Đơn tối thiểu (đ)</label>
+                                <input type="number" id="v-min" value="0" placeholder="Ví dụ: 2000000...">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="v-qty">Số lượng phát hành</label>
+                            <input type="number" id="v-qty" value="50" required>
+                        </div>
+                        <button type="submit" class="btn-save-modal">Lưu Voucher</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- QR Scan Simulator Modal Overlay -->
+        <div class="admin-modal-overlay" id="qr-scan-modal-overlay" style="display: none;">
+            <div class="admin-modal-card" style="max-width: 450px;">
+                <div class="admin-modal-header">
+                    <h3>Trình giả lập quét QR Đơn Hàng</h3>
+                    <button class="btn-close-admin-modal" id="btn-close-qr-scanner-modal">&times;</button>
+                </div>
+                <div class="admin-modal-body">
+                    <p class="qr-scanner-desc">Tại quầy, nhân viên dùng đầu đọc quét mã QR của khách hàng để tự động xác nhận đơn hàng nhận máy.</p>
+                    <div class="scanner-simulate-box">
+                        <i class="fa-solid fa-qrcode scanner-aim-icon"></i>
+                        <label for="qr-scan-input" style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.5rem; display: block;">Nhập mã đơn hàng hoặc chọn bên dưới:</label>
+                        <input type="text" id="qr-scan-input" placeholder="Ví dụ: ORD-839281...">
+                        
+                        <div class="sim-scan-list" id="sim-scan-order-list">
+                            <!-- List order that can be scanned -->
+                        </div>
+
+                        <button id="btn-submit-qr-scan" class="btn-submit-scan-confirm">Xác nhận Đã Nhận Máy & Thanh Toán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Product Modal Overlay -->
+        <div class="admin-modal-overlay" id="product-modal-overlay" style="display: none;">
+            <div class="admin-modal-card">
+                <div class="admin-modal-header">
+                    <h3>Thêm điện thoại mới</h3>
+                    <button class="btn-close-admin-modal" id="btn-close-product-modal">&times;</button>
+                </div>
+                <div class="admin-modal-body">
+                    <form id="add-product-form">
+                        <div class="form-group">
+                            <label for="p-name" class="required">Tên điện thoại</label>
+                            <input type="text" id="p-name" required placeholder="Ví dụ: Samsung Galaxy S25...">
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="p-brand" class="required">Hãng</label>
+                                <select id="p-brand" required>
+                                    <option value="Apple">Apple (iPhone)</option>
+                                    <option value="Samsung">Samsung</option>
+                                    <option value="OPPO">OPPO</option>
+                                    <option value="Xiaomi">Xiaomi</option>
+                                    <option value="vivo">vivo</option>
+                                    <option value="realme">realme</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="p-category" class="required">Phân khúc</label>
+                                <select id="p-category" required>
+                                    <option value="flagship">Flagship nổi bật</option>
+                                    <option value="midrange">Cận cao cấp / Tầm trung</option>
+                                    <option value="gaming">Cấu hình cao / Gaming</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="p-price-old" class="required">Giá gốc (đ)</label>
+                                <input type="number" id="p-price-old" required placeholder="Ví dụ: 25000000...">
+                            </div>
+                            <div class="form-group">
+                                <label for="p-price-current" class="required">Giá khuyến mãi (đ)</label>
+                                <input type="number" id="p-price-current" required placeholder="Ví dụ: 22000000...">
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="p-stock" class="required">Số lượng tồn kho</label>
+                                <input type="number" id="p-stock" value="10" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="p-chip" class="required">Chip xử lý</label>
+                                <input type="text" id="p-chip" required placeholder="Ví dụ: Snapdragon 8 Gen 3...">
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="p-ram" class="required">Dung lượng RAM</label>
+                                <select id="p-ram" required>
+                                    <option value="4 GB">4 GB</option>
+                                    <option value="6 GB">6 GB</option>
+                                    <option value="8 GB">8 GB</option>
+                                    <option value="12 GB">12 GB</option>
+                                    <option value="16 GB">16 GB</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="p-storage" class="required">Dung lượng lưu trữ</label>
+                                <select id="p-storage" required>
+                                    <option value="128 GB">128 GB</option>
+                                    <option value="256 GB">256 GB</option>
+                                    <option value="512 GB">512 GB</option>
+                                    <option value="1 TB">1 TB</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="p-desc">Mô tả sản phẩm</label>
+                            <textarea id="p-desc" placeholder="Nhập giới thiệu tóm tắt cấu hình, tính năng..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-save-modal">Lưu sản phẩm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <i class="fa-solid fa-mobile-screen-button"></i> PhoneStore
+                </div>
+                <p class="footer-desc">Hệ thống phân phối điện thoại di động chính hãng theo mô hình Click & Collect. Mang lại trải nghiệm tối giản và thuận tiện nhất.</p>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Chính Sách</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Chính sách bảo hành</a></li>
+                    <li><a href="#">Quy trình Click & Collect</a></li>
+                    <li><a href="#">Bảo mật thông tin</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-col-title">Hỗ Trợ</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Hotline: 1800.xxxx (Miễn phí)</a></li>
+                    <li><a href="#">Đóng góp ý kiến</a></li>
+                    <li><a href="#">Hệ thống cửa hàng</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 PhoneStore. Thiết kế bởi Antigravity (AI Assistant) theo triết lý Soft & Clean.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation Sticky Bar -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-inner">
+            <a href="index.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-house"></i>
+                <span>Trang Chủ</span>
+            </a>
+            <a href="cart.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span>Giỏ Hàng</span>
+            </a>
+            <a href="orders.html" class="mobile-nav-btn">
+                <i class="fa-solid fa-clipboard"></i>
+                <span>Đơn Hàng</span>
+            </a>
+            <a href="admin.html" class="mobile-nav-btn active">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Quản Trị</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

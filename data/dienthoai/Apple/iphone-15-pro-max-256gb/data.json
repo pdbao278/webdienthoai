@@ -1,0 +1,48 @@
+{
+  "id": "apple-iphone-15-pro-max-256gb",
+  "slug": "iphone-15-pro-max-256gb",
+  "hang": "Apple",
+  "san_pham": "iPhone 15 Pro Max 256GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 32990000,
+  "gia_ban": 26990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại iPhone 15 Pro Max 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A17 Pro (3nm), bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.7 inches",
+  "man_hinh_kich_thuoc": 6.7,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "48MP + 12MP + 12MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "12MP",
+  "chip": "Apple A17 Pro (3nm)",
+  "ram_gb": 8,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "iOS 17",
+  "pin_mah": 4441,
+  "sac_nhanh_w": 25,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 221,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227129/phonestore/products/Apple/iphone-15-pro-max-256gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227130/phonestore/products/Apple/iphone-15-pro-max-256gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227131/phonestore/products/Apple/iphone-15-pro-max-256gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Apple/iphone-15-pro-max-256gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "camera"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "5G",
+    "nfc"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "oppo-find-n3-fold-512gb",
+  "slug": "find-n3-fold-512gb",
+  "hang": "OPPO",
+  "san_pham": "Find N3 Fold 512GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 44990000,
+  "gia_ban": 41990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Find N3 Fold 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 2, bộ nhớ trong 512GB.",
+  "man_hinh_cong_nghe": "7.82 inches (Chính) / 6.31 inches (Phụ)",
+  "man_hinh_kich_thuoc": 7.82,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "48MP + 64MP + 48MP Hasselblad",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "32MP + 20MP",
+  "chip": "Snapdragon 8 Gen 2",
+  "ram_gb": 16,
+  "dung_luong_gb": 512,
+  "he_dieu_hanh": "ColorOS 14",
+  "pin_mah": 4805,
+  "sac_nhanh_w": 67,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 239,
+  "chong_nuoc": "IPX4",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227452/phonestore/products/OPPO/find-n3-fold-512gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227453/phonestore/products/OPPO/find-n3-fold-512gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227454/phonestore/products/OPPO/find-n3-fold-512gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/OPPO/find-n3-fold-512gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

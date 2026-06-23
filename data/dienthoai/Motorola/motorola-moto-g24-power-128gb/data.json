@@ -1,0 +1,49 @@
+{
+  "id": "motorola-motorola-moto-g24-power-128gb",
+  "slug": "motorola-moto-g24-power-128gb",
+  "hang": "Motorola",
+  "san_pham": "Motorola Moto G24 Power 128GB",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 3690000,
+  "gia_ban": 3290000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Motorola Moto G24 Power 128GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 128GB.",
+  "man_hinh_cong_nghe": "6.56 inches",
+  "man_hinh_kich_thuoc": 6.56,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "50MP + 2MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "8MP",
+  "chip": "MediaTek Helio G85",
+  "ram_gb": 4,
+  "dung_luong_gb": 128,
+  "he_dieu_hanh": "Android 14",
+  "pin_mah": 6000,
+  "sac_nhanh_w": 30,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 197,
+  "chong_nuoc": "Chống tràn nước",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227352/phonestore/products/Motorola/motorola-moto-g24-power-128gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227353/phonestore/products/Motorola/motorola-moto-g24-power-128gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227355/phonestore/products/Motorola/motorola-moto-g24-power-128gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Motorola/motorola-moto-g24-power-128gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "battery"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "5G",
+    "nfc"
+  ]
+}

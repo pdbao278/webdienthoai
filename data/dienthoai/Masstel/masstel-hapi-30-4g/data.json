@@ -1,0 +1,45 @@
+{
+  "id": "masstel-masstel-hapi-30-4g",
+  "slug": "masstel-hapi-30-4g",
+  "hang": "Masstel",
+  "san_pham": "Masstel HAPI 30 4G",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 1990000,
+  "gia_ban": 1790000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Masstel HAPI 30 4G chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek MT6739, bộ nhớ trong 32GB.",
+  "man_hinh_cong_nghe": "5.0 inches",
+  "man_hinh_kich_thuoc": 5.0,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "5MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "2MP",
+  "chip": "MediaTek MT6739",
+  "ram_gb": 3,
+  "dung_luong_gb": 32,
+  "he_dieu_hanh": "Android 11 Go",
+  "pin_mah": 2000,
+  "sac_nhanh_w": 5,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 145,
+  "chong_nuoc": "Không",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227244/phonestore/products/Masstel/masstel-hapi-30-4g/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227245/phonestore/products/Masstel/masstel-hapi-30-4g/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227246/phonestore/products/Masstel/masstel-hapi-30-4g/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Masstel/masstel-hapi-30-4g/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "5G",
+    "nfc"
+  ]
+}

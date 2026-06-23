@@ -1,0 +1,50 @@
+{
+  "id": "vivo-vivo-v40-lite-256gb",
+  "slug": "vivo-v40-lite-256gb",
+  "hang": "vivo",
+  "san_pham": "vivo V40 Lite 256GB",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 8490000,
+  "gia_ban": 7990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại vivo V40 Lite 256GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 685, bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.67 inches",
+  "man_hinh_kich_thuoc": 6.67,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 8MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "32MP",
+  "chip": "Snapdragon 685",
+  "ram_gb": 8,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "Funtouch OS 14",
+  "pin_mah": 5000,
+  "sac_nhanh_w": 80,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 188,
+  "chong_nuoc": "IP64",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227603/phonestore/products/vivo/vivo-v40-lite-256gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227604/phonestore/products/vivo/vivo-v40-lite-256gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227606/phonestore/products/vivo/vivo-v40-lite-256gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/vivo/vivo-v40-lite-256gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "thin"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

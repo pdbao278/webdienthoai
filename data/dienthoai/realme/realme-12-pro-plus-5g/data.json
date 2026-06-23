@@ -1,0 +1,48 @@
+{
+  "id": "realme-realme-12-pro-plus-5g",
+  "slug": "realme-12-pro-plus-5g",
+  "hang": "realme",
+  "san_pham": "realme 12 Pro Plus 5G",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 11990000,
+  "gia_ban": 10490000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại realme 12 Pro Plus 5G chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7s Gen 2, bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.7 inches",
+  "man_hinh_kich_thuoc": 6.7,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 64MP + 8MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "32MP",
+  "chip": "Snapdragon 7s Gen 2",
+  "ram_gb": 8,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "realme UI 5.0 (Android 14)",
+  "pin_mah": 5000,
+  "sac_nhanh_w": 67,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 196,
+  "chong_nuoc": "IP65",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227482/phonestore/products/realme/realme-12-pro-plus-5g/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227483/phonestore/products/realme/realme-12-pro-plus-5g/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227484/phonestore/products/realme/realme-12-pro-plus-5g/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/realme/realme-12-pro-plus-5g/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "id": "nubia-nubia-redmagic-9-pro-5g",
+  "slug": "nubia-redmagic-9-pro-5g",
+  "hang": "Nubia",
+  "san_pham": "Nubia RedMagic 9 Pro 5G",
+  "phan_khuc": "gaming",
+  "gia_goc": 21990000,
+  "gia_ban": 19990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Nubia RedMagic 9 Pro 5G chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.8 inches",
+  "man_hinh_kich_thuoc": 6.8,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 50MP + 2MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "16MP dưới màn hình",
+  "chip": "Snapdragon 8 Gen 3",
+  "ram_gb": 12,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "RedMagic OS 9.0",
+  "pin_mah": 6500,
+  "sac_nhanh_w": 80,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 229,
+  "chong_nuoc": "Không",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227439/phonestore/products/Nubia/nubia-redmagic-9-pro-5g/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227440/phonestore/products/Nubia/nubia-redmagic-9-pro-5g/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227441/phonestore/products/Nubia/nubia-redmagic-9-pro-5g/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Nubia/nubia-redmagic-9-pro-5g/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "gaming",
+    "battery"
+  ],
+  "specialFeatures": [
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

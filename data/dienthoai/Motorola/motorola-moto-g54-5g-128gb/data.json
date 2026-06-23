@@ -1,0 +1,46 @@
+{
+  "id": "motorola-motorola-moto-g54-5g-128gb",
+  "slug": "motorola-moto-g54-5g-128gb",
+  "hang": "Motorola",
+  "san_pham": "Motorola Moto G54 5G 128GB",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 4990000,
+  "gia_ban": 4290000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Motorola Moto G54 5G 128GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 7020, bộ nhớ trong 128GB.",
+  "man_hinh_cong_nghe": "6.5 inches",
+  "man_hinh_kich_thuoc": 6.5,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 2MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "16MP",
+  "chip": "Dimensity 7020",
+  "ram_gb": 8,
+  "dung_luong_gb": 128,
+  "he_dieu_hanh": "Android 13",
+  "pin_mah": 5000,
+  "sac_nhanh_w": 15,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 177,
+  "chong_nuoc": "Chống tràn nước",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227357/phonestore/products/Motorola/motorola-moto-g54-5g-128gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227360/phonestore/products/Motorola/motorola-moto-g54-5g-128gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227362/phonestore/products/Motorola/motorola-moto-g54-5g-128gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Motorola/motorola-moto-g54-5g-128gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "5G",
+    "nfc"
+  ]
+}

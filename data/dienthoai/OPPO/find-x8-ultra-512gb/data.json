@@ -1,0 +1,49 @@
+{
+  "id": "oppo-find-x8-ultra-512gb",
+  "slug": "find-x8-ultra-512gb",
+  "hang": "OPPO",
+  "san_pham": "Find X8 Ultra 512GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 32990000,
+  "gia_ban": 30990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Find X8 Ultra 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9400 / Snapdragon 8 Gen 4, bộ nhớ trong 512GB.",
+  "man_hinh_cong_nghe": "6.82 inches",
+  "man_hinh_kich_thuoc": 6.82,
+  "man_hinh_do_phan_giai": "2K+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 50MP + 50MP + 50MP Hasselblad",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "32MP",
+  "chip": "Dimensity 9400 / Snapdragon 8 Gen 4",
+  "ram_gb": 16,
+  "dung_luong_gb": 512,
+  "he_dieu_hanh": "ColorOS 15",
+  "pin_mah": 5600,
+  "sac_nhanh_w": 100,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 215,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227457/phonestore/products/OPPO/find-x8-ultra-512gb/front.webp"
+    ],
+    "videos": [
+      "data/dienthoai/OPPO/find-x8-ultra-512gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "camera",
+    "battery"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

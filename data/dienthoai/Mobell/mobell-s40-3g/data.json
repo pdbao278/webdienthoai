@@ -1,0 +1,45 @@
+{
+  "id": "mobell-mobell-s40-3g",
+  "slug": "mobell-s40-3g",
+  "hang": "Mobell",
+  "san_pham": "Mobell S40 3G",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 1490000,
+  "gia_ban": 1190000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Mobell S40 3G chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Spreadtrum SC7731E, bộ nhớ trong 8GB.",
+  "man_hinh_cong_nghe": "5.0 inches",
+  "man_hinh_kich_thuoc": 5.0,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "5MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "2MP",
+  "chip": "Spreadtrum SC7731E",
+  "ram_gb": 1,
+  "dung_luong_gb": 8,
+  "he_dieu_hanh": "Android 8.1 Go",
+  "pin_mah": 2000,
+  "sac_nhanh_w": 5,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 140,
+  "chong_nuoc": "Không",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227314/phonestore/products/Mobell/mobell-s40-3g/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227316/phonestore/products/Mobell/mobell-s40-3g/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227317/phonestore/products/Mobell/mobell-s40-3g/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Mobell/mobell-s40-3g/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "5G",
+    "nfc"
+  ]
+}

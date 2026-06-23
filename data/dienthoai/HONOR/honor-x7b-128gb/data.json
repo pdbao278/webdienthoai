@@ -1,0 +1,48 @@
+{
+  "id": "honor-honor-x7b-128gb",
+  "slug": "honor-x7b-128gb",
+  "hang": "HONOR",
+  "san_pham": "HONOR X7b 128GB",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 5290000,
+  "gia_ban": 4490000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại HONOR X7b 128GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 680, bộ nhớ trong 128GB.",
+  "man_hinh_cong_nghe": "6.8 inches",
+  "man_hinh_kich_thuoc": 6.8,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "108MP + 5MP + 2MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "8MP",
+  "chip": "Snapdragon 680",
+  "ram_gb": 8,
+  "dung_luong_gb": 128,
+  "he_dieu_hanh": "MagicOS 7.2",
+  "pin_mah": 6000,
+  "sac_nhanh_w": 35,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 199,
+  "chong_nuoc": "Không",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227217/phonestore/products/HONOR/honor-x7b-128gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227218/phonestore/products/HONOR/honor-x7b-128gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227220/phonestore/products/HONOR/honor-x7b-128gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/HONOR/honor-x7b-128gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "battery"
+  ],
+  "specialFeatures": [
+    "fast",
+    "5G",
+    "nfc"
+  ]
+}

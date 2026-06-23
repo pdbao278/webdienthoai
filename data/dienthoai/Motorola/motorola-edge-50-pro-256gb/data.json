@@ -1,0 +1,48 @@
+{
+  "id": "motorola-motorola-edge-50-pro-256gb",
+  "slug": "motorola-edge-50-pro-256gb",
+  "hang": "Motorola",
+  "san_pham": "Motorola Edge 50 Pro 256GB",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 18990000,
+  "gia_ban": 17490000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Motorola Edge 50 Pro 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7 Gen 3, bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.7 inches",
+  "man_hinh_kich_thuoc": 6.7,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 144,
+  "camera_sau": "50MP + 10MP + 13MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "50MP",
+  "chip": "Snapdragon 7 Gen 3",
+  "ram_gb": 12,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "Android 14",
+  "pin_mah": 4500,
+  "sac_nhanh_w": 125,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 186,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Màu tiêu chuẩn thương hiệu",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227336/phonestore/products/Motorola/motorola-edge-50-pro-256gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227338/phonestore/products/Motorola/motorola-edge-50-pro-256gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227339/phonestore/products/Motorola/motorola-edge-50-pro-256gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Motorola/motorola-edge-50-pro-256gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}
