@@ -6,7 +6,28 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 describe('Product API', () => {
+  let productSlug: string;
+  let productId: string;
+
+  beforeAll(async () => {
+    productSlug = `prod-api-${Date.now()}`;
+    const product = await prisma.product.create({
+      data: {
+        slug: productSlug,
+        hang: 'Apple',
+        sanPham: 'API Test Product',
+        phanKhuc: 'FLAGSHIP',
+        media: {
+          create: [{ url: 'http://test', isThumbnail: true }]
+        }
+      }
+    });
+    productId = product.id;
+  });
+
   afterAll(async () => {
+    await prisma.productMedia.deleteMany({ where: { productId } });
+    await prisma.product.delete({ where: { id: productId } });
     await prisma.$disconnect();
   });
 
@@ -22,19 +43,16 @@ describe('Product API', () => {
     it('should filter by hang', async () => {
       const res = await request(app).get('/api/products?hang=Apple');
       expect(res.status).toBe(200);
-      expect(res.body.data.every((p: any) => p.hang === 'Apple')).toBe(true);
+      expect(res.body.data.length).toBeGreaterThan(0);
+      expect(res.body.data.every((p: any) => p.hang.toLowerCase().includes('apple'))).toBe(true);
     });
   });
 
   describe('GET /api/products/:slug', () => {
     it('should return product details including media', async () => {
-      // Find a valid slug first
-      const p = await prisma.product.findFirst();
-      if (!p) return; // Skip if db is empty, but we seeded it
-
-      const res = await request(app).get(`/api/products/${p.slug}`);
+      const res = await request(app).get(`/api/products/${productSlug}`);
       expect(res.status).toBe(200);
-      expect(res.body.slug).toBe(p.slug);
+      expect(res.body.slug).toBe(productSlug);
       expect(res.body.media).toBeDefined();
     });
 

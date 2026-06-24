@@ -14,6 +14,6 @@
 - [x] Task 7: Báo cáo Thống kê Doanh thu
 
 ## Phase 4: Customer Interactions (Reviews & Compare)
-- [ ] Task 8: Database Schema & API Đánh giá (Review)
-- [ ] Task 9: UI Đánh giá trên Trang Chi tiết Sản phẩm
-- [ ] Task 10: Khối So Sánh Sản phẩm (Product Comparison)
+- [x] Task 8: Database Schema & API Đánh giá (Review)
+- [x] Task 9: UI Đánh giá trên Trang Chi tiết Sản phẩm
+- [x] Task 10: Khối So Sánh Sản phẩm (Product Comparison)
