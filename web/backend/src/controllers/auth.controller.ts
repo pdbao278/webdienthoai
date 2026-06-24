@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
 import { PrismaClient } from '@prisma/client';
 import { registerSchema, loginSchema, verifyEmailSchema } from '@phonestore/shared';
 import { sendEmail } from '../services/email.service';
@@ -29,7 +30,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       }
     });
 
-    const token = Math.floor(100000 + Math.random() * 900000).toString(); // 6 digit code
+    const token = crypto.randomInt(100000, 1000000).toString(); // 6 digit code
     await prisma.verificationToken.create({
       data: {
         identifier: email,
