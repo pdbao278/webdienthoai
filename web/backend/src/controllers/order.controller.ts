@@ -16,7 +16,7 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
     const data = createOrderSchema.parse(req.body);
 
     const cartItems = await prisma.cartItem.findMany({
-      where: { userId },
+      where: data.cartItemIds ? { userId, id: { in: data.cartItemIds } } : { userId },
       include: { productVariant: true },
     });
 
@@ -126,7 +126,7 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
 
       // Clear Cart
       await tx.cartItem.deleteMany({
-        where: { userId }
+        where: data.cartItemIds ? { userId, id: { in: data.cartItemIds } } : { userId }
       });
 
       return newOrder;

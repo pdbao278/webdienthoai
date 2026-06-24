@@ -12,7 +12,11 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 export default function CartPage() {
-  const { items, fetchCart, updateQuantity, removeItem, isLoading, voucherCode, discount, setVoucher, clearVoucher } = useCartStore();
+  const { 
+    items, fetchCart, updateQuantity, removeItem, isLoading, 
+    voucherCode, discount, setVoucher, clearVoucher,
+    selectedItemIds, toggleItemSelection, selectAll, deselectAll
+  } = useCartStore();
   const { isLoggedIn, token } = useAuthStore();
   const router = useRouter();
   const [isUpdating, setIsUpdating] = useState(false);
@@ -58,7 +62,8 @@ export default function CartPage() {
     }
   };
 
-  const subtotal = items.reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+  const selectedItems = items.filter(item => selectedItemIds.includes(item.id));
+  const subtotal = selectedItems.reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
   
   const handleApplyVoucher = async () => {
     if (!voucherCodeInput) return;
@@ -101,6 +106,15 @@ export default function CartPage() {
   };
 
   const total = subtotal - discount;
+  const isAllSelected = items.length > 0 && selectedItemIds.length === items.length;
+
+  const handleToggleAll = () => {
+    if (isAllSelected) {
+      deselectAll();
+    } else {
+      selectAll();
+    }
+  };
 
   if (!isLoggedIn) return null;
 
@@ -133,8 +147,16 @@ export default function CartPage() {
             <div className="flex-1">
               <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                 {/* Header */}
-                <div className="hidden md:grid grid-cols-12 gap-4 p-4 bg-slate-50/50 border-b border-slate-100 text-sm font-medium text-slate-500">
-                  <div className="col-span-5">Sản phẩm</div>
+                <div className="hidden md:grid grid-cols-12 gap-4 p-4 bg-slate-50/50 border-b border-slate-100 text-sm font-medium text-slate-500 items-center">
+                  <div className="col-span-5 flex items-center gap-3">
+                    <input 
+                      type="checkbox" 
+                      checked={isAllSelected}
+                      onChange={handleToggleAll}
+                      className="w-4 h-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500 cursor-pointer"
+                    />
+                    <span>Sản phẩm</span>
+                  </div>
                   <div className="col-span-2 text-center">Đơn giá</div>
                   <div className="col-span-2 text-center">Số lượng</div>
                   <div className="col-span-2 text-right">Thành tiền</div>
@@ -145,7 +167,13 @@ export default function CartPage() {
                 <div className={`divide-y divide-slate-100 ${isUpdating || isLoading ? 'opacity-50 pointer-events-none' : ''}`}>
                   {items.map(item => (
                     <div key={item.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 items-center">
-                      <div className="col-span-1 md:col-span-5 flex gap-4">
+                      <div className="col-span-1 md:col-span-5 flex items-center gap-3">
+                        <input 
+                          type="checkbox" 
+                          checked={selectedItemIds.includes(item.id)}
+                          onChange={() => toggleItemSelection(item.id)}
+                          className="w-4 h-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500 cursor-pointer"
+                        />
                         <div className="w-20 h-20 bg-slate-50 rounded-lg relative overflow-hidden flex-shrink-0 p-2">
                           {item.productVariant?.imageUrl ? (
                             <Image 
@@ -260,8 +288,21 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                <Link href="/checkout" className="block w-full bg-rose-600 text-white text-center font-medium py-4 rounded-xl hover:bg-rose-700 transition shadow-sm shadow-rose-600/20">
-                  Tiến hành đặt hàng
+                <Link 
+                  href={selectedItemIds.length > 0 ? "/checkout" : "#"} 
+                  className={`block w-full text-center font-medium py-4 rounded-xl transition shadow-sm ${
+                    selectedItemIds.length > 0 
+                      ? "bg-rose-600 text-white hover:bg-rose-700 shadow-rose-600/20" 
+                      : "bg-slate-200 text-slate-400 cursor-not-allowed"
+                  }`}
+                  onClick={(e) => {
+                    if (selectedItemIds.length === 0) {
+                      e.preventDefault();
+                      toast.error('Vui lòng chọn ít nhất 1 sản phẩm để thanh toán');
+                    }
+                  }}
+                >
+                  Tiến hành đặt hàng ({selectedItemIds.length})
                 </Link>
               </div>
             </div>

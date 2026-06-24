@@ -135,7 +135,7 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 #### FR-01: Trang Chủ (P0)
 - Hero banner tự động cuộn.
 - Dãy logo Hãng điện thoại (scroll ngang).
-- Grid điện thoại bán chạy, nổi bật. Tại mỗi thẻ Product Card, hiển thị mức giá thấp nhất ("Giá từ ...") kèm thông tin phiên bản mặc định (VD: 256GB).
+- Grid điện thoại bán chạy, nổi bật. Tại mỗi thẻ Product Card, hiển thị mức giá thấp nhất ("Giá từ ...") kèm thông tin phiên bản mặc định (VD: 256GB). Nút "Mua ngay" trên thẻ sẽ điều hướng trực tiếp đến trang chi tiết sản phẩm.
 - Danh mục theo nhu cầu (Gaming Phone, Flagship, Tầm trung, Phổ thông).
 
 #### FR-02: Danh Sách & Lọc Điện Thoại (P0)
@@ -183,7 +183,7 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 - Mini-cart ở header.
 - Trang giỏ hàng: thay đổi số lượng, xóa SP. Chỉ cho phép thêm nếu `ton_kho > 0`.
 - Tích hợp ô **Nhập mã giảm giá (Voucher)** ngay tại phần Tóm tắt đơn hàng của Giỏ hàng.
-- Click "Thêm vào giỏ" → Icon giỏ hàng nháy + Toast "Thêm thành công". Click "Mua ngay" → chuyển thẳng Checkout.
+- Click "Thêm vào giỏ" → Toast "Thêm thành công". Click "Mua ngay" ở trang chi tiết → Tự động thêm vào giỏ và chuyển thẳng sang trang Thanh toán (Checkout).
 
 #### FR-07: Đặt trước & Nhận tại cửa hàng — Click & Collect (P0)
 - **Mô hình MVP**: 1 cửa hàng duy nhất, **100% thanh toán tại quầy** (không đặt cọc online).
@@ -193,7 +193,8 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
   - Cung cấp SĐT liên hệ và ghi chú.
 - Hẹn giờ nhận máy: Tách thành 2 dropdown chọn **Ngày nhận** (Hôm nay, Ngày mai, Ngày kia) và **Khung giờ nhận** (Sáng, Trưa, Chiều, Tối).
 - Mã nhận hàng: Nhận QR Code/mã số sau khi đặt thành công, xuất trình khi nhận hàng.
-- **Thành tiền** = `Tổng tiền hàng − Voucher giảm giá` (Phí ship = 0đ, Voucher được đồng bộ từ Giỏ hàng sang).
+- **Tích hợp Voucher:** Hỗ trợ nhập và áp dụng mã giảm giá trực tiếp trên trang Thanh toán (dữ liệu đồng bộ 2 chiều với Giỏ hàng).
+- **Thành tiền** = `Tổng tiền hàng − Voucher giảm giá` (Phí ship = 0đ).
 
 #### FR-08: Quản Lý Đơn Hàng — Customer (P0)
 - Lịch sử đặt hàng với luồng trạng thái thống nhất:
@@ -436,6 +437,7 @@ webdienthoai/
 
 | Phiên bản | Ngày | Người thay đổi | Nội dung thay đổi | Lý do |
 |---|---|---|---|---|
+| v4.6 | 2026-06-24 | Antigravity | Hoàn tất M2 & Chuẩn hóa Seeding: Khắc phục lỗi bất đồng bộ UI/DB với cơ chế UUID động. Đồng bộ ô nhập Voucher cho cả trang Giỏ hàng và Thanh toán. Cải tiến nút "Mua ngay" điều hướng thông minh. Cập nhật cơ chế xác thực Email dùng DateTime. | Nâng cao độ ổn định hệ thống, đồng nhất trải nghiệm mua hàng và xử lý dứt điểm các lỗi logic giỏ hàng/thanh toán. |
 | v4.5 | 2026-06-24 | Antigravity | Tối ưu hóa URL biến thể bằng tham số `v` ngắn gọn. Đồng bộ Database với 130 sản phẩm từ HTML Mockup (chứa link ảnh Cloudinary chuẩn) thay cho dữ liệu mẫu cũ. | Cải thiện UX/SEO qua URL ngắn, giải quyết lỗi hiển thị ảnh (broken images) và nâng cao độ trung thực của giao diện so với bản thiết kế mockup. |
 | v4.4 | 2026-06-24 | Antigravity | Bổ sung Product Variants: Cho phép 1 sản phẩm (vd: iPhone 15) có nhiều cấu hình (RAM, ROM) và Màu sắc khác nhau với giá và tồn kho riêng biệt. | Đáp ứng yêu cầu quản lý sản phẩm thực tế. |
 | v4.3 | 2026-06-24 | Antigravity | Hoàn thiện luồng M2: Chuyển tính năng áp mã Voucher sang trang Giỏ hàng. Làm mịn giao diện Thanh toán (Click & Collect) với dropdown Chọn ngày (3 ngày) và Khung giờ (4 buổi), cho phép chỉnh sửa nhanh Họ tên/Email trực tiếp trên form. | Nâng cao trải nghiệm UX, đảm bảo khách hàng thấy rõ giá trị giảm giá trước khi vào thanh toán. |

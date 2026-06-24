@@ -6,6 +6,8 @@ import { formatCurrency } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import AddToCartButton from './AddToCartButton';
 import ProductSpecs from './ProductSpecs';
+import { useCartStore } from '@/store/useCartStore';
+import toast from 'react-hot-toast';
 
 interface Variant {
   id: string;
@@ -27,6 +29,9 @@ interface ProductInteractiveSectionProps {
 
 export default function ProductInteractiveSection({ product, variants, minVariant }: ProductInteractiveSectionProps) {
   const [selectedVariant, setSelectedVariant] = useState<Variant>(minVariant);
+  const [isBuyingNow, setIsBuyingNow] = useState(false);
+  const addToCart = useCartStore(state => state.addToCart);
+  const deselectAll = useCartStore(state => state.deselectAll);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -72,6 +77,24 @@ export default function ProductInteractiveSection({ product, variants, minVarian
   const giaBan = selectedVariant.giaBan;
   const giaGoc = selectedVariant.giaGoc;
   const discount = giaGoc > 0 ? Math.round((1 - giaBan / giaGoc) * 100) : 0;
+
+  const handleBuyNow = async () => {
+    try {
+      setIsBuyingNow(true);
+      deselectAll(); // Clear other selections so only this item is checked out
+      await addToCart(selectedVariant.id, 1);
+      router.push('/checkout');
+    } catch (error: any) {
+      if (error.message.includes('Vui lòng đăng nhập')) {
+        toast.error('Bạn cần đăng nhập để mua hàng');
+        router.push('/login');
+      } else {
+        toast.error(error.message || 'Lỗi xử lý');
+      }
+    } finally {
+      setIsBuyingNow(false);
+    }
+  };
 
   return (
     <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 sticky top-24">
@@ -166,8 +189,13 @@ export default function ProductInteractiveSection({ product, variants, minVarian
 
       {/* Actions */}
       <div className="space-y-3">
-        <Button variant="primary" className="w-full text-lg py-4 bg-rose-600 hover:bg-rose-700 disabled:opacity-50" disabled={selectedVariant.tonKho <= 0}>
-          Mua ngay
+        <Button 
+          variant="primary" 
+          className="w-full text-lg py-4 bg-rose-600 hover:bg-rose-700 disabled:opacity-50" 
+          disabled={selectedVariant.tonKho <= 0 || isBuyingNow}
+          onClick={handleBuyNow}
+        >
+          {isBuyingNow ? 'Đang xử lý...' : 'Mua ngay'}
         </Button>
         <div className="grid grid-cols-2 gap-3">
           <div className={selectedVariant.tonKho <= 0 ? 'opacity-50 pointer-events-none' : ''}>

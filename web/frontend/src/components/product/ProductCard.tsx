@@ -68,10 +68,9 @@ export default function ProductCard({ product }: ProductCardProps) {
               <span className="text-xs text-slate-500">(120 đánh giá)</span>
           </div>
           <div className="mt-auto flex gap-2">
-              <button className="flex-1 bg-sky-600 text-white font-semibold text-sm h-[38px] rounded-xl transition-colors hover:bg-sky-700 flex items-center justify-center" onClick={(e) => {
-                e.preventDefault();
-                alert('Đã thêm vào giỏ hàng!');
-              }}>Mua ngay</button>
+              <div className="flex-1 bg-sky-600 text-white font-semibold text-sm h-[38px] rounded-xl transition-colors hover:bg-sky-700 flex items-center justify-center">
+                Mua ngay
+              </div>
           </div>
       </div>
     </Link>

@@ -34,6 +34,11 @@ interface CartState {
   clearCart: () => void;
   setVoucher: (code: string | null, discount: number) => void;
   clearVoucher: () => void;
+  selectedItemIds: string[];
+  toggleItemSelection: (id: string) => void;
+  selectAll: () => void;
+  deselectAll: () => void;
+  setSelectedItems: (ids: string[]) => void;
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
@@ -44,9 +49,21 @@ export const useCartStore = create<CartState>((set, get) => ({
   error: null,
   voucherCode: null,
   discount: 0,
-  clearCart: () => set({ items: [], voucherCode: null, discount: 0 }),
+  selectedItemIds: [],
+  clearCart: () => set({ items: [], voucherCode: null, discount: 0, selectedItemIds: [] }),
   setVoucher: (code, discount) => set({ voucherCode: code, discount }),
   clearVoucher: () => set({ voucherCode: null, discount: 0 }),
+  toggleItemSelection: (id) => set((state) => {
+    const isSelected = state.selectedItemIds.includes(id);
+    return {
+      selectedItemIds: isSelected 
+        ? state.selectedItemIds.filter(i => i !== id) 
+        : [...state.selectedItemIds, id]
+    };
+  }),
+  selectAll: () => set((state) => ({ selectedItemIds: state.items.map(i => i.id) })),
+  deselectAll: () => set({ selectedItemIds: [] }),
+  setSelectedItems: (ids) => set({ selectedItemIds: ids }),
   fetchCart: async () => {
     const token = useAuthStore.getState().token;
     if (!token) return;
@@ -58,7 +75,12 @@ export const useCartStore = create<CartState>((set, get) => ({
       });
       if (!res.ok) throw new Error('Không thể tải giỏ hàng');
       const data = await res.json();
-      set({ items: data, isLoading: false });
+      set((state) => {
+        // Remove selected items that are no longer in cart
+        const validIds = data.map((i: any) => i.id);
+        const newSelected = state.selectedItemIds.filter(id => validIds.includes(id));
+        return { items: data, isLoading: false, selectedItemIds: newSelected };
+      });
     } catch (err: any) {
       set({ error: err.message, isLoading: false });
     }
@@ -82,6 +104,14 @@ export const useCartStore = create<CartState>((set, get) => ({
       if (!res.ok) throw new Error(data.error || 'Lỗi thêm vào giỏ hàng');
 
       await get().fetchCart();
+      
+      if (data.cartItem?.id) {
+        set(state => ({
+          selectedItemIds: state.selectedItemIds.includes(data.cartItem.id) 
+            ? state.selectedItemIds 
+            : [...state.selectedItemIds, data.cartItem.id]
+        }));
+      }
     } catch (err: any) {
       set({ error: err.message, isLoading: false });
       throw err;

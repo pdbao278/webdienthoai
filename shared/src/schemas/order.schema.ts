@@ -6,6 +6,7 @@ export const createOrderSchema = z.object({
   thoiGianHenLayHang: z.string().datetime({ message: 'Thời gian hẹn không hợp lệ' }),
   voucherCode: z.string().optional(),
   phuongThucThanhToan: z.string().default('TienMat'),
+  cartItemIds: z.array(z.string().uuid()).optional(),
 });
 
 export const validateVoucherSchema = z.object({

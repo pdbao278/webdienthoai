@@ -15,9 +15,16 @@ import { formatCurrency } from '@/lib/utils';
 import toast from 'react-hot-toast';
 
 export default function CheckoutPage() {
-  const { items, fetchCart, clearCart, voucherCode, discount } = useCartStore();
+  const { items, fetchCart, clearCart, voucherCode, discount, setVoucher, clearVoucher, selectedItemIds } = useCartStore();
   const { user, isLoggedIn, token } = useAuthStore();
   const router = useRouter();
+
+  const [voucherCodeInput, setVoucherCodeInput] = useState(voucherCode || '');
+  const [isValidatingVoucher, setIsValidatingVoucher] = useState(false);
+
+  useEffect(() => {
+    setVoucherCodeInput(voucherCode || '');
+  }, [voucherCode]);
 
   const generateDates = useMemo(() => {
     const dates = [];
@@ -69,13 +76,58 @@ export default function CheckoutPage() {
     }
   }, [isLoggedIn, router, fetchCart]);
 
-  const subtotal = items.reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+  const selectedItems = useMemo(() => items.filter(item => selectedItemIds.includes(item.id)), [items, selectedItemIds]);
+  const subtotal = selectedItems.reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
   const total = subtotal - discount;
+
+  const handleApplyVoucher = async () => {
+    if (!voucherCodeInput) return;
+    setIsValidatingVoucher(true);
+    try {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+      const res = await fetch(`${API_URL}/orders/validate-voucher`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ voucherCode: voucherCodeInput })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Lỗi voucher');
+      
+      if (subtotal < data.donToiThieu) {
+        throw new Error(`Đơn hàng tối thiểu ${formatCurrency(data.donToiThieu)}`);
+      }
+
+      let d = 0;
+      if (data.loaiGiamGia === 'PERCENTAGE') {
+        d = Math.floor((subtotal * data.giaTri) / 100);
+        if (data.toiDaGiam && d > data.toiDaGiam) d = data.toiDaGiam;
+      } else {
+        d = data.giaTri;
+      }
+      
+      if (d > subtotal) d = subtotal;
+      
+      setVoucher(voucherCodeInput, d);
+      toast.success('Áp dụng voucher thành công');
+    } catch (err: any) {
+      toast.error(err.message);
+      clearVoucher();
+    } finally {
+      setIsValidatingVoucher(false);
+    }
+  };
 
   const onSubmit = async (data: CreateOrderInput) => {
     try {
       const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
-      const payload = { ...data, voucherCode: voucherCode || undefined };
+      const payload = { 
+        ...data, 
+        voucherCode: voucherCode || undefined,
+        cartItemIds: selectedItemIds.length > 0 ? selectedItemIds : undefined
+      };
       // append :00.000Z to local datetime-local
       payload.thoiGianHenLayHang = new Date(data.thoiGianHenLayHang).toISOString();
 
@@ -90,14 +142,20 @@ export default function CheckoutPage() {
       const result = await res.json();
       if (!res.ok) throw new Error(result.error || 'Lỗi đặt hàng');
 
-      clearCart();
+      // Refresh cart to remove checked out items
+      await fetchCart();
       router.push(`/checkout/success?order=${result.order.maNhanHang}`);
     } catch (err: any) {
       toast.error(err.message);
     }
   };
 
-  if (!isLoggedIn || items.length === 0) return null;
+  if (!isLoggedIn || selectedItems.length === 0) {
+    if (isLoggedIn && selectedItems.length === 0 && items.length > 0) {
+      router.push('/cart');
+    }
+    return null;
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
@@ -213,10 +271,10 @@ export default function CheckoutPage() {
           {/* Order Summary */}
           <div className="w-full lg:w-[400px]">
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sticky top-24">
-              <h3 className="text-lg font-bold text-slate-800 mb-4">Sản phẩm đặt mua</h3>
+              <h3 className="text-lg font-bold text-slate-800 mb-4">Sản phẩm đặt mua ({selectedItems.length})</h3>
               
               <div className="space-y-4 mb-6 max-h-[300px] overflow-y-auto pr-2">
-                {items.map(item => (
+                {selectedItems.map(item => (
                   <div key={item.id} className="flex justify-between text-sm">
                     <div className="flex gap-3 flex-1 pr-4">
                       <span className="text-slate-600 line-clamp-2">{item.productVariant?.product?.sanPham}{!item.productVariant?.product?.sanPham.includes(`${item.productVariant?.dungLuongGb}GB`) ? ` - ${item.productVariant?.dungLuongGb}GB` : ''} - {item.productVariant?.mauSac}</span>
@@ -229,6 +287,26 @@ export default function CheckoutPage() {
               </div>
               
               <div className="border-t border-slate-100 pt-4 mb-4">
+                <div className="border border-dashed border-slate-300 bg-slate-50 p-4 rounded-xl mb-4">
+                  <label className="block text-sm font-medium text-slate-800 mb-2">Nhập mã giảm giá (Voucher)</label>
+                  <div className="flex gap-2">
+                    <input 
+                      type="text" 
+                      value={voucherCodeInput}
+                      onChange={(e) => setVoucherCodeInput(e.target.value)}
+                      placeholder="MÃ GIẢM GIÁ" 
+                      className="flex-1 min-w-0 px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none uppercase"
+                    />
+                    <button 
+                      className="whitespace-nowrap flex-shrink-0 px-4 py-2 border border-sky-600 text-sky-600 bg-white rounded-lg text-sm font-medium hover:bg-sky-50 transition disabled:opacity-50"
+                      onClick={handleApplyVoucher} 
+                      disabled={isValidatingVoucher || !voucherCodeInput}
+                    >
+                      Áp dụng
+                    </button>
+                  </div>
+                </div>
+
                 <div className="space-y-2 text-sm mb-4">
                   <div className="flex justify-between text-slate-600">
                     <span>Tạm tính</span>
