@@ -5,3 +5,4 @@ export function ping(): string {
 export * from './schemas/auth.schema';
 export * from './schemas/product.schema';
 export * from './schemas/cart.schema';
+export * from './schemas/order.schema';

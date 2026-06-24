@@ -13,6 +13,19 @@ enum Role {
   ADMIN
 }
 
+enum OrderStatus {
+  DA_DAT
+  DANG_CHUAN_BI
+  CHO_NHAN_HANG
+  HOAN_THANH
+  DA_HUY
+}
+
+enum DiscountType {
+  PERCENTAGE
+  FIXED_AMOUNT
+}
+
 enum ProductSegment {
   FLAGSHIP
   TAM_TRUNG
@@ -37,6 +50,9 @@ model User {
   updatedAt      DateTime  @updatedAt @map("updated_at")
 
   cartItems      CartItem[]
+  orders         Order[]
+  activityLogs   OrderActivityLog[]
+  createdVouchers Voucher[]
 
   @@map("users")
 }
@@ -97,6 +113,7 @@ model Product {
 
   media               ProductMedia[]
   cartItems           CartItem[]
+  orderItems          OrderItem[]
 
   @@map("products")
 }
@@ -129,3 +146,76 @@ model CartItem {
   @@unique([userId, productId])
   @@map("cart_items")
 }
+
+model Voucher {
+  id             String       @id @default(uuid())
+  maVoucher      String       @unique @map("ma_voucher")
+  loaiGiamGia    DiscountType @map("loai_giam_gia")
+  giaTri         Int          @map("gia_tri")
+  toiDaGiam      Int?         @map("toi_da_giam")
+  donToiThieu    Int          @default(0) @map("don_toi_thieu")
+  apDungCho      String?      @map("ap_dung_cho")
+  batDau         DateTime     @map("bat_dau")
+  ketThuc        DateTime     @map("ket_thuc")
+  soLuong        Int          @default(0) @map("so_luong")
+  daSuDung       Int          @default(0) @map("da_su_dung")
+  nguoiTaoId     String       @map("nguoi_tao_id")
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime     @updatedAt @map("updated_at")
+
+  nguoiTao       User         @relation(fields: [nguoiTaoId], references: [id])
+  orders         Order[]
+
+  @@map("vouchers")
+}
+
+model Order {
+  id                    String      @id @default(uuid())
+  userId                String      @map("user_id")
+  tongTienHang          Int         @map("tong_tien_hang")
+  voucherId             String?     @map("voucher_id")
+  tienGiamGia           Int         @default(0) @map("tien_giam_gia")
+  thanhTien             Int         @map("thanh_tien")
+  trangThai             OrderStatus @default(DA_DAT) @map("trang_thai")
+  sdtLienHe             String      @map("sdt_lien_he")
+  ghiChu                String?     @map("ghi_chu")
+  thoiGianHenLayHang    DateTime    @map("thoi_gian_hen_lay_hang")
+  phuongThucThanhToan   String?     @map("phuong_thuc_thanh_toan")
+  maNhanHang            String      @unique @map("ma_nhan_hang")
+  createdAt             DateTime    @default(now()) @map("created_at")
+  updatedAt             DateTime    @updatedAt @map("updated_at")
+
+  user                  User        @relation(fields: [userId], references: [id])
+  voucher               Voucher?    @relation(fields: [voucherId], references: [id])
+  items                 OrderItem[]
+  activityLogs          OrderActivityLog[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id         String   @id @default(uuid())
+  orderId    String   @map("order_id")
+  productId  String   @map("product_id")
+  soLuong    Int      @map("so_luong")
+  donGia     Int      @map("don_gia")
+
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product    Product  @relation(fields: [productId], references: [id])
+
+  @@map("order_items")
+}
+
+model OrderActivityLog {
+  id               String   @id @default(uuid())
+  orderId          String   @map("order_id")
+  hanhDong         String   @map("hanh_dong")
+  nguoiThucHienId  String?  @map("nguoi_thuc_hien_id")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  order            Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  nguoiThucHien    User?    @relation(fields: [nguoiThucHienId], references: [id])
+
+  @@map("order_activity_log")
+}
+
