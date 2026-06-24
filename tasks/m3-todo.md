@@ -10,7 +10,7 @@
 - [x] Task 5: UI Quản lý Sản phẩm
 
 ## Phase 3: Vouchers & Statistics (Admin Only)
-- [ ] Task 6: API & UI Quản lý Voucher
+- [x] Task 6: API & UI Quản lý Voucher
 - [ ] Task 7: Báo cáo Thống kê Doanh thu
 
 ## Phase 4: Customer Interactions (Reviews & Compare)
