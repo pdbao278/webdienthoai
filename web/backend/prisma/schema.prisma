@@ -39,19 +39,19 @@ enum MediaType {
 }
 
 model User {
-  id             String    @id @default(uuid())
-  email          String    @unique
-  emailVerified  DateTime? @map("email_verified")
-  passwordHash   String?   @map("password_hash")
-  hoTen          String?   @map("ho_ten")
-  sdt            String?
-  role           Role      @default(CUSTOMER)
-  createdAt      DateTime  @default(now()) @map("created_at")
-  updatedAt      DateTime  @updatedAt @map("updated_at")
+  id            String    @id @default(uuid())
+  email         String    @unique
+  emailVerified DateTime? @map("email_verified")
+  passwordHash  String?   @map("password_hash")
+  hoTen         String?   @map("ho_ten")
+  sdt           String?
+  role          Role      @default(CUSTOMER)
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
 
-  cartItems      CartItem[]
-  orders         Order[]
-  activityLogs   OrderActivityLog[]
+  cartItems       CartItem[]
+  orders          Order[]
+  activityLogs    OrderActivityLog[]
   createdVouchers Voucher[]
 
   @@map("users")
@@ -67,155 +67,168 @@ model VerificationToken {
 }
 
 model Product {
-  id                  String         @id @default(uuid())
-  slug                String         @unique
-  hang                String
-  sanPham             String         @map("san_pham")
-  phanKhuc            ProductSegment @map("phan_khuc")
-  giaGoc              Int            @map("gia_goc")
-  giaBan              Int            @map("gia_ban")
-  tonKho              Int            @map("ton_kho")
-  moTa                String?        @map("mo_ta") @db.Text
+  id       String         @id @default(uuid())
+  slug     String         @unique
+  hang     String
+  sanPham  String         @map("san_pham")
+  phanKhuc ProductSegment @map("phan_khuc")
+  moTa     String?        @map("mo_ta") @db.Text
 
   // Màn hình
-  manHinhCongNghe     String?        @map("man_hinh_cong_nghe")
-  manHinhKichThuoc    Decimal?       @map("man_hinh_kich_thuoc") @db.Decimal(4, 2)
-  manHinhDoPhanGiai   String?        @map("man_hinh_do_phan_giai")
-  manHinhTanSoQuet    Int?           @map("man_hinh_tan_so_quet")
+  manHinhCongNghe   String?  @map("man_hinh_cong_nghe")
+  manHinhKichThuoc  Decimal? @map("man_hinh_kich_thuoc") @db.Decimal(4, 2)
+  manHinhDoPhanGiai String?  @map("man_hinh_do_phan_giai")
+  manHinhTanSoQuet  Int?     @map("man_hinh_tan_so_quet")
 
   // Camera
-  cameraSau           String?        @map("camera_sau")
-  cameraSauTinhNang   String?        @map("camera_sau_tinh_nang")
-  cameraTruoc         String?        @map("camera_truoc")
+  cameraSau         String? @map("camera_sau")
+  cameraSauTinhNang String? @map("camera_sau_tinh_nang")
+  cameraTruoc       String? @map("camera_truoc")
 
   // Hiệu năng
-  chip                String?
-  ramGb               Int?           @map("ram_gb")
-  dungLuongGb         Int?           @map("dung_luong_gb")
-  heDieuHanh          String?        @map("he_dieu_hanh")
+  chip       String?
+  heDieuHanh String? @map("he_dieu_hanh")
 
   // Pin & Sạc
-  pinMah              Int?           @map("pin_mah")
-  sacNhanhW           Int?           @map("sac_nhanh_w")
+  pinMah    Int? @map("pin_mah")
+  sacNhanhW Int? @map("sac_nhanh_w")
 
   // Kết nối
-  hoTro5g             Boolean?       @default(false) @map("ho_tro_5g")
-  nfc                 Boolean?       @default(false)
-  sim                 String?
+  hoTro5g Boolean? @default(false) @map("ho_tro_5g")
+  nfc     Boolean? @default(false)
+  sim     String?
 
   // Thiết kế
-  trongLuongG         Int?           @map("trong_luong_g")
-  chongNuoc           String?        @map("chong_nuoc")
-  mauSac              String?        @map("mau_sac")
+  trongLuongG Int?    @map("trong_luong_g")
+  chongNuoc   String? @map("chong_nuoc")
 
-  createdAt           DateTime       @default(now()) @map("created_at")
-  updatedAt           DateTime       @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  media               ProductMedia[]
-  cartItems           CartItem[]
-  orderItems          OrderItem[]
+  media    ProductMedia[]
+  variants ProductVariant[]
 
   @@map("products")
 }
 
-model ProductMedia {
-  id           String    @id @default(uuid())
-  productId    String    @map("product_id")
-  url          String
-  publicId     String?   @map("public_id")
-  loai         MediaType @default(IMAGE)
-  thuTu        Int       @default(0) @map("thu_tu")
-  isThumbnail  Boolean   @default(false) @map("is_thumbnail")
+model ProductVariant {
+  id          String   @id @default(uuid())
+  productId   String   @map("product_id")
+  sku         String   @unique
+  ramGb       Int      @map("ram_gb")
+  dungLuongGb Int      @map("dung_luong_gb")
+  mauSac      String   @map("mau_sac")
+  imageUrl    String?  @map("image_url")
+  giaGoc      Int      @map("gia_goc")
+  giaBan      Int      @map("gia_ban")
+  tonKho      Int      @map("ton_kho")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
 
-  product      Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+
+  @@map("product_variants")
+}
+
+model ProductMedia {
+  id          String    @id @default(uuid())
+  productId   String    @map("product_id")
+  url         String
+  publicId    String?   @map("public_id")
+  loai        MediaType @default(IMAGE)
+  thuTu       Int       @default(0) @map("thu_tu")
+  isThumbnail Boolean   @default(false) @map("is_thumbnail")
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@map("product_media")
 }
 
 model CartItem {
-  id        String   @id @default(uuid())
-  userId    String   @map("user_id")
-  productId String   @map("product_id")
-  soLuong   Int      @map("so_luong")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id               String   @id @default(uuid())
+  userId           String   @map("user_id")
+  productVariantId String   @map("product_variant_id")
+  soLuong          Int      @map("so_luong")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
 
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productVariant ProductVariant @relation(fields: [productVariantId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, productId])
+  @@unique([userId, productVariantId])
   @@map("cart_items")
 }
 
 model Voucher {
-  id             String       @id @default(uuid())
-  maVoucher      String       @unique @map("ma_voucher")
-  loaiGiamGia    DiscountType @map("loai_giam_gia")
-  giaTri         Int          @map("gia_tri")
-  toiDaGiam      Int?         @map("toi_da_giam")
-  donToiThieu    Int          @default(0) @map("don_toi_thieu")
-  apDungCho      String?      @map("ap_dung_cho")
-  batDau         DateTime     @map("bat_dau")
-  ketThuc        DateTime     @map("ket_thuc")
-  soLuong        Int          @default(0) @map("so_luong")
-  daSuDung       Int          @default(0) @map("da_su_dung")
-  nguoiTaoId     String       @map("nguoi_tao_id")
-  createdAt      DateTime     @default(now()) @map("created_at")
-  updatedAt      DateTime     @updatedAt @map("updated_at")
+  id          String       @id @default(uuid())
+  maVoucher   String       @unique @map("ma_voucher")
+  loaiGiamGia DiscountType @map("loai_giam_gia")
+  giaTri      Int          @map("gia_tri")
+  toiDaGiam   Int?         @map("toi_da_giam")
+  donToiThieu Int          @default(0) @map("don_toi_thieu")
+  apDungCho   String?      @map("ap_dung_cho")
+  batDau      DateTime     @map("bat_dau")
+  ketThuc     DateTime     @map("ket_thuc")
+  soLuong     Int          @default(0) @map("so_luong")
+  daSuDung    Int          @default(0) @map("da_su_dung")
+  nguoiTaoId  String       @map("nguoi_tao_id")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
 
-  nguoiTao       User         @relation(fields: [nguoiTaoId], references: [id])
-  orders         Order[]
+  nguoiTao User    @relation(fields: [nguoiTaoId], references: [id])
+  orders   Order[]
 
   @@map("vouchers")
 }
 
 model Order {
-  id                    String      @id @default(uuid())
-  userId                String      @map("user_id")
-  tongTienHang          Int         @map("tong_tien_hang")
-  voucherId             String?     @map("voucher_id")
-  tienGiamGia           Int         @default(0) @map("tien_giam_gia")
-  thanhTien             Int         @map("thanh_tien")
-  trangThai             OrderStatus @default(DA_DAT) @map("trang_thai")
-  sdtLienHe             String      @map("sdt_lien_he")
-  ghiChu                String?     @map("ghi_chu")
-  thoiGianHenLayHang    DateTime    @map("thoi_gian_hen_lay_hang")
-  phuongThucThanhToan   String?     @map("phuong_thuc_thanh_toan")
-  maNhanHang            String      @unique @map("ma_nhan_hang")
-  createdAt             DateTime    @default(now()) @map("created_at")
-  updatedAt             DateTime    @updatedAt @map("updated_at")
+  id                  String      @id @default(uuid())
+  userId              String      @map("user_id")
+  tongTienHang        Int         @map("tong_tien_hang")
+  voucherId           String?     @map("voucher_id")
+  tienGiamGia         Int         @default(0) @map("tien_giam_gia")
+  thanhTien           Int         @map("thanh_tien")
+  trangThai           OrderStatus @default(DA_DAT) @map("trang_thai")
+  sdtLienHe           String      @map("sdt_lien_he")
+  ghiChu              String?     @map("ghi_chu")
+  thoiGianHenLayHang  DateTime    @map("thoi_gian_hen_lay_hang")
+  phuongThucThanhToan String?     @map("phuong_thuc_thanh_toan")
+  maNhanHang          String      @unique @map("ma_nhan_hang")
+  createdAt           DateTime    @default(now()) @map("created_at")
+  updatedAt           DateTime    @updatedAt @map("updated_at")
 
-  user                  User        @relation(fields: [userId], references: [id])
-  voucher               Voucher?    @relation(fields: [voucherId], references: [id])
-  items                 OrderItem[]
-  activityLogs          OrderActivityLog[]
+  user         User               @relation(fields: [userId], references: [id])
+  voucher      Voucher?           @relation(fields: [voucherId], references: [id])
+  items        OrderItem[]
+  activityLogs OrderActivityLog[]
 
   @@map("orders")
 }
 
 model OrderItem {
-  id         String   @id @default(uuid())
-  orderId    String   @map("order_id")
-  productId  String   @map("product_id")
-  soLuong    Int      @map("so_luong")
-  donGia     Int      @map("don_gia")
+  id               String @id @default(uuid())
+  orderId          String @map("order_id")
+  productVariantId String @map("product_variant_id")
+  soLuong          Int    @map("so_luong")
+  donGia           Int    @map("don_gia")
 
-  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  product    Product  @relation(fields: [productId], references: [id])
+  order          Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productVariant ProductVariant @relation(fields: [productVariantId], references: [id])
 
   @@map("order_items")
 }
 
 model OrderActivityLog {
-  id               String   @id @default(uuid())
-  orderId          String   @map("order_id")
-  hanhDong         String   @map("hanh_dong")
-  nguoiThucHienId  String?  @map("nguoi_thuc_hien_id")
-  createdAt        DateTime @default(now()) @map("created_at")
+  id              String   @id @default(uuid())
+  orderId         String   @map("order_id")
+  hanhDong        String   @map("hanh_dong")
+  nguoiThucHienId String?  @map("nguoi_thuc_hien_id")
+  createdAt       DateTime @default(now()) @map("created_at")
 
-  order            Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  nguoiThucHien    User?    @relation(fields: [nguoiThucHienId], references: [id])
+  order         Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  nguoiThucHien User? @relation(fields: [nguoiThucHienId], references: [id])
 
   @@map("order_activity_log")
 }
-

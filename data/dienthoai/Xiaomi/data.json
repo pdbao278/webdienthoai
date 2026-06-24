@@ -5,9 +5,6 @@
     "hang": "Xiaomi",
     "san_pham": "Xiaomi 16 Ultra 512GB",
     "phan_khuc": "flagship",
-    "gia_goc": 34990000,
-    "gia_ban": 32990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Xiaomi 16 Ultra 512GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.73 inches",
     "man_hinh_kich_thuoc": 6.73,
@@ -17,8 +14,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "32MP",
     "chip": "Snapdragon 8 Gen 5",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "Xiaomi HyperOS 2.0",
     "pin_mah": 5500,
     "sac_nhanh_w": 120,
@@ -27,7 +22,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 220,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Xiaomi/xiaomi-16-ultra-512gb/images/front.svg",
@@ -49,6 +43,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "xiaomi-16-ultra-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 34990000,
+        "gia_ban": 32990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Xiaomi/xiaomi-16-ultra-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -57,9 +63,6 @@
     "hang": "Xiaomi",
     "san_pham": "Xiaomi 16 256GB",
     "phan_khuc": "flagship",
-    "gia_goc": 22990000,
-    "gia_ban": 20990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Xiaomi 16 256GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.36 inches",
     "man_hinh_kich_thuoc": 6.36,
@@ -69,8 +72,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "32MP",
     "chip": "Snapdragon 8 Gen 5",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "Xiaomi HyperOS 2.0",
     "pin_mah": 4900,
     "sac_nhanh_w": 90,
@@ -79,7 +80,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 188,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Xiaomi/xiaomi-16-256gb/images/front.svg",
@@ -98,6 +98,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "xiaomi-16-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 22990000,
+        "gia_ban": 20990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Xiaomi/xiaomi-16-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -106,9 +118,6 @@
     "hang": "Xiaomi",
     "san_pham": "Xiaomi 15 Pro 512GB",
     "phan_khuc": "flagship",
-    "gia_goc": 29990000,
-    "gia_ban": 27990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Xiaomi 15 Pro 512GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 4, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.73 inches",
     "man_hinh_kich_thuoc": 6.73,
@@ -118,8 +127,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "32MP",
     "chip": "Snapdragon 8 Gen 4",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "Xiaomi HyperOS 1.5",
     "pin_mah": 5400,
     "sac_nhanh_w": 90,
@@ -128,7 +135,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 213,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Xiaomi/xiaomi-15-pro-512gb/images/front.svg",
@@ -146,6 +152,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "xiaomi-15-pro-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 29990000,
+        "gia_ban": 27990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Xiaomi/xiaomi-15-pro-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -154,9 +172,6 @@
     "hang": "Xiaomi",
     "san_pham": "Xiaomi 15 256GB",
     "phan_khuc": "flagship",
-    "gia_goc": 21990000,
-    "gia_ban": 19990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Xiaomi 15 256GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 4, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.36 inches",
     "man_hinh_kich_thuoc": 6.36,
@@ -166,8 +181,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "32MP",
     "chip": "Snapdragon 8 Gen 4",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "Xiaomi HyperOS 1.5",
     "pin_mah": 4800,
     "sac_nhanh_w": 90,
@@ -176,7 +189,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 191,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Xiaomi/xiaomi-15-256gb/images/front.svg",
@@ -194,6 +206,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "xiaomi-15-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 21990000,
+        "gia_ban": 19990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Xiaomi/xiaomi-15-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -202,9 +226,6 @@
     "hang": "Xiaomi",
     "san_pham": "Redmi Note 15 Pro Plus 5G",
     "phan_khuc": "tam_trung",
-    "gia_goc": 11990000,
-    "gia_ban": 10990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Redmi Note 15 Pro Plus 5G chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 7500 Ultra, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.67 inches",
     "man_hinh_kich_thuoc": 6.67,
@@ -214,8 +235,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP",
     "chip": "Dimensity 7500 Ultra",
-    "ram_gb": 12,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "Xiaomi HyperOS 2.0",
     "pin_mah": 5100,
     "sac_nhanh_w": 120,
@@ -224,7 +243,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 204,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Xiaomi/redmi-note-15-pro-plus-5g/images/front.svg",
@@ -242,6 +260,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "redmi-note-15-pro-plus-5g-12-512-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 11990000,
+        "gia_ban": 10990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Xiaomi/redmi-note-15-pro-plus-5g/images/front.svg"
+      }
     ]
   },
   {
@@ -250,9 +280,6 @@
     "hang": "Xiaomi",
     "san_pham": "Redmi Note 15 Pro 5G",
     "phan_khuc": "tam_trung",
-    "gia_goc": 9490000,
-    "gia_ban": 8790000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Redmi Note 15 Pro 5G chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7s Gen 4, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.67 inches",
     "man_hinh_kich_thuoc": 6.67,
@@ -262,8 +289,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP",
     "chip": "Snapdragon 7s Gen 4",
-    "ram_gb": 8,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "Xiaomi HyperOS 2.0",
     "pin_mah": 5200,
     "sac_nhanh_w": 67,
@@ -272,7 +297,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 187,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Xiaomi/redmi-note-15-pro-5g/images/front.svg",
@@ -290,6 +314,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "redmi-note-15-pro-5g-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 9490000,
+        "gia_ban": 8790000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Xiaomi/redmi-note-15-pro-5g/images/front.svg"
+      }
     ]
   },
   {
@@ -298,9 +334,6 @@
     "hang": "Xiaomi",
     "san_pham": "Redmi Note 14 Pro Plus 5G",
     "phan_khuc": "tam_trung",
-    "gia_goc": 10990000,
-    "gia_ban": 9490000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Redmi Note 14 Pro Plus 5G chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7s Gen 3, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.67 inches",
     "man_hinh_kich_thuoc": 6.67,
@@ -310,8 +343,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "20MP",
     "chip": "Snapdragon 7s Gen 3",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "Xiaomi HyperOS 1.0",
     "pin_mah": 6200,
     "sac_nhanh_w": 90,
@@ -320,7 +351,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 210,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Xiaomi/redmi-note-14-pro-plus-5g/images/front.svg",
@@ -340,6 +370,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "redmi-note-14-pro-plus-5g-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 10990000,
+        "gia_ban": 9490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Xiaomi/redmi-note-14-pro-plus-5g/images/front.svg"
+      }
     ]
   },
   {
@@ -348,9 +390,6 @@
     "hang": "Xiaomi",
     "san_pham": "Poco F7 Pro 512GB",
     "phan_khuc": "gaming",
-    "gia_goc": 14990000,
-    "gia_ban": 13990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Poco F7 Pro 512GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 4, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.67 inches",
     "man_hinh_kich_thuoc": 6.67,
@@ -360,8 +399,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP",
     "chip": "Snapdragon 8s Gen 4",
-    "ram_gb": 12,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "Xiaomi HyperOS 2.0",
     "pin_mah": 5000,
     "sac_nhanh_w": 120,
@@ -370,7 +407,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 202,
     "chong_nuoc": "IP64",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Xiaomi/poco-f7-pro-512gb/images/front.svg",
@@ -390,6 +426,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "poco-f7-pro-512gb-12-512-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 14990000,
+        "gia_ban": 13990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Xiaomi/poco-f7-pro-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -398,9 +446,6 @@
     "hang": "Xiaomi",
     "san_pham": "Redmi 14C 128GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 3490000,
-    "gia_ban": 3190000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Redmi 14C 128GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G81, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.88 inches",
     "man_hinh_kich_thuoc": 6.88,
@@ -410,8 +455,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "13MP",
     "chip": "MediaTek Helio G81",
-    "ram_gb": 4,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "Xiaomi HyperOS 1.0",
     "pin_mah": 5160,
     "sac_nhanh_w": 18,
@@ -420,7 +463,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 211,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Xiaomi/redmi-14c-128gb/images/front.svg",
@@ -435,6 +477,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "redmi-14c-128gb-4-128-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 3490000,
+        "gia_ban": 3190000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Xiaomi/redmi-14c-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -443,9 +497,6 @@
     "hang": "Xiaomi",
     "san_pham": "Redmi A3 64GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 2490000,
-    "gia_ban": 2190000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Redmi A3 64GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G36, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.71 inches",
     "man_hinh_kich_thuoc": 6.71,
@@ -455,8 +506,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "5MP",
     "chip": "MediaTek Helio G36",
-    "ram_gb": 3,
-    "dung_luong_gb": 64,
     "he_dieu_hanh": "Android 14 Go",
     "pin_mah": 5000,
     "sac_nhanh_w": 10,
@@ -465,7 +514,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 199,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Xiaomi/redmi-a3-64gb/images/front.svg",
@@ -480,6 +528,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "redmi-a3-64gb-3-64-0",
+        "ram_gb": 3,
+        "dung_luong_gb": 64,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 2490000,
+        "gia_ban": 2190000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Xiaomi/redmi-a3-64gb/images/front.svg"
+      }
     ]
   }
 ]

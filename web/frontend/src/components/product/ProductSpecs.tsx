@@ -1,8 +1,8 @@
-export default function ProductSpecs({ product }: { product: any }) {
+export default function ProductSpecs({ product, variant }: { product: any, variant: any }) {
   const specs = [
     { label: 'Hãng sản xuất', value: product.hang },
-    { label: 'Dung lượng RAM', value: `${product.ramGb} GB` },
-    { label: 'Bộ nhớ trong', value: `${product.dungLuongGb} GB` },
+    { label: 'Dung lượng RAM', value: `${variant?.ramGb || '?'} GB` },
+    { label: 'Bộ nhớ trong', value: `${variant?.dungLuongGb || '?'} GB` },
   ];
 
   return (

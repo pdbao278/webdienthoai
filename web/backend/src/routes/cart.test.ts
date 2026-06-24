@@ -10,6 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-for-dev';
 describe('Cart API', () => {
   let userToken: string;
   let userId: string;
+  let productVariantId: string;
   let productId: string;
 
   beforeAll(async () => {
@@ -31,11 +32,21 @@ describe('Cart API', () => {
         hang: 'Samsung',
         sanPham: 'Test Product Cart',
         phanKhuc: 'TAM_TRUNG',
-        giaGoc: 1000,
-        giaBan: 900,
-        tonKho: 10
-      }
+        variants: {
+          create: [{
+            sku: `test-variant-${Date.now()}`,
+            ramGb: 8,
+            dungLuongGb: 256,
+            mauSac: 'Đen',
+            giaGoc: 1000,
+            giaBan: 900,
+            tonKho: 10
+          }]
+        }
+      },
+      include: { variants: true }
     });
+    productVariantId = product.variants[0].id;
     productId = product.id;
   });
 
@@ -52,13 +63,13 @@ describe('Cart API', () => {
         .post('/api/cart')
         .set('Authorization', `Bearer ${userToken}`)
         .send({
-          productId,
+          productVariantId,
           soLuong: 2
         });
 
       expect(res.status).toBe(201);
       expect(res.body.cartItem.soLuong).toBe(2);
-      expect(res.body.cartItem.productId).toBe(productId);
+      expect(res.body.cartItem.productVariantId).toBe(productVariantId);
     });
 
     it('should fail if tonKho < soLuong', async () => {
@@ -66,7 +77,7 @@ describe('Cart API', () => {
         .post('/api/cart')
         .set('Authorization', `Bearer ${userToken}`)
         .send({
-          productId,
+          productVariantId,
           soLuong: 20
         });
 
@@ -79,7 +90,7 @@ describe('Cart API', () => {
         .post('/api/cart')
         .set('Authorization', `Bearer ${userToken}`)
         .send({
-          productId,
+          productVariantId,
           soLuong: 3
         });
 
@@ -98,7 +109,7 @@ describe('Cart API', () => {
       expect(Array.isArray(res.body)).toBe(true);
       expect(res.body.length).toBe(1);
       expect(res.body[0].soLuong).toBe(5);
-      expect(res.body[0].product.sanPham).toBe('Test Product Cart');
+      expect(res.body[0].productVariant.product.sanPham).toBe('Test Product Cart');
     });
   });
 

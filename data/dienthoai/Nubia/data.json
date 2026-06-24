@@ -5,9 +5,6 @@
     "hang": "Nubia",
     "san_pham": "Nubia RedMagic 9S Pro 5G",
     "phan_khuc": "gaming",
-    "gia_goc": 23990000,
-    "gia_ban": 22490000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nubia RedMagic 9S Pro 5G chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3 Leading Version (Quạt tản nhiệt cơ học), bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.8 inches",
     "man_hinh_kich_thuoc": 6.8,
@@ -17,8 +14,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP dưới màn hình",
     "chip": "Snapdragon 8 Gen 3 Leading Version (Quạt tản nhiệt cơ học)",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "RedMagic OS 9.5 (Android 14)",
     "pin_mah": 6500,
     "sac_nhanh_w": 80,
@@ -27,7 +22,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 229,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nubia/nubia-redmagic-9s-pro-5g/images/front.svg",
@@ -47,6 +41,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nubia-redmagic-9s-pro-5g-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 23990000,
+        "gia_ban": 22490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nubia/nubia-redmagic-9s-pro-5g/images/front.svg"
+      }
     ]
   },
   {
@@ -55,9 +61,6 @@
     "hang": "Nubia",
     "san_pham": "Nubia RedMagic 9 Pro 5G",
     "phan_khuc": "gaming",
-    "gia_goc": 21990000,
-    "gia_ban": 19990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nubia RedMagic 9 Pro 5G chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.8 inches",
     "man_hinh_kich_thuoc": 6.8,
@@ -67,8 +70,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP dưới màn hình",
     "chip": "Snapdragon 8 Gen 3",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "RedMagic OS 9.0",
     "pin_mah": 6500,
     "sac_nhanh_w": 80,
@@ -77,7 +78,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 229,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nubia/nubia-redmagic-9-pro-5g/images/front.svg",
@@ -97,6 +97,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nubia-redmagic-9-pro-5g-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 21990000,
+        "gia_ban": 19990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nubia/nubia-redmagic-9-pro-5g/images/front.svg"
+      }
     ]
   },
   {
@@ -105,9 +117,6 @@
     "hang": "Nubia",
     "san_pham": "Nubia Z60 Ultra 512GB",
     "phan_khuc": "flagship",
-    "gia_goc": 25990000,
-    "gia_ban": 23990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nubia Z60 Ultra 512GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3 (Ống kính tiêu cự 35mm), bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.8 inches",
     "man_hinh_kich_thuoc": 6.8,
@@ -117,8 +126,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "12MP dưới màn hình",
     "chip": "Snapdragon 8 Gen 3 (Ống kính tiêu cự 35mm)",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "MyOS 14 (Android 14)",
     "pin_mah": 6000,
     "sac_nhanh_w": 80,
@@ -127,7 +134,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 246,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nubia/nubia-z60-ultra-512gb/images/front.svg",
@@ -148,6 +154,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nubia-z60-ultra-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 25990000,
+        "gia_ban": 23990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nubia/nubia-z60-ultra-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -156,9 +174,6 @@
     "hang": "Nubia",
     "san_pham": "Nubia Focus Pro 5G 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 6990000,
-    "gia_ban": 6290000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nubia Focus Pro 5G 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T760 (Thiết kế máy ảnh cơ học), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.72 inches",
     "man_hinh_kich_thuoc": 6.72,
@@ -168,8 +183,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "32MP",
     "chip": "Unisoc T760 (Thiết kế máy ảnh cơ học)",
-    "ram_gb": 8,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "Android 13",
     "pin_mah": 5000,
     "sac_nhanh_w": 33,
@@ -178,7 +191,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 205,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nubia/nubia-focus-pro-5g-256gb/images/front.svg",
@@ -194,6 +206,18 @@
       "fast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nubia-focus-pro-5g-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 6990000,
+        "gia_ban": 6290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nubia/nubia-focus-pro-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -202,9 +226,6 @@
     "hang": "Nubia",
     "san_pham": "Nubia Neo 2 5G 256GB",
     "phan_khuc": "gaming",
-    "gia_goc": 5990000,
-    "gia_ban": 5290000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nubia Neo 2 5G 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T820 (Phím vai trigger cảm ứng), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.72 inches",
     "man_hinh_kich_thuoc": 6.72,
@@ -214,8 +235,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "Unisoc T820 (Phím vai trigger cảm ứng)",
-    "ram_gb": 8,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "Android 13",
     "pin_mah": 6000,
     "sac_nhanh_w": 33,
@@ -224,7 +243,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 208,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nubia/nubia-neo-2-5g-256gb/images/front.svg",
@@ -243,6 +261,18 @@
       "fast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nubia-neo-2-5g-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 5990000,
+        "gia_ban": 5290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nubia/nubia-neo-2-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -251,9 +281,6 @@
     "hang": "Nubia",
     "san_pham": "Nubia Focus 5G 128GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 4990000,
-    "gia_ban": 4290000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nubia Focus 5G 128GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T760, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.56 inches",
     "man_hinh_kich_thuoc": 6.56,
@@ -263,8 +290,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "Unisoc T760",
-    "ram_gb": 6,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "Android 13",
     "pin_mah": 5000,
     "sac_nhanh_w": 22.5,
@@ -273,7 +298,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 195,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nubia/nubia-focus-5g-128gb/images/front.svg",
@@ -288,6 +312,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nubia-focus-5g-128gb-6-128-0",
+        "ram_gb": 6,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 4990000,
+        "gia_ban": 4290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nubia/nubia-focus-5g-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -296,9 +332,6 @@
     "hang": "Nubia",
     "san_pham": "Nubia Neo 5G 256GB",
     "phan_khuc": "gaming",
-    "gia_goc": 4990000,
-    "gia_ban": 4190000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nubia Neo 5G 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T820, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.6 inches",
     "man_hinh_kich_thuoc": 6.6,
@@ -308,8 +341,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "Unisoc T820",
-    "ram_gb": 8,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "Android 13",
     "pin_mah": 4500,
     "sac_nhanh_w": 22.5,
@@ -318,7 +349,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 192,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nubia/nubia-neo-5g-256gb/images/front.svg",
@@ -335,6 +365,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nubia-neo-5g-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 4990000,
+        "gia_ban": 4190000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nubia/nubia-neo-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -343,9 +385,6 @@
     "hang": "Nubia",
     "san_pham": "Nubia Music 128GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 2990000,
-    "gia_ban": 2590000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nubia Music 128GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc SC9863A (Loa khủng đĩa than 600%), bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.6 inches",
     "man_hinh_kich_thuoc": 6.6,
@@ -355,8 +394,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "5MP",
     "chip": "Unisoc SC9863A (Loa khủng đĩa than 600%)",
-    "ram_gb": 4,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "Android 13",
     "pin_mah": 5000,
     "sac_nhanh_w": 10,
@@ -365,7 +402,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 199,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nubia/nubia-music-128gb/images/front.svg",
@@ -380,6 +416,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nubia-music-128gb-4-128-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 2990000,
+        "gia_ban": 2590000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nubia/nubia-music-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -388,9 +436,6 @@
     "hang": "Nubia",
     "san_pham": "Nubia RedMagic 8S Pro 256GB",
     "phan_khuc": "gaming",
-    "gia_goc": 19990000,
-    "gia_ban": 17490000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nubia RedMagic 8S Pro 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 2, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.8 inches",
     "man_hinh_kich_thuoc": 6.8,
@@ -400,8 +445,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP dưới màn hình",
     "chip": "Snapdragon 8 Gen 2",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "RedMagic OS 8.0",
     "pin_mah": 6000,
     "sac_nhanh_w": 80,
@@ -410,7 +453,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 228,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nubia/nubia-redmagic-8s-pro-256gb/images/front.svg",
@@ -430,6 +472,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nubia-redmagic-8s-pro-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 19990000,
+        "gia_ban": 17490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nubia/nubia-redmagic-8s-pro-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -438,9 +492,6 @@
     "hang": "Nubia",
     "san_pham": "Nubia Z50S Pro 256GB",
     "phan_khuc": "flagship",
-    "gia_goc": 17990000,
-    "gia_ban": 14990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nubia Z50S Pro 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 2, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.78 inches",
     "man_hinh_kich_thuoc": 6.78,
@@ -450,8 +501,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP",
     "chip": "Snapdragon 8 Gen 2",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "MyOS 13",
     "pin_mah": 5100,
     "sac_nhanh_w": 80,
@@ -460,7 +509,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 228,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nubia/nubia-z50s-pro-256gb/images/front.svg",
@@ -477,6 +525,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nubia-z50s-pro-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 17990000,
+        "gia_ban": 14990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nubia/nubia-z50s-pro-256gb/images/front.svg"
+      }
     ]
   }
 ]

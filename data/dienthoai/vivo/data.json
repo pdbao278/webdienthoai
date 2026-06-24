@@ -5,9 +5,6 @@
     "hang": "vivo",
     "san_pham": "vivo X200 Pro 512GB",
     "phan_khuc": "flagship",
-    "gia_goc": 29990000,
-    "gia_ban": 27990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại vivo X200 Pro 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9400, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.78 inches",
     "man_hinh_kich_thuoc": 6.78,
@@ -17,8 +14,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "32MP",
     "chip": "Dimensity 9400",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "OriginOS 5 / Funtouch OS 15",
     "pin_mah": 6000,
     "sac_nhanh_w": 90,
@@ -27,7 +22,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 223,
     "chong_nuoc": "IP69",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/vivo/vivo-x200-pro-512gb/images/front.svg",
@@ -48,6 +42,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "vivo-x200-pro-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 29990000,
+        "gia_ban": 27990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/vivo/vivo-x200-pro-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -56,9 +62,6 @@
     "hang": "vivo",
     "san_pham": "vivo V40 Pro 5G 512GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 16990000,
-    "gia_ban": 15990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại vivo V40 Pro 5G 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9200+, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.78 inches",
     "man_hinh_kich_thuoc": 6.78,
@@ -68,8 +71,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Dimensity 9200+",
-    "ram_gb": 12,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "Funtouch OS 14",
     "pin_mah": 5500,
     "sac_nhanh_w": 80,
@@ -78,7 +79,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 192,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/vivo/vivo-v40-pro-5g-512gb/images/front.svg",
@@ -98,6 +98,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "vivo-v40-pro-5g-512gb-12-512-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 16990000,
+        "gia_ban": 15990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/vivo/vivo-v40-pro-5g-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -106,9 +118,6 @@
     "hang": "vivo",
     "san_pham": "vivo V40 Lite 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 8490000,
-    "gia_ban": 7990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại vivo V40 Lite 256GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 685, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.67 inches",
     "man_hinh_kich_thuoc": 6.67,
@@ -118,8 +127,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "32MP",
     "chip": "Snapdragon 685",
-    "ram_gb": 8,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "Funtouch OS 14",
     "pin_mah": 5000,
     "sac_nhanh_w": 80,
@@ -128,7 +135,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 188,
     "chong_nuoc": "IP64",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/vivo/vivo-v40-lite-256gb/images/front.svg",
@@ -148,6 +154,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "vivo-v40-lite-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 8490000,
+        "gia_ban": 7990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/vivo/vivo-v40-lite-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -156,9 +174,6 @@
     "hang": "vivo",
     "san_pham": "vivo V30 Pro 512GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 15990000,
-    "gia_ban": 13990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại vivo V30 Pro 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8200, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.78 inches",
     "man_hinh_kich_thuoc": 6.78,
@@ -168,8 +183,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Dimensity 8200",
-    "ram_gb": 12,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "Funtouch OS 14",
     "pin_mah": 5000,
     "sac_nhanh_w": 80,
@@ -178,7 +191,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 188,
     "chong_nuoc": "IP54",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/vivo/vivo-v30-pro-512gb/images/front.svg",
@@ -196,6 +208,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "vivo-v30-pro-512gb-12-512-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 15990000,
+        "gia_ban": 13990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/vivo/vivo-v30-pro-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -204,9 +228,6 @@
     "hang": "vivo",
     "san_pham": "vivo Y100 128GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 7290000,
-    "gia_ban": 6590000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại vivo Y100 128GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 685, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.67 inches",
     "man_hinh_kich_thuoc": 6.67,
@@ -216,8 +237,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "Snapdragon 685",
-    "ram_gb": 8,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "Funtouch OS 14",
     "pin_mah": 5000,
     "sac_nhanh_w": 80,
@@ -226,7 +245,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 188,
     "chong_nuoc": "IP54",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/vivo/vivo-y100-128gb/images/front.svg",
@@ -244,6 +262,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "vivo-y100-128gb-8-128-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 7290000,
+        "gia_ban": 6590000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/vivo/vivo-y100-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -252,9 +282,6 @@
     "hang": "vivo",
     "san_pham": "vivo Y200 5G 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 8990000,
-    "gia_ban": 8290000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại vivo Y200 5G 256GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 4 Gen 2, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.67 inches",
     "man_hinh_kich_thuoc": 6.67,
@@ -264,8 +291,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP",
     "chip": "Snapdragon 4 Gen 2",
-    "ram_gb": 8,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "Funtouch OS 14",
     "pin_mah": 4800,
     "sac_nhanh_w": 44,
@@ -274,7 +299,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 190,
     "chong_nuoc": "IP54",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/vivo/vivo-y200-5g-256gb/images/front.svg",
@@ -291,6 +315,18 @@
       "fast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "vivo-y200-5g-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 8990000,
+        "gia_ban": 8290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/vivo/vivo-y200-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -299,9 +335,6 @@
     "hang": "vivo",
     "san_pham": "vivo Y18s 128GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 4490000,
-    "gia_ban": 3990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại vivo Y18s 128GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.56 inches",
     "man_hinh_kich_thuoc": 6.56,
@@ -311,8 +344,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "MediaTek Helio G85",
-    "ram_gb": 6,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "Funtouch OS 14",
     "pin_mah": 5000,
     "sac_nhanh_w": 15,
@@ -321,7 +352,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 185,
     "chong_nuoc": "IP54",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/vivo/vivo-y18s-128gb/images/front.svg",
@@ -337,6 +367,18 @@
       "waterResist",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "vivo-y18s-128gb-6-128-0",
+        "ram_gb": 6,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 4490000,
+        "gia_ban": 3990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/vivo/vivo-y18s-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -345,9 +387,6 @@
     "hang": "vivo",
     "san_pham": "vivo Y03 64GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 2990000,
-    "gia_ban": 2690000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại vivo Y03 64GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.56 inches",
     "man_hinh_kich_thuoc": 6.56,
@@ -357,8 +396,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "5MP",
     "chip": "MediaTek Helio G85",
-    "ram_gb": 4,
-    "dung_luong_gb": 64,
     "he_dieu_hanh": "Funtouch OS 14",
     "pin_mah": 5000,
     "sac_nhanh_w": 15,
@@ -367,7 +404,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 185,
     "chong_nuoc": "IP54",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/vivo/vivo-y03-64gb/images/front.svg",
@@ -383,6 +419,18 @@
       "waterResist",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "vivo-y03-64gb-4-64-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 64,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 2990000,
+        "gia_ban": 2690000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/vivo/vivo-y03-64gb/images/front.svg"
+      }
     ]
   },
   {
@@ -391,9 +439,6 @@
     "hang": "vivo",
     "san_pham": "vivo T3 Ultra 256GB",
     "phan_khuc": "gaming",
-    "gia_goc": 12990000,
-    "gia_ban": 11990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại vivo T3 Ultra 256GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9200+, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.78 inches",
     "man_hinh_kich_thuoc": 6.78,
@@ -403,8 +448,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Dimensity 9200+",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "Funtouch OS 14",
     "pin_mah": 5500,
     "sac_nhanh_w": 80,
@@ -413,7 +456,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 190,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/vivo/vivo-t3-ultra-256gb/images/front.svg",
@@ -435,6 +477,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "vivo-t3-ultra-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 12990000,
+        "gia_ban": 11990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/vivo/vivo-t3-ultra-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -443,9 +497,6 @@
     "hang": "vivo",
     "san_pham": "vivo X100 Ultra 512GB",
     "phan_khuc": "flagship",
-    "gia_goc": 28990000,
-    "gia_ban": 24990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại vivo X100 Ultra 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.78 inches",
     "man_hinh_kich_thuoc": 6.78,
@@ -455,8 +506,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Snapdragon 8 Gen 3",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "Funtouch OS 14",
     "pin_mah": 5500,
     "sac_nhanh_w": 80,
@@ -465,7 +514,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 229,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/vivo/vivo-x100-ultra-512gb/images/front.svg",
@@ -486,6 +534,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "vivo-x100-ultra-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 28990000,
+        "gia_ban": 24990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/vivo/vivo-x100-ultra-512gb/images/front.svg"
+      }
     ]
   }
 ]

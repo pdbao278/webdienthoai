@@ -8,14 +8,27 @@ interface ProductCardProps {
     id: string;
     slug: string;
     sanPham: string;
-    giaBan: number;
-    giaGoc: number;
+    variants: {
+      giaBan: number;
+      giaGoc: number;
+      dungLuongGb: number;
+    }[];
     media: { url: string }[];
   };
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const discount = Math.round((1 - product.giaBan / product.giaGoc) * 100);
+  // Find variant with the lowest price
+  const minVariant = product.variants?.reduce(
+    (prev, curr) => (prev.giaBan < curr.giaBan ? prev : curr),
+    product.variants[0]
+  );
+  
+  const giaBan = minVariant?.giaBan || 0;
+  const giaGoc = minVariant?.giaGoc || 0;
+  const dungLuongGb = minVariant?.dungLuongGb || '';
+
+  const discount = giaGoc > 0 ? Math.round((1 - giaBan / giaGoc) * 100) : 0;
 
   return (
     <Link href={`/phone/${product.slug}`} className="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col relative transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-sky-600/20 group">
@@ -40,11 +53,13 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
       
       <div className="flex flex-col flex-1">
-          <h3 className="text-[0.925rem] font-semibold text-slate-800 mb-2 leading-snug line-clamp-2">{product.sanPham}</h3>
+          <h3 className="text-[0.925rem] font-semibold text-slate-800 mb-2 leading-snug line-clamp-2">
+            {product.sanPham}{dungLuongGb && !product.sanPham.includes(`${dungLuongGb}GB`) ? ` ${dungLuongGb}GB` : ''}
+          </h3>
           <div className="flex items-baseline gap-2 mb-2">
-              <span className="font-[Outfit] text-[1.1rem] font-bold text-rose-600">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.giaBan)}</span>
-              {product.giaGoc > product.giaBan && (
-                <span className="text-xs text-slate-500 line-through">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.giaGoc)}</span>
+              <span className="font-[Outfit] text-[1.1rem] font-bold text-rose-600">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(giaBan)}</span>
+              {giaGoc > giaBan && (
+                <span className="text-xs text-slate-500 line-through">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(giaGoc)}</span>
               )}
           </div>
           <div className="flex items-center gap-1 mb-4">

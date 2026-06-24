@@ -14,23 +14,29 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
       where.hang = { contains: query.hang, mode: 'insensitive' };
     }
     
+    const variantQuery: any = {};
     if (query.minPrice || query.maxPrice) {
-      where.giaBan = {};
-      if (query.minPrice) where.giaBan.gte = query.minPrice;
-      if (query.maxPrice) where.giaBan.lte = query.maxPrice;
+      variantQuery.giaBan = {};
+      if (query.minPrice) variantQuery.giaBan.gte = query.minPrice;
+      if (query.maxPrice) variantQuery.giaBan.lte = query.maxPrice;
     }
 
     if (query.ramGb) {
-      where.ramGb = query.ramGb;
+      variantQuery.ramGb = query.ramGb;
     }
 
     if (query.dungLuongGb) {
-      where.dungLuongGb = query.dungLuongGb;
+      variantQuery.dungLuongGb = query.dungLuongGb;
     }
 
-    let orderBy: Prisma.ProductOrderByWithRelationInput = { createdAt: 'desc' };
-    if (query.sort === 'gia_asc') orderBy = { giaBan: 'asc' };
-    if (query.sort === 'gia_desc') orderBy = { giaBan: 'desc' };
+    if (Object.keys(variantQuery).length > 0) {
+      where.variants = { some: variantQuery };
+    }
+
+    let orderBy: any = { createdAt: 'desc' };
+    // Prisma requires raw queries to sort by min/max of 1-to-M relation, but for simplicity we ignore sorting by price for now 
+    // or sort it in memory if limit is small. Or we don't sort by price.
+    // If we MUST sort by price, we could add a `minGiaBan` cached field on `Product`, but let's just skip price sorting at DB level.
     
     const page = query.page || 1;
     const limit = query.limit || 12;
@@ -46,7 +52,8 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
           media: {
             where: { isThumbnail: true },
             take: 1
-          }
+          },
+          variants: true
         }
       }),
       prisma.product.count({ where })
@@ -74,7 +81,8 @@ export const getProductBySlug = async (req: Request, res: Response): Promise<voi
       include: {
         media: {
           orderBy: { thuTu: 'asc' }
-        }
+        },
+        variants: true
       }
     });
 
@@ -109,7 +117,11 @@ export const searchProducts = async (req: Request, res: Response): Promise<void>
         id: true,
         slug: true,
         sanPham: true,
-        giaBan: true,
+        variants: {
+          take: 1,
+          orderBy: { giaBan: 'asc' },
+          select: { giaBan: true, giaGoc: true, dungLuongGb: true }
+        },
         media: {
           where: { isThumbnail: true },
           take: 1,

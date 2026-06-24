@@ -15,9 +15,12 @@ interface OrderItem {
   id: string;
   soLuong: number;
   donGia: number;
-  product: {
-    sanPham: string;
-    media: { url: string }[];
+  productVariant: {
+    dungLuongGb: number;
+    mauSac: string;
+    product: {
+      sanPham: string;
+    }
   }
 }
 
@@ -139,7 +142,7 @@ export default function OrdersPage() {
                     <div key={item.id} className="flex justify-between items-center text-sm">
                       <div className="flex gap-4 items-center">
                         <div className="font-medium text-slate-800">{item.soLuong}x</div>
-                        <div className="text-slate-600 line-clamp-1">{item.product.sanPham}</div>
+                        <div className="text-slate-600 line-clamp-1">{item.productVariant?.product?.sanPham}{!item.productVariant?.product?.sanPham.includes(`${item.productVariant?.dungLuongGb}GB`) ? ` - ${item.productVariant?.dungLuongGb}GB` : ''} - {item.productVariant?.mauSac}</div>
                       </div>
                       <div className="font-medium text-slate-800">{formatCurrency(item.donGia)}</div>
                     </div>

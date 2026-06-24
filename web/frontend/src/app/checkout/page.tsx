@@ -69,7 +69,7 @@ export default function CheckoutPage() {
     }
   }, [isLoggedIn, router, fetchCart]);
 
-  const subtotal = items.reduce((acc, item) => acc + (item.product.giaBan * item.soLuong), 0);
+  const subtotal = items.reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
   const total = subtotal - discount;
 
   const onSubmit = async (data: CreateOrderInput) => {
@@ -219,10 +219,10 @@ export default function CheckoutPage() {
                 {items.map(item => (
                   <div key={item.id} className="flex justify-between text-sm">
                     <div className="flex gap-3 flex-1 pr-4">
-                      <span className="text-slate-600 line-clamp-2">{item.product.sanPham}</span>
+                      <span className="text-slate-600 line-clamp-2">{item.productVariant?.product?.sanPham}{!item.productVariant?.product?.sanPham.includes(`${item.productVariant?.dungLuongGb}GB`) ? ` - ${item.productVariant?.dungLuongGb}GB` : ''} - {item.productVariant?.mauSac}</span>
                     </div>
                     <div className="text-right whitespace-nowrap">
-                      <span className="text-slate-500 text-xs block">{item.soLuong} × {formatCurrency(item.product.giaBan)}</span>
+                      <span className="text-slate-500 text-xs block">{item.soLuong} × {formatCurrency(item.productVariant?.giaBan || 0)}</span>
                     </div>
                   </div>
                 ))}

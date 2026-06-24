@@ -58,7 +58,7 @@ export default function CartPage() {
     }
   };
 
-  const subtotal = items.reduce((acc, item) => acc + (item.product.giaBan * item.soLuong), 0);
+  const subtotal = items.reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
   
   const handleApplyVoucher = async () => {
     if (!voucherCodeInput) return;
@@ -147,10 +147,10 @@ export default function CartPage() {
                     <div key={item.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 p-4 items-center">
                       <div className="col-span-1 md:col-span-5 flex gap-4">
                         <div className="w-20 h-20 bg-slate-50 rounded-lg relative overflow-hidden flex-shrink-0 p-2">
-                          {item.product.media && item.product.media[0] ? (
+                          {item.productVariant?.imageUrl ? (
                             <Image 
-                              src={item.product.media[0].url} 
-                              alt={item.product.sanPham} 
+                              src={item.productVariant.imageUrl} 
+                              alt={item.productVariant?.product?.sanPham || ''} 
                               fill 
                               className="object-contain"
                             />
@@ -161,14 +161,14 @@ export default function CartPage() {
                           )}
                         </div>
                         <div>
-                          <Link href={`/phone/${item.product.slug}`} className="font-medium text-slate-800 hover:text-sky-600 line-clamp-2">
-                            {item.product.sanPham}
+                          <Link href={`/phone/${item.productVariant?.product?.slug}`} className="font-medium text-slate-800 hover:text-sky-600 line-clamp-2">
+                            {item.productVariant?.product?.sanPham}{!item.productVariant?.product?.sanPham.includes(`${item.productVariant?.dungLuongGb}GB`) ? ` - ${item.productVariant?.dungLuongGb}GB` : ''} - {item.productVariant?.mauSac}
                           </Link>
                         </div>
                       </div>
                       
                       <div className="col-span-1 md:col-span-2 text-center font-medium text-slate-800">
-                        {formatCurrency(item.product.giaBan)}
+                        {formatCurrency(item.productVariant?.giaBan || 0)}
                       </div>
                       
                       <div className="col-span-1 md:col-span-2 flex justify-center">
@@ -193,7 +193,7 @@ export default function CartPage() {
                       </div>
                       
                       <div className="col-span-1 md:col-span-2 text-right font-bold text-rose-600">
-                        {formatCurrency(item.product.giaBan * item.soLuong)}
+                        {formatCurrency((item.productVariant?.giaBan || 0) * item.soLuong)}
                       </div>
                       
                       <div className="col-span-1 flex justify-end md:justify-center">

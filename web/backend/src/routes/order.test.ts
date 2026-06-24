@@ -14,6 +14,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-for-dev';
 describe('Order API', () => {
   let userToken: string;
   let userId: string;
+  let productVariantId: string;
   let productId: string;
   let voucherCode: string;
 
@@ -36,18 +37,28 @@ describe('Order API', () => {
         hang: 'Apple',
         sanPham: 'Test Product Order',
         phanKhuc: 'FLAGSHIP',
-        giaGoc: 20000000,
-        giaBan: 18000000,
-        tonKho: 5
-      }
+        variants: {
+          create: [{
+            sku: `test-variant-${Date.now()}`,
+            ramGb: 8,
+            dungLuongGb: 256,
+            mauSac: 'Đen',
+            giaGoc: 20000000,
+            giaBan: 18000000,
+            tonKho: 5
+          }]
+        }
+      },
+      include: { variants: true }
     });
+    productVariantId = product.variants[0].id;
     productId = product.id;
 
     // Add to cart
     await prisma.cartItem.create({
       data: {
         userId,
-        productId,
+        productVariantId,
         soLuong: 1
       }
     });
@@ -102,6 +113,8 @@ describe('Order API', () => {
   });
 
   describe('POST /api/orders', () => {
+    let createdOrderId: string;
+
     it('should create order successfully and reduce stock', async () => {
       const res = await request(app)
         .post('/api/orders')
@@ -116,18 +129,47 @@ describe('Order API', () => {
       expect(res.status).toBe(201);
       expect(res.body.order.thanhTien).toBe(18000000 - 500000);
       expect(res.body.order.maNhanHang).toBeDefined();
+      createdOrderId = res.body.order.id;
 
       // Check DB Cart
       const cart = await prisma.cartItem.findMany({ where: { userId } });
       expect(cart.length).toBe(0);
 
       // Check DB Stock
-      const p = await prisma.product.findUnique({ where: { id: productId } });
+      const p = await prisma.productVariant.findUnique({ where: { id: productVariantId } });
       expect(p?.tonKho).toBe(4); // Was 5, bought 1
 
       // Check Voucher Usage
       const v = await prisma.voucher.findUnique({ where: { maVoucher: voucherCode } });
       expect(v?.daSuDung).toBe(1);
+    });
+
+    it('should cancel order and restore stock', async () => {
+      const res = await request(app)
+        .post(`/api/orders/${createdOrderId}/cancel`)
+        .set('Authorization', `Bearer ${userToken}`);
+
+      expect(res.status).toBe(200);
+
+      // Check DB Stock Restored
+      const p = await prisma.productVariant.findUnique({ where: { id: productVariantId } });
+      expect(p?.tonKho).toBe(5); // Restored from 4
+
+      const order = await prisma.order.findUnique({ where: { id: createdOrderId } });
+      expect(order?.trangThai).toBe('DA_HUY');
+    });
+
+    it('should fail to cancel already cancelled order', async () => {
+      const res = await request(app)
+        .post(`/api/orders/${createdOrderId}/cancel`)
+        .set('Authorization', `Bearer ${userToken}`);
+
+      expect(res.status).toBe(400);
+      expect(res.body.error).toBe('Chỉ có thể hủy đơn hàng ở trạng thái Đã đặt');
+
+      // Stock should remain 5, not incremented to 6
+      const p = await prisma.productVariant.findUnique({ where: { id: productVariantId } });
+      expect(p?.tonKho).toBe(5);
     });
   });
 });

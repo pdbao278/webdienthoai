@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
-export default function AddToCartButton({ productId }: { productId: string }) {
+export default function AddToCartButton({ productId: variantId }: { productId: string }) {
   const addToCart = useCartStore(state => state.addToCart);
   const [isAdding, setIsAdding] = useState(false);
   const router = useRouter();
@@ -14,7 +14,7 @@ export default function AddToCartButton({ productId }: { productId: string }) {
   const handleAddToCart = async () => {
     try {
       setIsAdding(true);
-      await addToCart(productId, 1);
+      await addToCart(variantId, 1);
       toast.success('Đã thêm sản phẩm vào giỏ hàng');
     } catch (error: any) {
       if (error.message.includes('Vui lòng đăng nhập')) {

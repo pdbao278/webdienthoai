@@ -5,9 +5,6 @@
     "hang": "OPPO",
     "san_pham": "Find X8 Ultra 512GB",
     "phan_khuc": "flagship",
-    "gia_goc": 32990000,
-    "gia_ban": 30990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Find X8 Ultra 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9400 / Snapdragon 8 Gen 4, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.82 inches",
     "man_hinh_kich_thuoc": 6.82,
@@ -17,8 +14,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "32MP",
     "chip": "Dimensity 9400 / Snapdragon 8 Gen 4",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "ColorOS 15",
     "pin_mah": 5600,
     "sac_nhanh_w": 100,
@@ -27,7 +22,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 215,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/OPPO/find-x8-ultra-512gb/images/front.svg",
@@ -48,6 +42,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "find-x8-ultra-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 32990000,
+        "gia_ban": 30990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/OPPO/find-x8-ultra-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -56,9 +62,6 @@
     "hang": "OPPO",
     "san_pham": "Find N3 Fold 512GB",
     "phan_khuc": "flagship",
-    "gia_goc": 44990000,
-    "gia_ban": 41990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Find N3 Fold 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 2, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "7.82 inches (Chính) / 6.31 inches (Phụ)",
     "man_hinh_kich_thuoc": 7.82,
@@ -68,8 +71,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "32MP + 20MP",
     "chip": "Snapdragon 8 Gen 2",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "ColorOS 14",
     "pin_mah": 4805,
     "sac_nhanh_w": 67,
@@ -78,7 +79,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 239,
     "chong_nuoc": "IPX4",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/OPPO/find-n3-fold-512gb/images/front.svg",
@@ -96,6 +96,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "find-n3-fold-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 44990000,
+        "gia_ban": 41990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/OPPO/find-n3-fold-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -104,9 +116,6 @@
     "hang": "OPPO",
     "san_pham": "Reno14 Pro 5G 512GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 19990000,
-    "gia_ban": 18990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Reno14 Pro 5G 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8400, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.7 inches",
     "man_hinh_kich_thuoc": 6.7,
@@ -116,8 +125,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Dimensity 8400",
-    "ram_gb": 12,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "ColorOS 15",
     "pin_mah": 5000,
     "sac_nhanh_w": 80,
@@ -126,7 +133,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 186,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/OPPO/reno14-pro-5g-512gb/images/front.svg",
@@ -144,6 +150,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "reno14-pro-5g-512gb-12-512-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 19990000,
+        "gia_ban": 18990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/OPPO/reno14-pro-5g-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -152,9 +170,6 @@
     "hang": "OPPO",
     "san_pham": "Reno14 5G 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 15990000,
-    "gia_ban": 14990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Reno14 5G 256GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8300, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
     "man_hinh_kich_thuoc": 6.7,
@@ -164,8 +179,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Dimensity 8300",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "ColorOS 15",
     "pin_mah": 5000,
     "sac_nhanh_w": 80,
@@ -174,7 +187,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 179,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/OPPO/reno14-5g-256gb/images/front.svg",
@@ -192,6 +204,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "reno14-5g-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 15990000,
+        "gia_ban": 14990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/OPPO/reno14-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -200,9 +224,6 @@
     "hang": "OPPO",
     "san_pham": "Reno13 Pro 5G 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 18990000,
-    "gia_ban": 17490000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Reno13 Pro 5G 256GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8350, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.83 inches",
     "man_hinh_kich_thuoc": 6.83,
@@ -212,8 +233,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Dimensity 8350",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "ColorOS 14",
     "pin_mah": 5800,
     "sac_nhanh_w": 80,
@@ -222,7 +241,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 197,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/OPPO/reno13-pro-5g-256gb/images/front.svg",
@@ -242,6 +260,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "reno13-pro-5g-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 18990000,
+        "gia_ban": 17490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/OPPO/reno13-pro-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -250,9 +280,6 @@
     "hang": "OPPO",
     "san_pham": "Reno13 5G 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 13990000,
-    "gia_ban": 12590000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Reno13 5G 256GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8300, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.59 inches",
     "man_hinh_kich_thuoc": 6.59,
@@ -262,8 +289,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Dimensity 8300",
-    "ram_gb": 8,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "ColorOS 14",
     "pin_mah": 5600,
     "sac_nhanh_w": 80,
@@ -272,7 +297,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 175,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/OPPO/reno13-5g-256gb/images/front.svg",
@@ -292,6 +316,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "reno13-5g-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 13990000,
+        "gia_ban": 12590000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/OPPO/reno13-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -300,9 +336,6 @@
     "hang": "OPPO",
     "san_pham": "OPPO A3 Pro 5G 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 8990000,
-    "gia_ban": 8290000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại OPPO A3 Pro 5G 256GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 6300, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.67 inches",
     "man_hinh_kich_thuoc": 6.67,
@@ -312,8 +345,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "Dimensity 6300",
-    "ram_gb": 8,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "ColorOS 14",
     "pin_mah": 5100,
     "sac_nhanh_w": 45,
@@ -322,7 +353,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 186,
     "chong_nuoc": "IP54",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/OPPO/oppo-a3-pro-5g-256gb/images/front.svg",
@@ -339,6 +369,18 @@
       "fast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "oppo-a3-pro-5g-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 8990000,
+        "gia_ban": 8290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/OPPO/oppo-a3-pro-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -347,9 +389,6 @@
     "hang": "OPPO",
     "san_pham": "OPPO A3 128GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 4990000,
-    "gia_ban": 4490000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại OPPO A3 128GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 680, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.67 inches",
     "man_hinh_kich_thuoc": 6.67,
@@ -359,8 +398,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "Snapdragon 680",
-    "ram_gb": 6,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "ColorOS 14",
     "pin_mah": 5000,
     "sac_nhanh_w": 45,
@@ -369,7 +406,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 186,
     "chong_nuoc": "IP54",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/OPPO/oppo-a3-128gb/images/front.svg",
@@ -386,6 +422,18 @@
       "fast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "oppo-a3-128gb-6-128-0",
+        "ram_gb": 6,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 4990000,
+        "gia_ban": 4490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/OPPO/oppo-a3-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -394,9 +442,6 @@
     "hang": "OPPO",
     "san_pham": "OPPO A18 64GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 3290000,
-    "gia_ban": 2890000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại OPPO A18 64GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.56 inches",
     "man_hinh_kich_thuoc": 6.56,
@@ -406,8 +451,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "5MP",
     "chip": "MediaTek Helio G85",
-    "ram_gb": 4,
-    "dung_luong_gb": 64,
     "he_dieu_hanh": "ColorOS 13",
     "pin_mah": 5000,
     "sac_nhanh_w": 10,
@@ -416,7 +459,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 188,
     "chong_nuoc": "IP54",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/OPPO/oppo-a18-64gb/images/front.svg",
@@ -432,6 +474,18 @@
       "waterResist",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "oppo-a18-64gb-4-64-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 64,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 3290000,
+        "gia_ban": 2890000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/OPPO/oppo-a18-64gb/images/front.svg"
+      }
     ]
   },
   {
@@ -440,9 +494,6 @@
     "hang": "OPPO",
     "san_pham": "Find X7 Ultra 512GB",
     "phan_khuc": "flagship",
-    "gia_goc": 29990000,
-    "gia_ban": 24990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Find X7 Ultra 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.82 inches",
     "man_hinh_kich_thuoc": 6.82,
@@ -452,8 +503,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "32MP",
     "chip": "Snapdragon 8 Gen 3",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "ColorOS 14",
     "pin_mah": 5000,
     "sac_nhanh_w": 100,
@@ -462,7 +511,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 221,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/OPPO/find-x7-ultra-512gb/images/front.svg",
@@ -482,6 +530,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "find-x7-ultra-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 29990000,
+        "gia_ban": 24990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/OPPO/find-x7-ultra-512gb/images/front.svg"
+      }
     ]
   }
 ]

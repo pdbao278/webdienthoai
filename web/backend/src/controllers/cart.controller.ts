@@ -11,16 +11,21 @@ export const getCart = async (req: AuthRequest, res: Response): Promise<void> =>
     const cartItems = await prisma.cartItem.findMany({
       where: { userId },
       include: {
-        product: {
+        productVariant: {
           select: {
             id: true,
-            sanPham: true,
-            slug: true,
+            sku: true,
             giaBan: true,
             tonKho: true,
-            media: {
-              where: { isThumbnail: true },
-              take: 1,
+            mauSac: true,
+            dungLuongGb: true,
+            imageUrl: true,
+            product: {
+              select: {
+                id: true,
+                sanPham: true,
+                slug: true
+              }
             }
           }
         }
@@ -38,28 +43,28 @@ export const getCart = async (req: AuthRequest, res: Response): Promise<void> =>
 export const addToCart = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const userId = req.user!.id;
-    const { productId, soLuong } = addToCartSchema.parse(req.body);
+    const { productVariantId, soLuong } = addToCartSchema.parse(req.body);
 
-    const product = await prisma.product.findUnique({ where: { id: productId } });
-    if (!product) {
-      res.status(404).json({ error: 'Sản phẩm không tồn tại' });
+    const variant = await prisma.productVariant.findUnique({ where: { id: productVariantId } });
+    if (!variant) {
+      res.status(404).json({ error: 'Phiên bản sản phẩm không tồn tại' });
       return;
     }
 
-    if (product.tonKho < soLuong) {
+    if (variant.tonKho < soLuong) {
       res.status(400).json({ error: 'Sản phẩm đã hết hàng hoặc không đủ số lượng' });
       return;
     }
 
     const existingCartItem = await prisma.cartItem.findUnique({
       where: {
-        userId_productId: { userId, productId }
+        userId_productVariantId: { userId, productVariantId }
       }
     });
 
     if (existingCartItem) {
       const newQty = existingCartItem.soLuong + soLuong;
-      if (product.tonKho < newQty) {
+      if (variant.tonKho < newQty) {
         res.status(400).json({ error: 'Không đủ số lượng tồn kho' });
         return;
       }
@@ -74,7 +79,7 @@ export const addToCart = async (req: AuthRequest, res: Response): Promise<void> 
     const cartItem = await prisma.cartItem.create({
       data: {
         userId,
-        productId,
+        productVariantId,
         soLuong
       }
     });
@@ -98,7 +103,7 @@ export const updateCartItem = async (req: AuthRequest, res: Response): Promise<v
 
     const cartItem = await prisma.cartItem.findUnique({
       where: { id: cartItemId },
-      include: { product: true }
+      include: { productVariant: true }
     });
 
     if (!cartItem || cartItem.userId !== userId) {
@@ -106,7 +111,7 @@ export const updateCartItem = async (req: AuthRequest, res: Response): Promise<v
       return;
     }
 
-    if (cartItem.product.tonKho < soLuong) {
+    if (cartItem.productVariant.tonKho < soLuong) {
       res.status(400).json({ error: 'Không đủ số lượng tồn kho' });
       return;
     }

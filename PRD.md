@@ -135,7 +135,7 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 #### FR-01: Trang Chủ (P0)
 - Hero banner tự động cuộn.
 - Dãy logo Hãng điện thoại (scroll ngang).
-- Grid điện thoại bán chạy, nổi bật.
+- Grid điện thoại bán chạy, nổi bật. Tại mỗi thẻ Product Card, hiển thị mức giá thấp nhất ("Giá từ ...") kèm thông tin phiên bản mặc định (VD: 256GB).
 - Danh mục theo nhu cầu (Gaming Phone, Flagship, Tầm trung, Phổ thông).
 
 #### FR-02: Danh Sách & Lọc Điện Thoại (P0)
@@ -156,8 +156,11 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 
 #### FR-03: Chi Tiết Sản Phẩm (P0)
 - Gallery đa phương tiện (bảng `product_media`): thumbnail carousel + zoom ảnh chính.
-- Giá KM, giá gốc, quà tặng khuyến mãi.
-- Tình trạng tồn kho (Còn hàng / Hết hàng).
+- **Biến thể sản phẩm (Variants) - UI 2 bước (Chuẩn Hoàng Hà):**
+  1. **Lựa chọn phiên bản (Dung lượng RAM/ROM):** Hiển thị các nút phiên bản (ví dụ: 256GB, 512GB) kèm giá thấp nhất của phiên bản đó.
+  2. **Lựa chọn màu sắc:** Dựa trên phiên bản đã chọn, hiển thị các nút màu sắc kèm ảnh thumbnail nhỏ (`image_url` từ bảng variant) và giá bán cụ thể của màu đó.
+- **Tối ưu URL:** URL trang chi tiết sử dụng tham số `v` rút gọn thay vì toàn bộ `sku` dài (ví dụ: `?v=8-256-0` thay vì `?sku=iphone-15-pro-max-256gb-8-256-0`) để link gọn gàng, thân thiện hơn với người dùng và SEO.
+- Tình trạng tồn kho sẽ thay đổi tương ứng theo biến thể (màu sắc + phiên bản) được chọn cuối cùng.
 - Bảng thông số kỹ thuật chi tiết.
 
 #### FR-04: Tìm Kiếm (P0)
@@ -364,9 +367,6 @@ webdienthoai/
 | | hang | VARCHAR | Hãng sản xuất | Samsung, Apple, Xiaomi, OPPO |
 | | san_pham | VARCHAR | Tên sản phẩm | Galaxy S24 Ultra 256GB |
 | | phan_khuc | ENUM | Phân khúc | `flagship`, `tam_trung`, `pho_thong`, `gaming` |
-| | gia_goc | INTEGER | Giá gốc (VNĐ) | 33990000 |
-| | gia_ban | INTEGER | Giá bán (VNĐ) | 29990000 |
-| | ton_kho | INTEGER | Số lượng tồn kho | 50 |
 | | mo_ta | TEXT | Mô tả sản phẩm | |
 | **Màn hình** | man_hinh_cong_nghe | VARCHAR | Công nghệ màn hình | Dynamic AMOLED 2X, Super Retina XDR |
 | | man_hinh_kich_thuoc | DECIMAL | Kích thước (inch) | 6.8 |
@@ -376,8 +376,6 @@ webdienthoai/
 | | camera_sau_tinh_nang | VARCHAR | Tính năng camera | OIS, zoom quang 5x, chống rung |
 | **Camera trước** | camera_truoc | VARCHAR | Cấu hình camera trước | 12MP |
 | **Hiệu năng** | chip | VARCHAR | Chip xử lý | Snapdragon 8 Gen 3, Apple A17 Pro |
-| | ram_gb | INTEGER | RAM (GB) | 8, 12 |
-| | dung_luong_gb | INTEGER | Bộ nhớ trong (GB) | 128, 256, 512, 1024 |
 | | he_dieu_hanh | VARCHAR | Hệ điều hành | Android 14, iOS 17 |
 | **Pin & Sạc** | pin_mah | INTEGER | Dung lượng pin (mAh) | 5000 |
 | | sac_nhanh_w | INTEGER | Công suất sạc nhanh (W) | 45 |
@@ -386,7 +384,6 @@ webdienthoai/
 | | sim | VARCHAR | Loại SIM | 2 Nano SIM hoặc 1 Nano + 1 eSIM |
 | **Thiết kế** | trong_luong_g | INTEGER | Trọng lượng (gram) | 232 |
 | | chong_nuoc | VARCHAR | Chuẩn chống nước | IP68 |
-| | mau_sac | VARCHAR | Các màu có sẵn | Đen, Tím, Vàng, Xám |
 | **Hệ thống** | created_at | TIMESTAMP | Ngày tạo | |
 | | updated_at | TIMESTAMP | Ngày cập nhật | |
 - `product_media`: id, product_id, url, loai (`image` | `video`), thu_tu, is_thumbnail
@@ -394,9 +391,10 @@ webdienthoai/
 - `verification_tokens`: identifier, token, expires
 - `vouchers`: id, ma_voucher, loai_giam_gia, gia_tri, toi_da_giam, don_toi_thieu, ap_dung_cho, bat_dau, ket_thuc, so_luong, da_su_dung, nguoi_tao_id, created_at, updated_at
 - `orders`: id, user_id, tong_tien_hang, voucher_id, tien_giam_gia, thanh_tien, trang_thai, sdt_lien_he, ghi_chu, thoi_gian_hen_lay_hang, phuong_thuc_thanh_toan, ma_nhan_hang, created_at, updated_at
-- `order_items`: id, order_id, product_id, so_luong, don_gia
+- `product_variants`: id, product_id, sku, ram_gb, dung_luong_gb, mau_sac, image_url, gia_goc, gia_ban, ton_kho, created_at, updated_at
+- `order_items`: id, order_id, product_variant_id, so_luong, don_gia
 - `order_activity_log`: id, order_id, hanh_dong, nguoi_thuc_hien_id, created_at
-- `cart_items`: id, user_id, product_id, so_luong
+- `cart_items`: id, user_id, product_variant_id, so_luong
 - `reviews`: id, product_id, user_id, so_sao, noi_dung, created_at, updated_at
 
 ---
@@ -438,6 +436,8 @@ webdienthoai/
 
 | Phiên bản | Ngày | Người thay đổi | Nội dung thay đổi | Lý do |
 |---|---|---|---|---|
+| v4.5 | 2026-06-24 | Antigravity | Tối ưu hóa URL biến thể bằng tham số `v` ngắn gọn. Đồng bộ Database với 130 sản phẩm từ HTML Mockup (chứa link ảnh Cloudinary chuẩn) thay cho dữ liệu mẫu cũ. | Cải thiện UX/SEO qua URL ngắn, giải quyết lỗi hiển thị ảnh (broken images) và nâng cao độ trung thực của giao diện so với bản thiết kế mockup. |
+| v4.4 | 2026-06-24 | Antigravity | Bổ sung Product Variants: Cho phép 1 sản phẩm (vd: iPhone 15) có nhiều cấu hình (RAM, ROM) và Màu sắc khác nhau với giá và tồn kho riêng biệt. | Đáp ứng yêu cầu quản lý sản phẩm thực tế. |
 | v4.3 | 2026-06-24 | Antigravity | Hoàn thiện luồng M2: Chuyển tính năng áp mã Voucher sang trang Giỏ hàng. Làm mịn giao diện Thanh toán (Click & Collect) với dropdown Chọn ngày (3 ngày) và Khung giờ (4 buổi), cho phép chỉnh sửa nhanh Họ tên/Email trực tiếp trên form. | Nâng cao trải nghiệm UX, đảm bảo khách hàng thấy rõ giá trị giảm giá trước khi vào thanh toán. |
 | v4.2 | 2026-06-24 | Antigravity | Cập nhật luồng đăng ký: Yêu cầu OTP 6 số với thời hạn đếm ngược 60s và nút gửi lại mã. | Cải thiện bảo mật và UX cho tính năng xác thực email. |
 | v4.1 | 2026-06-23 | Antigravity | Cập nhật cấu trúc bộ lọc trang chủ thành thanh lọc ngang kết hợp popup modal, hiển thị các tiêu chí dạng nút bấm/chips thay vì checkbox, bổ sung sắp xếp giá bên phải bộ lọc. | Tối ưu hóa UI/UX và cải thiện thao tác lọc trên thiết bị di động. |

@@ -5,9 +5,6 @@
     "hang": "HONOR",
     "san_pham": "HONOR Magic6 Pro 5G 512GB",
     "phan_khuc": "flagship",
-    "gia_goc": 28990000,
-    "gia_ban": 26990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại HONOR Magic6 Pro 5G 512GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.8 inches",
     "man_hinh_kich_thuoc": 6.8,
@@ -17,8 +14,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP + Cảm biến TOF 3D",
     "chip": "Snapdragon 8 Gen 3",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "MagicOS 8 (Android 14)",
     "pin_mah": 5600,
     "sac_nhanh_w": 80,
@@ -27,7 +22,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 225,
     "chong_nuoc": "IP68",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/HONOR/honor-magic6-pro-5g-512gb/images/front.svg",
@@ -48,6 +42,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "honor-magic6-pro-5g-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 28990000,
+        "gia_ban": 26990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/HONOR/honor-magic6-pro-5g-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -56,9 +62,6 @@
     "hang": "HONOR",
     "san_pham": "HONOR Magic V2 512GB",
     "phan_khuc": "flagship",
-    "gia_goc": 39990000,
-    "gia_ban": 37990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại HONOR Magic V2 512GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 2 (Siêu mỏng 9.9mm), bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "7.92 inches chính",
     "man_hinh_kich_thuoc": 7.92,
@@ -68,8 +71,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP",
     "chip": "Snapdragon 8 Gen 2 (Siêu mỏng 9.9mm)",
-    "ram_gb": 16,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "MagicOS 7.2",
     "pin_mah": 5000,
     "sac_nhanh_w": 66,
@@ -78,7 +79,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 231,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/HONOR/honor-magic-v2-512gb/images/front.svg",
@@ -95,6 +95,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "honor-magic-v2-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 39990000,
+        "gia_ban": 37990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/HONOR/honor-magic-v2-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -103,9 +115,6 @@
     "hang": "HONOR",
     "san_pham": "HONOR 200 Pro 5G 512GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 16990000,
-    "gia_ban": 15490000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại HONOR 200 Pro 5G 512GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 3 (Camera Studio Harcourt), bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.78 inches",
     "man_hinh_kich_thuoc": 6.78,
@@ -115,8 +124,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Snapdragon 8s Gen 3 (Camera Studio Harcourt)",
-    "ram_gb": 12,
-    "dung_luong_gb": 512,
     "he_dieu_hanh": "MagicOS 8",
     "pin_mah": 5200,
     "sac_nhanh_w": 100,
@@ -125,7 +132,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 199,
     "chong_nuoc": "IP55",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/HONOR/honor-200-pro-5g-512gb/images/front.svg",
@@ -143,6 +149,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "honor-200-pro-5g-512gb-12-512-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 512,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 16990000,
+        "gia_ban": 15490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/HONOR/honor-200-pro-5g-512gb/images/front.svg"
+      }
     ]
   },
   {
@@ -151,9 +169,6 @@
     "hang": "HONOR",
     "san_pham": "HONOR X9b 5G 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 8990000,
-    "gia_ban": 7990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại HONOR X9b 5G 256GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 6 Gen 1 (Màn hình chống rơi 360 độ), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.78 inches",
     "man_hinh_kich_thuoc": 6.78,
@@ -163,8 +178,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP",
     "chip": "Snapdragon 6 Gen 1 (Màn hình chống rơi 360 độ)",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "MagicUI 7.2 (Android 13)",
     "pin_mah": 5800,
     "sac_nhanh_w": 35,
@@ -173,7 +186,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 185,
     "chong_nuoc": "IP53",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/HONOR/honor-x9b-5g-256gb/images/front.svg",
@@ -192,6 +204,18 @@
       "fast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "honor-x9b-5g-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 8990000,
+        "gia_ban": 7990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/HONOR/honor-x9b-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -200,9 +224,6 @@
     "hang": "HONOR",
     "san_pham": "HONOR 200 5G 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 12990000,
-    "gia_ban": 11990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại HONOR 200 5G 256GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7 Gen 3, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
     "man_hinh_kich_thuoc": 6.7,
@@ -212,8 +233,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Snapdragon 7 Gen 3",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "MagicOS 8",
     "pin_mah": 5200,
     "sac_nhanh_w": 100,
@@ -222,7 +241,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 187,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/HONOR/honor-200-5g-256gb/images/front.svg",
@@ -239,6 +257,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "honor-200-5g-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 12990000,
+        "gia_ban": 11990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/HONOR/honor-200-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -247,9 +277,6 @@
     "hang": "HONOR",
     "san_pham": "HONOR 90 5G 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 10990000,
-    "gia_ban": 8990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại HONOR 90 5G 256GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7 Gen 1, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
     "man_hinh_kich_thuoc": 6.7,
@@ -259,8 +286,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP",
     "chip": "Snapdragon 7 Gen 1",
-    "ram_gb": 12,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "MagicOS 7.1",
     "pin_mah": 5000,
     "sac_nhanh_w": 66,
@@ -269,7 +294,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 183,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/HONOR/honor-90-5g-256gb/images/front.svg",
@@ -286,6 +310,18 @@
       "superFast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "honor-90-5g-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 10990000,
+        "gia_ban": 8990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/HONOR/honor-90-5g-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -294,9 +330,6 @@
     "hang": "HONOR",
     "san_pham": "HONOR X8b 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 6490000,
-    "gia_ban": 5690000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại HONOR X8b 256GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 680, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
     "man_hinh_kich_thuoc": 6.7,
@@ -306,8 +339,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "50MP (Đèn selfie flash)",
     "chip": "Snapdragon 680",
-    "ram_gb": 8,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "MagicOS 7.2",
     "pin_mah": 4500,
     "sac_nhanh_w": 35,
@@ -316,7 +347,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 166,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/HONOR/honor-x8b-256gb/images/front.svg",
@@ -332,6 +362,18 @@
       "fast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "honor-x8b-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 6490000,
+        "gia_ban": 5690000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/HONOR/honor-x8b-256gb/images/front.svg"
+      }
     ]
   },
   {
@@ -340,9 +382,6 @@
     "hang": "HONOR",
     "san_pham": "HONOR X7b 128GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 5290000,
-    "gia_ban": 4490000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại HONOR X7b 128GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 680, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.8 inches",
     "man_hinh_kich_thuoc": 6.8,
@@ -352,8 +391,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "Snapdragon 680",
-    "ram_gb": 8,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "MagicOS 7.2",
     "pin_mah": 6000,
     "sac_nhanh_w": 35,
@@ -362,7 +399,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 199,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/HONOR/honor-x7b-128gb/images/front.svg",
@@ -380,6 +416,18 @@
       "fast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "honor-x7b-128gb-8-128-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 5290000,
+        "gia_ban": 4490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/HONOR/honor-x7b-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -388,9 +436,6 @@
     "hang": "HONOR",
     "san_pham": "HONOR X6a 128GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 3490000,
-    "gia_ban": 2990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại HONOR X6a 128GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G36, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.56 inches",
     "man_hinh_kich_thuoc": 6.56,
@@ -400,8 +445,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "5MP",
     "chip": "MediaTek Helio G36",
-    "ram_gb": 4,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "MagicOS 7.1",
     "pin_mah": 5200,
     "sac_nhanh_w": 22.5,
@@ -410,7 +453,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 188,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/HONOR/honor-x6a-128gb/images/front.svg",
@@ -425,6 +467,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "honor-x6a-128gb-4-128-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 3490000,
+        "gia_ban": 2990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/HONOR/honor-x6a-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -433,9 +487,6 @@
     "hang": "HONOR",
     "san_pham": "HONOR Magic6 Lite 256GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 7990000,
-    "gia_ban": 7290000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại HONOR Magic6 Lite 256GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 6 Gen 1, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.78 inches",
     "man_hinh_kich_thuoc": 6.78,
@@ -445,8 +496,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP",
     "chip": "Snapdragon 6 Gen 1",
-    "ram_gb": 8,
-    "dung_luong_gb": 256,
     "he_dieu_hanh": "MagicOS 7.2",
     "pin_mah": 5300,
     "sac_nhanh_w": 35,
@@ -455,7 +504,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 185,
     "chong_nuoc": "IP53",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/HONOR/honor-magic6-lite-256gb/images/front.svg",
@@ -475,6 +523,18 @@
       "fast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "honor-magic6-lite-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 7990000,
+        "gia_ban": 7290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/HONOR/honor-magic6-lite-256gb/images/front.svg"
+      }
     ]
   }
 ]

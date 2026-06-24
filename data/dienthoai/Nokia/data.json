@@ -5,9 +5,6 @@
     "hang": "Nokia",
     "san_pham": "Nokia XR21 5G 128GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 12990000,
-    "gia_ban": 11490000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nokia XR21 5G 128GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 695 5G, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.49 inches",
     "man_hinh_kich_thuoc": 6.49,
@@ -17,8 +14,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "16MP",
     "chip": "Snapdragon 695 5G",
-    "ram_gb": 6,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "Android 13",
     "pin_mah": 4800,
     "sac_nhanh_w": 33,
@@ -27,7 +22,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 231,
     "chong_nuoc": "IP68 / IP69K (Siêu bền quân đội)",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nokia/nokia-xr21-5g-128gb/images/front.svg",
@@ -44,6 +38,18 @@
       "fast",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nokia-xr21-5g-128gb-6-128-0",
+        "ram_gb": 6,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 12990000,
+        "gia_ban": 11490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nokia/nokia-xr21-5g-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -52,9 +58,6 @@
     "hang": "Nokia",
     "san_pham": "Nokia G42 5G 128GB",
     "phan_khuc": "tam_trung",
-    "gia_goc": 5990000,
-    "gia_ban": 5290000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nokia G42 5G 128GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 480+ 5G, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.56 inches",
     "man_hinh_kich_thuoc": 6.56,
@@ -64,8 +67,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "Snapdragon 480+ 5G",
-    "ram_gb": 6,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "Android 13 (Hỗ trợ tự sửa chữa QuickFix)",
     "pin_mah": 5000,
     "sac_nhanh_w": 20,
@@ -74,7 +75,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 193,
     "chong_nuoc": "IP52",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nokia/nokia-g42-5g-128gb/images/front.svg",
@@ -90,6 +90,18 @@
       "waterResist",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nokia-g42-5g-128gb-6-128-0",
+        "ram_gb": 6,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 5990000,
+        "gia_ban": 5290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nokia/nokia-g42-5g-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -98,9 +110,6 @@
     "hang": "Nokia",
     "san_pham": "Nokia C32 128GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 3290000,
-    "gia_ban": 2790000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nokia C32 128GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc SC9863A, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.5 inches",
     "man_hinh_kich_thuoc": 6.5,
@@ -110,8 +119,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "Unisoc SC9863A",
-    "ram_gb": 4,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "Android 13",
     "pin_mah": 5000,
     "sac_nhanh_w": 10,
@@ -120,7 +127,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 199,
     "chong_nuoc": "IP52",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nokia/nokia-c32-128gb/images/front.svg",
@@ -136,6 +142,18 @@
       "waterResist",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nokia-c32-128gb-4-128-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 3290000,
+        "gia_ban": 2790000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nokia/nokia-c32-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -144,20 +162,15 @@
     "hang": "Nokia",
     "san_pham": "Nokia 105 4G Pro (2025)",
     "phan_khuc": "pho_thong",
-    "gia_goc": 850000,
-    "gia_ban": 750000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nokia 105 4G Pro (2025) chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107, bộ nhớ trong 2GB.",
     "man_hinh_cong_nghe": "2.0 inches",
-    "man_hinh_kich_thuoc": 2.0,
+    "man_hinh_kich_thuoc": 2,
     "man_hinh_do_phan_giai": "Full HD+",
     "man_hinh_tan_so_quet": 90,
     "camera_sau": "Không",
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107",
-    "ram_gb": 1,
-    "dung_luong_gb": 2,
     "he_dieu_hanh": "Nokia Series 30+",
     "pin_mah": 1450,
     "sac_nhanh_w": 5,
@@ -166,7 +179,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 95,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nokia/nokia-105-4g-pro-2025/images/front.svg",
@@ -181,6 +193,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nokia-105-4g-pro-2025-1-2-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 2,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 850000,
+        "gia_ban": 750000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nokia/nokia-105-4g-pro-2025/images/front.svg"
+      }
     ]
   },
   {
@@ -189,20 +213,15 @@
     "hang": "Nokia",
     "san_pham": "Nokia 110 4G Pro (2025)",
     "phan_khuc": "pho_thong",
-    "gia_goc": 950000,
-    "gia_ban": 850000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nokia 110 4G Pro (2025) chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107, bộ nhớ trong 2GB.",
     "man_hinh_cong_nghe": "2.0 inches",
-    "man_hinh_kich_thuoc": 2.0,
+    "man_hinh_kich_thuoc": 2,
     "man_hinh_do_phan_giai": "Full HD+",
     "man_hinh_tan_so_quet": 90,
     "camera_sau": "0.3MP",
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107",
-    "ram_gb": 1,
-    "dung_luong_gb": 2,
     "he_dieu_hanh": "Nokia Series 30+",
     "pin_mah": 1450,
     "sac_nhanh_w": 5,
@@ -211,7 +230,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 98,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nokia/nokia-110-4g-pro-2025/images/front.svg",
@@ -226,6 +244,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nokia-110-4g-pro-2025-1-2-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 2,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 950000,
+        "gia_ban": 850000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nokia/nokia-110-4g-pro-2025/images/front.svg"
+      }
     ]
   },
   {
@@ -234,9 +264,6 @@
     "hang": "Nokia",
     "san_pham": "Nokia 2660 Flip 4G",
     "phan_khuc": "pho_thong",
-    "gia_goc": 1790000,
-    "gia_ban": 1590000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nokia 2660 Flip 4G chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107, bộ nhớ trong 2GB.",
     "man_hinh_cong_nghe": "2.8 inches TFT chính",
     "man_hinh_kich_thuoc": 2.8,
@@ -246,8 +273,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107",
-    "ram_gb": 1,
-    "dung_luong_gb": 2,
     "he_dieu_hanh": "Nokia Series 30+",
     "pin_mah": 1450,
     "sac_nhanh_w": 5,
@@ -256,7 +281,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 123,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nokia/nokia-2660-flip-4g/images/front.svg",
@@ -271,6 +295,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nokia-2660-flip-4g-1-2-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 2,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 1790000,
+        "gia_ban": 1590000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nokia/nokia-2660-flip-4g/images/front.svg"
+      }
     ]
   },
   {
@@ -279,9 +315,6 @@
     "hang": "Nokia",
     "san_pham": "Nokia 8210 4G",
     "phan_khuc": "pho_thong",
-    "gia_goc": 1590000,
-    "gia_ban": 1390000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nokia 8210 4G chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107, bộ nhớ trong 2GB.",
     "man_hinh_cong_nghe": "2.8 inches",
     "man_hinh_kich_thuoc": 2.8,
@@ -291,8 +324,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107",
-    "ram_gb": 1,
-    "dung_luong_gb": 2,
     "he_dieu_hanh": "Nokia Series 30+",
     "pin_mah": 1450,
     "sac_nhanh_w": 5,
@@ -301,7 +332,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 107,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nokia/nokia-8210-4g/images/front.svg",
@@ -316,6 +346,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nokia-8210-4g-1-2-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 2,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 1590000,
+        "gia_ban": 1390000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nokia/nokia-8210-4g/images/front.svg"
+      }
     ]
   },
   {
@@ -324,9 +366,6 @@
     "hang": "Nokia",
     "san_pham": "Nokia 5710 XpressAudio",
     "phan_khuc": "pho_thong",
-    "gia_goc": 1990000,
-    "gia_ban": 1690000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nokia 5710 XpressAudio chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107, bộ nhớ trong 2GB.",
     "man_hinh_cong_nghe": "2.4 inches",
     "man_hinh_kich_thuoc": 2.4,
@@ -336,8 +375,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107",
-    "ram_gb": 1,
-    "dung_luong_gb": 2,
     "he_dieu_hanh": "Nokia Series 30+",
     "pin_mah": 1450,
     "sac_nhanh_w": 5,
@@ -346,7 +383,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 129,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nokia/nokia-5710-xpressaudio/images/front.svg",
@@ -361,6 +397,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nokia-5710-xpressaudio-1-2-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 2,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 1990000,
+        "gia_ban": 1690000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nokia/nokia-5710-xpressaudio/images/front.svg"
+      }
     ]
   },
   {
@@ -369,9 +417,6 @@
     "hang": "Nokia",
     "san_pham": "Nokia G22 128GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 4290000,
-    "gia_ban": 3490000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nokia G22 128GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T606, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.52 inches",
     "man_hinh_kich_thuoc": 6.52,
@@ -381,8 +426,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "8MP",
     "chip": "Unisoc Tiger T606",
-    "ram_gb": 4,
-    "dung_luong_gb": 128,
     "he_dieu_hanh": "Android 12",
     "pin_mah": 5050,
     "sac_nhanh_w": 20,
@@ -391,7 +434,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 196,
     "chong_nuoc": "IP52",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nokia/nokia-g22-128gb/images/front.svg",
@@ -407,6 +449,18 @@
       "waterResist",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nokia-g22-128gb-4-128-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 128,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 4290000,
+        "gia_ban": 3490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nokia/nokia-g22-128gb/images/front.svg"
+      }
     ]
   },
   {
@@ -415,9 +469,6 @@
     "hang": "Nokia",
     "san_pham": "Nokia C12 64GB",
     "phan_khuc": "pho_thong",
-    "gia_goc": 2490000,
-    "gia_ban": 1990000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Nokia C12 64GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc SC9863A1, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.3 inches",
     "man_hinh_kich_thuoc": 6.3,
@@ -427,8 +478,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "5MP",
     "chip": "Unisoc SC9863A1",
-    "ram_gb": 3,
-    "dung_luong_gb": 64,
     "he_dieu_hanh": "Android 12 Go",
     "pin_mah": 3000,
     "sac_nhanh_w": 5,
@@ -437,7 +486,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 177,
     "chong_nuoc": "IP52",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Nokia/nokia-c12-64gb/images/front.svg",
@@ -453,6 +501,18 @@
       "waterResist",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "nokia-c12-64gb-3-64-0",
+        "ram_gb": 3,
+        "dung_luong_gb": 64,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 2490000,
+        "gia_ban": 1990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Nokia/nokia-c12-64gb/images/front.svg"
+      }
     ]
   }
 ]

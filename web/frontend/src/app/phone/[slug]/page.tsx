@@ -5,7 +5,7 @@ import ProductGallery from '@/components/product/ProductGallery';
 import ProductSpecs from '@/components/product/ProductSpecs';
 import CompareBox from '@/components/product/CompareBox';
 import { Button } from '@/components/ui/Button';
-import AddToCartButton from '@/components/product/AddToCartButton';
+import ProductInteractiveSection from '@/components/product/ProductInteractiveSection';
 
 async function getProduct(slug: string) {
   try {
@@ -22,15 +22,42 @@ async function getProduct(slug: string) {
   }
 }
 
-export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ProductDetailPage({ 
+  params,
+  searchParams,
+}: { 
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
   const product = await getProduct(resolvedParams.slug);
 
   if (!product) {
     notFound();
   }
 
-  const discount = Math.round((1 - product.giaBan / product.giaGoc) * 100);
+  if (!product.variants || product.variants.length === 0) {
+    return <div className="p-8 text-center">Sản phẩm chưa có cấu hình (variants).</div>;
+  }
+
+  // Find variant by short 'v' from URL or full 'sku', or default to the min price variant
+  const shortV = typeof resolvedSearchParams.v === 'string' ? resolvedSearchParams.v : null;
+  const skuParam = typeof resolvedSearchParams.sku === 'string' ? resolvedSearchParams.sku : null;
+  const targetSku = shortV ? `${product.slug}-${shortV}` : skuParam;
+  
+  let minVariant = targetSku ? product.variants.find((v: any) => v.sku === targetSku) : null;
+  
+  if (!minVariant) {
+    minVariant = product.variants.reduce(
+      (prev: any, curr: any) => (prev.giaBan < curr.giaBan ? prev : curr),
+      product.variants[0]
+    );
+  }
+
+  const giaBan = minVariant.giaBan;
+  const giaGoc = minVariant.giaGoc;
+  const discount = giaGoc > 0 ? Math.round((1 - giaBan / giaGoc) * 100) : 0;
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
@@ -60,57 +87,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
           {/* Right Column: Info & Action */}
           <div className="lg:col-span-5">
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 sticky top-24">
-              
-              {/* Pricing */}
-              <div className="mb-6 pb-6 border-b border-slate-100">
-                <div className="flex items-end space-x-3 mb-2">
-                  <span className="text-3xl font-bold text-red-600">
-                    {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.giaBan)}
-                  </span>
-                  {product.giaGoc > product.giaBan && (
-                    <span className="text-lg text-slate-400 line-through mb-1">
-                      {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.giaGoc)}
-                    </span>
-                  )}
-                  {discount > 0 && (
-                    <span className="bg-red-100 text-red-600 text-sm font-bold px-2 py-1 rounded-lg mb-1">
-                      -{discount}%
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Promotions mock */}
-              <div className="bg-slate-50 border border-blue-100 rounded-xl p-4 mb-6 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
-                <h4 className="font-semibold text-slate-800 mb-2 flex items-center">
-                  <svg className="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>
-                  Khuyến mãi đặc biệt
-                </h4>
-                <ul className="text-sm text-slate-600 space-y-2">
-                  <li className="flex items-start"><span className="text-blue-500 mr-2">•</span> Giảm thêm 500.000đ khi thanh toán qua thẻ tín dụng.</li>
-                  <li className="flex items-start"><span className="text-blue-500 mr-2">•</span> Trợ giá thu cũ lên đời đến 2 triệu đồng.</li>
-                  <li className="flex items-start"><span className="text-blue-500 mr-2">•</span> Tặng gói bảo hành VIP 12 tháng.</li>
-                </ul>
-              </div>
-
-              {/* Actions */}
-              <div className="space-y-3">
-                <Button variant="primary" className="w-full text-lg py-4">
-                  Mua ngay
-                </Button>
-                <div className="grid grid-cols-2 gap-3">
-                  <AddToCartButton productId={product.id} />
-                  <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50 hover:border-blue-300">
-                    Mua trả góp 0%
-                  </Button>
-                </div>
-              </div>
-
-              <ProductSpecs product={product} />
-
-            </div>
+            <ProductInteractiveSection product={product} variants={product.variants} minVariant={minVariant} />
           </div>
         </div>
       </main>

@@ -6,6 +6,10 @@ async function main() {
   console.log('Start seeding...');
 
   // Xóa dữ liệu cũ (chú ý thứ tự do ràng buộc khóa ngoại)
+  await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
+  await prisma.cartItem.deleteMany();
+  await prisma.productVariant.deleteMany();
   await prisma.productMedia.deleteMany();
   await prisma.product.deleteMany();
 
@@ -39,7 +43,7 @@ async function main() {
       mauSac: 'Titan Tự nhiên, Titan Đen, Titan Xanh, Titan Trắng',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg',
+          url: 'https://res.cloudinary.com/dw9catzob/image/upload/v1782227129/phonestore/products/Apple/iphone-15-pro-max-256gb/front.webp',
           publicId: 'iphone-15-pro-max-blue',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -75,7 +79,7 @@ async function main() {
       mauSac: 'Đen, Xám, Tím, Vàng',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/310652/samsung-galaxy-s24-ultra-grey-thumb-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'samsung-galaxy-s24-ultra-grey',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -111,7 +115,7 @@ async function main() {
       mauSac: 'Đen, Trắng, Xanh Lá',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/307230/xiaomi-14-green-thumb-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'xiaomi-14-green',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -147,7 +151,7 @@ async function main() {
       mauSac: 'Xanh Lá, Xám',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/319904/oppo-reno11-xanh-thumb-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'oppo-reno11-xanh',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -183,7 +187,7 @@ async function main() {
       mauSac: 'Xanh Đen, Xanh Dương, Tím',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/322096/samsung-galaxy-a55-5g-blue-thumb-1-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'samsung-galaxy-a55-5g-blue',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -219,7 +223,7 @@ async function main() {
       mauSac: 'Đen, Xanh, Trắng',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/322046/vivo-v30-5g-den-thumb-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'vivo-v30-5g-den',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -255,7 +259,7 @@ async function main() {
       mauSac: 'Hồng, Xanh Dương, Đen, Trắng, Đỏ',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/223605/iphone-13-pink-2-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'iphone-13-pink',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -291,7 +295,7 @@ async function main() {
       mauSac: 'Xanh, Đen',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/319224/realme-c67-den-thumb-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'realme-c67-den',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -327,7 +331,7 @@ async function main() {
       mauSac: 'Cam, Đen, Bạc',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/319985/honor-x9b-orange-thumb-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'honor-x9b-orange',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -363,7 +367,7 @@ async function main() {
       mauSac: 'Xám, Xanh Lá',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/323382/tecno-pova-6-pro-5g-grey-thumb-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'tecno-pova-6-pro-grey',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -399,7 +403,7 @@ async function main() {
       mauSac: 'Đen, Xanh, Đỏ',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/306994/motorola-edge-40-thumb-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'motorola-edge-40-black',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -435,7 +439,7 @@ async function main() {
       mauSac: 'Đen, Trắng, Trong suốt',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/319688/nubia-redmagic-9-pro-black-thumb-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'nubia-redmagic-9-pro-black',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -471,7 +475,7 @@ async function main() {
       mauSac: 'Xám, Xanh dương',
       media: [
         {
-          url: 'https://cdn.tgdd.vn/Products/Images/42/301633/nokia-g22-grey-thumb-600x600.jpg',
+          url: 'https://placehold.co/600x600/png?text=PhoneStore',
           publicId: 'nokia-g22-grey',
           loai: 'IMAGE',
           isThumbnail: true,
@@ -481,10 +485,26 @@ async function main() {
   ];
 
   for (const productData of productsData) {
-    const { media, ...data } = productData;
+    const { media, ramGb, dungLuongGb, mauSac, giaGoc, giaBan, tonKho, ...data } = productData as any;
+    
+    const colors = mauSac ? mauSac.split(',').map((c: string) => c.trim()) : ['Mặc định'];
+    const variants = colors.map((color: string, index: number) => ({
+      sku: `${data.slug}-${ramGb || 0}-${dungLuongGb || 0}-${index}`,
+      ramGb: ramGb || 0,
+      dungLuongGb: dungLuongGb || 0,
+      mauSac: color,
+      giaGoc: giaGoc || 0,
+      giaBan: (data.slug === 'iphone-15-pro-max-256gb' && color === 'Titan Tự nhiên') ? 35000000 : (giaBan || 0),
+      tonKho: Math.floor((tonKho || 0) / colors.length) || 1,
+      imageUrl: media[0]?.url || null
+    }));
+
     const product = await prisma.product.create({
       data: {
         ...data,
+        variants: {
+          create: variants
+        },
         media: {
           create: media
         }

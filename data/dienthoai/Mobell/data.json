@@ -5,9 +5,6 @@
     "hang": "Mobell",
     "san_pham": "Mobell Rock 4 4G",
     "phan_khuc": "pho_thong",
-    "gia_goc": 750000,
-    "gia_ban": 690000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Mobell Rock 4 4G chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Thiết kế hầm hố chống va đập), bộ nhớ trong 1GB.",
     "man_hinh_cong_nghe": "2.4 inches",
     "man_hinh_kich_thuoc": 2.4,
@@ -17,8 +14,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107 (Thiết kế hầm hố chống va đập)",
-    "ram_gb": 1,
-    "dung_luong_gb": 1,
     "he_dieu_hanh": "Mobell OS",
     "pin_mah": 3250,
     "sac_nhanh_w": 5,
@@ -27,7 +22,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 160,
     "chong_nuoc": "Kháng bụi nước nhẹ",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Mobell/mobell-rock-4-4g/images/front.svg",
@@ -43,6 +37,18 @@
       "waterResist",
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "mobell-rock-4-4g-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 750000,
+        "gia_ban": 690000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Mobell/mobell-rock-4-4g/images/front.svg"
+      }
     ]
   },
   {
@@ -51,9 +57,6 @@
     "hang": "Mobell",
     "san_pham": "Mobell M529 4G Pro",
     "phan_khuc": "pho_thong",
-    "gia_goc": 590000,
-    "gia_ban": 520000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Mobell M529 4G Pro chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Pin khủng kéo dài), bộ nhớ trong 1GB.",
     "man_hinh_cong_nghe": "2.4 inches",
     "man_hinh_kich_thuoc": 2.4,
@@ -63,8 +66,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107 (Pin khủng kéo dài)",
-    "ram_gb": 1,
-    "dung_luong_gb": 1,
     "he_dieu_hanh": "Mobell OS",
     "pin_mah": 2500,
     "sac_nhanh_w": 5,
@@ -73,7 +74,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 120,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Mobell/mobell-m529-4g-pro/images/front.svg",
@@ -88,6 +88,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "mobell-m529-4g-pro-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 590000,
+        "gia_ban": 520000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Mobell/mobell-m529-4g-pro/images/front.svg"
+      }
     ]
   },
   {
@@ -96,9 +108,6 @@
     "hang": "Mobell",
     "san_pham": "Mobell M229 4G Pro",
     "phan_khuc": "pho_thong",
-    "gia_goc": 450000,
-    "gia_ban": 390000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Mobell M229 4G Pro chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Bàn phím mềm mại), bộ nhớ trong 1GB.",
     "man_hinh_cong_nghe": "1.77 inches",
     "man_hinh_kich_thuoc": 1.77,
@@ -108,8 +117,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107 (Bàn phím mềm mại)",
-    "ram_gb": 1,
-    "dung_luong_gb": 1,
     "he_dieu_hanh": "Mobell OS",
     "pin_mah": 1000,
     "sac_nhanh_w": 5,
@@ -118,7 +125,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 86,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Mobell/mobell-m229-4g-pro/images/front.svg",
@@ -133,6 +139,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "mobell-m229-4g-pro-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 450000,
+        "gia_ban": 390000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Mobell/mobell-m229-4g-pro/images/front.svg"
+      }
     ]
   },
   {
@@ -141,9 +159,6 @@
     "hang": "Mobell",
     "san_pham": "Mobell M389 4G Pro",
     "phan_khuc": "pho_thong",
-    "gia_goc": 650000,
-    "gia_ban": 590000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Mobell M389 4G Pro chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Thiết kế giả da), bộ nhớ trong 1GB.",
     "man_hinh_cong_nghe": "2.4 inches",
     "man_hinh_kich_thuoc": 2.4,
@@ -153,8 +168,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107 (Thiết kế giả da)",
-    "ram_gb": 1,
-    "dung_luong_gb": 1,
     "he_dieu_hanh": "Mobell OS",
     "pin_mah": 1700,
     "sac_nhanh_w": 5,
@@ -163,7 +176,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 102,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Mobell/mobell-m389-4g-pro/images/front.svg",
@@ -178,6 +190,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "mobell-m389-4g-pro-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 650000,
+        "gia_ban": 590000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Mobell/mobell-m389-4g-pro/images/front.svg"
+      }
     ]
   },
   {
@@ -186,9 +210,6 @@
     "hang": "Mobell",
     "san_pham": "Mobell F209 4G nắp gập",
     "phan_khuc": "pho_thong",
-    "gia_goc": 850000,
-    "gia_ban": 770000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Mobell F209 4G nắp gập chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Thiết kế nắp gập thời trang), bộ nhớ trong 1GB.",
     "man_hinh_cong_nghe": "2.4 inches",
     "man_hinh_kich_thuoc": 2.4,
@@ -198,8 +219,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107 (Thiết kế nắp gập thời trang)",
-    "ram_gb": 1,
-    "dung_luong_gb": 1,
     "he_dieu_hanh": "Mobell OS",
     "pin_mah": 1200,
     "sac_nhanh_w": 5,
@@ -208,7 +227,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 115,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Mobell/mobell-f209-4g-nap-gap/images/front.svg",
@@ -223,6 +241,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "mobell-f209-4g-nap-gap-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 850000,
+        "gia_ban": 770000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Mobell/mobell-f209-4g-nap-gap/images/front.svg"
+      }
     ]
   },
   {
@@ -231,9 +261,6 @@
     "hang": "Mobell",
     "san_pham": "Mobell F309 4G nắp gập",
     "phan_khuc": "pho_thong",
-    "gia_goc": 890000,
-    "gia_ban": 790000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Mobell F309 4G nắp gập chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107, bộ nhớ trong 1GB.",
     "man_hinh_cong_nghe": "2.8 inches",
     "man_hinh_kich_thuoc": 2.8,
@@ -243,8 +270,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "Không",
     "chip": "Unisoc T107",
-    "ram_gb": 1,
-    "dung_luong_gb": 1,
     "he_dieu_hanh": "Mobell OS",
     "pin_mah": 1500,
     "sac_nhanh_w": 5,
@@ -253,7 +278,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 122,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Mobell/mobell-f309-4g-nap-gap/images/front.svg",
@@ -268,6 +292,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "mobell-f309-4g-nap-gap-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 890000,
+        "gia_ban": 790000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Mobell/mobell-f309-4g-nap-gap/images/front.svg"
+      }
     ]
   },
   {
@@ -276,9 +312,6 @@
     "hang": "Mobell",
     "san_pham": "Mobell Nova P3 4G",
     "phan_khuc": "pho_thong",
-    "gia_goc": 1990000,
-    "gia_ban": 1750000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Mobell Nova P3 4G chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek MT6739, bộ nhớ trong 16GB.",
     "man_hinh_cong_nghe": "6.08 inches",
     "man_hinh_kich_thuoc": 6.08,
@@ -288,8 +321,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "2MP",
     "chip": "MediaTek MT6739",
-    "ram_gb": 2,
-    "dung_luong_gb": 16,
     "he_dieu_hanh": "Android 11 Go",
     "pin_mah": 3000,
     "sac_nhanh_w": 5,
@@ -298,7 +329,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 165,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Mobell/mobell-nova-p3-4g/images/front.svg",
@@ -313,6 +343,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "mobell-nova-p3-4g-2-16-0",
+        "ram_gb": 2,
+        "dung_luong_gb": 16,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 1990000,
+        "gia_ban": 1750000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Mobell/mobell-nova-p3-4g/images/front.svg"
+      }
     ]
   },
   {
@@ -321,9 +363,6 @@
     "hang": "Mobell",
     "san_pham": "Mobell Nova S3 4G",
     "phan_khuc": "pho_thong",
-    "gia_goc": 2190000,
-    "gia_ban": 1950000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Mobell Nova S3 4G chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek MT6739, bộ nhớ trong 32GB.",
     "man_hinh_cong_nghe": "6.26 inches",
     "man_hinh_kich_thuoc": 6.26,
@@ -333,8 +372,6 @@
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "5MP",
     "chip": "MediaTek MT6739",
-    "ram_gb": 3,
-    "dung_luong_gb": 32,
     "he_dieu_hanh": "Android 11 Go",
     "pin_mah": 3500,
     "sac_nhanh_w": 5,
@@ -343,7 +380,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 175,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Mobell/mobell-nova-s3-4g/images/front.svg",
@@ -358,6 +394,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "mobell-nova-s3-4g-3-32-0",
+        "ram_gb": 3,
+        "dung_luong_gb": 32,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 2190000,
+        "gia_ban": 1950000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Mobell/mobell-nova-s3-4g/images/front.svg"
+      }
     ]
   },
   {
@@ -366,20 +414,15 @@
     "hang": "Mobell",
     "san_pham": "Mobell S40 3G",
     "phan_khuc": "pho_thong",
-    "gia_goc": 1490000,
-    "gia_ban": 1190000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Mobell S40 3G chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Spreadtrum SC7731E, bộ nhớ trong 8GB.",
     "man_hinh_cong_nghe": "5.0 inches",
-    "man_hinh_kich_thuoc": 5.0,
+    "man_hinh_kich_thuoc": 5,
     "man_hinh_do_phan_giai": "Full HD+",
     "man_hinh_tan_so_quet": 90,
     "camera_sau": "5MP",
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "2MP",
     "chip": "Spreadtrum SC7731E",
-    "ram_gb": 1,
-    "dung_luong_gb": 8,
     "he_dieu_hanh": "Android 8.1 Go",
     "pin_mah": 2000,
     "sac_nhanh_w": 5,
@@ -388,7 +431,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 140,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Mobell/mobell-s40-3g/images/front.svg",
@@ -403,6 +445,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "mobell-s40-3g-1-8-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 8,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 1490000,
+        "gia_ban": 1190000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Mobell/mobell-s40-3g/images/front.svg"
+      }
     ]
   },
   {
@@ -411,20 +465,15 @@
     "hang": "Mobell",
     "san_pham": "Mobell S41 4G",
     "phan_khuc": "pho_thong",
-    "gia_goc": 1790000,
-    "gia_ban": 1490000,
-    "ton_kho": 50,
     "mo_ta": "Điện thoại Mobell S41 4G chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc SC9832E, bộ nhớ trong 16GB.",
     "man_hinh_cong_nghe": "5.0 inches",
-    "man_hinh_kich_thuoc": 5.0,
+    "man_hinh_kich_thuoc": 5,
     "man_hinh_do_phan_giai": "Full HD+",
     "man_hinh_tan_so_quet": 90,
     "camera_sau": "5MP",
     "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
     "camera_truoc": "2MP",
     "chip": "Unisoc SC9832E",
-    "ram_gb": 2,
-    "dung_luong_gb": 16,
     "he_dieu_hanh": "Android 10 Go",
     "pin_mah": 2200,
     "sac_nhanh_w": 5,
@@ -433,7 +482,6 @@
     "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
     "trong_luong_g": 142,
     "chong_nuoc": "Không",
-    "mau_sac": "Màu tiêu chuẩn thương hiệu",
     "media": {
       "images": [
         "data/dienthoai/Mobell/mobell-s41-4g/images/front.svg",
@@ -448,6 +496,18 @@
     "specialFeatures": [
       "5G",
       "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "mobell-s41-4g-2-16-0",
+        "ram_gb": 2,
+        "dung_luong_gb": 16,
+        "mau_sac": "Màu tiêu chuẩn thương hiệu",
+        "gia_goc": 1790000,
+        "gia_ban": 1490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Mobell/mobell-s41-4g/images/front.svg"
+      }
     ]
   }
 ]
