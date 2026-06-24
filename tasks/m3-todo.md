@@ -1,7 +1,7 @@
 # M3 Todo List
 
 ## Phase 1: Admin Foundation & Order Operations
-- [ ] Task 1: Cấu hình Layout & Bảo mật Admin Route
+- [x] Task 1: Cấu hình Layout & Bảo mật Admin Route
 - [ ] Task 2: API Quản lý Đơn hàng (Admin/Manager)
 - [ ] Task 3: UI Quản lý Đơn hàng & QR Simulator
 

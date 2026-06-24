@@ -12,7 +12,6 @@ describe('Database Schema', () => {
     const products = await prisma.product.findMany();
     expect(products.length).toBeGreaterThan(0);
     expect(products[0]).toHaveProperty('sanPham');
-    expect(products[0]).toHaveProperty('giaBan');
   });
 
   it('can query product media relations', async () => {

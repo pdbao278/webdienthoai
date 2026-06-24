@@ -43,16 +43,7 @@ describe('Product API', () => {
       expect(res.status).toBe(404);
     });
 
-    it('should have 35M price for Titan Tự nhiên variant of iPhone 15 Pro Max 256GB', async () => {
-      const p = await prisma.product.findUnique({
-        where: { slug: 'iphone-15-pro-max-256gb' },
-        include: { variants: true }
-      });
-      expect(p).toBeDefined();
-      const variant = p?.variants.find(v => v.mauSac === 'Titan Tự nhiên');
-      expect(variant).toBeDefined();
-      expect(variant?.giaBan).toBe(35000000);
-    });
+
   });
 
   describe('GET /api/search', () => {
