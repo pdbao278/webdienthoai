@@ -2,6 +2,7 @@ import { Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { AuthRequest } from '../middlewares/auth.middleware';
 import { createOrderSchema, validateVoucherSchema } from '@phonestore/shared';
+import { sendEmail } from '../services/email.service';
 
 const prisma = new PrismaClient();
 
@@ -131,6 +132,19 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
       return newOrder;
     });
 
+    // Send confirmation email
+    const user = await prisma.user.findUnique({ where: { id: userId } });
+    if (user && user.email) {
+      await sendEmail(
+        user.email,
+        `Xác nhận đơn hàng ${maNhanHang} - PhoneStore`,
+        `<p>Cảm ơn bạn đã đặt hàng tại PhoneStore.</p>
+         <p>Mã nhận hàng của bạn là: <strong>${maNhanHang}</strong></p>
+         <p>Tổng tiền: <strong>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(thanhTien)}</strong></p>
+         <p>Vui lòng đến cửa hàng nhận máy trước ${new Date(data.thoiGianHenLayHang).toLocaleString('vi-VN')}. Sau 24h từ thời điểm này, đơn hàng sẽ tự động hủy nếu bạn không đến nhận.</p>`
+      );
+    }
+
     res.status(201).json({ message: 'Đặt hàng thành công', order });
   } catch (error: any) {
     if (error.errors) {
@@ -171,5 +185,78 @@ export const validateVoucher = async (req: AuthRequest, res: Response): Promise<
       console.error(error);
       res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
     }
+  }
+};
+
+export const getOrders = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const userId = req.user!.id;
+    const orders = await prisma.order.findMany({
+      where: { userId },
+      include: {
+        items: {
+          include: {
+            product: {
+              select: { sanPham: true, media: { take: 1 } }
+            }
+          }
+        }
+      },
+      orderBy: { createdAt: 'desc' }
+    });
+
+    res.status(200).json(orders);
+  } catch (error: any) {
+    console.error(error);
+    res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
+  }
+};
+
+export const cancelOrder = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const userId = req.user!.id;
+    const orderId = req.params.id;
+
+    const order = await prisma.order.findUnique({
+      where: { id: orderId },
+      include: { items: true }
+    });
+
+    if (!order || order.userId !== userId) {
+      res.status(404).json({ error: 'Không tìm thấy đơn hàng' });
+      return;
+    }
+
+    if (order.trangThai !== 'DA_DAT') {
+      res.status(400).json({ error: 'Chỉ có thể hủy đơn hàng ở trạng thái Đã đặt' });
+      return;
+    }
+
+    await prisma.$transaction(async (tx) => {
+      await tx.order.update({
+        where: { id: orderId },
+        data: { trangThai: 'DA_HUY' }
+      });
+
+      for (const item of order.items) {
+        await tx.product.update({
+          where: { id: item.productId },
+          data: { tonKho: { increment: item.soLuong } }
+        });
+      }
+
+      await tx.orderActivityLog.create({
+        data: {
+          orderId: order.id,
+          hanhDong: 'Khách hàng tự hủy đơn',
+          nguoiThucHienId: userId,
+        }
+      });
+    });
+
+    res.status(200).json({ message: 'Đã hủy đơn hàng thành công' });
+  } catch (error: any) {
+    console.error(error);
+    res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
   }
 };

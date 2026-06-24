@@ -9,6 +9,9 @@ import productRoutes from './routes/product.routes';
 import cartRoutes from './routes/cart.routes';
 import orderRoutes from './routes/order.routes';
 import { searchProducts } from './controllers/product.controller';
+import { startCronJobs } from './services/cron.service';
+
+startCronJobs();
 
 const app = express();
 app.use(cors());
