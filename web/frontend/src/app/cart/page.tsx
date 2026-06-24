@@ -130,7 +130,7 @@ export default function CartPage() {
       d = voucher.giaTri;
     }
 
-    if (d > subtotal) d = subtotal;
+    if (d > eligibleSubtotal) d = eligibleSubtotal;
     return d;
   };
 

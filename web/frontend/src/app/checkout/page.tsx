@@ -150,7 +150,7 @@ export default function CheckoutPage() {
       d = voucher.giaTri;
     }
 
-    if (d > subtotal) d = subtotal;
+    if (d > eligibleSubtotal) d = eligibleSubtotal;
     return d;
   };
 

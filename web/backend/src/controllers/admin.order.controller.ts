@@ -86,8 +86,25 @@ export const updateOrderStatus = async (req: AuthRequest, res: Response): Promis
     const updatedOrder = await prisma.$transaction(async (tx) => {
       const updated = await tx.order.update({
         where: { id },
-        data: { trangThai: newStatus as any }
+        data: { trangThai: newStatus as any },
+        include: { items: true }
       });
+
+      // Restore inventory and voucher if status is changed to DA_HUY
+      if (newStatus === 'DA_HUY' && currentStatus !== 'DA_HUY') {
+        for (const item of updated.items) {
+          await tx.productVariant.update({
+            where: { id: item.productVariantId },
+            data: { tonKho: { increment: item.soLuong } }
+          });
+        }
+        if (updated.voucherId) {
+          await tx.voucher.update({
+            where: { id: updated.voucherId },
+            data: { daSuDung: { decrement: 1 } }
+          });
+        }
+      }
 
       await tx.orderActivityLog.create({
         data: {

@@ -1,10 +1,9 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import request from 'supertest';
 import app from '../index';
-import { PrismaClient, Role } from '@prisma/client';
 import jwt from 'jsonwebtoken';
-
-const prisma = new PrismaClient();
+import { Role } from '@prisma/client';
+import prisma from '../lib/prisma';
 
 describe('Admin Voucher Management API', () => {
   let adminToken: string;
@@ -105,5 +104,55 @@ describe('Admin Voucher Management API', () => {
 
     const dbVoucher = await prisma.voucher.findUnique({ where: { id: voucherId } });
     expect(dbVoucher).toBeNull();
+  });
+
+  it('should not allow deleting a voucher used in an order', async () => {
+    // 1. Create a voucher
+    const rand = Math.floor(Math.random() * 1000000);
+    const voucher = await prisma.voucher.create({
+      data: {
+        maVoucher: `USEDVOUCHER${Date.now()}${rand}`,
+        loaiGiamGia: 'FIXED_AMOUNT',
+        giaTri: 100,
+        batDau: new Date(Date.now() - 86400000),
+        ketThuc: new Date(Date.now() + 86400000),
+        soLuong: 10,
+        daSuDung: 1, // 1 used
+        nguoiTaoId: adminId
+      }
+    });
+
+    // 2. Create an order that uses this voucher
+    const order = await prisma.order.create({
+      data: {
+        userId: customerId,
+        tongTienHang: 1000,
+        thanhTien: 900,
+        voucherId: voucher.id,
+        tienGiamGia: 100,
+        sdtLienHe: '0123456789',
+        thoiGianHenLayHang: new Date(),
+        maNhanHang: `QR-${Date.now()}-${rand}`,
+        trangThai: 'DA_DAT'
+      }
+    });
+
+    try {
+      // 3. Admin tries to delete the voucher
+      const res = await request(app)
+        .delete(`/api/admin/vouchers/${voucher.id}`)
+        .set('Authorization', `Bearer ${adminToken}`);
+
+      // Should return 200 and soft-delete because it's linked to an order
+      expect(res.status).toBe(200);
+      expect(res.body.message).toContain('vô hiệu hóa');
+
+      const updatedVoucher = await prisma.voucher.findUnique({ where: { id: voucher.id } });
+      expect(updatedVoucher?.isActive).toBe(false);
+    } finally {
+      // Cleanup
+      await prisma.order.deleteMany({ where: { id: order.id } });
+      await prisma.voucher.deleteMany({ where: { id: voucher.id } });
+    }
   });
 });

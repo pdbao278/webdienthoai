@@ -175,6 +175,7 @@ model Voucher {
   ketThuc     DateTime     @map("ket_thuc")
   soLuong     Int          @default(0) @map("so_luong")
   daSuDung    Int          @default(0) @map("da_su_dung")
+  isActive    Boolean      @default(true) @map("is_active")
   nguoiTaoId  String       @map("nguoi_tao_id")
   createdAt   DateTime     @default(now()) @map("created_at")
   updatedAt   DateTime     @updatedAt @map("updated_at")

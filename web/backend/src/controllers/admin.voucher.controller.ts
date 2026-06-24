@@ -26,7 +26,7 @@ export const createVoucher = async (req: AuthRequest, res: Response): Promise<vo
       return;
     }
 
-    const { maVoucher, loaiGiamGia, giaTri, toiDaGiam, donToiThieu, batDau, ketThuc, soLuong } = parsed.data;
+    const { maVoucher, loaiGiamGia, giaTri, toiDaGiam, donToiThieu, batDau, ketThuc, soLuong, isActive } = parsed.data;
 
     const existing = await prisma.voucher.findUnique({ where: { maVoucher: maVoucher.toUpperCase() } });
     if (existing) {
@@ -44,6 +44,7 @@ export const createVoucher = async (req: AuthRequest, res: Response): Promise<vo
         batDau: new Date(batDau),
         ketThuc: new Date(ketThuc),
         soLuong: soLuong ?? 1,
+        isActive: isActive !== undefined ? isActive : true,
         nguoiTaoId: userId
       }
     });
@@ -72,7 +73,7 @@ export const updateVoucher = async (req: AuthRequest, res: Response): Promise<vo
       return;
     }
 
-    const { maVoucher, loaiGiamGia, giaTri, toiDaGiam, donToiThieu, batDau, ketThuc, soLuong } = parsed.data;
+    const { maVoucher, loaiGiamGia, giaTri, toiDaGiam, donToiThieu, batDau, ketThuc, soLuong, isActive } = parsed.data;
 
     if (maVoucher && maVoucher.toUpperCase() !== voucher.maVoucher) {
       const existing = await prisma.voucher.findUnique({ where: { maVoucher: maVoucher.toUpperCase() } });
@@ -92,7 +93,8 @@ export const updateVoucher = async (req: AuthRequest, res: Response): Promise<vo
         donToiThieu: donToiThieu !== undefined ? donToiThieu : undefined,
         batDau: batDau ? new Date(batDau) : undefined,
         ketThuc: ketThuc ? new Date(ketThuc) : undefined,
-        soLuong: soLuong !== undefined ? soLuong : undefined
+        soLuong: soLuong !== undefined ? soLuong : undefined,
+        isActive: isActive !== undefined ? isActive : undefined
       }
     });
 
@@ -108,12 +110,29 @@ export const deleteVoucher = async (req: AuthRequest, res: Response): Promise<vo
     const { id } = req.params;
 
     // Kiểm tra voucher tồn tại
-    const voucher = await prisma.voucher.findUnique({ where: { id } });
+    const voucher = await prisma.voucher.findUnique({ 
+      where: { id },
+      include: {
+        _count: { select: { orders: true } }
+      }
+    });
+    
     if (!voucher) {
       res.status(404).json({ error: 'Voucher không tồn tại' });
       return;
     }
 
+    // Nếu voucher đã được sử dụng, tiến hành soft delete (vô hiệu hóa)
+    if (voucher._count.orders > 0) {
+      await prisma.voucher.update({
+        where: { id },
+        data: { isActive: false }
+      });
+      res.status(200).json({ message: 'Voucher đã được vô hiệu hóa do đang nằm trong đơn hàng' });
+      return;
+    }
+
+    // Nếu chưa được sử dụng, xóa vĩnh viễn
     await prisma.voucher.delete({ where: { id } });
     res.status(200).json({ message: 'Xóa thành công' });
   } catch (error) {

@@ -172,23 +172,28 @@ export default function ProductReviews({ slug }: { slug: string }) {
         ) : (
           <>
             {displayedReviews.map((review) => (
-              <div key={review.id} className="flex items-start gap-1.5 group">
-                <div className="shrink-0 mt-0.5">
-                  <div className="flex text-amber-400 gap-px" style={{ fontSize: '8px' }}>
+              <div key={review.id} className="group relative border-b border-slate-100 last:border-0 pb-3 mb-3 last:pb-0 last:mb-0">
+                <div className="flex-1 min-w-0 flex flex-col gap-1.5">
+                  <div className="flex items-center gap-3">
+                    <span className="font-bold text-slate-900 text-[15px]">{review.user.hoTen || 'Ẩn danh'}</span>
+                    <span className="text-emerald-600 flex items-center gap-1.5 text-sm">
+                      <i className="fa-regular fa-circle-check"></i> Đã mua tại PhoneStore
+                    </span>
+                  </div>
+                  <div className="flex text-amber-500 text-[13px] gap-0.5">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <i key={star} className={`fa-solid fa-star ${star <= review.rating ? '' : 'text-slate-200'}`}></i>
                     ))}
                   </div>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className="text-[11px] text-slate-700">
-                    <span className="font-semibold">{review.user.hoTen || 'Ẩn danh'}</span>
-                    {review.comment && <span className="text-slate-500"> — {review.comment}</span>}
-                  </span>
+                  {review.comment && (
+                    <div className="text-[15px] text-slate-800 mt-1">
+                      {review.comment}
+                    </div>
+                  )}
                 </div>
                 {(isModerator || (user && review.userId === user.id)) && (
-                  <button onClick={() => handleDeleteReview(review.id)} className="text-red-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" title="Xóa">
-                    <i className="fa-solid fa-xmark text-[10px]"></i>
+                  <button onClick={() => handleDeleteReview(review.id)} className="absolute top-0 right-0 text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity p-2" title="Xóa">
+                    <i className="fa-solid fa-xmark"></i>
                   </button>
                 )}
               </div>

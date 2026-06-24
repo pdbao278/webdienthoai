@@ -56,6 +56,9 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
         if (!voucher) {
           throw new Error('Mã voucher không tồn tại');
         }
+        if (!voucher.isActive) {
+          throw new Error('Mã voucher đã bị vô hiệu hóa');
+        }
         const now = new Date();
         if (now < voucher.batDau || now > voucher.ketThuc) {
           throw new Error('Mã voucher không trong thời gian sử dụng');
@@ -94,7 +97,7 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
           tienGiamGia = voucher.giaTri;
         }
 
-        if (tienGiamGia > tongTienHang) tienGiamGia = tongTienHang;
+        if (tienGiamGia > eligibleSubtotal) tienGiamGia = eligibleSubtotal;
         voucherId = voucher.id;
 
         // Atomic update for voucher usage
@@ -159,13 +162,93 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
     try {
       const user = await prisma.user.findUnique({ where: { id: userId } });
       if (user && user.email) {
+        const formatCurrency = (val: number) => new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(val);
+        const formatDateTime = (date: Date) => new Date(date).toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' });
+
+        let itemsHtml = `
+          <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+            <thead>
+              <tr style="background-color: #f3f4f6;">
+                <th>STT</th>
+                <th style="text-align: left;">Sản phẩm</th>
+                <th>SL</th>
+                <th style="text-align: right;">Đơn giá</th>
+                <th style="text-align: right;">Tạm tính</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+        
+        cartItems.forEach((item, index) => {
+          const name = `${item.productVariant.product.sanPham} ${item.productVariant.dungLuongGb}GB - ${item.productVariant.mauSac}`;
+          const price = formatCurrency(item.productVariant.giaBan);
+          const total = formatCurrency(item.productVariant.giaBan * item.soLuong);
+          itemsHtml += `
+            <tr>
+              <td style="text-align: center;">${index + 1}</td>
+              <td>${name}</td>
+              <td style="text-align: center;">${item.soLuong}</td>
+              <td style="text-align: right;">${price}</td>
+              <td style="text-align: right;">${total}</td>
+            </tr>
+          `;
+        });
+        
+        itemsHtml += `</tbody></table>`;
+
+        const htmlContent = `
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #111827;">
+            <h2 style="color: #0ea5e9; text-align: center;">Xác nhận đơn hàng #${maNhanHang}</h2>
+            <p>Xin chào <strong>${user.hoTen || user.email}</strong>,</p>
+            <p>Cảm ơn bạn đã đặt hàng tại PhoneStore. Dưới đây là chi tiết đơn hàng của bạn:</p>
+            
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 16px; background-color: #f9fafb; padding: 16px; border-radius: 8px;">
+              <tr>
+                <td width="50%" style="vertical-align: top;">
+                  <h3 style="margin-top: 0; font-size: 16px;">Thông tin khách hàng</h3>
+                  <p style="margin: 4px 0;"><strong>Họ tên:</strong> ${user.hoTen || 'Khách hàng'}</p>
+                  <p style="margin: 4px 0;"><strong>Email:</strong> ${user.email}</p>
+                  <p style="margin: 4px 0;"><strong>SĐT:</strong> ${data.sdtLienHe}</p>
+                </td>
+                <td width="50%" style="vertical-align: top;">
+                  <h3 style="margin-top: 0; font-size: 16px;">Thời gian & Thanh toán</h3>
+                  <p style="margin: 4px 0;"><strong>Ngày đặt:</strong> ${formatDateTime(order.createdAt)}</p>
+                  <p style="margin: 4px 0; color: #0ea5e9;"><strong>Hẹn lấy:</strong> ${formatDateTime(order.thoiGianHenLayHang)}</p>
+                  <p style="margin: 4px 0;"><strong>Thanh toán:</strong> ${data.phuongThucThanhToan === 'TienMat' ? 'Tiền mặt tại cửa hàng' : data.phuongThucThanhToan}</p>
+                </td>
+              </tr>
+            </table>
+
+            ${itemsHtml}
+
+            <table width="100%" cellpadding="4" cellspacing="0" style="margin-top: 16px; font-size: 15px;">
+              <tr>
+                <td style="text-align: right; color: #6b7280;">Tổng tiền hàng:</td>
+                <td style="text-align: right; width: 150px;">${formatCurrency(order.tongTienHang)}</td>
+              </tr>
+              ${order.tienGiamGia > 0 ? `
+              <tr>
+                <td style="text-align: right; color: #6b7280;">Khuyến mãi/Voucher (${data.voucherCode}):</td>
+                <td style="text-align: right; color: #ef4444;">-${formatCurrency(order.tienGiamGia)}</td>
+              </tr>
+              ` : ''}
+              <tr>
+                <td style="text-align: right; font-weight: bold; font-size: 18px;">Thành tiền:</td>
+                <td style="text-align: right; font-weight: bold; font-size: 18px; color: #0ea5e9;">${formatCurrency(order.thanhTien)}</td>
+              </tr>
+            </table>
+
+            <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #e5e7eb; text-align: center; color: #6b7280; font-size: 14px;">
+              <p>Vui lòng đến cửa hàng nhận máy đúng giờ hẹn. Sau 24h từ thời điểm này, đơn hàng sẽ tự động hủy nếu bạn không đến nhận.</p>
+              <p>Trân trọng,<br>Đội ngũ PhoneStore</p>
+            </div>
+          </div>
+        `;
+
         await sendEmail(
           user.email,
           `Xác nhận đơn hàng ${maNhanHang} - PhoneStore`,
-          `<p>Cảm ơn bạn đã đặt hàng tại PhoneStore.</p>
-           <p>Mã nhận hàng của bạn là: <strong>${maNhanHang}</strong></p>
-           <p>Tổng tiền: <strong>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(order.thanhTien)}</strong></p>
-           <p>Vui lòng đến cửa hàng nhận máy trước ${new Date(data.thoiGianHenLayHang).toLocaleString('vi-VN')}. Sau 24h từ thời điểm này, đơn hàng sẽ tự động hủy nếu bạn không đến nhận.</p>`
+          htmlContent
         );
       }
     } catch (emailError) {
@@ -197,6 +280,11 @@ export const validateVoucher = async (req: AuthRequest, res: Response): Promise<
     const voucher = await prisma.voucher.findUnique({ where: { maVoucher: voucherCode.toUpperCase() } });
     if (!voucher) {
       res.status(404).json({ error: 'Mã voucher không tồn tại' });
+      return;
+    }
+
+    if (!voucher.isActive) {
+      res.status(400).json({ error: 'Mã voucher đã bị vô hiệu hóa' });
       return;
     }
 
@@ -285,6 +373,13 @@ export const cancelOrder = async (req: AuthRequest, res: Response): Promise<void
         await tx.productVariant.update({
           where: { id: item.productVariantId },
           data: { tonKho: { increment: item.soLuong } }
+        });
+      }
+
+      if (order.voucherId) {
+        await tx.voucher.update({
+          where: { id: order.voucherId },
+          data: { daSuDung: { decrement: 1 } }
         });
       }
 

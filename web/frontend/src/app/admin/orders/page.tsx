@@ -399,7 +399,8 @@ export default function AdminOrdersPage() {
               {/* Products list */}
               <div className="border border-slate-100 rounded-2xl overflow-hidden mb-6">
                 <div className="bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-600 grid grid-cols-12 border-b border-slate-100">
-                  <div className="col-span-6">Sản phẩm</div>
+                  <div className="col-span-1 text-center">STT</div>
+                  <div className="col-span-5">Sản phẩm</div>
                   <div className="col-span-2 text-center">SL</div>
                   <div className="col-span-2 text-right">Đơn giá</div>
                   <div className="col-span-2 text-right">Tạm tính</div>
@@ -407,7 +408,8 @@ export default function AdminOrdersPage() {
                 <div className="divide-y divide-slate-100 max-h-[160px] overflow-y-auto">
                   {selectedOrderDetail.items.map((item, idx) => (
                     <div key={idx} className="px-4 py-3 text-sm grid grid-cols-12 items-center">
-                      <div className="col-span-6 font-medium text-slate-800">
+                      <div className="col-span-1 text-center text-slate-500">{idx + 1}</div>
+                      <div className="col-span-5 font-medium text-slate-800 truncate" title={`${item.productVariant.product.sanPham} ${item.productVariant.dungLuongGb}GB - ${item.productVariant.mauSac}`}>
                         {item.productVariant.product.sanPham}{!item.productVariant.product.sanPham.includes(`${item.productVariant.dungLuongGb}GB`) ? ` - ${item.productVariant.dungLuongGb}GB` : ''} - {item.productVariant.mauSac}
                       </div>
                       <div className="col-span-2 text-center text-slate-600">{item.soLuong}</div>

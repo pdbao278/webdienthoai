@@ -56,6 +56,11 @@ export default function Header() {
                           <p className="text-xs text-slate-500 truncate">{user?.email}</p>
                         </div>
                         <Link href="/orders" className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 sm:hidden">Đơn hàng</Link>
+                        {(user?.role === 'ADMIN' || user?.role === 'MANAGER') && (
+                          <Link href="/admin" className="block px-4 py-2 text-sm text-sky-600 font-medium hover:bg-sky-50">
+                            <i className="fa-solid fa-shield-halved w-5"></i> Quản trị
+                          </Link>
+                        )}
                         <button onClick={logout} className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center">
                           <i className="fa-solid fa-right-from-bracket mr-2"></i> Đăng xuất
                         </button>

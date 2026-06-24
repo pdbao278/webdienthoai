@@ -217,28 +217,26 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 ### Milestone 3: Quản trị & Vận hành
 *Yêu cầu M2 (Đơn hàng) đã hoàn thành.*
 
-#### FR-09: Admin / Manager Dashboard (P0)
-- **Phân quyền (RBAC):**
-  - **Manager (Nhân viên tại quầy)**:
-    - Gom hàng (Pick & Pack): Nhận thông báo đơn đặt trước để chuẩn bị hàng.
-    - Quét mã QR khách để đối chiếu và xác nhận giao hàng.
-    - Cập nhật phương thức thanh toán (Tiền mặt / Chuyển khoản). Hệ thống tự trừ tồn kho khi khách hàng nhận máy và đơn chuyển sang `HOAN_THANH`.
-  - **Admin (Chủ shop)**: Toàn quyền hệ thống.
-    - Cài đặt thời gian hủy đơn tự động (mặc định 24 giờ).
-    - Báo cáo doanh thu và hiệu suất xử lý đơn.
-- **Tìm kiếm quản trị (Admin Search)**: Tích hợp thanh tìm kiếm nhanh tại header chung của Admin và các ô tìm kiếm chuyên biệt theo từng trang quản lý:
-  - *Quản lý Đơn hàng*: Tìm kiếm theo mã đơn (`maNhanHang`), họ tên khách hàng, hoặc số điện thoại.
-  - *Quản lý Sản phẩm*: Tìm kiếm theo tên sản phẩm, hãng sản xuất, hoặc phân khúc.
-  - *Quản lý Voucher*: Tìm kiếm theo ký tự của mã voucher.
-- **QR Scanner Simulator**: Module giả lập quét mã nhận hàng tại quầy. Nhân viên nhập mã nhận hàng dạng `ORD-XXXXXX` trực tiếp để xác nhận đơn hàng đã giao và tự động chuyển trạng thái đơn hàng sang `HOAN_THANH`.
-- **Quản lý sản phẩm (CRUD, import CSV, quản lý gallery ảnh/video, tồn kho)**:
-  - **Ràng buộc xóa an toàn (Safe Delete Variant)**: Ngăn chặn Admin xóa vĩnh viễn một phiên bản cấu hình (variant/SKU) nếu SKU đó đã tồn tại trong lịch sử đặt hàng của khách để bảo toàn tính toàn vẹn dữ liệu đơn hàng. Admin chỉ được phép hạ tồn kho của SKU đó về 0.
-- **Quản lý đơn hàng**: Lọc theo trạng thái, xem chi tiết, điều hướng luồng trạng thái đơn hàng:
-  - **Xem chi tiết đơn hàng (Detail Popup Modal)**: Khi Admin/Manager nhấn vào mã đơn hàng trong danh sách, hệ thống hiển thị popup modal chi tiết chứa: thông tin người đặt (họ tên, email, SĐT liên hệ), ngày giờ đặt hàng, ngày giờ hẹn nhận máy, danh sách chi tiết các mặt hàng (tên sản phẩm, RAM/ROM, màu, đơn giá, số lượng), tổng giá trị đơn hàng trước và sau khi giảm giá, mã voucher được áp dụng, ghi chú và phương thức thanh toán. Hỗ trợ thao tác cập nhật trạng thái trực tiếp trên popup.
-  - **Linh hoạt hóa trạng thái**: Cho phép chuyển trạng thái trực tiếp từ `Đã đặt` sang `Chờ nhận hàng` hoặc `Hoàn thành` thay vì bắt buộc đi tuần tự qua `Đang chuẩn bị`, giúp tối ưu hóa thời gian phục vụ tại quầy khi khách hàng đến nhận máy trực tiếp.
-- **Order Activity Log**: Hệ thống tự động ghi nhật ký lịch sử mọi hành động thay đổi trạng thái đơn hàng để phục vụ công tác đối soát.
-- Quản lý Users, Reviews.
-- **Thống kê doanh thu** (chỉ Admin): Biểu đồ theo Ngày/Tuần/Tháng, lịch sử lên đến 1 năm. Click vào mốc thời gian để xem danh sách đơn hàng tương ứng.
+#### FR-09: Thống Kê & Tổng Quan Quản Trị (P0)
+- **Phân quyền (RBAC)**:
+  - **Manager (Nhân viên tại quầy)**: Truy cập giới hạn vào các tính năng Vận hành (Đơn hàng). Bị chặn khỏi Doanh thu, Sản phẩm, Khuyến mãi, Người dùng.
+  - **Admin (Chủ shop)**: Toàn quyền hệ thống. Cài đặt hệ thống (ví dụ: thời gian hủy đơn tự động).
+- **Tìm kiếm quản trị (Admin Search)**: Thanh tìm kiếm nhanh tại header và các ô tìm kiếm chuyên biệt từng trang (Đơn hàng, Sản phẩm, Voucher, Người dùng).
+- **Thống kê doanh thu**: Biểu đồ theo Ngày/Tuần/Tháng, lịch sử lên đến 1 năm. Nhấn vào mốc thời gian để xem danh sách đơn hàng tương ứng.
+
+#### FR-12: Quản Lý Sản Phẩm (Admin) (P0)
+- CRUD sản phẩm, import CSV, quản lý gallery ảnh/video.
+- Quản lý tồn kho (Inventory).
+- **Ràng buộc xóa an toàn (Safe Delete Variant)**: Ngăn chặn xóa vĩnh viễn một phiên bản (variant) nếu SKU đó đã từng được đặt hàng, nhằm bảo toàn tính toàn vẹn dữ liệu đơn hàng. Admin chỉ được phép ẩn hoặc hạ tồn kho về 0.
+
+#### FR-13: Quản Lý Đơn Hàng & Vận Hành (Admin/Manager) (P0)
+- **Lọc và tìm kiếm**: Lọc theo trạng thái, tìm kiếm mã đơn, SĐT hoặc email.
+- **Xem chi tiết đơn hàng (Popup Modal)**: Hiển thị đầy đủ thông tin khách hàng, chi tiết mặt hàng (RAM/ROM, màu sắc), tổng tiền, voucher áp dụng, ghi chú, phương thức thanh toán. Thao tác cập nhật trạng thái trực tiếp.
+- **Linh hoạt hóa trạng thái**: Cho phép nhảy cóc trạng thái (từ `Đã đặt` sang `Chờ nhận hàng` hoặc `Hoàn thành`) thay vì tuần tự, giúp tối ưu hóa luồng khách nhận máy tại quầy.
+- **Gom hàng (Pick & Pack)** (Manager): Nhận thông báo đơn đặt trước để chuẩn bị hàng.
+- **QR Scanner Simulator**: Module giả lập quét mã nhận hàng tại quầy (dạng `ORD-XXXXXX`) để tự động chuyển đơn sang `Hoàn thành`.
+- **Order Activity Log**: Ghi nhật ký mọi thao tác chuyển trạng thái để đối soát.
+- **Thanh toán**: Cập nhật phương thức thanh toán (Tiền mặt/Chuyển khoản) tại quầy. Hệ thống tự trừ tồn kho khi đơn hoàn thành.
 
 #### FR-10: Quản Lý Khuyến Mãi & Voucher (P1)
 - CRUD Voucher (chỉ Admin có quyền):
@@ -258,14 +256,22 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 - Audit Log: Lưu người tạo, lịch sử cập nhật.
 
 ---
+#### FR-11: Quản Lý Người Dùng & Phân Quyền (P1)
+- **Danh sách người dùng** (chỉ Admin): Xem danh sách toàn bộ người dùng đăng ký trên hệ thống kèm thông tin liên lạc (Họ tên, Email, Số điện thoại) và trạng thái xác thực Email.
+- **Tìm kiếm**: Tìm kiếm nhanh người dùng theo các trường thông tin Họ tên, Email, hoặc Số điện thoại.
+- **Quản lý phân quyền (RBAC)**: Admin có khả năng thay đổi vai trò (Role) của một người dùng sang các mức phân quyền:
+  - `CUSTOMER` (Khách hàng tiêu chuẩn).
+  - `MANAGER` (Nhân viên tại quầy, bị giới hạn truy cập).
+  - `ADMIN` (Toàn quyền quản trị).
+- **Quy tắc an toàn**: Ngăn chặn Admin tự hạ hoặc thay đổi quyền của chính bản thân mình thông qua giao diện để tránh rủi ro "khóa cửa" (lockout) hệ thống.
 
 ### Milestone 4: Nâng cao & Tương tác
 *Yêu cầu M3 đã hoàn thành. FR-13 là P2 — triển khai nếu còn thời gian.*
 
-#### FR-11: So Sánh Sản Phẩm (P1)
+#### FR-14: So Sánh Sản Phẩm (P1)
 - So sánh sản phẩm ngay tại chân trang chi tiết sản phẩm. Hệ thống đề xuất các sản phẩm liên quan hoặc cho phép tìm kiếm nhanh sản phẩm khác để thêm vào bảng so sánh đối chiếu (tối đa 4 sản phẩm bao gồm cả sản phẩm đang xem).
 
-#### FR-12: Đánh giá Sản phẩm (P1)
+#### FR-15: Đánh giá Sản phẩm (P1)
 - Chỉ user đã mua (đơn `Hoàn thành`) mới được đánh giá. Mỗi user 1 đánh giá/sản phẩm.
 - Customer: Sửa/Xóa đánh giá của mình. Admin/Manager: Sửa/Xóa mọi đánh giá (kiểm duyệt).
 - Hiển thị điểm sao trung bình + tổng số đánh giá trên trang chi tiết.
@@ -315,6 +321,10 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 | Access trang Admin bằng tài khoản Customer | Trả về 403 Forbidden hoặc redirect về Home. |
 | Đơn hàng quá hạn 24h không đến nhận | Hệ thống tự động hủy, hoàn tồn kho, gửi email thông báo. |
 | User chưa xác thực email cố đặt hàng | Chặn checkout, hiển thị thông báo yêu cầu xác thực email. |
+| Voucher áp dụng vượt quá giá trị sản phẩm hợp lệ | Mức giảm tối đa được giới hạn bằng `eligibleSubtotal` (tổng phụ của các sản phẩm hợp lệ), không phải toàn bộ giỏ hàng. Tránh việc voucher hãng A trợ giá cho hãng B. |
+| Khách hàng tự hủy đơn hàng có voucher | Hệ thống phải hoàn lại cả `tonKho` cho sản phẩm và trừ đi 1 lượt `daSuDung` cho voucher. |
+| Admin chuyển đơn hàng sang `DA_HUY` | Hệ thống bắt buộc phải khôi phục `tonKho` và hoàn lại 1 lượt `daSuDung` cho voucher để tránh thất thoát. |
+| Admin xóa voucher đang nằm trong đơn hàng cũ | Chuyển sang cơ chế Soft Delete: Vô hiệu hóa voucher (`isActive = false`) thay vì xóa vật lý (trả về 200 OK). Không được phép xóa vĩnh viễn vì Prisma mặc định `SetNull` sẽ làm mất dữ liệu `voucherId` trong lịch sử đơn hàng. |
 
 ---
 
@@ -461,6 +471,8 @@ webdienthoai/
 
 | Phiên bản | Ngày | Người thay đổi | Nội dung thay đổi | Lý do |
 |---|---|---|---|---|
+| v4.13 | 2026-06-24 | Antigravity | Triển khai cơ chế Soft Delete (vô hiệu hóa `isActive = false`) cho Voucher thay vì chặn xóa khi voucher đã được áp dụng trong đơn hàng. Cập nhật schema DB, các API tạo/sửa/xóa và đặt hàng để bắt điều kiện `isActive`. | Đảm bảo tính toàn vẹn lịch sử đơn hàng nhưng vẫn cho phép Admin dọn dẹp danh sách voucher một cách thân thiện (UX tốt hơn thay vì ném lỗi 400). |
+| v4.12 | 2026-06-24 | Antigravity | Bổ sung TDD và xử lý 4 lỗi nghiêm trọng về Voucher: (1) Giới hạn mức giảm theo `eligibleSubtotal`, (2) Hoàn `daSuDung` khi user hủy đơn, (3) Hoàn `tonKho` & `daSuDung` khi admin hủy đơn, (4) Chặn admin xóa voucher đã dùng trong đơn hàng. | Vá lỗ hổng nghiệp vụ, ngăn chặn thất thoát khuyến mãi và bảo toàn lịch sử đơn hàng. |
 | v4.11 | 2026-06-24 | Antigravity | Triển khai cơ chế tự động hủy voucher và cảnh báo khi giỏ hàng thay đổi không còn đạt điều kiện áp dụng (ngăn chặn gian lận voucher). Viết thêm test case bảo vệ cho backend order creation. | Bảo mật hệ thống thanh toán và tránh thất thoát doanh thu từ lạm dụng voucher. |
 | v4.10 | 2026-06-24 | Antigravity | Khắc phục lỗi cộng dồn số lượng khi click "Mua ngay": bổ sung tham số `overrideQuantity` vào Zod schema và API thêm giỏ hàng, cập nhật frontend store và trang PDP để ghi đè số lượng cố định về 1 thay vì cộng dồn. | Đáp ứng yêu cầu nghiệp vụ về luồng đặt hàng trực tiếp qua nút "Mua ngay". |
 | v4.9 | 2026-06-24 | Antigravity | Kiểm tra toàn diện hệ thống voucher: triển khai ràng buộc phạm vi áp dụng (`apDungCho`), tính toán giảm giá và đơn tối thiểu trên các sản phẩm hợp lệ, Reactive UI cập nhật giảm giá theo giỏ hàng, chuẩn hóa in hoa mã và bảo vệ chống race condition. | Đáp ứng chính xác yêu cầu nghiệp vụ về điều kiện áp dụng voucher và bảo mật giao dịch. |

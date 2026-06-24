@@ -11,12 +11,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router = useRouter();
 
   const menu = [
-    { name: 'Tổng quan', href: '/admin', icon: 'fa-solid fa-chart-line' },
-    { name: 'Đơn hàng', href: '/admin/orders', icon: 'fa-solid fa-clipboard-list' },
-    { name: 'Sản phẩm', href: '/admin/products', icon: 'fa-solid fa-box' },
-    { name: 'Khuyến mãi', href: '/admin/vouchers', icon: 'fa-solid fa-ticket' },
-    { name: 'Người dùng', href: '/admin/users', icon: 'fa-solid fa-users' },
-  ];
+    { name: 'Tổng quan', href: '/admin', icon: 'fa-solid fa-chart-line', roles: ['ADMIN'] },
+    { name: 'Đơn hàng', href: '/admin/orders', icon: 'fa-solid fa-clipboard-list', roles: ['ADMIN', 'MANAGER'] },
+    { name: 'Sản phẩm', href: '/admin/products', icon: 'fa-solid fa-box', roles: ['ADMIN'] },
+    { name: 'Khuyến mãi', href: '/admin/vouchers', icon: 'fa-solid fa-ticket', roles: ['ADMIN'] },
+    { name: 'Người dùng', href: '/admin/users', icon: 'fa-solid fa-users', roles: ['ADMIN'] },
+  ].filter(item => item.roles.includes(user?.role as string));
 
   return (
     <AdminGuard>

@@ -1,14 +1,12 @@
 import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import request from 'supertest';
 import app from '../index';
-import { PrismaClient } from '@prisma/client';
 import jwt from 'jsonwebtoken';
+import prisma from '../lib/prisma';
 
 vi.mock('../services/email.service', () => ({
   sendEmail: vi.fn().mockResolvedValue(true)
 }));
-
-const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-for-dev';
 
 describe('Order API', () => {
@@ -210,6 +208,10 @@ describe('Order API', () => {
 
       const order = await prisma.order.findUnique({ where: { id: createdOrderId } });
       expect(order?.trangThai).toBe('DA_HUY');
+
+      // Check DB Voucher Restored
+      const v = await prisma.voucher.findUnique({ where: { maVoucher: voucherCode } });
+      expect(v?.daSuDung).toBe(0); // Restored from 1
     });
 
     it('should fail to cancel already cancelled order', async () => {
@@ -223,6 +225,89 @@ describe('Order API', () => {
       // Stock should remain 5, not incremented to 6
       const p = await prisma.productVariant.findUnique({ where: { id: productVariantId } });
       expect(p?.tonKho).toBe(5);
+    });
+
+    it('should cap max discount at eligibleSubtotal when voucher amount exceeds eligible item total', async () => {
+      // Create a non-Apple product
+      const rand = Math.floor(Math.random() * 1000000);
+      const otherProduct = await prisma.product.create({
+        data: {
+          slug: `test-product-other-${Date.now()}-${rand}`,
+          hang: 'Samsung',
+          sanPham: 'Test Product Other',
+          phanKhuc: 'FLAGSHIP',
+          variants: {
+            create: [{
+              sku: `test-variant-other-${Date.now()}-${rand}`,
+              ramGb: 8,
+              dungLuongGb: 256,
+              mauSac: 'Trắng',
+              giaGoc: 25000000,
+              giaBan: 20000000,
+              tonKho: 5
+            }]
+          }
+        },
+        include: { variants: true }
+      });
+      const otherProductVariantId = otherProduct.variants[0].id;
+
+      // Create a brand-specific voucher with huge fixed discount
+      const hugeVoucherCode = `HUGEVOUCHER${Date.now()}${rand}`;
+      await prisma.voucher.create({
+        data: {
+          maVoucher: hugeVoucherCode,
+          apDungCho: 'hang:apple',
+          loaiGiamGia: 'FIXED_AMOUNT',
+          giaTri: 100000000, // 100 million
+          donToiThieu: 30000000, // 30 million
+          batDau: new Date(Date.now() - 86400000),
+          ketThuc: new Date(Date.now() + 86400000),
+          soLuong: 5,
+          daSuDung: 0,
+          nguoiTaoId: userId // Needs to be a valid user ID (admin), we can use the test user
+        }
+      });
+
+      // Clear cart
+      await prisma.cartItem.deleteMany({ where: { userId } });
+
+      // Add 2 Apple products (18M * 2 = 36M)
+      await prisma.cartItem.create({
+        data: { userId, productVariantId, soLuong: 2 }
+      });
+      // Add 1 Other product (20M)
+      await prisma.cartItem.create({
+        data: { userId, productVariantId: otherProductVariantId, soLuong: 1 }
+      });
+
+      const res = await request(app)
+        .post('/api/orders')
+        .set('Authorization', `Bearer ${userToken}`)
+        .send({
+          sdtLienHe: '0901234567',
+          thoiGianHenLayHang: new Date(Date.now() + 86400000).toISOString(),
+          voucherCode: hugeVoucherCode,
+          phuongThucThanhToan: 'TienMat'
+        });
+
+      // Ensure cleanup runs even if test fails
+      if (res.body?.order?.id) {
+        await prisma.orderActivityLog.deleteMany({ where: { orderId: res.body.order.id } });
+        await prisma.orderItem.deleteMany({ where: { orderId: res.body.order.id } });
+        await prisma.order.deleteMany({ where: { id: res.body.order.id } });
+      }
+      await prisma.cartItem.deleteMany({ where: { userId } });
+      await prisma.voucher.deleteMany({ where: { maVoucher: hugeVoucherCode } });
+      await prisma.productVariant.deleteMany({ where: { id: otherProductVariantId } });
+      await prisma.product.deleteMany({ where: { id: otherProduct.id } });
+
+      expect(res.status).toBe(201);
+      // Total = 36M + 20M = 56M
+      // Discount = 36M (capped at eligible items)
+      // Final = 20M
+      expect(res.body.order.tienGiamGia).toBe(36000000);
+      expect(res.body.order.thanhTien).toBe(20000000);
     });
   });
 });

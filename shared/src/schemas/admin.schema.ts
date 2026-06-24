@@ -99,6 +99,7 @@ export const createVoucherSchema = z.object({
   batDau: z.string().datetime({ message: 'Thời gian bắt đầu không hợp lệ' }),
   ketThuc: z.string().datetime({ message: 'Thời gian kết thúc không hợp lệ' }),
   soLuong: z.number().int().positive().default(1),
+  isActive: z.boolean().default(true),
 });
 
 export const updateVoucherSchema = createVoucherSchema.partial();

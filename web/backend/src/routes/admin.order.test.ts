@@ -1,10 +1,9 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import request from 'supertest';
 import app from '../index';
-import { PrismaClient, Role } from '@prisma/client';
 import jwt from 'jsonwebtoken';
-
-const prisma = new PrismaClient();
+import { Role } from '@prisma/client';
+import prisma from '../lib/prisma';
 const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-for-dev';
 
 describe('Admin Order API', () => {
@@ -80,6 +79,94 @@ describe('Admin Order API', () => {
       const logs = await prisma.orderActivityLog.findMany({ where: { orderId } });
       expect(logs.length).toBe(1);
       expect(logs[0].hanhDong).toContain('DANG_CHUAN_BI');
+    });
+
+    it('restores inventory and voucher when status is changed to DA_HUY', async () => {
+      // 1. Create a product variant
+      const rand = Math.floor(Math.random() * 1000000);
+      const product = await prisma.product.create({
+        data: {
+          slug: `admin-cancel-test-${Date.now()}-${rand}`,
+          hang: 'Apple',
+          sanPham: 'Test Product',
+          phanKhuc: 'FLAGSHIP',
+          variants: {
+            create: [{
+              sku: `variant-cancel-${Date.now()}-${rand}`,
+              ramGb: 8,
+              dungLuongGb: 256,
+              mauSac: 'Đen',
+              giaGoc: 1000,
+              giaBan: 1000,
+              tonKho: 9 // Initially 10, but 1 is in the order
+            }]
+          }
+        },
+        include: { variants: true }
+      });
+
+      // 2. Create a voucher
+      const voucher = await prisma.voucher.create({
+        data: {
+          maVoucher: `CANCELVOUCHER${Date.now()}${rand}`,
+          loaiGiamGia: 'FIXED_AMOUNT',
+          giaTri: 100,
+          donToiThieu: 0,
+          batDau: new Date(Date.now() - 86400000),
+          ketThuc: new Date(Date.now() + 86400000),
+          soLuong: 10,
+          daSuDung: 1, // 1 used by the order
+          nguoiTaoId: adminId
+        }
+      });
+
+      // 3. Create an order with the variant and voucher
+      const cancelOrder = await prisma.order.create({
+        data: {
+          userId: customerId,
+          tongTienHang: 1000,
+          thanhTien: 900,
+          voucherId: voucher.id,
+          tienGiamGia: 100,
+          sdtLienHe: '0123456789',
+          thoiGianHenLayHang: new Date(),
+          maNhanHang: `QRC-${Date.now()}-${rand}`,
+          trangThai: 'DA_DAT',
+          items: {
+            create: [{
+              productVariantId: product.variants[0].id,
+              soLuong: 1,
+              donGia: 1000
+            }]
+          }
+        }
+      });
+
+      try {
+        // 4. Admin cancels the order
+        const res = await request(app)
+          .patch(`/api/admin/orders/${cancelOrder.id}/status`)
+          .set('Authorization', `Bearer ${adminToken}`)
+          .send({ status: 'DA_HUY' });
+
+        expect(res.status).toBe(200);
+        expect(res.body.trangThai).toBe('DA_HUY');
+
+        // 5. Verify inventory and voucher restored
+        const updatedVariant = await prisma.productVariant.findUnique({ where: { id: product.variants[0].id } });
+        expect(updatedVariant?.tonKho).toBe(10); // Restored from 9
+
+        const updatedVoucher = await prisma.voucher.findUnique({ where: { id: voucher.id } });
+        expect(updatedVoucher?.daSuDung).toBe(0); // Restored from 1
+      } finally {
+        // Cleanup
+        await prisma.orderActivityLog.deleteMany({ where: { orderId: cancelOrder.id } });
+        await prisma.orderItem.deleteMany({ where: { orderId: cancelOrder.id } });
+        await prisma.order.deleteMany({ where: { id: cancelOrder.id } });
+        await prisma.voucher.deleteMany({ where: { id: voucher.id } });
+        await prisma.productVariant.deleteMany({ where: { productId: product.id } });
+        await prisma.product.deleteMany({ where: { id: product.id } });
+      }
     });
   });
 
