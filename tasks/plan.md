@@ -33,12 +33,13 @@ Xây dựng nền tảng cơ bản cho hệ thống thương mại điện tử 
 - [x] Task 5: API Sản phẩm & Tìm kiếm (Backend)
 - [x] Task 6: Giao diện Base Layout & Trang chủ (Frontend)
 - [x] Task 7: Giao diện Danh sách Sản phẩm & Bộ lọc (Frontend)
-- [ ] Task 8: Giao diện Chi tiết Sản phẩm (Frontend)
+- [x] Task 8: Giao diện Chi tiết Sản phẩm (Frontend)
 
 ### Checkpoint: Complete M1
-- [ ] Các trang `/`, `/phone`, `/phone/[slug]` hiển thị đầy đủ, responsive tốt và gọi API thành công.
-- [ ] Tính năng Lọc kết hợp URL query params hoạt động mượt mà.
-- [ ] Sẵn sàng để chuyển sang Milestone 2 (Giỏ hàng & Checkout).
+- [x] Hệ thống có đầy đủ luồng Xác thực, duyệt danh mục, tìm kiếm và chi tiết sản phẩm.
+- [x] Thiết kế UI Responsive hoàn toàn chuẩn xác.API thành công.
+- [x] Tính năng Lọc kết hợp URL query params hoạt động mượt mà.
+- [x] Sẵn sàng để chuyển sang Milestone 2 (Giỏ hàng & Checkout).
 
 ## Risks and Mitigations
 | Risk | Impact | Mitigation |

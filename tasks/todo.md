@@ -88,12 +88,12 @@
 ## Task 8: Giao diện Chi tiết Sản phẩm (Frontend)
 **Description:** Trang chi tiết của một dòng máy (`/phone/[slug]`) với thư viện ảnh, spec table, và khối so sánh.
 **Acceptance criteria:**
-- [ ] Hiển thị hình ảnh slider đa phương tiện.
-- [ ] Cột phải chứa giá, khuyến mãi, nút Add to Cart / Buy Now.
-- [ ] Hiển thị bảng cấu hình máy đầy đủ.
-- [ ] Giao diện khối so sánh tĩnh (cho M1) dưới chân trang theo DESIGN.md.
+- [x] Hiển thị hình ảnh slider đa phương tiện.
+- [x] Cột phải chứa giá, khuyến mãi, nút Add to Cart / Buy Now.
+- [x] Hiển thị bảng cấu hình máy đầy đủ.
+- [x] Giao diện khối so sánh tĩnh (cho M1) dưới chân trang theo DESIGN.md.
 **Verification:**
-- [ ] Truy cập `/phone/samsung-galaxy-s24-ultra` render đẹp trên desktop và mobile.
+- [x] Truy cập `/phone/samsung-galaxy-s24-ultra` render đẹp trên desktop và mobile.
 **Dependencies:** 7
 **Files likely touched:** `web/frontend/src/app/(shop)/phone/[slug]/page.tsx`, `web/frontend/src/components/product/ProductGallery.tsx`, `web/frontend/src/components/product/ProductSpecs.tsx`, `web/frontend/src/components/product/CompareBox.tsx`
 **Estimated scope:** M
