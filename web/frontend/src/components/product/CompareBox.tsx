@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function CompareBox() {
   return (
     <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-8 text-white mt-12 mb-12 shadow-lg relative overflow-hidden">
@@ -9,9 +11,11 @@ export default function CompareBox() {
           <p className="text-blue-100 text-lg mb-6 leading-relaxed">
             Sử dụng tính năng so sánh trực quan của PhoneStore để đưa ra quyết định mua sắm thông minh nhất.
           </p>
-          <button className="bg-white text-blue-600 px-8 py-3 rounded-xl font-bold shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all">
-            So sánh ngay
-          </button>
+          <Link href="/compare">
+            <button className="bg-white text-blue-600 px-8 py-3 rounded-xl font-bold shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all">
+              So sánh ngay
+            </button>
+          </Link>
         </div>
         
         <div className="hidden md:flex justify-center items-center space-x-4">

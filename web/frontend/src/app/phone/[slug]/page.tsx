@@ -6,6 +6,7 @@ import ProductSpecs from '@/components/product/ProductSpecs';
 import CompareBox from '@/components/product/CompareBox';
 import { Button } from '@/components/ui/Button';
 import ProductInteractiveSection from '@/components/product/ProductInteractiveSection';
+import ProductReviews from '@/components/product/ProductReviews';
 
 async function getProduct(slug: string) {
   try {
@@ -90,6 +91,8 @@ export default async function ProductDetailPage({
             <ProductInteractiveSection product={product} variants={product.variants} minVariant={minVariant} />
           </div>
         </div>
+
+        <ProductReviews slug={product.slug} />
       </main>
 
       <Footer />

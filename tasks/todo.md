@@ -11,7 +11,7 @@
 
 ## Phase 3: Vouchers & Statistics (Admin Only)
 - [x] Task 6: API & UI Quản lý Voucher
-- [ ] Task 7: Báo cáo Thống kê Doanh thu
+- [x] Task 7: Báo cáo Thống kê Doanh thu
 
 ## Phase 4: Customer Interactions (Reviews & Compare)
 - [ ] Task 8: Database Schema & API Đánh giá (Review)
