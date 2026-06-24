@@ -5,6 +5,7 @@ import ProductGallery from '@/components/product/ProductGallery';
 import ProductSpecs from '@/components/product/ProductSpecs';
 import CompareBox from '@/components/product/CompareBox';
 import { Button } from '@/components/ui/Button';
+import AddToCartButton from '@/components/product/AddToCartButton';
 
 async function getProduct(slug: string) {
   try {
@@ -100,9 +101,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                   Mua ngay
                 </Button>
                 <div className="grid grid-cols-2 gap-3">
-                  <Button variant="outline" className="w-full">
-                    Thêm vào giỏ
-                  </Button>
+                  <AddToCartButton productId={product.id} />
                   <Button variant="outline" className="w-full text-blue-600 border-blue-200 hover:bg-blue-50 hover:border-blue-300">
                     Mua trả góp 0%
                   </Button>

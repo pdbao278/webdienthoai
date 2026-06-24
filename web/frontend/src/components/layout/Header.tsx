@@ -2,9 +2,20 @@
 
 import Link from 'next/link';
 import { useAuthStore } from '@/store/useAuthStore';
+import { useCartStore } from '@/store/useCartStore';
+import { useEffect } from 'react';
 
 export default function Header() {
   const { user, isLoggedIn, logout } = useAuthStore();
+  const { items, fetchCart } = useCartStore();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchCart();
+    }
+  }, [isLoggedIn, fetchCart]);
+
+  const cartCount = items.reduce((acc, item) => acc + item.soLuong, 0);
 
   return (
     <header className="bg-white/85 backdrop-blur-md border-b border-slate-200 sticky top-0 z-[100]">
@@ -26,7 +37,7 @@ export default function Header() {
                 <Link href="/cart" className="flex items-center gap-2 text-slate-800 font-medium text-sm px-3 py-2 rounded-xl transition-all hover:bg-black/5">
                     <i className="fa-solid fa-basket-shopping text-lg text-slate-500"></i>
                     <span className="hidden lg:inline">Giỏ Hàng</span>
-                    <span className="bg-sky-600 text-white text-[12px] px-1.5 py-0.5 rounded-full font-semibold">0</span>
+                    <span className="bg-sky-600 text-white text-[12px] px-1.5 py-0.5 rounded-full font-semibold">{cartCount}</span>
                 </Link>
                 {isLoggedIn ? (
                   <>
