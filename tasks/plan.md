@@ -22,7 +22,7 @@ Xây dựng nền tảng cơ bản cho hệ thống thương mại điện tử 
 - [x] Schema database (Prisma) được push thành công và có dữ liệu seed ban đầu.
 
 ### Phase 2: Authentication
-- [ ] Task 3: API Xác thực (Backend) & Email Service
+- [x] Task 3: API Xác thực (Backend) & Email Service
 - [ ] Task 4: Giao diện Xác thực (Frontend)
 
 ### Checkpoint: Authentication

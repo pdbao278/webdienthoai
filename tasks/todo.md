@@ -26,12 +26,12 @@
 ## Task 3: API Xác thực (Backend) & Email Service
 **Description:** Định nghĩa Zod schema cho Auth tại `shared`. Triển khai các routes và controllers tại backend cho quá trình Đăng ký, Đăng nhập, và Xác thực email. Tích hợp Brevo SDK/SMTP.
 **Acceptance criteria:**
-- [ ] Zod schemas (register, login, verify) nằm ở `@phonestore/shared/src/schemas/auth.schema.ts`.
-- [ ] Endpoint `POST /api/auth/register` mã hóa password (bcrypt), sinh token và gửi email.
-- [ ] Endpoint `POST /api/auth/login` trả về JWT.
-- [ ] Endpoint `POST /api/auth/verify-email` xác nhận tài khoản.
+- [x] Zod schemas (register, login, verify) nằm ở `@phonestore/shared/src/schemas/auth.schema.ts`.
+- [x] Endpoint `POST /api/auth/register` mã hóa password (bcrypt), sinh token và gửi email.
+- [x] Endpoint `POST /api/auth/login` trả về JWT.
+- [x] Endpoint `POST /api/auth/verify-email` xác nhận tài khoản.
 **Verification:**
-- [ ] Unit test hoặc gọi API qua Postman xác nhận flow đăng nhập thành công.
+- [x] Unit test hoặc gọi API qua Postman xác nhận flow đăng nhập thành công.
 **Dependencies:** 2
 **Files likely touched:** `shared/src/schemas/auth.schema.ts`, `web/backend/src/routes/auth.routes.ts`, `web/backend/src/controllers/auth.controller.ts`, `web/backend/src/services/email.service.ts`
 **Estimated scope:** L
