@@ -6,7 +6,7 @@
 - [x] Task 3: UI Quản lý Đơn hàng & QR Simulator
 
 ## Phase 2: Product Management (Admin Only)
-- [ ] Task 4: API Quản lý Sản phẩm & Cloudinary
+- [x] Task 4: API Quản lý Sản phẩm & Cloudinary
 - [ ] Task 5: UI Quản lý Sản phẩm
 
 ## Phase 3: Vouchers & Statistics (Admin Only)
