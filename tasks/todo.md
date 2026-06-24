@@ -39,11 +39,11 @@
 ## Task 4: Giao diện Xác thực (Frontend)
 **Description:** Xây dựng các trang UI bằng Next.js cho Đăng ký, Đăng nhập và Xác thực Email. Tích hợp validation (Zod) và gọi API backend.
 **Acceptance criteria:**
-- [ ] Giao diện `/(auth)/login`, `/(auth)/register`, `/(auth)/verify-email` mượt mà, theo phong cách Soft & Clean.
-- [ ] Form sử dụng React Hook Form + resolver Zod từ `shared`.
-- [ ] Khi đăng nhập thành công, lưu trạng thái xác thực và chuyển hướng về trang chủ.
+- [x] Giao diện `/(auth)/login`, `/(auth)/register`, `/(auth)/verify-email` mượt mà, theo phong cách Soft & Clean.
+- [x] Form sử dụng React Hook Form + resolver Zod từ `shared`.
+- [x] Khi đăng nhập thành công, lưu trạng thái xác thực và chuyển hướng về trang chủ.
 **Verification:**
-- [ ] Mở trình duyệt, thực hiện luồng nhập form, xem validate lỗi, đăng nhập và vào trang chủ bình thường.
+- [x] Mở trình duyệt, thực hiện luồng nhập form, xem validate lỗi, đăng nhập và vào trang chủ bình thường.
 **Dependencies:** 3
 **Files likely touched:** `web/frontend/src/app/(auth)/*`, `web/frontend/src/components/ui/*`, `web/frontend/src/lib/api-client.ts`
 **Estimated scope:** M

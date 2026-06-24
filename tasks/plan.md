@@ -23,11 +23,11 @@ Xây dựng nền tảng cơ bản cho hệ thống thương mại điện tử 
 
 ### Phase 2: Authentication
 - [x] Task 3: API Xác thực (Backend) & Email Service
-- [ ] Task 4: Giao diện Xác thực (Frontend)
+- [x] Task 4: Giao diện Xác thực (Frontend)
 
 ### Checkpoint: Authentication
-- [ ] Flow Đăng ký -> Nhận email -> Xác thực email -> Đăng nhập hoạt động end-to-end trên UI.
-- [ ] Token JWT được bảo mật an toàn.
+- [x] Flow Đăng ký -> Nhận email -> Xác thực email -> Đăng nhập hoạt động end-to-end trên UI.
+- [x] Token JWT được bảo mật an toàn.
 
 ### Phase 3: Product Catalog
 - [ ] Task 5: API Sản phẩm & Tìm kiếm (Backend)
