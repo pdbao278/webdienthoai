@@ -15,11 +15,11 @@ Xây dựng nền tảng cơ bản cho hệ thống thương mại điện tử 
 
 ### Phase 1: Foundation
 - [x] Task 1: Cấu hình Monorepo & Khởi tạo dự án
-- [ ] Task 2: Thiết kế Database Schema & Seed Data (M1)
+- [x] Task 2: Thiết kế Database Schema & Seed Data (M1)
 
 ### Checkpoint: Foundation
-- [ ] Cấu trúc workspaces hoạt động ổn định (`npm run dev` chạy đồng thời).
-- [ ] Schema database (Prisma) được push thành công và có dữ liệu seed ban đầu.
+- [x] Cấu trúc workspaces hoạt động ổn định (`npm run dev` chạy đồng thời).
+- [x] Schema database (Prisma) được push thành công và có dữ liệu seed ban đầu.
 
 ### Phase 2: Authentication
 - [ ] Task 3: API Xác thực (Backend) & Email Service

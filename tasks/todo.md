@@ -14,11 +14,11 @@
 ## Task 2: Thiết kế Database Schema & Seed Data (M1)
 **Description:** Xây dựng `schema.prisma` tại backend định nghĩa các model User, VerificationToken, Product, ProductMedia. Viết script seed dữ liệu để tạo khoảng 10-15 sản phẩm mẫu.
 **Acceptance criteria:**
-- [ ] Prisma schema bao gồm đầy đủ các trường của `users`, `verification_tokens`, `products`, `product_media` theo yêu cầu PRD & SPEC.
-- [ ] Script seed dùng mock data hợp lý để tạo ít nhất 13 mẫu điện thoại với đầy đủ thông số.
+- [x] Prisma schema bao gồm đầy đủ các trường của `users`, `verification_tokens`, `products`, `product_media` theo yêu cầu PRD & SPEC.
+- [x] Script seed dùng mock data hợp lý để tạo ít nhất 13 mẫu điện thoại với đầy đủ thông số.
 **Verification:**
-- [ ] `npx prisma db push` hoặc `npx prisma migrate dev` chạy thành công.
-- [ ] `npx prisma db seed` chạy thành công, check database sinh ra dữ liệu.
+- [x] `npx prisma db push` hoặc `npx prisma migrate dev` chạy thành công.
+- [x] `npx prisma db seed` chạy thành công, check database sinh ra dữ liệu.
 **Dependencies:** 1
 **Files likely touched:** `web/backend/prisma/schema.prisma`, `web/backend/prisma/seed.ts`
 **Estimated scope:** M
