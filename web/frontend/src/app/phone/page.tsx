@@ -3,18 +3,24 @@ import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/product/ProductCard';
 import FilterBar from '@/components/product/FilterBar';
 import { Suspense } from 'react';
+import Link from 'next/link';
 
 async function getProducts(searchParams: { [key: string]: string | string[] | undefined }) {
   try {
     const query = new URLSearchParams();
     
-    if (typeof searchParams.hang === 'string') query.set('hang', searchParams.hang);
-    if (typeof searchParams.sort === 'string') query.set('sort', searchParams.sort);
-    if (typeof searchParams.page === 'string') query.set('page', searchParams.page);
+    Object.entries(searchParams).forEach(([key, value]) => {
+      if (typeof value === 'string') {
+        query.set(key, value);
+      }
+    });
     
-    query.set('limit', '12');
+    if (!query.has('limit')) {
+      query.set('limit', '12');
+    }
 
-    const res = await fetch(`http://localhost:3001/api/products?${query.toString()}`, { cache: 'no-store' });
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+    const res = await fetch(`${apiUrl}/products?${query.toString()}`, { cache: 'no-store' });
     if (!res.ok) return { data: [], pagination: null };
     return await res.json();
   } catch (error) {
@@ -57,14 +63,21 @@ export default async function PhonePage({
                   {Array.from({ length: pagination.totalPages }).map((_, i) => {
                     const pageNum = i + 1;
                     const isActive = pageNum === (pagination.page || 1);
+                    
+                    const pageQuery = new URLSearchParams();
+                    Object.entries(resolvedParams).forEach(([key, value]) => {
+                      if (typeof value === 'string') pageQuery.set(key, value);
+                    });
+                    pageQuery.set('page', pageNum.toString());
+
                     return (
-                      <a 
+                      <Link 
                         key={pageNum}
-                        href={`/phone?page=${pageNum}${resolvedParams.hang ? `&hang=${resolvedParams.hang}` : ''}`}
+                        href={`/phone?${pageQuery.toString()}`}
                         className={`w-10 h-10 flex items-center justify-center rounded-lg font-medium transition-colors ${isActive ? 'bg-blue-600 text-white' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'}`}
                       >
                         {pageNum}
-                      </a>
+                      </Link>
                     );
                   })}
                 </div>

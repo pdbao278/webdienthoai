@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function ProductGallery({ media }: { media: { url: string; isThumbnail: boolean }[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -11,12 +12,12 @@ export default function ProductGallery({ media }: { media: { url: string; isThum
 
   return (
     <div className="flex flex-col space-y-4">
-      {/* Main Image */}
       <div className="aspect-square bg-white rounded-2xl p-4 border border-slate-100 flex items-center justify-center shadow-sm relative overflow-hidden group">
-        <img 
+        <Image 
           src={media[activeIndex].url} 
           alt="Product image" 
-          className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+          fill
+          className="object-contain group-hover:scale-110 transition-transform duration-500 p-4"
         />
       </div>
 
@@ -30,8 +31,8 @@ export default function ProductGallery({ media }: { media: { url: string; isThum
               activeIndex === idx ? 'border-blue-600 shadow-md' : 'border-transparent hover:border-slate-300'
             }`}
           >
-            <div className="w-full h-full bg-white rounded-lg flex items-center justify-center">
-              <img src={img.url} alt={`Thumbnail ${idx}`} className="w-full h-full object-contain" />
+            <div className="w-full h-full bg-white rounded-lg flex items-center justify-center relative">
+              <Image src={img.url} alt={`Thumbnail ${idx}`} fill className="object-contain p-1" />
             </div>
           </button>
         ))}

@@ -16,6 +16,11 @@ export const verifyEmailSchema = z.object({
   token: z.string().min(1, 'Token là bắt buộc'),
 });
 
+export const resendOtpSchema = z.object({
+  email: z.string().email('Email không hợp lệ'),
+});
+
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
 export type VerifyEmailInput = z.infer<typeof verifyEmailSchema>;
+export type ResendOtpInput = z.infer<typeof resendOtpSchema>;

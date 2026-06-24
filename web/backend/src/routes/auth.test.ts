@@ -44,6 +44,11 @@ describe('Auth API', () => {
       expect(tokenObj).toBeDefined();
       if (tokenObj) {
         verifyToken = tokenObj.token;
+        
+        // OTP should expire in 60 seconds (Prove-It pattern test)
+        const diff = tokenObj.expires.getTime() - Date.now();
+        expect(diff).toBeLessThanOrEqual(60000); // Max 60s
+        expect(diff).toBeGreaterThan(58000); // At least 58s to account for execution time
       }
     });
 
@@ -101,6 +106,45 @@ describe('Auth API', () => {
         });
 
       expect(res.status).toBe(401);
+    });
+  });
+
+  describe('POST /api/auth/resend-otp', () => {
+    const resendEmail = `resend_${Date.now()}@example.com`;
+
+    beforeAll(async () => {
+      await prisma.user.create({
+        data: {
+          email: resendEmail,
+          passwordHash: 'dummy',
+          hoTen: 'Resend User'
+        }
+      });
+    });
+
+    afterAll(async () => {
+      await prisma.verificationToken.deleteMany({ where: { identifier: resendEmail } });
+      await prisma.user.deleteMany({ where: { email: resendEmail } });
+    });
+
+    it('should resend OTP successfully', async () => {
+      const res = await request(app)
+        .post('/api/auth/resend-otp')
+        .send({ email: resendEmail });
+
+      expect(res.status).toBe(200);
+      expect(res.body.message).toBeDefined();
+
+      const tokenObj = await prisma.verificationToken.findFirst({ where: { identifier: resendEmail } });
+      expect(tokenObj).toBeDefined();
+    });
+
+    it('should fail if email already verified', async () => {
+      const res = await request(app)
+        .post('/api/auth/resend-otp')
+        .send({ email: testEmail }); // testEmail was verified in previous step
+
+      expect(res.status).toBe(400);
     });
   });
 });

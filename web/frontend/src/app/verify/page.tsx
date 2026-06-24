@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, Suspense } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { verifyEmailSchema, VerifyEmailInput } from '@phonestore/shared';
@@ -10,9 +10,18 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 function VerifyForm() {
   const [error, setError] = useState<string | null>(null);
+  const [timeLeft, setTimeLeft] = useState(60);
   const router = useRouter();
   const searchParams = useSearchParams();
   const emailParam = searchParams.get('email') || '';
+
+  useEffect(() => {
+    if (timeLeft <= 0) return;
+    const timerId = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+    return () => clearInterval(timerId);
+  }, [timeLeft]);
 
   const {
     register,
@@ -28,7 +37,8 @@ function VerifyForm() {
   const onSubmit = async (data: VerifyEmailInput) => {
     setError(null);
     try {
-      const res = await fetch('http://localhost:3001/api/auth/verify-email', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+      const res = await fetch(`${apiUrl}/auth/verify-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -41,6 +51,29 @@ function VerifyForm() {
       }
 
       router.push('/login');
+    } catch (err: any) {
+      setError(err.message);
+    }
+  };
+
+  const handleResend = async () => {
+    if (!emailParam) return;
+    setError(null);
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+      const res = await fetch(`${apiUrl}/auth/resend-otp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailParam }),
+      });
+
+      const json = await res.json();
+      if (!res.ok) {
+        throw new Error(json.error || 'Không thể gửi lại mã');
+      }
+
+      setTimeLeft(60);
+      alert('Đã gửi lại mã xác nhận mới!');
     } catch (err: any) {
       setError(err.message);
     }
@@ -81,7 +114,22 @@ function VerifyForm() {
               </div>
             )}
 
-            <Button type="submit" className="w-full" isLoading={isSubmitting}>
+            {timeLeft > 0 ? (
+              <p className="text-sm text-slate-500 text-center">
+                Mã sẽ hết hạn sau: <span className="font-bold text-sky-600">{timeLeft}s</span>
+              </p>
+            ) : (
+              <div className="text-center">
+                <p className="text-sm text-red-500 font-semibold mb-2">
+                  Mã OTP đã hết hạn.
+                </p>
+                <Button type="button" variant="outline" onClick={handleResend} className="w-full text-blue-600 border-blue-200 hover:bg-blue-50">
+                  Gửi lại mã xác nhận
+                </Button>
+              </div>
+            )}
+
+            <Button type="submit" className="w-full" isLoading={isSubmitting} disabled={timeLeft <= 0}>
               Xác thực
             </Button>
           </form>

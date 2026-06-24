@@ -165,8 +165,9 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 - Trang kết quả với highlight từ khóa.
 
 #### FR-05: Authentication (P0)
-- Đăng nhập/Đăng ký bằng Email & Mật khẩu (NextAuth.js Credentials Provider).
-- Email kích hoạt tài khoản khi đăng ký. Yêu cầu xác thực email trước khi mua.
+- Đăng nhập/Đăng ký bằng Email, Họ Tên & Mật khẩu.
+- Xác minh Email kích hoạt tài khoản bằng mã OTP 6 số.
+- Cơ chế OTP: Thời hạn sử dụng mã là 60 giây. Cung cấp bộ đếm ngược trên UI và hiển thị tính năng "Gửi lại mã xác nhận" sau khi 60s hết hạn (chống spam). Yêu cầu xác thực email mới có thể đăng nhập và mua hàng.
 - Quên mật khẩu / Reset password.
 
 ---
@@ -433,6 +434,7 @@ webdienthoai/
 
 | Phiên bản | Ngày | Người thay đổi | Nội dung thay đổi | Lý do |
 |---|---|---|---|---|
+| v4.2 | 2026-06-24 | Antigravity | Cập nhật luồng đăng ký: Yêu cầu OTP 6 số với thời hạn đếm ngược 60s và nút gửi lại mã. | Cải thiện bảo mật và UX cho tính năng xác thực email. |
 | v4.1 | 2026-06-23 | Antigravity | Cập nhật cấu trúc bộ lọc trang chủ thành thanh lọc ngang kết hợp popup modal, hiển thị các tiêu chí dạng nút bấm/chips thay vì checkbox, bổ sung sắp xếp giá bên phải bộ lọc. | Tối ưu hóa UI/UX và cải thiện thao tác lọc trên thiết bị di động. |
 | v4.0 | 2026-06-23 | Antigravity | Chuyển đổi toàn bộ PRD từ bán Laptop sang bán Điện thoại: đổi tên PhoneStore, cập nhật danh mục (Gaming Phone, Flagship, Tầm trung, Phổ thông), bộ lọc (Chip, Camera, Dung lượng, Pin), schema DB (chip, camera_chinh, camera_truoc, dung_luong_gb, pin_mah), personas và filter URL. | Yêu cầu PO chuyển ngành hàng. |
 

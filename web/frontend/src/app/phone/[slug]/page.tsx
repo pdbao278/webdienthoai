@@ -8,7 +8,8 @@ import { Button } from '@/components/ui/Button';
 
 async function getProduct(slug: string) {
   try {
-    const res = await fetch(`http://localhost:3001/api/products/${slug}`, { next: { revalidate: 60 } });
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+    const res = await fetch(`${apiUrl}/products/${slug}`, { next: { revalidate: 60 } });
     if (!res.ok) {
       if (res.status === 404) return null;
       throw new Error('Failed to fetch product');

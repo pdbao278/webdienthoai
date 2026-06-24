@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import { PrismaClient } from '@prisma/client';
-import { registerSchema, loginSchema, verifyEmailSchema } from '@phonestore/shared';
+import { registerSchema, loginSchema, verifyEmailSchema, resendOtpSchema } from '@phonestore/shared';
 import { sendEmail } from '../services/email.service';
 
 const prisma = new PrismaClient();
@@ -35,7 +35,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
       data: {
         identifier: email,
         token,
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 hours
+        expires: new Date(Date.now() + 60 * 1000) // 60 seconds
       }
     });
 
@@ -47,7 +47,12 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 
     res.status(201).json({ message: 'Đăng ký thành công, vui lòng kiểm tra email để xác nhận' });
   } catch (error: any) {
-    res.status(400).json({ error: error.errors || error.message });
+    if (error.errors) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      console.error(error);
+      res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
+    }
   }
 };
 
@@ -84,7 +89,12 @@ export const verifyEmail = async (req: Request, res: Response): Promise<void> =>
 
     res.status(200).json({ message: 'Xác thực email thành công' });
   } catch (error: any) {
-    res.status(400).json({ error: error.errors || error.message });
+    if (error.errors) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      console.error(error);
+      res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
+    }
   }
 };
 
@@ -126,6 +136,56 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       }
     });
   } catch (error: any) {
-    res.status(400).json({ error: error.errors || error.message });
+    if (error.errors) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      console.error(error);
+      res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
+    }
+  }
+};
+
+export const resendOtp = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { email } = resendOtpSchema.parse(req.body);
+
+    const user = await prisma.user.findUnique({ where: { email } });
+    if (!user) {
+      res.status(404).json({ error: 'Người dùng không tồn tại' });
+      return;
+    }
+    if (user.emailVerified) {
+      res.status(400).json({ error: 'Email đã được xác thực' });
+      return;
+    }
+
+    // Delete old token
+    await prisma.verificationToken.deleteMany({
+      where: { identifier: email }
+    });
+
+    const token = crypto.randomInt(100000, 1000000).toString(); // 6 digit code
+    await prisma.verificationToken.create({
+      data: {
+        identifier: email,
+        token,
+        expires: new Date(Date.now() + 60 * 1000) // 60 seconds
+      }
+    });
+
+    await sendEmail(
+      email,
+      'Mã xác nhận tài khoản PhoneStore (Cấp lại)',
+      `<p>Xin chào ${user.hoTen},</p><p>Mã xác nhận mới của bạn là: <strong>${token}</strong></p>`
+    );
+
+    res.status(200).json({ message: 'Mã xác nhận mới đã được gửi' });
+  } catch (error: any) {
+    if (error.errors) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      console.error(error);
+      res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
+    }
   }
 };

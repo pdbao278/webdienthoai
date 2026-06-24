@@ -6,6 +6,7 @@ export async function sendEmail(to: string, subject: string, htmlContent: string
   if (!apiKey) {
     console.warn('⚠️ BREVO_API_KEY is not set. Email will not be sent actually.');
     console.log(`[EMAIL] To: ${to} | Subject: ${subject}`);
+    console.log(`[EMAIL CONTENT]:\n${htmlContent}`);
     return;
   }
 
