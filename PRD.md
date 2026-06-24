@@ -155,12 +155,18 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 - URL phản ánh filter (`?hang=Samsung&ram=8gb`), badge bộ lọc có thể tắt nhanh.
 
 #### FR-03: Chi Tiết Sản Phẩm (P0)
-- Gallery đa phương tiện (bảng `product_media`): thumbnail carousel + zoom ảnh chính.
-- **Biến thể sản phẩm (Variants) - UI 2 bước (Chuẩn Hoàng Hà):**
-  1. **Lựa chọn phiên bản (Dung lượng RAM/ROM):** Hiển thị các nút phiên bản (ví dụ: 256GB, 512GB) kèm giá thấp nhất của phiên bản đó.
-  2. **Lựa chọn màu sắc:** Dựa trên phiên bản đã chọn, hiển thị các nút màu sắc kèm ảnh thumbnail nhỏ (`image_url` từ bảng variant) và giá bán cụ thể của màu đó.
-- **Tối ưu URL:** URL trang chi tiết sử dụng tham số `v` rút gọn thay vì toàn bộ `sku` dài (ví dụ: `?v=8-256-0` thay vì `?sku=iphone-15-pro-max-256gb-8-256-0`) để link gọn gàng, thân thiện hơn với người dùng và SEO.
-- Tình trạng tồn kho sẽ thay đổi tương ứng theo biến thể (màu sắc + phiên bản) được chọn cuối cùng.
+- **Bố cục:** 2 cột (tỷ lệ 7:5). Cột trái: Gallery → Mô tả → Thông số kỹ thuật. Cột phải: Variant Selector → Giá → CTA → Chính sách → Đánh giá. Cột phải không sticky.
+- **Breadcrumb:** 4 cấp (Trang chủ / Điện thoại / [Hãng] / [Tên SP]). Hiển thị rating trung bình và liên kết "So sánh cấu hình".
+- **Gallery:** Ảnh chính tỷ lệ 4:3, thumbnail carousel bên dưới, hỗ trợ cả ảnh và video.
+- **Biến thể sản phẩm (Variants) - UI 2 bước:**
+  1. **Chọn dung lượng (RAM/ROM):** Các nút chip hiển thị cấu hình, active state khi chọn.
+  2. **Chọn màu sắc:** Các nút chip kèm chấm tròn màu sắc thực tế.
+- **Tối ưu URL:** Tham số `v` rút gọn thay vì `sku` đầy đủ (VD: `?v=8-256-0`).
+- **Giá bán:** Hiển thị giá khuyến mãi nổi bật, giá gốc gạch ngang, badge phần trăm giảm. Cảnh báo "Tạm hết hàng" khi `tonKho <= 0`.
+- **CTA Buttons:** 2 nút ngang hàng — "Thêm vào giỏ" (viền) và "MUA NGAY" (đặc). "MUA NGAY" click → thêm giỏ → chuyển `/checkout`. Cả hai disabled khi hết hàng.
+- **Chính sách mua hàng & Bảo hành:** Hiển thị 3 dòng: Đổi trả 12 tháng, Bảo hành chính hãng, Bộ sản phẩm đi kèm.
+- **Đánh giá sản phẩm:** Widget gọn nằm trong cột phải. Hiển thị điểm trung bình + số lượng. Form viết đánh giá ẩn mặc định (collapsible). Danh sách review mặc định 2 bài, nút "Xem tất cả".
+- Tình trạng tồn kho thay đổi theo biến thể được chọn.
 - Bảng thông số kỹ thuật chi tiết.
 
 #### FR-04: Tìm Kiếm (P0)
@@ -437,6 +443,7 @@ webdienthoai/
 
 | Phiên bản | Ngày | Người thay đổi | Nội dung thay đổi | Lý do |
 |---|---|---|---|---|
+| v4.7 | 2026-06-24 | Antigravity | Đồng bộ tài liệu Design & PRD với UI thực tế: Cập nhật FR-03 (bố cục Grid 7:5, CTA theme Rose thay Sky, xóa sticky cột phải, Variant Selector 2 bước, Buy Box, Chính sách BH). Cập nhật wireframe trang chi tiết (section 6.3) phản ánh đúng cấu trúc component hiện tại. | Đảm bảo tài liệu thiết kế luôn đồng bộ với code thực tế, tránh lệch lạc khi phát triển tiếp. |
 | v4.6 | 2026-06-24 | Antigravity | Hoàn tất M2 & Chuẩn hóa Seeding: Khắc phục lỗi bất đồng bộ UI/DB với cơ chế UUID động. Đồng bộ ô nhập Voucher cho cả trang Giỏ hàng và Thanh toán. Cải tiến nút "Mua ngay" điều hướng thông minh. Cập nhật cơ chế xác thực Email dùng DateTime. | Nâng cao độ ổn định hệ thống, đồng nhất trải nghiệm mua hàng và xử lý dứt điểm các lỗi logic giỏ hàng/thanh toán. |
 | v4.5 | 2026-06-24 | Antigravity | Tối ưu hóa URL biến thể bằng tham số `v` ngắn gọn. Đồng bộ Database với 130 sản phẩm từ HTML Mockup (chứa link ảnh Cloudinary chuẩn) thay cho dữ liệu mẫu cũ. | Cải thiện UX/SEO qua URL ngắn, giải quyết lỗi hiển thị ảnh (broken images) và nâng cao độ trung thực của giao diện so với bản thiết kế mockup. |
 | v4.4 | 2026-06-24 | Antigravity | Bổ sung Product Variants: Cho phép 1 sản phẩm (vd: iPhone 15) có nhiều cấu hình (RAM, ROM) và Màu sắc khác nhau với giá và tồn kho riêng biệt. | Đáp ứng yêu cầu quản lý sản phẩm thực tế. |

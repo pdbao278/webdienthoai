@@ -45,8 +45,8 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 
     res.status(201).json({ message: 'Đăng ký thành công, vui lòng kiểm tra email để xác nhận' });
   } catch (error: any) {
-    if (error.errors) {
-      res.status(400).json({ error: error.errors });
+    if (error.name === 'ZodError') {
+      res.status(400).json({ error: error.issues || error.errors });
     } else {
       console.error(error);
       res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
@@ -87,8 +87,8 @@ export const verifyEmail = async (req: Request, res: Response): Promise<void> =>
 
     res.status(200).json({ message: 'Xác thực email thành công' });
   } catch (error: any) {
-    if (error.errors) {
-      res.status(400).json({ error: error.errors });
+    if (error.name === 'ZodError') {
+      res.status(400).json({ error: error.issues || error.errors });
     } else {
       console.error(error);
       res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
@@ -134,8 +134,8 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       }
     });
   } catch (error: any) {
-    if (error.errors) {
-      res.status(400).json({ error: error.errors });
+    if (error.name === 'ZodError') {
+      res.status(400).json({ error: error.issues || error.errors });
     } else {
       console.error(error);
       res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
@@ -179,8 +179,8 @@ export const resendOtp = async (req: Request, res: Response): Promise<void> => {
 
     res.status(200).json({ message: 'Mã xác nhận mới đã được gửi' });
   } catch (error: any) {
-    if (error.errors) {
-      res.status(400).json({ error: error.errors });
+    if (error.name === 'ZodError') {
+      res.status(400).json({ error: error.issues || error.errors });
     } else {
       console.error(error);
       res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });

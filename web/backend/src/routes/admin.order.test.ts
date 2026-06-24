@@ -43,9 +43,13 @@ describe('Admin Order API', () => {
   });
 
   afterAll(async () => {
-    await prisma.orderActivityLog.deleteMany({ where: { orderId } });
-    await prisma.order.deleteMany({ where: { id: orderId } });
-    await prisma.user.deleteMany({ where: { id: { in: [adminId, customerId] } } });
+    if (orderId) {
+      await prisma.orderActivityLog.deleteMany({ where: { orderId } });
+      await prisma.order.deleteMany({ where: { id: orderId } });
+    }
+    if (adminId && customerId) {
+      await prisma.user.deleteMany({ where: { id: { in: [adminId, customerId] } } });
+    }
     await prisma.$disconnect();
   });
 

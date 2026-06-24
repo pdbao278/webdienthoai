@@ -61,9 +61,9 @@ const VALID_TRANSITIONS: Record<string, string[]> = {
 };
 
 export default function AdminOrdersPage() {
-  const [orders, setOrders] = useState<OrderData[]>([]);
+  const [allOrders, setAllOrders] = useState<OrderData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [statusFilter, setStatusFilter] = useState('');
+  const [activeTab, setActiveTab] = useState('ALL');
   const { token } = useAuthStore();
   
   const [showQRModal, setShowQRModal] = useState(false);
@@ -72,14 +72,10 @@ export default function AdminOrdersPage() {
 
   const fetchOrders = async () => {
     try {
-      const params = new URLSearchParams();
-      if (statusFilter) params.append('status', statusFilter);
-      const queryStr = params.toString();
-
-      const res = await authFetch(`/admin/orders${queryStr ? `?${queryStr}` : ''}`, token!);
+      const res = await authFetch('/admin/orders', token!);
       if (!res.ok) throw new Error('Không thể tải danh sách đơn hàng');
       const data = await res.json();
-      setOrders(data.data || []);
+      setAllOrders(data.data || []);
     } catch (error: unknown) {
       toast.error(error instanceof Error ? error.message : 'Lỗi tải dữ liệu');
     } finally {
@@ -91,7 +87,7 @@ export default function AdminOrdersPage() {
     if (token) {
       fetchOrders();
     }
-  }, [token, statusFilter]);
+  }, [token]);
 
   const handleUpdateStatus = async (orderId: string, newStatus: string) => {
     try {
@@ -133,35 +129,67 @@ export default function AdminOrdersPage() {
     }
   };
 
-  /** Lấy các trạng thái có thể chuyển sang từ trạng thái hiện tại */
   const getNextStatuses = (current: string): string[] => {
     return VALID_TRANSITIONS[current] || [];
   };
+
+  const STATUS_TABS = [
+    { id: 'ALL', label: 'Tất cả' },
+    { id: 'DA_DAT', label: 'Đã đặt' },
+    { id: 'DANG_CHUAN_BI', label: 'Đang chuẩn bị' },
+    { id: 'CHO_NHAN_HANG', label: 'Chờ nhận hàng' },
+    { id: 'HOAN_THANH', label: 'Hoàn thành' },
+    { id: 'DA_HUY', label: 'Đã hủy' },
+  ];
+
+  const counts = STATUS_TABS.reduce((acc, tab) => {
+    if (tab.id === 'ALL') {
+      acc[tab.id] = allOrders.length;
+    } else {
+      acc[tab.id] = allOrders.filter((o) => o.trangThai === tab.id).length;
+    }
+    return acc;
+  }, {} as Record<string, number>);
+
+  const filteredOrders = activeTab === 'ALL' 
+    ? allOrders 
+    : allOrders.filter(o => o.trangThai === activeTab);
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-bold text-slate-800">Quản lý Đơn hàng</h1>
         
-        <div className="flex items-center gap-4 w-full sm:w-auto">
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-4 py-2 bg-white border border-slate-200 rounded-xl focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none text-sm"
-          >
-            <option value="">Tất cả trạng thái</option>
-            {Object.entries(ORDER_STATUS_MAP).map(([val, label]) => (
-              <option key={val} value={val}>{label}</option>
-            ))}
-          </select>
+        <Button 
+          variant="primary" 
+          onClick={() => setShowQRModal(true)}
+          className="whitespace-nowrap w-full sm:w-auto"
+        >
+          <i className="fa-solid fa-qrcode mr-2"></i> Quét mã nhận hàng
+        </Button>
+      </div>
 
-          <Button 
-            variant="primary" 
-            onClick={() => setShowQRModal(true)}
-            className="whitespace-nowrap"
-          >
-            <i className="fa-solid fa-qrcode mr-2"></i> Quét mã nhận hàng
-          </Button>
+      {/* Tabs */}
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-2 overflow-x-auto">
+        <div className="flex space-x-2 min-w-max">
+          {STATUS_TABS.map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
+                activeTab === tab.id 
+                  ? 'bg-sky-50 text-sky-700 shadow-sm border border-sky-100' 
+                  : 'text-slate-600 hover:bg-slate-50 border border-transparent'
+              }`}
+            >
+              {tab.label}
+              <span className={`px-2 py-0.5 rounded-full text-xs ${
+                activeTab === tab.id ? 'bg-sky-200 text-sky-800' : 'bg-slate-100 text-slate-500'
+              }`}>
+                {counts[tab.id]}
+              </span>
+            </button>
+          ))}
         </div>
       </div>
 
@@ -183,12 +211,12 @@ export default function AdminOrdersPage() {
                 <tr>
                   <td colSpan={6} className="px-6 py-8 text-center text-slate-500">Đang tải dữ liệu...</td>
                 </tr>
-              ) : orders.length === 0 ? (
+              ) : filteredOrders.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-8 text-center text-slate-500">Không có đơn hàng nào</td>
                 </tr>
               ) : (
-                orders.map((order) => {
+                filteredOrders.map((order) => {
                   const nextStatuses = getNextStatuses(order.trangThai);
                   return (
                     <tr key={order.id} className="hover:bg-slate-50/50">

@@ -84,8 +84,10 @@ export const addToCart = async (req: AuthRequest, res: Response): Promise<void> 
 
     res.status(201).json({ message: 'Đã thêm vào giỏ hàng', cartItem });
   } catch (error: any) {
-    if (error.errors) {
-      res.status(400).json({ error: error.errors });
+    if (error.name === 'ZodError') {
+      res.status(400).json({ error: error.issues || error.errors });
+    } else if (error.code === 'P2003') {
+      res.status(401).json({ error: 'Tài khoản không hợp lệ hoặc đã bị xóa. Vui lòng đăng nhập lại.' });
     } else {
       console.error(error);
       res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
@@ -121,8 +123,10 @@ export const updateCartItem = async (req: AuthRequest, res: Response): Promise<v
 
     res.status(200).json({ message: 'Đã cập nhật số lượng', cartItem: updated });
   } catch (error: any) {
-    if (error.errors) {
-      res.status(400).json({ error: error.errors });
+    if (error.name === 'ZodError') {
+      res.status(400).json({ error: error.issues || error.errors });
+    } else if (error.code === 'P2003') {
+      res.status(401).json({ error: 'Tài khoản không hợp lệ hoặc đã bị xóa. Vui lòng đăng nhập lại.' });
     } else {
       console.error(error);
       res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });

@@ -12,6 +12,7 @@ import adminRoutes from './routes/admin.routes';
 import orderRoutes from './routes/order.routes';
 import { searchProducts } from './controllers/product.controller';
 import { startCronJobs } from './services/cron.service';
+import prisma from './lib/prisma';
 
 startCronJobs();
 
@@ -39,3 +40,4 @@ if (require.main === module) {
 }
 
 export default app;
+console.log('Backend restarted');

@@ -52,14 +52,17 @@ describe('Review API', () => {
   });
 
   afterAll(async () => {
-    // Dùng deleteMany thay vì delete để tránh lỗi cascade
-    await prisma.review.deleteMany({ where: { productId } });
-    await prisma.orderItem.deleteMany({ where: { order: { userId: customerId } } });
-    await prisma.orderActivityLog.deleteMany({ where: { order: { userId: customerId } } });
-    await prisma.order.deleteMany({ where: { userId: customerId } });
-    await prisma.productVariant.deleteMany({ where: { productId } });
-    await prisma.product.deleteMany({ where: { id: productId } });
-    await prisma.user.deleteMany({ where: { id: customerId } });
+    if (customerId) {
+      await prisma.orderItem.deleteMany({ where: { order: { userId: customerId } } });
+      await prisma.orderActivityLog.deleteMany({ where: { order: { userId: customerId } } });
+      await prisma.order.deleteMany({ where: { userId: customerId } });
+      await prisma.user.deleteMany({ where: { id: customerId } });
+    }
+    if (productId) {
+      await prisma.review.deleteMany({ where: { productId } });
+      await prisma.productVariant.deleteMany({ where: { productId } });
+      await prisma.product.deleteMany({ where: { id: productId } });
+    }
     await prisma.$disconnect();
   });
 

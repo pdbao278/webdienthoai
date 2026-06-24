@@ -100,15 +100,14 @@ export default async function ProductDetailPage({
             <ProductSpecs product={product} variant={minVariant} />
           </div>
 
-          {/* Right Column: Info & Action */}
-          <div className="lg:col-span-5">
+          {/* Right Column: Info & Action & Reviews */}
+          <div className="lg:col-span-5 space-y-6">
             <ProductInteractiveSection product={product} variants={product.variants} minVariant={minVariant} />
+            <ProductReviews slug={product.slug} />
           </div>
         </div>
 
         <CompareWidget currentProduct={product} />
-
-        <ProductReviews slug={product.slug} />
       </main>
 
       <Footer />

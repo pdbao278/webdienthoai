@@ -81,13 +81,20 @@ describe('Order API', () => {
   });
 
   afterAll(async () => {
-    await prisma.orderActivityLog.deleteMany({ where: { order: { userId } } });
-    await prisma.orderItem.deleteMany({ where: { order: { userId } } });
-    await prisma.order.deleteMany({ where: { userId } });
-    await prisma.voucher.deleteMany({ where: { maVoucher: voucherCode } });
-    await prisma.cartItem.deleteMany({ where: { userId } });
-    await prisma.product.deleteMany({ where: { id: productId } });
-    await prisma.user.delete({ where: { id: userId } });
+    if (userId) {
+      await prisma.orderActivityLog.deleteMany({ where: { order: { userId } } });
+      await prisma.orderItem.deleteMany({ where: { order: { userId } } });
+      await prisma.order.deleteMany({ where: { userId } });
+      await prisma.cartItem.deleteMany({ where: { userId } });
+      await prisma.user.deleteMany({ where: { id: userId } });
+    }
+    if (voucherCode) {
+      await prisma.voucher.deleteMany({ where: { maVoucher: voucherCode } });
+    }
+    if (productId) {
+      await prisma.productVariant.deleteMany({ where: { productId } });
+      await prisma.product.deleteMany({ where: { id: productId } });
+    }
     await prisma.$disconnect();
   });
 

@@ -26,8 +26,10 @@ describe('Product API', () => {
   });
 
   afterAll(async () => {
-    await prisma.productMedia.deleteMany({ where: { productId } });
-    await prisma.product.delete({ where: { id: productId } });
+    if (productId) {
+      await prisma.productMedia.deleteMany({ where: { productId } });
+      await prisma.product.delete({ where: { id: productId } });
+    }
     await prisma.$disconnect();
   });
 

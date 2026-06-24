@@ -38,8 +38,9 @@ interface Order {
 export default function OrdersPage() {
   const { isLoggedIn, token } = useAuthStore();
   const router = useRouter();
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [allOrders, setAllOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('ALL');
 
   const fetchOrders = async () => {
     try {
@@ -49,7 +50,7 @@ export default function OrdersPage() {
       });
       if (!res.ok) throw new Error('Không thể tải đơn hàng');
       const data = await res.json();
-      setOrders(data);
+      setAllOrders(data);
     } catch (err: any) {
       toast.error(err.message);
     } finally {
@@ -96,28 +97,74 @@ export default function OrdersPage() {
     }
   };
 
+  const STATUS_TABS = [
+    { id: 'ALL', label: 'Tất cả' },
+    { id: 'DA_DAT', label: 'Đã đặt' },
+    { id: 'DANG_CHUAN_BI', label: 'Đang chuẩn bị' },
+    { id: 'CHO_NHAN_HANG', label: 'Chờ nhận hàng' },
+    { id: 'HOAN_THANH', label: 'Hoàn thành' },
+    { id: 'DA_HUY', label: 'Đã hủy' },
+  ];
+
+  const counts = STATUS_TABS.reduce((acc, tab) => {
+    if (tab.id === 'ALL') {
+      acc[tab.id] = allOrders.length;
+    } else {
+      acc[tab.id] = allOrders.filter((o) => o.trangThai === tab.id).length;
+    }
+    return acc;
+  }, {} as Record<string, number>);
+
+  const filteredOrders = activeTab === 'ALL' 
+    ? allOrders 
+    : allOrders.filter(o => o.trangThai === activeTab);
+
   if (!isLoggedIn) return null;
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-8 max-w-4xl">
-        <h1 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+        <h1 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
           <i className="fa-regular fa-clipboard"></i> Đơn hàng của tôi
         </h1>
 
+        {/* Tabs */}
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-2 overflow-x-auto mb-6">
+          <div className="flex space-x-2 min-w-max">
+            {STATUS_TABS.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
+                  activeTab === tab.id 
+                    ? 'bg-sky-50 text-sky-700 shadow-sm border border-sky-100' 
+                    : 'text-slate-600 hover:bg-slate-50 border border-transparent'
+                }`}
+              >
+                {tab.label}
+                <span className={`px-2 py-0.5 rounded-full text-xs ${
+                  activeTab === tab.id ? 'bg-sky-200 text-sky-800' : 'bg-slate-100 text-slate-500'
+                }`}>
+                  {counts[tab.id]}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {isLoading ? (
           <div className="text-center py-10">Đang tải...</div>
-        ) : orders.length === 0 ? (
+        ) : filteredOrders.length === 0 ? (
           <div className="bg-white rounded-2xl p-12 text-center shadow-sm">
-            <p className="text-slate-500 mb-6">Bạn chưa có đơn hàng nào.</p>
+            <p className="text-slate-500 mb-6">Bạn chưa có đơn hàng nào trong trạng thái này.</p>
             <Link href="/" className="inline-block bg-sky-600 text-white font-medium py-3 px-8 rounded-xl hover:bg-sky-700 transition">
               Mua sắm ngay
             </Link>
           </div>
         ) : (
           <div className="space-y-6">
-            {orders.map(order => (
+            {filteredOrders.map(order => (
               <div key={order.id} className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
                 <div className="flex flex-col md:flex-row justify-between md:items-center border-b border-slate-100 pb-4 mb-4 gap-4">
                   <div>

@@ -51,9 +51,14 @@ describe('Cart API', () => {
   });
 
   afterAll(async () => {
-    await prisma.cartItem.deleteMany({ where: { userId } });
-    await prisma.product.deleteMany({ where: { id: productId } });
-    await prisma.user.delete({ where: { id: userId } });
+    if (userId) {
+      await prisma.cartItem.deleteMany({ where: { userId } });
+      await prisma.user.deleteMany({ where: { id: userId } });
+    }
+    if (productId) {
+      await prisma.productVariant.deleteMany({ where: { productId } });
+      await prisma.product.deleteMany({ where: { id: productId } });
+    }
     await prisma.$disconnect();
   });
 
@@ -83,6 +88,18 @@ describe('Cart API', () => {
 
       expect(res.status).toBe(400);
       expect(res.body.error).toBeDefined();
+    });
+
+    it('should fail with 400 if productVariantId is not a UUID', async () => {
+      const res = await request(app)
+        .post('/api/cart')
+        .set('Authorization', `Bearer ${userToken}`)
+        .send({
+          productVariantId: 'not-a-uuid',
+          soLuong: 1
+        });
+
+      expect(res.status).toBe(400);
     });
 
     it('should increment quantity if item already in cart', async () => {

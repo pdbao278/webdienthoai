@@ -35,8 +35,12 @@ describe('Admin Voucher Management API', () => {
 
   afterAll(async () => {
     await prisma.voucher.deleteMany({ where: { maVoucher: testVoucherCode } });
-    await prisma.user.delete({ where: { id: adminId } });
-    await prisma.user.delete({ where: { id: customerId } });
+    if (adminId) {
+      await prisma.user.deleteMany({ where: { id: adminId } });
+    }
+    if (customerId) {
+      await prisma.user.deleteMany({ where: { id: customerId } });
+    }
     await prisma.$disconnect();
   });
 

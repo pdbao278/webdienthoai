@@ -45,7 +45,9 @@ describe('Admin Product API', () => {
       await prisma.productVariant.deleteMany({ where: { productId } });
       await prisma.product.deleteMany({ where: { id: productId } });
     }
-    await prisma.user.deleteMany({ where: { id: adminId } });
+    if (adminId) {
+      await prisma.user.deleteMany({ where: { id: adminId } });
+    }
     await prisma.$disconnect();
   });
 

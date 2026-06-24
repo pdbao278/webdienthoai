@@ -149,11 +149,13 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
 
     res.status(201).json({ message: 'Đặt hàng thành công', order });
   } catch (error: any) {
-    if (error.errors) {
-      res.status(400).json({ error: error.errors });
+    if (error.name === 'ZodError') {
+      res.status(400).json({ error: error.issues || error.errors });
+    } else if (error.code === 'P2003') {
+      res.status(401).json({ error: 'Tài khoản không hợp lệ hoặc đã bị xóa. Vui lòng đăng nhập lại.' });
     } else {
       // If it's our custom thrown error inside transaction, send it as 400
-      if (error instanceof Error && (error.message.includes('tồn kho') || error.message.includes('voucher'))) {
+      if (error instanceof Error && (error.message.includes('tồn kho') || error.message.includes('voucher') || error.message.includes('Đơn hàng tối thiểu'))) {
         res.status(400).json({ error: error.message });
       } else {
         console.error(error);
@@ -186,8 +188,8 @@ export const validateVoucher = async (req: AuthRequest, res: Response): Promise<
 
     res.status(200).json(voucher);
   } catch (error: any) {
-    if (error.errors) {
-      res.status(400).json({ error: error.errors });
+    if (error.name === 'ZodError') {
+      res.status(400).json({ error: error.issues || error.errors });
     } else {
       console.error(error);
       res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
