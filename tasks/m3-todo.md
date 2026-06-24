@@ -7,7 +7,7 @@
 
 ## Phase 2: Product Management (Admin Only)
 - [x] Task 4: API Quản lý Sản phẩm & Cloudinary
-- [ ] Task 5: UI Quản lý Sản phẩm
+- [x] Task 5: UI Quản lý Sản phẩm
 
 ## Phase 3: Vouchers & Statistics (Admin Only)
 - [ ] Task 6: API & UI Quản lý Voucher
