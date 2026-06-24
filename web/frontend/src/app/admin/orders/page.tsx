@@ -3,9 +3,37 @@
 import { useEffect, useState } from 'react';
 import { useAuthStore } from '@/store/useAuthStore';
 import { formatCurrency } from '@/lib/utils';
+import { authFetch, authFetchJson } from '@/lib/api';
 import toast from 'react-hot-toast';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+
+interface OrderUser {
+  hoTen: string;
+  email: string;
+  sdt: string | null;
+}
+
+interface OrderItemVariant {
+  dungLuongGb: number;
+  mauSac: string;
+  product: { sanPham: string };
+}
+
+interface OrderItem {
+  soLuong: number;
+  productVariant: OrderItemVariant;
+}
+
+interface OrderData {
+  id: string;
+  maNhanHang: string;
+  thanhTien: number;
+  trangThai: string;
+  createdAt: string;
+  user: OrderUser;
+  items: OrderItem[];
+}
 
 const ORDER_STATUS_MAP: Record<string, string> = {
   'DA_DAT': 'Đã đặt',
@@ -23,8 +51,17 @@ const STATUS_COLORS: Record<string, string> = {
   'DA_HUY': 'bg-red-100 text-red-800',
 };
 
+/** Chuyển đổi trạng thái hợp lệ (máy trạng thái) */
+const VALID_TRANSITIONS: Record<string, string[]> = {
+  'DA_DAT': ['DANG_CHUAN_BI', 'DA_HUY'],
+  'DANG_CHUAN_BI': ['CHO_NHAN_HANG', 'DA_HUY'],
+  'CHO_NHAN_HANG': ['HOAN_THANH', 'DA_HUY'],
+  'HOAN_THANH': [],
+  'DA_HUY': [],
+};
+
 export default function AdminOrdersPage() {
-  const [orders, setOrders] = useState<any[]>([]);
+  const [orders, setOrders] = useState<OrderData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState('');
   const { token } = useAuthStore();
@@ -35,17 +72,16 @@ export default function AdminOrdersPage() {
 
   const fetchOrders = async () => {
     try {
-      const url = new URL(process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/admin/orders` : 'http://localhost:3001/api/admin/orders');
-      if (statusFilter) url.searchParams.append('status', statusFilter);
+      const params = new URLSearchParams();
+      if (statusFilter) params.append('status', statusFilter);
+      const queryStr = params.toString();
 
-      const res = await fetch(url.toString(), {
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const res = await authFetch(`/admin/orders${queryStr ? `?${queryStr}` : ''}`, token!);
       if (!res.ok) throw new Error('Không thể tải danh sách đơn hàng');
       const data = await res.json();
-      setOrders(data);
-    } catch (error: any) {
-      toast.error(error.message);
+      setOrders(data.data || []);
+    } catch (error: unknown) {
+      toast.error(error instanceof Error ? error.message : 'Lỗi tải dữ liệu');
     } finally {
       setIsLoading(false);
     }
@@ -59,13 +95,8 @@ export default function AdminOrdersPage() {
 
   const handleUpdateStatus = async (orderId: string, newStatus: string) => {
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
-      const res = await fetch(`${apiUrl}/admin/orders/${orderId}/status`, {
+      const res = await authFetchJson(`/admin/orders/${orderId}/status`, token!, {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
         body: JSON.stringify({ status: newStatus })
       });
       if (!res.ok) {
@@ -74,8 +105,8 @@ export default function AdminOrdersPage() {
       }
       toast.success('Cập nhật trạng thái thành công');
       fetchOrders();
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error: unknown) {
+      toast.error(error instanceof Error ? error.message : 'Lỗi cập nhật');
     }
   };
 
@@ -83,13 +114,8 @@ export default function AdminOrdersPage() {
     if (!qrCode.trim()) return;
     setIsScanning(true);
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
-      const res = await fetch(`${apiUrl}/admin/orders/scan`, {
+      const res = await authFetchJson('/admin/orders/scan', token!, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
         body: JSON.stringify({ maNhanHang: qrCode.trim() })
       });
       if (!res.ok) {
@@ -100,11 +126,16 @@ export default function AdminOrdersPage() {
       setShowQRModal(false);
       setQrCode('');
       fetchOrders();
-    } catch (error: any) {
-      toast.error(error.message);
+    } catch (error: unknown) {
+      toast.error(error instanceof Error ? error.message : 'Lỗi quét mã');
     } finally {
       setIsScanning(false);
     }
+  };
+
+  /** Lấy các trạng thái có thể chuyển sang từ trạng thái hiện tại */
+  const getNextStatuses = (current: string): string[] => {
+    return VALID_TRANSITIONS[current] || [];
   };
 
   return (
@@ -157,43 +188,52 @@ export default function AdminOrdersPage() {
                   <td colSpan={6} className="px-6 py-8 text-center text-slate-500">Không có đơn hàng nào</td>
                 </tr>
               ) : (
-                orders.map((order) => (
-                  <tr key={order.id} className="hover:bg-slate-50/50">
-                    <td className="px-6 py-4">
-                      <div className="font-medium text-slate-900">{order.maNhanHang}</div>
-                      <div className="text-xs text-slate-500 mt-1">{new Date(order.createdAt).toLocaleString('vi-VN')}</div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="font-medium text-slate-900">{order.user.hoTen}</div>
-                      <div className="text-xs text-slate-500">{order.user.sdt}</div>
-                    </td>
-                    <td className="px-6 py-4 max-w-[250px]">
-                      <div className="truncate text-slate-700" title={order.items.map((i: any) => `${i.soLuong}x ${i.productVariant.product.sanPham} ${i.productVariant.dungLuongGb}GB - ${i.productVariant.mauSac}`).join(', ')}>
-                        {order.items.map((i: any) => `${i.soLuong}x ${i.productVariant.product.sanPham} ${i.productVariant.dungLuongGb}GB`).join(', ')}
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 font-medium text-sky-700">
-                      {formatCurrency(order.thanhTien)}
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className={`px-2.5 py-1 text-xs font-medium rounded-full ${STATUS_COLORS[order.trangThai] || 'bg-slate-100 text-slate-800'}`}>
-                        {ORDER_STATUS_MAP[order.trangThai]}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                      <select
-                        value={order.trangThai}
-                        onChange={(e) => handleUpdateStatus(order.id, e.target.value)}
-                        className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-sm focus:border-sky-500 outline-none"
-                        disabled={order.trangThai === 'HOAN_THANH' || order.trangThai === 'DA_HUY'}
-                      >
-                        {Object.entries(ORDER_STATUS_MAP).map(([val, label]) => (
-                          <option key={val} value={val}>{label}</option>
-                        ))}
-                      </select>
-                    </td>
-                  </tr>
-                ))
+                orders.map((order) => {
+                  const nextStatuses = getNextStatuses(order.trangThai);
+                  return (
+                    <tr key={order.id} className="hover:bg-slate-50/50">
+                      <td className="px-6 py-4">
+                        <div className="font-medium text-slate-900">{order.maNhanHang}</div>
+                        <div className="text-xs text-slate-500 mt-1">{new Date(order.createdAt).toLocaleString('vi-VN')}</div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="font-medium text-slate-900">{order.user.hoTen}</div>
+                        <div className="text-xs text-slate-500">{order.user.sdt}</div>
+                      </td>
+                      <td className="px-6 py-4 max-w-[250px]">
+                        <div className="truncate text-slate-700" title={order.items.map((i) => `${i.soLuong}x ${i.productVariant.product.sanPham} ${i.productVariant.dungLuongGb}GB - ${i.productVariant.mauSac}`).join(', ')}>
+                          {order.items.map((i) => `${i.soLuong}x ${i.productVariant.product.sanPham} ${i.productVariant.dungLuongGb}GB`).join(', ')}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 font-medium text-sky-700">
+                        {formatCurrency(order.thanhTien)}
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className={`px-2.5 py-1 text-xs font-medium rounded-full ${STATUS_COLORS[order.trangThai] || 'bg-slate-100 text-slate-800'}`}>
+                          {ORDER_STATUS_MAP[order.trangThai]}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        {nextStatuses.length > 0 ? (
+                          <select
+                            value=""
+                            onChange={(e) => {
+                              if (e.target.value) handleUpdateStatus(order.id, e.target.value);
+                            }}
+                            className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-sm focus:border-sky-500 outline-none"
+                          >
+                            <option value="">Chuyển trạng thái...</option>
+                            {nextStatuses.map((s) => (
+                              <option key={s} value={s}>{ORDER_STATUS_MAP[s]}</option>
+                            ))}
+                          </select>
+                        ) : (
+                          <span className="text-xs text-slate-400">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })
               )}
             </tbody>
           </table>

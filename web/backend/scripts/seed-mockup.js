@@ -85,7 +85,7 @@ async function main() {
               sku: `${slug}-${ramGb}-${dungLuongGb}-0`,
               ramGb: ramGb,
               dungLuongGb: dungLuongGb,
-              mauSac: "Màu Tiêu Chuẩn",
+              mauSac: "Đen",
               giaGoc: giaGoc,
               giaBan: giaBan,
               tonKho: 50,

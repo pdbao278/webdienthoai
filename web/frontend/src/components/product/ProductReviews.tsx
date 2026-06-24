@@ -2,21 +2,31 @@
 
 import { useEffect, useState } from 'react';
 import { useAuthStore } from '@/store/useAuthStore';
+import { getApiUrl, authFetchJson, authFetch } from '@/lib/api';
 import toast from 'react-hot-toast';
 import { Button } from '../ui/Button';
 
+interface ReviewData {
+  id: string;
+  rating: number;
+  comment: string | null;
+  createdAt: string;
+  userId: string;
+  user: { hoTen: string | null };
+}
+
 export default function ProductReviews({ slug }: { slug: string }) {
-  const [reviews, setReviews] = useState<any[]>([]);
+  const [reviews, setReviews] = useState<ReviewData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isEligible, setIsEligible] = useState(false);
   const { token, user } = useAuthStore();
 
   const fetchReviews = async () => {
     try {
-      const url = process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/products/${slug}/reviews` : `http://localhost:3001/api/products/${slug}/reviews`;
-      const res = await fetch(url);
+      const res = await fetch(getApiUrl(`/products/${slug}/reviews`));
       if (!res.ok) throw new Error('Không thể tải đánh giá');
       const data = await res.json();
       setReviews(data);
@@ -27,9 +37,29 @@ export default function ProductReviews({ slug }: { slug: string }) {
     }
   };
 
+  const fetchEligibility = async () => {
+    if (!token) {
+      setIsEligible(false);
+      return;
+    }
+    try {
+      const res = await authFetch(`/products/${slug}/review-eligibility`, token);
+      if (res.ok) {
+        const data = await res.json();
+        setIsEligible(data.eligible);
+      } else {
+        setIsEligible(false);
+      }
+    } catch (error) {
+      console.error(error);
+      setIsEligible(false);
+    }
+  };
+
   useEffect(() => {
     fetchReviews();
-  }, [slug]);
+    fetchEligibility();
+  }, [slug, token]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,13 +70,8 @@ export default function ProductReviews({ slug }: { slug: string }) {
 
     setIsSubmitting(true);
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
-      const res = await fetch(`${apiUrl}/products/${slug}/reviews`, {
+      const res = await authFetchJson(`/products/${slug}/reviews`, token!, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
         body: JSON.stringify({ rating, comment })
       });
 
@@ -59,6 +84,7 @@ export default function ProductReviews({ slug }: { slug: string }) {
       setComment('');
       setRating(5);
       fetchReviews();
+      fetchEligibility();
     } catch (error: any) {
       toast.error(error.message);
     } finally {
@@ -66,9 +92,29 @@ export default function ProductReviews({ slug }: { slug: string }) {
     }
   };
 
+  const handleDeleteReview = async (reviewId: string) => {
+    if (!confirm('Bạn có chắc chắn muốn xóa đánh giá này?')) return;
+    try {
+      const res = await authFetch(`/products/${slug}/reviews/${reviewId}`, token!, {
+        method: 'DELETE'
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Xóa đánh giá thất bại');
+      }
+      toast.success('Xóa đánh giá thành công');
+      fetchReviews();
+      fetchEligibility();
+    } catch (error: any) {
+      toast.error(error.message);
+    }
+  };
+
   const averageRating = reviews.length > 0 
     ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1) 
     : 0;
+
+  const isModerator = user?.role === 'ADMIN' || user?.role === 'MANAGER';
 
   return (
     <div className="mt-12 bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100">
@@ -87,32 +133,44 @@ export default function ProductReviews({ slug }: { slug: string }) {
 
         <div className="md:w-2/3">
           <h3 className="text-lg font-semibold text-slate-800 mb-4">Gửi đánh giá của bạn</h3>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="text-slate-600">Bạn cảm thấy sản phẩm thế nào?</span>
-              <div className="flex text-amber-400 text-xl cursor-pointer">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <i 
-                    key={star} 
-                    className={`fa-solid fa-star ${star <= rating ? '' : 'text-slate-200'} hover:scale-110 transition-transform`}
-                    onClick={() => setRating(star)}
-                  ></i>
-                ))}
-              </div>
+          
+          {!token ? (
+            <div className="p-4 bg-slate-50 rounded-xl text-slate-500 text-sm border border-slate-200">
+              Vui lòng đăng nhập để đánh giá sản phẩm này.
             </div>
-            
-            <textarea
-              className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none"
-              rows={3}
-              placeholder="Chia sẻ trải nghiệm của bạn về sản phẩm này..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            ></textarea>
-            
-            <Button type="submit" variant="primary" isLoading={isSubmitting} disabled={!token}>
-              {token ? 'Gửi đánh giá' : 'Đăng nhập để đánh giá'}
-            </Button>
-          </form>
+          ) : !isEligible ? (
+            <div className="p-4 bg-amber-50 text-amber-800 rounded-xl text-sm border border-amber-100 flex items-start gap-2">
+              <i className="fa-solid fa-circle-info mt-0.5"></i>
+              <span>Bạn chỉ có thể đánh giá sản phẩm sau khi đã mua và nhận hàng thành công.</span>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="text-slate-600">Bạn cảm thấy sản phẩm thế nào?</span>
+                <div className="flex text-amber-400 text-xl cursor-pointer">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <i 
+                      key={star} 
+                      className={`fa-solid fa-star ${star <= rating ? '' : 'text-slate-200'} hover:scale-110 transition-transform`}
+                      onClick={() => setRating(star)}
+                    ></i>
+                  ))}
+                </div>
+              </div>
+              
+              <textarea
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none"
+                rows={3}
+                placeholder="Chia sẻ trải nghiệm của bạn về sản phẩm này..."
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              ></textarea>
+              
+              <Button type="submit" variant="primary" isLoading={isSubmitting}>
+                Gửi đánh giá
+              </Button>
+            </form>
+          )}
         </div>
       </div>
 
@@ -134,10 +192,24 @@ export default function ProductReviews({ slug }: { slug: string }) {
                     <span className="text-xs text-slate-500">{new Date(review.createdAt).toLocaleDateString('vi-VN')}</span>
                   </div>
                 </div>
-                <div className="flex text-amber-400 text-sm">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <i key={star} className={`fa-solid fa-star ${star <= review.rating ? '' : 'text-slate-200'}`}></i>
-                  ))}
+                
+                <div className="flex items-center gap-4">
+                  <div className="flex text-amber-400 text-sm">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <i key={star} className={`fa-solid fa-star ${star <= review.rating ? '' : 'text-slate-200'}`}></i>
+                    ))}
+                  </div>
+                  
+                  {(isModerator || (user && review.userId === user.id)) && (
+                    <button 
+                      onClick={() => handleDeleteReview(review.id)}
+                      className="text-red-500 hover:text-red-700 text-xs flex items-center gap-1 font-medium bg-red-50 hover:bg-red-100 px-2..5 py-1 rounded-lg transition-colors"
+                      title="Xóa đánh giá"
+                    >
+                      <i className="fa-solid fa-trash-can"></i>
+                      <span>Xóa</span>
+                    </button>
+                  )}
                 </div>
               </div>
               {review.comment && (

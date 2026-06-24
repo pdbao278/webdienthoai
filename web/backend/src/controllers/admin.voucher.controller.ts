@@ -1,8 +1,7 @@
 import { Response } from 'express';
-import { PrismaClient, DiscountType } from '@prisma/client';
 import { AuthRequest } from '../middlewares/auth.middleware';
-
-const prisma = new PrismaClient();
+import prisma from '../lib/prisma';
+import { createVoucherSchema, updateVoucherSchema } from '@phonestore/shared';
 
 export const getVouchers = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
@@ -18,15 +17,18 @@ export const getVouchers = async (req: AuthRequest, res: Response): Promise<void
 
 export const createVoucher = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
-    const { maVoucher, loaiGiamGia, giaTri, toiDaGiam, donToiThieu, batDau, ketThuc, soLuong } = req.body;
     const userId = req.user!.id;
 
-    if (!maVoucher || !loaiGiamGia || !giaTri || !batDau || !ketThuc) {
-      res.status(400).json({ error: 'Vui lòng nhập đủ thông tin bắt buộc' });
+    // Validate input với Zod
+    const parsed = createVoucherSchema.safeParse(req.body);
+    if (!parsed.success) {
+      res.status(400).json({ error: parsed.error.errors.map(e => e.message).join(', ') });
       return;
     }
 
-    const existing = await prisma.voucher.findUnique({ where: { maVoucher } });
+    const { maVoucher, loaiGiamGia, giaTri, toiDaGiam, donToiThieu, batDau, ketThuc, soLuong } = parsed.data;
+
+    const existing = await prisma.voucher.findUnique({ where: { maVoucher: maVoucher.toUpperCase() } });
     if (existing) {
       res.status(400).json({ error: 'Mã voucher đã tồn tại' });
       return;
@@ -35,13 +37,13 @@ export const createVoucher = async (req: AuthRequest, res: Response): Promise<vo
     const newVoucher = await prisma.voucher.create({
       data: {
         maVoucher: maVoucher.toUpperCase(),
-        loaiGiamGia: loaiGiamGia as DiscountType,
-        giaTri: Number(giaTri),
-        toiDaGiam: toiDaGiam ? Number(toiDaGiam) : null,
-        donToiThieu: Number(donToiThieu) || 0,
+        loaiGiamGia: loaiGiamGia as any,
+        giaTri,
+        toiDaGiam: toiDaGiam ?? null,
+        donToiThieu: donToiThieu ?? 0,
         batDau: new Date(batDau),
         ketThuc: new Date(ketThuc),
-        soLuong: Number(soLuong) || 1,
+        soLuong: soLuong ?? 1,
         nguoiTaoId: userId
       }
     });
@@ -53,9 +55,65 @@ export const createVoucher = async (req: AuthRequest, res: Response): Promise<vo
   }
 };
 
+export const updateVoucher = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    // Validate input với Zod
+    const parsed = updateVoucherSchema.safeParse(req.body);
+    if (!parsed.success) {
+      res.status(400).json({ error: parsed.error.errors.map(e => e.message).join(', ') });
+      return;
+    }
+
+    const voucher = await prisma.voucher.findUnique({ where: { id } });
+    if (!voucher) {
+      res.status(404).json({ error: 'Voucher không tồn tại' });
+      return;
+    }
+
+    const { maVoucher, loaiGiamGia, giaTri, toiDaGiam, donToiThieu, batDau, ketThuc, soLuong } = parsed.data;
+
+    if (maVoucher && maVoucher.toUpperCase() !== voucher.maVoucher) {
+      const existing = await prisma.voucher.findUnique({ where: { maVoucher: maVoucher.toUpperCase() } });
+      if (existing) {
+        res.status(400).json({ error: 'Mã voucher mới đã tồn tại' });
+        return;
+      }
+    }
+
+    const updated = await prisma.voucher.update({
+      where: { id },
+      data: {
+        maVoucher: maVoucher ? maVoucher.toUpperCase() : undefined,
+        loaiGiamGia: loaiGiamGia as any,
+        giaTri,
+        toiDaGiam: toiDaGiam !== undefined ? toiDaGiam : undefined,
+        donToiThieu: donToiThieu !== undefined ? donToiThieu : undefined,
+        batDau: batDau ? new Date(batDau) : undefined,
+        ketThuc: ketThuc ? new Date(ketThuc) : undefined,
+        soLuong: soLuong !== undefined ? soLuong : undefined
+      }
+    });
+
+    res.status(200).json(updated);
+  } catch (error) {
+    console.error('updateVoucher Error:', error);
+    res.status(500).json({ error: 'Lỗi hệ thống' });
+  }
+};
+
 export const deleteVoucher = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
+
+    // Kiểm tra voucher tồn tại
+    const voucher = await prisma.voucher.findUnique({ where: { id } });
+    if (!voucher) {
+      res.status(404).json({ error: 'Voucher không tồn tại' });
+      return;
+    }
+
     await prisma.voucher.delete({ where: { id } });
     res.status(200).json({ message: 'Xóa thành công' });
   } catch (error) {

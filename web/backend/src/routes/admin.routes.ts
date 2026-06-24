@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { authenticate, authorize } from '../middlewares/auth.middleware';
 import { getOrders, updateOrderStatus, scanOrderQr } from '../controllers/admin.order.controller';
 import { createProduct, updateProduct, deleteProduct, uploadImage } from '../controllers/admin.product.controller';
-import { getVouchers, createVoucher, deleteVoucher } from '../controllers/admin.voucher.controller';
+import { getVouchers, createVoucher, updateVoucher, deleteVoucher } from '../controllers/admin.voucher.controller';
 import { getStats } from '../controllers/admin.stats.controller';
 import multer from 'multer';
 
@@ -10,21 +10,27 @@ const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 *
 
 const router = Router();
 
-router.use(authenticate, authorize(['ADMIN', 'MANAGER']));
+// ─── Xác thực chung cho tất cả route admin ───────────────────────
+router.use(authenticate);
 
-router.get('/orders', getOrders);
-router.patch('/orders/:id/status', updateOrderStatus);
-router.post('/orders/scan', scanOrderQr);
+// ─── Đơn hàng — ADMIN + MANAGER ─────────────────────────────────
+router.get('/orders', authorize(['ADMIN', 'MANAGER']), getOrders);
+router.patch('/orders/:id/status', authorize(['ADMIN', 'MANAGER']), updateOrderStatus);
+router.post('/orders/scan', authorize(['ADMIN', 'MANAGER']), scanOrderQr);
 
-router.post('/products', createProduct);
-router.patch('/products/:id', updateProduct);
-router.delete('/products/:id', deleteProduct);
-router.post('/upload', upload.single('file'), uploadImage);
+// ─── Sản phẩm — Chỉ ADMIN ──────────────────────────────────────
+router.post('/products', authorize(['ADMIN']), createProduct);
+router.patch('/products/:id', authorize(['ADMIN']), updateProduct);
+router.delete('/products/:id', authorize(['ADMIN']), deleteProduct);
+router.post('/upload', authorize(['ADMIN']), upload.single('file'), uploadImage);
 
-router.get('/vouchers', getVouchers);
-router.post('/vouchers', createVoucher);
-router.delete('/vouchers/:id', deleteVoucher);
+// ─── Voucher — Chỉ ADMIN ───────────────────────────────────────
+router.get('/vouchers', authorize(['ADMIN', 'MANAGER']), getVouchers);
+router.post('/vouchers', authorize(['ADMIN']), createVoucher);
+router.patch('/vouchers/:id', authorize(['ADMIN']), updateVoucher);
+router.delete('/vouchers/:id', authorize(['ADMIN']), deleteVoucher);
 
-router.get('/stats', getStats);
+// ─── Thống kê — Chỉ ADMIN ──────────────────────────────────────
+router.get('/stats', authorize(['ADMIN']), getStats);
 
 export default router;

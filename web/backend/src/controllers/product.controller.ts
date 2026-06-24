@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import { PrismaClient, Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 import { productQuerySchema } from '@phonestore/shared';
-
-const prisma = new PrismaClient();
+import prisma from '../lib/prisma';
 
 export const getProducts = async (req: Request, res: Response): Promise<void> => {
   try {

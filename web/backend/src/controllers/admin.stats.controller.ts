@@ -1,26 +1,31 @@
 import { Response } from 'express';
-import { PrismaClient } from '@prisma/client';
 import { AuthRequest } from '../middlewares/auth.middleware';
-
-const prisma = new PrismaClient();
+import prisma from '../lib/prisma';
 
 export const getStats = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
-    // 1. Tổng đơn hàng đã hoàn thành
-    const completedOrders = await prisma.order.findMany({
+    // 1. Tổng doanh thu & số đơn hoàn thành (aggregate tại DB, không load toàn bộ vào memory)
+    const revenueAgg = await prisma.order.aggregate({
       where: { trangThai: 'HOAN_THANH' },
-      select: { thanhTien: true, createdAt: true }
+      _sum: { thanhTien: true },
+      _count: true,
     });
 
-    const totalRevenue = completedOrders.reduce((sum, order) => sum + order.thanhTien, 0);
-    const totalOrders = completedOrders.length;
+    const totalRevenue = revenueAgg._sum.thanhTien ?? 0;
+    const totalOrders = revenueAgg._count;
 
-    // 2. Doanh thu 7 ngày gần nhất
+    // 2. Doanh thu 7 ngày gần nhất (lọc tại tầng DB)
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 6);
     sevenDaysAgo.setHours(0, 0, 0, 0);
 
-    const recentOrders = completedOrders.filter(o => new Date(o.createdAt) >= sevenDaysAgo);
+    const recentOrders = await prisma.order.findMany({
+      where: {
+        trangThai: 'HOAN_THANH',
+        createdAt: { gte: sevenDaysAgo },
+      },
+      select: { thanhTien: true, createdAt: true },
+    });
 
     const revenueByDay: Record<string, number> = {};
     for (let i = 0; i < 7; i++) {

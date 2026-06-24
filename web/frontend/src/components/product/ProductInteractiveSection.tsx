@@ -3,9 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { formatCurrency } from '@/lib/utils';
-import { Button } from '@/components/ui/Button';
 import AddToCartButton from './AddToCartButton';
-import ProductSpecs from './ProductSpecs';
 import { useCartStore } from '@/store/useCartStore';
 import toast from 'react-hot-toast';
 
@@ -27,6 +25,35 @@ interface ProductInteractiveSectionProps {
   minVariant: Variant;
 }
 
+const colorMap: Record<string, string> = {
+  'Đen': '#1f2937',
+  'Xám': '#6b7280',
+  'Bạc': '#cbd5e1',
+  'Trắng': '#f8fafc',
+  'Xanh nhạt': '#bae6fd',
+  'Xanh': '#3b82f6',
+  'Xanh dương': '#1d4ed8',
+  'Xanh lá': '#22c55e',
+  'Vàng': '#fef08a',
+  'Hồng': '#fbcfe8',
+  'Đỏ': '#ef4444',
+  'Tím': '#c084fc',
+  'Titan tự nhiên': '#bebebe',
+  'Titan sa mạc': '#d2b48c',
+  'Titan trắng': '#f3f4f6',
+  'Titan đen': '#2b2b2a'
+};
+
+const getColorHex = (colorName: string): string => {
+  const normalized = colorName.toLowerCase();
+  for (const [key, value] of Object.entries(colorMap)) {
+    if (normalized.includes(key.toLowerCase()) || key.toLowerCase().includes(normalized)) {
+      return value;
+    }
+  }
+  return '#cbd5e1'; // fallback gray
+};
+
 export default function ProductInteractiveSection({ product, variants, minVariant }: ProductInteractiveSectionProps) {
   const [selectedVariant, setSelectedVariant] = useState<Variant>(minVariant);
   const [isBuyingNow, setIsBuyingNow] = useState(false);
@@ -37,40 +64,59 @@ export default function ProductInteractiveSection({ product, variants, minVarian
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // If minVariant changes from server (e.g. initial load or navigation), update local state
+  // If minVariant changes from server, update local state
   useEffect(() => {
     setSelectedVariant(minVariant);
   }, [minVariant]);
 
-  // Group variants by storage and color for the selector
-  // 1. Get unique storages
-  const uniqueStorages = Array.from(new Set(variants.map(v => v.dungLuongGb))).sort((a, b) => a - b);
-  
-  // 2. Get available colors for the selected storage
-  const availableColorsForStorage = variants.filter(v => v.dungLuongGb === selectedVariant.dungLuongGb);
+  // Group unique configurations (combinations of ramGb and dungLuongGb)
+  const uniqueConfigs = variants.reduce((acc: { ramGb: number; dungLuongGb: number }[], v) => {
+    if (!acc.some(item => item.ramGb === v.ramGb && item.dungLuongGb === v.dungLuongGb)) {
+      acc.push({ ramGb: v.ramGb, dungLuongGb: v.dungLuongGb });
+    }
+    return acc;
+  }, []).sort((a, b) => {
+    if (a.ramGb !== b.ramGb) return a.ramGb - b.ramGb;
+    return a.dungLuongGb - b.dungLuongGb;
+  });
+
+  // Get available colors for the selected configuration
+  const availableColorsForConfig = Array.from(
+    new Set(
+      variants
+        .filter(v => v.ramGb === selectedVariant.ramGb && v.dungLuongGb === selectedVariant.dungLuongGb)
+        .map(v => v.mauSac)
+    )
+  );
 
   const updateUrl = (variant: Variant) => {
     const params = new URLSearchParams(searchParams.toString());
     const shortVariantId = variant.sku.replace(`${product.slug}-`, '');
     params.set('v', shortVariantId);
-    params.delete('sku'); // Clean up old sku param if it exists
+    params.delete('sku');
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const handleStorageSelect = (storage: number) => {
-    // Find the first variant with this storage
-    const variant = variants.find(v => v.dungLuongGb === storage);
-    if (variant) {
-      setSelectedVariant(variant);
-      updateUrl(variant);
+  const handleConfigSelect = (ramGb: number, dungLuongGb: number) => {
+    let nextVariant = variants.find(
+      v => v.ramGb === ramGb && v.dungLuongGb === dungLuongGb && v.mauSac === selectedVariant.mauSac
+    );
+    if (!nextVariant) {
+      nextVariant = variants.find(v => v.ramGb === ramGb && v.dungLuongGb === dungLuongGb);
+    }
+    if (nextVariant) {
+      setSelectedVariant(nextVariant);
+      updateUrl(nextVariant);
     }
   };
 
   const handleColorSelect = (color: string) => {
-    const variant = variants.find(v => v.dungLuongGb === selectedVariant.dungLuongGb && v.mauSac === color);
-    if (variant) {
-      setSelectedVariant(variant);
-      updateUrl(variant);
+    const nextVariant = variants.find(
+      v => v.ramGb === selectedVariant.ramGb && v.dungLuongGb === selectedVariant.dungLuongGb && v.mauSac === color
+    );
+    if (nextVariant) {
+      setSelectedVariant(nextVariant);
+      updateUrl(nextVariant);
     }
   };
 
@@ -97,30 +143,26 @@ export default function ProductInteractiveSection({ product, variants, minVarian
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 sticky top-24">
-      {/* Variant Selectors */}
-      <div className="mb-6 pb-6 border-b border-slate-100 space-y-4">
-        {/* Storage Selector */}
+    <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 space-y-6">
+      {/* Configuration Selectors */}
+      <div className="space-y-4">
+        {/* Configuration Selector */}
         <div>
-          <h4 className="text-sm font-medium text-slate-800 mb-3">Chọn dung lượng:</h4>
+          <span className="text-xs uppercase tracking-wider text-slate-400 font-bold block mb-2">1. Chọn dung lượng:</span>
           <div className="flex flex-wrap gap-2">
-            {uniqueStorages.map(storage => {
-              const isSelected = selectedVariant.dungLuongGb === storage;
-              const storageVariants = variants.filter(v => v.dungLuongGb === storage);
-              const minStoragePrice = Math.min(...storageVariants.map(v => v.giaBan));
-
+            {uniqueConfigs.map(config => {
+              const isSelected = selectedVariant.ramGb === config.ramGb && selectedVariant.dungLuongGb === config.dungLuongGb;
               return (
                 <button
-                  key={storage}
-                  onClick={() => handleStorageSelect(storage)}
-                  className={`flex flex-col items-center justify-center px-4 py-2 border rounded-xl transition-all ${
+                  key={`${config.ramGb}-${config.dungLuongGb}`}
+                  onClick={() => handleConfigSelect(config.ramGb, config.dungLuongGb)}
+                  className={`px-3.5 py-1.5 border rounded-xl text-xs md:text-sm font-semibold transition-all outline-none cursor-pointer ${
                     isSelected 
-                      ? 'border-sky-600 bg-sky-50 text-sky-800 ring-1 ring-sky-600' 
-                      : 'border-slate-200 hover:border-sky-400 text-slate-600 bg-white'
+                      ? 'border-blue-500 bg-blue-50/50 text-blue-600 ring-1 ring-blue-500/10' 
+                      : 'border-slate-200 hover:border-slate-300 text-slate-700 bg-white'
                   }`}
                 >
-                  <span className="font-semibold">{storage}GB</span>
-                  <span className="text-xs mt-1 opacity-80">{formatCurrency(minStoragePrice)}</span>
+                  {config.ramGb}GB - {config.dungLuongGb}GB
                 </button>
               );
             })}
@@ -129,22 +171,26 @@ export default function ProductInteractiveSection({ product, variants, minVarian
 
         {/* Color Selector */}
         <div>
-          <h4 className="text-sm font-medium text-slate-800 mb-3">Chọn màu sắc:</h4>
+          <span className="text-xs uppercase tracking-wider text-slate-400 font-bold block mb-2">2. Chọn màu sắc:</span>
           <div className="flex flex-wrap gap-2">
-            {availableColorsForStorage.map(v => {
-              const isSelected = selectedVariant.mauSac === v.mauSac;
+            {availableColorsForConfig.map(color => {
+              const isSelected = selectedVariant.mauSac === color;
+              const colorHex = getColorHex(color);
               return (
                 <button
-                  key={v.mauSac}
-                  onClick={() => handleColorSelect(v.mauSac)}
-                  className={`flex flex-col items-center justify-center px-4 py-2 border rounded-xl transition-all ${
+                  key={color}
+                  onClick={() => handleColorSelect(color)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 border rounded-full text-xs md:text-sm font-medium transition-all outline-none cursor-pointer ${
                     isSelected 
-                      ? 'border-sky-600 bg-sky-50 text-sky-800 ring-1 ring-sky-600' 
-                      : 'border-slate-200 hover:border-sky-400 text-slate-600 bg-white'
+                      ? 'border-blue-500 bg-blue-50/50 text-blue-600 ring-1 ring-blue-500/10' 
+                      : 'border-slate-200 hover:border-slate-300 text-slate-700 bg-white'
                   }`}
                 >
-                  <span className="font-medium text-sm">{v.mauSac}</span>
-                  <span className="text-xs mt-1 opacity-80">{formatCurrency(v.giaBan)}</span>
+                  <span 
+                    className="w-3.5 h-3.5 rounded-full border border-slate-300/40 inline-block shrink-0" 
+                    style={{ backgroundColor: colorHex }}
+                  />
+                  <span>{color}</span>
                 </button>
               );
             })}
@@ -152,62 +198,66 @@ export default function ProductInteractiveSection({ product, variants, minVarian
         </div>
       </div>
 
-      {/* Pricing */}
-      <div className="mb-6 pb-6 border-b border-slate-100">
-        <div className="flex items-end space-x-3 mb-2">
-          <span className="text-3xl font-bold text-rose-600">
-            {formatCurrency(giaBan)}
+      {/* Price tag mimicking TGDD's Flash Sale or online promo */}
+      <div className="bg-rose-50/30 rounded-2xl p-4 border border-rose-100 flex flex-col justify-center">
+        <span className="text-xs font-bold text-rose-500 uppercase tracking-wider mb-1">Giá bán Online:</span>
+        <div className="flex items-baseline gap-2">
+          <span className="text-3xl font-extrabold text-rose-600">
+            {formatCurrency(giaBan).replace('₫', 'đ')}
           </span>
           {giaGoc > giaBan && (
-            <span className="text-lg text-slate-400 line-through mb-1">
-              {formatCurrency(giaGoc)}
+            <span className="text-slate-400 line-through text-sm">
+              {formatCurrency(giaGoc).replace('₫', 'đ')}
             </span>
           )}
           {discount > 0 && (
-            <span className="bg-rose-100 text-rose-600 text-sm font-bold px-2 py-1 rounded-lg mb-1">
+            <span className="bg-rose-100 text-rose-600 text-xs font-bold px-2 py-0.5 rounded-lg">
               -{discount}%
             </span>
           )}
         </div>
         {selectedVariant.tonKho <= 0 && (
-          <p className="text-rose-500 text-sm font-medium mt-2">Sản phẩm này hiện đang tạm hết hàng.</p>
+          <p className="text-rose-600 text-xs font-bold mt-2 flex items-center gap-1">
+            <i className="fa-solid fa-circle-exclamation"></i> Tạm hết hàng tại hệ thống
+          </p>
         )}
       </div>
 
-      {/* Promotions mock */}
-      <div className="bg-slate-50 border border-sky-100 rounded-xl p-4 mb-6 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-1 h-full bg-sky-500"></div>
-        <h4 className="font-semibold text-slate-800 mb-2 flex items-center">
-          <i className="fa-solid fa-gift text-sky-500 mr-2"></i> Khuyến mãi đặc biệt
-        </h4>
-        <ul className="text-sm text-slate-600 space-y-2">
-          <li className="flex items-start"><span className="text-sky-500 mr-2">•</span> Giảm thêm 500.000đ khi thanh toán qua thẻ tín dụng.</li>
-          <li className="flex items-start"><span className="text-sky-500 mr-2">•</span> Trợ giá thu cũ lên đời đến 2 triệu đồng.</li>
-          <li className="flex items-start"><span className="text-sky-500 mr-2">•</span> Tặng gói bảo hành VIP 12 tháng.</li>
-        </ul>
-      </div>
-
-      {/* Actions */}
-      <div className="space-y-3">
-        <Button 
-          variant="primary" 
-          className="w-full text-lg py-4 bg-rose-600 hover:bg-rose-700 disabled:opacity-50" 
+      {/* Action Buttons: AddToCart on Left, BuyNow on Right */}
+      <div className="grid grid-cols-2 gap-3">
+        <div className={selectedVariant.tonKho <= 0 ? 'opacity-50 pointer-events-none' : ''}>
+          <AddToCartButton 
+            productId={selectedVariant.id} 
+            className="h-14 rounded-2xl border-rose-500 hover:border-rose-600 text-rose-600 hover:bg-rose-50/50 active:scale-95" 
+          />
+        </div>
+        <button 
           disabled={selectedVariant.tonKho <= 0 || isBuyingNow}
           onClick={handleBuyNow}
+          className="w-full h-14 bg-rose-600 hover:bg-rose-700 text-white font-extrabold rounded-2xl shadow-sm hover:shadow active:scale-95 transition-all disabled:opacity-50 flex items-center justify-center cursor-pointer text-sm uppercase tracking-wider"
         >
-          {isBuyingNow ? 'Đang xử lý...' : 'Mua ngay'}
-        </Button>
-        <div className="grid grid-cols-2 gap-3">
-          <div className={selectedVariant.tonKho <= 0 ? 'opacity-50 pointer-events-none' : ''}>
-            <AddToCartButton productId={selectedVariant.id} />
-          </div>
-          <Button variant="outline" className="w-full text-sky-600 border-sky-200 hover:bg-sky-50 hover:border-sky-300">
-            Mua trả góp 0%
-          </Button>
-        </div>
+          {isBuyingNow ? 'Đang xử lý...' : 'MUA NGAY'}
+        </button>
       </div>
 
-      <ProductSpecs product={product} variant={selectedVariant} />
+      {/* Purchase Policies Card */}
+      <div className="bg-slate-50/50 border border-slate-100 rounded-2xl p-4 space-y-3.5">
+        <h5 className="font-bold text-slate-800 text-xs uppercase tracking-wider">Chính sách mua hàng & Bảo hành:</h5>
+        <div className="grid grid-cols-1 gap-2.5 text-xs text-slate-600">
+          <div className="flex items-start gap-2.5">
+            <i className="fa-solid fa-arrows-rotate text-blue-500 mt-0.5"></i>
+            <span>Hư gì đổi nấy 12 tháng tại các cửa hàng liên kết toàn quốc.</span>
+          </div>
+          <div className="flex items-start gap-2.5">
+            <i className="fa-solid fa-shield-halved text-blue-500 mt-0.5"></i>
+            <span>Bảo hành chính hãng điện thoại 1 năm tại trung tâm ủy quyền.</span>
+          </div>
+          <div className="flex items-start gap-2.5">
+            <i className="fa-solid fa-box-open text-blue-500 mt-0.5"></i>
+            <span>Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Type-C.</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

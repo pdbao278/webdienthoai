@@ -1,9 +1,7 @@
 import { Response } from 'express';
-import { PrismaClient } from '@prisma/client';
 import { AuthRequest } from '../middlewares/auth.middleware';
 import { addToCartSchema, updateCartItemSchema } from '@phonestore/shared';
-
-const prisma = new PrismaClient();
+import prisma from '../lib/prisma';
 
 export const getCart = async (req: AuthRequest, res: Response): Promise<void> => {
   try {

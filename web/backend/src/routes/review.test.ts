@@ -36,7 +36,6 @@ describe('Review API', () => {
     // Create a completed order for the user so they can review
     await prisma.order.create({
       data: {
-        id: `ORDER_REV_${Date.now()}`,
         userId: customerId,
         tongTienHang: 900,
         thanhTien: 900,
@@ -53,12 +52,14 @@ describe('Review API', () => {
   });
 
   afterAll(async () => {
+    // Dùng deleteMany thay vì delete để tránh lỗi cascade
     await prisma.review.deleteMany({ where: { productId } });
     await prisma.orderItem.deleteMany({ where: { order: { userId: customerId } } });
+    await prisma.orderActivityLog.deleteMany({ where: { order: { userId: customerId } } });
     await prisma.order.deleteMany({ where: { userId: customerId } });
     await prisma.productVariant.deleteMany({ where: { productId } });
     await prisma.product.deleteMany({ where: { id: productId } });
-    await prisma.user.delete({ where: { id: customerId } });
+    await prisma.user.deleteMany({ where: { id: customerId } });
     await prisma.$disconnect();
   });
 
@@ -119,6 +120,49 @@ describe('Review API', () => {
     expect(res.status).toBe(403);
     
     // Clean up
-    await prisma.user.delete({ where: { id: unverifiedUser.id } });
+    await prisma.user.deleteMany({ where: { id: unverifiedUser.id } });
+  });
+
+  it('should allow customer to delete their own review', async () => {
+    const reviews = await prisma.review.findMany({ where: { productId } });
+    const reviewId = reviews[0].id;
+
+    const res = await request(app)
+      .delete(`/api/products/${productSlug}/reviews/${reviewId}`)
+      .set('Authorization', `Bearer ${customerToken}`);
+
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe('Xóa đánh giá thành công');
+
+    const check = await prisma.review.findUnique({ where: { id: reviewId } });
+    expect(check).toBeNull();
+  });
+
+  it('should allow admin/manager to delete any customer review', async () => {
+    const newReview = await prisma.review.create({
+      data: {
+        userId: customerId,
+        productId: productId,
+        rating: 4,
+        comment: 'Nice product!'
+      }
+    });
+
+    const admin = await prisma.user.create({
+      data: { email: `admin_review_${Date.now()}@test.com`, passwordHash: 'hash', role: Role.ADMIN }
+    });
+    const adminToken = jwt.sign({ id: admin.id, role: admin.role }, process.env.JWT_SECRET || 'super-secret-key-for-dev');
+
+    const res = await request(app)
+      .delete(`/api/products/${productSlug}/reviews/${newReview.id}`)
+      .set('Authorization', `Bearer ${adminToken}`);
+
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe('Xóa đánh giá thành công');
+
+    const check = await prisma.review.findUnique({ where: { id: newReview.id } });
+    expect(check).toBeNull();
+
+    await prisma.user.delete({ where: { id: admin.id } });
   });
 });

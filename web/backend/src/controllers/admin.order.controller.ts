@@ -1,33 +1,49 @@
 import { Response } from 'express';
-import { PrismaClient, OrderStatus } from '@prisma/client';
 import { AuthRequest } from '../middlewares/auth.middleware';
-
-const prisma = new PrismaClient();
+import prisma from '../lib/prisma';
+import {
+  updateOrderStatusSchema,
+  scanOrderQrSchema,
+  VALID_ORDER_TRANSITIONS,
+} from '@phonestore/shared';
 
 export const getOrders = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
-    const status = req.query.status as string;
-    const whereClause: any = {};
-    if (status && Object.values(OrderStatus).includes(status as OrderStatus)) {
-      whereClause.trangThai = status;
+    const status = req.query.status as string | undefined;
+    const page = Math.max(1, Number(req.query.page) || 1);
+    const limit = Math.min(100, Math.max(1, Number(req.query.limit) || 20));
+    const skip = (page - 1) * limit;
+
+    const whereClause: Record<string, unknown> = {};
+    if (status) {
+      // Validate status enum
+      const parsed = updateOrderStatusSchema.shape.status.safeParse(status);
+      if (parsed.success) {
+        whereClause.trangThai = parsed.data;
+      }
     }
 
-    const orders = await prisma.order.findMany({
-      where: whereClause,
-      include: {
-        user: { select: { hoTen: true, email: true, sdt: true } },
-        items: {
-          include: {
-            productVariant: {
-              select: { dungLuongGb: true, mauSac: true, product: { select: { sanPham: true } } }
+    const [orders, total] = await Promise.all([
+      prisma.order.findMany({
+        where: whereClause,
+        include: {
+          user: { select: { hoTen: true, email: true, sdt: true } },
+          items: {
+            include: {
+              productVariant: {
+                select: { dungLuongGb: true, mauSac: true, product: { select: { sanPham: true } } }
+              }
             }
           }
-        }
-      },
-      orderBy: { createdAt: 'desc' }
-    });
+        },
+        orderBy: { createdAt: 'desc' },
+        take: limit,
+        skip,
+      }),
+      prisma.order.count({ where: whereClause }),
+    ]);
 
-    res.status(200).json(orders);
+    res.status(200).json({ data: orders, total, page, limit });
   } catch (error) {
     console.error('getOrders Error:', error);
     res.status(500).json({ error: 'Lỗi hệ thống' });
@@ -37,13 +53,15 @@ export const getOrders = async (req: AuthRequest, res: Response): Promise<void> 
 export const updateOrderStatus = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const { status } = req.body;
     const userId = req.user!.id;
 
-    if (!status || !Object.values(OrderStatus).includes(status as OrderStatus)) {
-      res.status(400).json({ error: 'Trạng thái không hợp lệ' });
+    // Validate input với Zod
+    const parsed = updateOrderStatusSchema.safeParse(req.body);
+    if (!parsed.success) {
+      res.status(400).json({ error: parsed.error.errors[0].message });
       return;
     }
+    const { status: newStatus } = parsed.data;
 
     const order = await prisma.order.findUnique({ where: { id } });
     if (!order) {
@@ -51,22 +69,33 @@ export const updateOrderStatus = async (req: AuthRequest, res: Response): Promis
       return;
     }
 
-    await prisma.$transaction(async (tx) => {
-      await tx.order.update({
+    // Kiểm tra máy trạng thái — chỉ cho phép chuyển đổi hợp lệ
+    const currentStatus = order.trangThai;
+    const allowedNext = VALID_ORDER_TRANSITIONS[currentStatus] || [];
+    if (!allowedNext.includes(newStatus)) {
+      res.status(400).json({
+        error: `Không thể chuyển từ trạng thái "${currentStatus}" sang "${newStatus}". Cho phép: ${allowedNext.join(', ') || 'không có'}`
+      });
+      return;
+    }
+
+    const updatedOrder = await prisma.$transaction(async (tx) => {
+      const updated = await tx.order.update({
         where: { id },
-        data: { trangThai: status as OrderStatus }
+        data: { trangThai: newStatus as any }
       });
 
       await tx.orderActivityLog.create({
         data: {
           orderId: id,
-          hanhDong: `Cập nhật trạng thái sang ${status}`,
+          hanhDong: `Cập nhật trạng thái: ${currentStatus} → ${newStatus}`,
           nguoiThucHienId: userId
         }
       });
+
+      return updated;
     });
 
-    const updatedOrder = await prisma.order.findUnique({ where: { id } });
     res.status(200).json(updatedOrder);
   } catch (error) {
     console.error('updateOrderStatus Error:', error);
@@ -76,13 +105,15 @@ export const updateOrderStatus = async (req: AuthRequest, res: Response): Promis
 
 export const scanOrderQr = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
-    const { maNhanHang } = req.body;
     const userId = req.user!.id;
 
-    if (!maNhanHang) {
-      res.status(400).json({ error: 'Mã nhận hàng là bắt buộc' });
+    // Validate input với Zod
+    const parsed = scanOrderQrSchema.safeParse(req.body);
+    if (!parsed.success) {
+      res.status(400).json({ error: parsed.error.errors[0].message });
       return;
     }
+    const { maNhanHang } = parsed.data;
 
     const order = await prisma.order.findUnique({ where: { maNhanHang } });
     if (!order) {
@@ -90,13 +121,16 @@ export const scanOrderQr = async (req: AuthRequest, res: Response): Promise<void
       return;
     }
 
-    if (order.trangThai === 'HOAN_THANH' || order.trangThai === 'DA_HUY') {
-      res.status(400).json({ error: `Đơn hàng đang ở trạng thái ${order.trangThai}, không thể quét QR hoàn thành` });
+    // Chỉ cho phép quét QR khi đơn đang ở trạng thái CHO_NHAN_HANG
+    if (order.trangThai !== 'CHO_NHAN_HANG') {
+      res.status(400).json({
+        error: `Đơn hàng đang ở trạng thái "${order.trangThai}". Chỉ có thể quét QR hoàn thành khi ở trạng thái "CHO_NHAN_HANG".`
+      });
       return;
     }
 
-    await prisma.$transaction(async (tx) => {
-      await tx.order.update({
+    const updatedOrder = await prisma.$transaction(async (tx) => {
+      const updated = await tx.order.update({
         where: { id: order.id },
         data: { trangThai: 'HOAN_THANH' }
       });
@@ -108,9 +142,10 @@ export const scanOrderQr = async (req: AuthRequest, res: Response): Promise<void
           nguoiThucHienId: userId
         }
       });
+
+      return updated;
     });
 
-    const updatedOrder = await prisma.order.findUnique({ where: { id: order.id } });
     res.status(200).json(updatedOrder);
   } catch (error) {
     console.error('scanOrderQr Error:', error);

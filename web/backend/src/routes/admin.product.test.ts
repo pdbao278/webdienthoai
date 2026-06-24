@@ -28,12 +28,14 @@ const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-for-dev';
 
 describe('Admin Product API', () => {
   let adminToken: string;
+  let adminId: string;
   let productId: string;
 
   beforeAll(async () => {
     const admin = await prisma.user.create({
       data: { email: `admin_prod_${Date.now()}@test.com`, passwordHash: 'pwd', role: Role.ADMIN }
     });
+    adminId = admin.id;
     adminToken = jwt.sign({ id: admin.id, email: admin.email, role: admin.role }, JWT_SECRET);
   });
 
@@ -43,7 +45,7 @@ describe('Admin Product API', () => {
       await prisma.productVariant.deleteMany({ where: { productId } });
       await prisma.product.deleteMany({ where: { id: productId } });
     }
-    await prisma.user.deleteMany({ where: { email: { contains: '@test.com' } } });
+    await prisma.user.deleteMany({ where: { id: adminId } });
     await prisma.$disconnect();
   });
 

@@ -3,25 +3,31 @@
 import { useEffect, useState } from 'react';
 import { useAuthStore } from '@/store/useAuthStore';
 import { formatCurrency } from '@/lib/utils';
+import { authFetch } from '@/lib/api';
 import toast from 'react-hot-toast';
 
+interface StatsData {
+  totalRevenue: number;
+  totalOrders: number;
+  totalProducts: number;
+  totalUsers: number;
+  revenueChartData: { date: string; value: number }[];
+}
+
 export default function AdminDashboardPage() {
-  const [stats, setStats] = useState<any>(null);
+  const [stats, setStats] = useState<StatsData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { token } = useAuthStore();
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const url = process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/admin/stats` : 'http://localhost:3001/api/admin/stats';
-        const res = await fetch(url, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
+        const res = await authFetch('/admin/stats', token!);
         if (!res.ok) throw new Error('Không thể tải dữ liệu thống kê');
         const data = await res.json();
         setStats(data);
-      } catch (error: any) {
-        toast.error(error.message);
+      } catch (error: unknown) {
+        toast.error(error instanceof Error ? error.message : 'Lỗi tải dữ liệu');
       } finally {
         setIsLoading(false);
       }
@@ -36,7 +42,7 @@ export default function AdminDashboardPage() {
 
   if (!stats) return null;
 
-  const maxRevenue = Math.max(...(stats.revenueChartData?.map((d: any) => d.value) || [0]), 1);
+  const maxRevenue = Math.max(...(stats.revenueChartData?.map((d) => d.value) || [0]), 1);
 
   return (
     <div className="space-y-6">
@@ -82,7 +88,7 @@ export default function AdminDashboardPage() {
         <h3 className="text-lg font-bold text-slate-800 mb-6">Doanh thu 7 ngày gần nhất</h3>
         
         <div className="h-64 flex items-end justify-between gap-2">
-          {stats.revenueChartData.map((d: any, index: number) => {
+          {stats.revenueChartData.map((d, index) => {
             const heightPercent = (d.value / maxRevenue) * 100;
             return (
               <div key={index} className="flex-1 flex flex-col items-center gap-2 group h-full justify-end">

@@ -2,11 +2,9 @@ import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
-import { PrismaClient } from '@prisma/client';
 import { registerSchema, loginSchema, verifyEmailSchema, resendOtpSchema } from '@phonestore/shared';
 import { sendEmail } from '../services/email.service';
-
-const prisma = new PrismaClient();
+import prisma from '../lib/prisma';
 const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-for-dev';
 
 export const register = async (req: Request, res: Response): Promise<void> => {

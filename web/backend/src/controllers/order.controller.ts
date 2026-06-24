@@ -1,10 +1,8 @@
 import { Response } from 'express';
-import { PrismaClient } from '@prisma/client';
 import { AuthRequest } from '../middlewares/auth.middleware';
 import { createOrderSchema, validateVoucherSchema } from '@phonestore/shared';
 import { sendEmail } from '../services/email.service';
-
-const prisma = new PrismaClient();
+import prisma from '../lib/prisma';
 
 const generateMaNhanHang = () => {
   return `ORD-${Math.floor(100000 + Math.random() * 900000)}`;

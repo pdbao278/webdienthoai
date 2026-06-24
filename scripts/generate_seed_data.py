@@ -505,7 +505,7 @@ def main():
                 "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
                 "trong_luong_g": phone["weight"],
                 "chong_nuoc": phone["water"],
-                "mau_sac": "Màu tiêu chuẩn thương hiệu",
+                "mau_sac": "Đen",
                 "media": {
                     "images": [
                         f"data/dienthoai/{brand}/{slug}/images/front.svg",

@@ -6,7 +6,13 @@ import { Button } from '@/components/ui/Button';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
-export default function AddToCartButton({ productId: variantId }: { productId: string }) {
+export default function AddToCartButton({ 
+  productId: variantId, 
+  className = '' 
+}: { 
+  productId: string; 
+  className?: string; 
+}) {
   const addToCart = useCartStore(state => state.addToCart);
   const [isAdding, setIsAdding] = useState(false);
   const router = useRouter();
@@ -31,7 +37,7 @@ export default function AddToCartButton({ productId: variantId }: { productId: s
   return (
     <Button 
       variant="outline" 
-      className="w-full" 
+      className={`w-full py-4 text-xs font-bold border-2 ${className}`} 
       onClick={handleAddToCart}
       disabled={isAdding}
     >

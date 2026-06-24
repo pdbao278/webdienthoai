@@ -3,10 +3,11 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProductGallery from '@/components/product/ProductGallery';
 import ProductSpecs from '@/components/product/ProductSpecs';
-import CompareBox from '@/components/product/CompareBox';
 import { Button } from '@/components/ui/Button';
 import ProductInteractiveSection from '@/components/product/ProductInteractiveSection';
 import ProductReviews from '@/components/product/ProductReviews';
+import CompareWidget from '@/components/product/CompareWidget';
+import ProductDescription from '@/components/product/ProductDescription';
 
 async function getProduct(slug: string) {
   try {
@@ -56,17 +57,13 @@ export default async function ProductDetailPage({
     );
   }
 
-  const giaBan = minVariant.giaBan;
-  const giaGoc = minVariant.giaGoc;
-  const discount = giaGoc > 0 ? Math.round((1 - giaBan / giaGoc) * 100) : 0;
-
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">
-        {/* Breadcrumb mock */}
-        <nav className="text-sm text-slate-500 mb-6 flex items-center space-x-2">
+        {/* Breadcrumb */}
+        <nav className="text-xs md:text-sm text-slate-500 mb-5 flex items-center space-x-2">
           <a href="/" className="hover:text-blue-600">Trang chủ</a>
           <span>/</span>
           <a href="/phone" className="hover:text-blue-600">Điện thoại</a>
@@ -76,14 +73,31 @@ export default async function ProductDetailPage({
           <span className="text-slate-800 font-medium">{product.sanPham}</span>
         </nav>
 
-        {/* Product Title */}
-        <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">{product.sanPham}</h1>
+        {/* Product Title Section mimicking TGDD */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200 pb-4 mb-6 gap-3">
+          <div>
+            <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900">{product.sanPham}</h1>
+            <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
+              <div className="flex items-center text-amber-400">
+                <i className="fa-solid fa-star mr-1"></i>
+                <span className="text-slate-700 font-bold">4.8</span>
+                <span className="mx-1">/ 5</span>
+                <span className="text-slate-400 ml-1">(24 đánh giá)</span>
+              </div>
+              <span className="text-slate-300">|</span>
+              <div className="flex items-center text-sky-600 font-semibold cursor-pointer hover:underline">
+                <i className="fa-solid fa-circle-plus mr-1"></i> So sánh cấu hình
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left Column: Gallery */}
-          <div className="lg:col-span-7">
+          {/* Left Column: Gallery, Specs, Description */}
+          <div className="lg:col-span-7 space-y-6">
             <ProductGallery media={product.media} />
-            <CompareBox />
+            <ProductDescription moTa={product.moTa} />
+            <ProductSpecs product={product} variant={minVariant} />
           </div>
 
           {/* Right Column: Info & Action */}
@@ -91,6 +105,8 @@ export default async function ProductDetailPage({
             <ProductInteractiveSection product={product} variants={product.variants} minVariant={minVariant} />
           </div>
         </div>
+
+        <CompareWidget currentProduct={product} />
 
         <ProductReviews slug={product.slug} />
       </main>
