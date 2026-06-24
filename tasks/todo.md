@@ -1,12 +1,12 @@
 ## Task 1: Cấu hình Monorepo & Khởi tạo dự án
 **Description:** Khởi tạo cấu trúc npm workspaces, Next.js (frontend), Express (backend), và thư mục `shared`. Cài đặt các dependencies nền tảng (TypeScript, Prisma, Tailwind v4, Zod).
 **Acceptance criteria:**
-- [ ] Root `package.json` định nghĩa workspaces `["web/frontend", "web/backend", "shared"]`.
-- [ ] Lệnh `npm run dev` ở root khởi chạy được cả frontend và backend (ví dụ qua `concurrently` hoặc built-in workspaces run).
-- [ ] Package `@phonestore/shared` có thể import thành công từ cả frontend và backend.
+- [x] Root `package.json` định nghĩa workspaces `["web/frontend", "web/backend", "shared"]`.
+- [x] Lệnh `npm run dev` ở root khởi chạy được cả frontend và backend (ví dụ qua `concurrently` hoặc built-in workspaces run).
+- [x] Package `@phonestore/shared` có thể import thành công từ cả frontend và backend.
 **Verification:**
-- [ ] `npm install` ở thư mục gốc chạy không lỗi.
-- [ ] Start dev server thành công cho các workspace.
+- [x] `npm install` ở thư mục gốc chạy không lỗi.
+- [x] Start dev server thành công cho các workspace.
 **Dependencies:** None
 **Files likely touched:** `package.json`, `web/frontend/package.json`, `web/backend/package.json`, `shared/package.json`
 **Estimated scope:** M

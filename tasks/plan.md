@@ -14,7 +14,7 @@ Xây dựng nền tảng cơ bản cho hệ thống thương mại điện tử 
 ## Task List
 
 ### Phase 1: Foundation
-- [ ] Task 1: Cấu hình Monorepo & Khởi tạo dự án
+- [x] Task 1: Cấu hình Monorepo & Khởi tạo dự án
 - [ ] Task 2: Thiết kế Database Schema & Seed Data (M1)
 
 ### Checkpoint: Foundation

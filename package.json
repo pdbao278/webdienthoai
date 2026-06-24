@@ -1,0 +1,21 @@
+{
+  "name": "phonestore-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "web/frontend",
+    "web/backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=web/frontend\" \"npm run dev --workspace=web/backend\"",
+    "build": "npm run build --workspace=@phonestore/shared && npm run build --workspace=phonestore-backend && npm run build --workspace=frontend",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}
