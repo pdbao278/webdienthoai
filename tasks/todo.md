@@ -76,11 +76,11 @@
 ## Task 7: Giao diện Danh sách Sản phẩm & Bộ lọc (Frontend)
 **Description:** Xây dựng trang `/phone` chứa lưới sản phẩm kết hợp thanh công cụ bộ lọc ngang và popup chuyên sâu.
 **Acceptance criteria:**
-- [ ] Trang `/phone` đồng bộ filter criteria với URL query params (ví dụ: `?hang=Apple&ram=8gb`).
-- [ ] Nút lọc nhanh dạng dropdown và popup modal dạng "horizontal chips" theo DESIGN.md.
-- [ ] Lưới sản phẩm tự động gọi lại API khi thay đổi tùy chọn bộ lọc.
+- [x] Trang `/phone` đồng bộ filter criteria với URL query params (ví dụ: `?hang=Apple&ram=8gb`).
+- [x] Nút lọc nhanh dạng dropdown và popup modal dạng "horizontal chips" theo DESIGN.md.
+- [x] Lưới sản phẩm tự động gọi lại API khi thay đổi tùy chọn bộ lọc.
 **Verification:**
-- [ ] Người dùng tick chọn hãng, giá trên UI -> lưới sản phẩm thay đổi tương ứng. Tải lại trang (F5) bộ lọc vẫn giữ nguyên.
+- [x] Người dùng tick chọn hãng, giá trên UI -> lưới sản phẩm thay đổi tương ứng. Tải lại trang (F5) bộ lọc vẫn giữ nguyên.
 **Dependencies:** 6
 **Files likely touched:** `web/frontend/src/app/(shop)/phone/page.tsx`, `web/frontend/src/components/product/FilterBar.tsx`, `web/frontend/src/components/product/FilterModal.tsx`
 **Estimated scope:** L

@@ -32,7 +32,7 @@ Xây dựng nền tảng cơ bản cho hệ thống thương mại điện tử 
 ### Phase 3: Product Catalog
 - [x] Task 5: API Sản phẩm & Tìm kiếm (Backend)
 - [x] Task 6: Giao diện Base Layout & Trang chủ (Frontend)
-- [ ] Task 7: Giao diện Danh sách Sản phẩm & Bộ lọc (Frontend)
+- [x] Task 7: Giao diện Danh sách Sản phẩm & Bộ lọc (Frontend)
 - [ ] Task 8: Giao diện Chi tiết Sản phẩm (Frontend)
 
 ### Checkpoint: Complete M1
