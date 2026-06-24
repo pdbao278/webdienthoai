@@ -51,12 +51,12 @@
 ## Task 5: API Sản phẩm & Tìm kiếm (Backend)
 **Description:** Cung cấp API để frontend lấy thông tin sản phẩm (có filter) và tìm kiếm tự động (autocomplete).
 **Acceptance criteria:**
-- [ ] Zod schema query params cho Product.
-- [ ] `GET /api/products` nhận filter (hang, gia, ram_gb...) và trả về dữ liệu phân trang.
-- [ ] `GET /api/products/:slug` lấy tiết sản phẩm và media.
-- [ ] `GET /api/search?q=` trả về danh sách gợi ý ngắn gọn.
+- [x] Zod schema query params cho Product.
+- [x] `GET /api/products` nhận filter (hang, gia, ram_gb...) và trả về dữ liệu phân trang.
+- [x] `GET /api/products/:slug` lấy tiết sản phẩm và media.
+- [x] `GET /api/search?q=` trả về danh sách gợi ý ngắn gọn.
 **Verification:**
-- [ ] Test query `GET /api/products?hang=Samsung` trả về mảng sản phẩm.
+- [x] Test query `GET /api/products?hang=Samsung` trả về mảng sản phẩm.
 **Dependencies:** 2
 **Files likely touched:** `web/backend/src/routes/product.routes.ts`, `web/backend/src/controllers/product.controller.ts`, `web/backend/src/services/product.service.ts`, `shared/src/schemas/product.schema.ts`
 **Estimated scope:** M
