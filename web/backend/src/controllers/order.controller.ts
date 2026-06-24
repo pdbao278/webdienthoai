@@ -133,16 +133,21 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
     });
 
     // Send confirmation email
-    const user = await prisma.user.findUnique({ where: { id: userId } });
-    if (user && user.email) {
-      await sendEmail(
-        user.email,
-        `Xác nhận đơn hàng ${maNhanHang} - PhoneStore`,
-        `<p>Cảm ơn bạn đã đặt hàng tại PhoneStore.</p>
-         <p>Mã nhận hàng của bạn là: <strong>${maNhanHang}</strong></p>
-         <p>Tổng tiền: <strong>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(thanhTien)}</strong></p>
-         <p>Vui lòng đến cửa hàng nhận máy trước ${new Date(data.thoiGianHenLayHang).toLocaleString('vi-VN')}. Sau 24h từ thời điểm này, đơn hàng sẽ tự động hủy nếu bạn không đến nhận.</p>`
-      );
+    try {
+      const user = await prisma.user.findUnique({ where: { id: userId } });
+      if (user && user.email) {
+        await sendEmail(
+          user.email,
+          `Xác nhận đơn hàng ${maNhanHang} - PhoneStore`,
+          `<p>Cảm ơn bạn đã đặt hàng tại PhoneStore.</p>
+           <p>Mã nhận hàng của bạn là: <strong>${maNhanHang}</strong></p>
+           <p>Tổng tiền: <strong>${new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(thanhTien)}</strong></p>
+           <p>Vui lòng đến cửa hàng nhận máy trước ${new Date(data.thoiGianHenLayHang).toLocaleString('vi-VN')}. Sau 24h từ thời điểm này, đơn hàng sẽ tự động hủy nếu bạn không đến nhận.</p>`
+        );
+      }
+    } catch (emailError) {
+      console.error('Failed to send order confirmation email:', emailError);
+      // We don't fail the order creation if the email fails to send
     }
 
     res.status(201).json({ message: 'Đặt hàng thành công', order });
