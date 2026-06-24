@@ -52,7 +52,7 @@ describe('Cart API', () => {
 
   afterAll(async () => {
     await prisma.cartItem.deleteMany({ where: { userId } });
-    await prisma.product.delete({ where: { id: productId } });
+    await prisma.product.deleteMany({ where: { id: productId } });
     await prisma.user.delete({ where: { id: userId } });
     await prisma.$disconnect();
   });

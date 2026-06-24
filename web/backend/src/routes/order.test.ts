@@ -86,7 +86,7 @@ describe('Order API', () => {
     await prisma.order.deleteMany({ where: { userId } });
     await prisma.voucher.deleteMany({ where: { maVoucher: voucherCode } });
     await prisma.cartItem.deleteMany({ where: { userId } });
-    await prisma.product.delete({ where: { id: productId } });
+    await prisma.product.deleteMany({ where: { id: productId } });
     await prisma.user.delete({ where: { id: userId } });
     await prisma.$disconnect();
   });

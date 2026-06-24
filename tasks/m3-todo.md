@@ -3,7 +3,7 @@
 ## Phase 1: Admin Foundation & Order Operations
 - [x] Task 1: Cấu hình Layout & Bảo mật Admin Route
 - [x] Task 2: API Quản lý Đơn hàng (Admin/Manager)
-- [ ] Task 3: UI Quản lý Đơn hàng & QR Simulator
+- [x] Task 3: UI Quản lý Đơn hàng & QR Simulator
 
 ## Phase 2: Product Management (Admin Only)
 - [ ] Task 4: API Quản lý Sản phẩm & Cloudinary
