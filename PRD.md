@@ -179,14 +179,18 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 - **Yêu cầu đăng nhập** để sử dụng giỏ hàng (lưu Database, không hỗ trợ localStorage cho Guest).
 - Mini-cart ở header.
 - Trang giỏ hàng: thay đổi số lượng, xóa SP. Chỉ cho phép thêm nếu `ton_kho > 0`.
+- Tích hợp ô **Nhập mã giảm giá (Voucher)** ngay tại phần Tóm tắt đơn hàng của Giỏ hàng.
 - Click "Thêm vào giỏ" → Icon giỏ hàng nháy + Toast "Thêm thành công". Click "Mua ngay" → chuyển thẳng Checkout.
 
 #### FR-07: Đặt trước & Nhận tại cửa hàng — Click & Collect (P0)
 - **Mô hình MVP**: 1 cửa hàng duy nhất, **100% thanh toán tại quầy** (không đặt cọc online).
-- Checkout Flow: Xác nhận "Nhận tại cửa hàng", cung cấp SĐT liên hệ và ghi chú.
-- Hẹn giờ nhận: Chọn khung giờ + ngày (tối đa 3 ngày kể từ lúc đặt).
+- Checkout Flow: 
+  - Khách hàng xem và có thể chỉnh sửa tại chỗ (local UI) **Họ và tên**, **Email**.
+  - Xác nhận "Nhận tại cửa hàng" (duy nhất 1 địa chỉ mặc định).
+  - Cung cấp SĐT liên hệ và ghi chú.
+- Hẹn giờ nhận máy: Tách thành 2 dropdown chọn **Ngày nhận** (Hôm nay, Ngày mai, Ngày kia) và **Khung giờ nhận** (Sáng, Trưa, Chiều, Tối).
 - Mã nhận hàng: Nhận QR Code/mã số sau khi đặt thành công, xuất trình khi nhận hàng.
-- **Thành tiền** = `Tổng tiền hàng − Voucher giảm giá` (Phí ship = 0đ).
+- **Thành tiền** = `Tổng tiền hàng − Voucher giảm giá` (Phí ship = 0đ, Voucher được đồng bộ từ Giỏ hàng sang).
 
 #### FR-08: Quản Lý Đơn Hàng — Customer (P0)
 - Lịch sử đặt hàng với luồng trạng thái thống nhất:
@@ -434,6 +438,7 @@ webdienthoai/
 
 | Phiên bản | Ngày | Người thay đổi | Nội dung thay đổi | Lý do |
 |---|---|---|---|---|
+| v4.3 | 2026-06-24 | Antigravity | Hoàn thiện luồng M2: Chuyển tính năng áp mã Voucher sang trang Giỏ hàng. Làm mịn giao diện Thanh toán (Click & Collect) với dropdown Chọn ngày (3 ngày) và Khung giờ (4 buổi), cho phép chỉnh sửa nhanh Họ tên/Email trực tiếp trên form. | Nâng cao trải nghiệm UX, đảm bảo khách hàng thấy rõ giá trị giảm giá trước khi vào thanh toán. |
 | v4.2 | 2026-06-24 | Antigravity | Cập nhật luồng đăng ký: Yêu cầu OTP 6 số với thời hạn đếm ngược 60s và nút gửi lại mã. | Cải thiện bảo mật và UX cho tính năng xác thực email. |
 | v4.1 | 2026-06-23 | Antigravity | Cập nhật cấu trúc bộ lọc trang chủ thành thanh lọc ngang kết hợp popup modal, hiển thị các tiêu chí dạng nút bấm/chips thay vì checkbox, bổ sung sắp xếp giá bên phải bộ lọc. | Tối ưu hóa UI/UX và cải thiện thao tác lọc trên thiết bị di động. |
 | v4.0 | 2026-06-23 | Antigravity | Chuyển đổi toàn bộ PRD từ bán Laptop sang bán Điện thoại: đổi tên PhoneStore, cập nhật danh mục (Gaming Phone, Flagship, Tầm trung, Phổ thông), bộ lọc (Chip, Camera, Dung lượng, Pin), schema DB (chip, camera_chinh, camera_truoc, dung_luong_gb, pin_mah), personas và filter URL. | Yêu cầu PO chuyển ngành hàng. |

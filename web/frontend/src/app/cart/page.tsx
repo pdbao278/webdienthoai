@@ -12,10 +12,12 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 export default function CartPage() {
-  const { items, fetchCart, updateQuantity, removeItem, isLoading } = useCartStore();
-  const { isLoggedIn } = useAuthStore();
+  const { items, fetchCart, updateQuantity, removeItem, isLoading, voucherCode, discount, setVoucher, clearVoucher } = useCartStore();
+  const { isLoggedIn, token } = useAuthStore();
   const router = useRouter();
   const [isUpdating, setIsUpdating] = useState(false);
+  const [voucherCodeInput, setVoucherCodeInput] = useState(voucherCode || '');
+  const [isValidatingVoucher, setIsValidatingVoucher] = useState(false);
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -24,6 +26,10 @@ export default function CartPage() {
       fetchCart();
     }
   }, [isLoggedIn, router, fetchCart]);
+
+  useEffect(() => {
+    setVoucherCodeInput(voucherCode || '');
+  }, [voucherCode]);
 
   const handleUpdateQuantity = async (id: string, currentQty: number, change: number) => {
     const newQty = currentQty + change;
@@ -53,8 +59,48 @@ export default function CartPage() {
   };
 
   const subtotal = items.reduce((acc, item) => acc + (item.product.giaBan * item.soLuong), 0);
-  // MVP: no voucher yet
-  const total = subtotal;
+  
+  const handleApplyVoucher = async () => {
+    if (!voucherCodeInput) return;
+    setIsValidatingVoucher(true);
+    try {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+      const res = await fetch(`${API_URL}/orders/validate-voucher`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ voucherCode: voucherCodeInput })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Lỗi voucher');
+      
+      if (subtotal < data.donToiThieu) {
+        throw new Error(`Đơn hàng tối thiểu ${formatCurrency(data.donToiThieu)}`);
+      }
+
+      let d = 0;
+      if (data.loaiGiamGia === 'PERCENTAGE') {
+        d = Math.floor((subtotal * data.giaTri) / 100);
+        if (data.toiDaGiam && d > data.toiDaGiam) d = data.toiDaGiam;
+      } else {
+        d = data.giaTri;
+      }
+      
+      if (d > subtotal) d = subtotal;
+      
+      setVoucher(voucherCodeInput, d);
+      toast.success('Áp dụng voucher thành công');
+    } catch (err: any) {
+      toast.error(err.message);
+      clearVoucher();
+    } finally {
+      setIsValidatingVoucher(false);
+    }
+  };
+
+  const total = subtotal - discount;
 
   if (!isLoggedIn) return null;
 
@@ -183,7 +229,7 @@ export default function CartPage() {
                   </div>
                   <div className="flex justify-between text-slate-600">
                     <span>Giảm giá</span>
-                    <span className="font-medium text-teal-600">0đ</span>
+                    <span className="font-medium text-teal-600">{discount > 0 ? `-${formatCurrency(discount)}` : '0đ'}</span>
                   </div>
                 </div>
                 
@@ -194,7 +240,27 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                <Link href="/checkout" className="block w-full bg-sky-600 text-white text-center font-medium py-4 rounded-xl hover:bg-sky-700 transition shadow-sm shadow-sky-600/20">
+                <div className="border border-dashed border-slate-300 bg-slate-50 p-4 rounded-xl mb-6">
+                  <label className="block text-sm font-medium text-slate-800 mb-2">Nhập mã giảm giá (Voucher)</label>
+                  <div className="flex gap-2">
+                    <input 
+                      type="text" 
+                      value={voucherCodeInput}
+                      onChange={(e) => setVoucherCodeInput(e.target.value)}
+                      placeholder="MÃ GIẢM GIÁ" 
+                      className="flex-1 min-w-0 px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none uppercase"
+                    />
+                    <button 
+                      className="whitespace-nowrap flex-shrink-0 px-4 py-2 border border-sky-600 text-sky-600 bg-white rounded-lg text-sm font-medium hover:bg-sky-50 transition disabled:opacity-50"
+                      onClick={handleApplyVoucher} 
+                      disabled={isValidatingVoucher || !voucherCodeInput}
+                    >
+                      Áp dụng
+                    </button>
+                  </div>
+                </div>
+
+                <Link href="/checkout" className="block w-full bg-rose-600 text-white text-center font-medium py-4 rounded-xl hover:bg-rose-700 transition shadow-sm shadow-rose-600/20">
                   Tiến hành đặt hàng
                 </Link>
               </div>

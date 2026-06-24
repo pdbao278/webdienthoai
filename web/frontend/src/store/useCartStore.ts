@@ -19,11 +19,15 @@ interface CartState {
   items: CartItem[];
   isLoading: boolean;
   error: string | null;
+  voucherCode: string | null;
+  discount: number;
   fetchCart: () => Promise<void>;
   addToCart: (productId: string, soLuong?: number) => Promise<void>;
   updateQuantity: (itemId: string, soLuong: number) => Promise<void>;
   removeItem: (itemId: string) => Promise<void>;
   clearCart: () => void;
+  setVoucher: (code: string | null, discount: number) => void;
+  clearVoucher: () => void;
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
@@ -32,7 +36,11 @@ export const useCartStore = create<CartState>((set, get) => ({
   items: [],
   isLoading: false,
   error: null,
-  clearCart: () => set({ items: [] }),
+  voucherCode: null,
+  discount: 0,
+  clearCart: () => set({ items: [], voucherCode: null, discount: 0 }),
+  setVoucher: (code, discount) => set({ voucherCode: code, discount }),
+  clearVoucher: () => set({ voucherCode: null, discount: 0 }),
   fetchCart: async () => {
     const token = useAuthStore.getState().token;
     if (!token) return;
