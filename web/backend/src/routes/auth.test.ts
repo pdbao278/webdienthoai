@@ -1,7 +1,11 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import request from 'supertest';
 import app from '../index';
 import { PrismaClient } from '@prisma/client';
+
+vi.mock('../services/email.service', () => ({
+  sendEmail: vi.fn().mockResolvedValue(true)
+}));
 
 const prisma = new PrismaClient();
 

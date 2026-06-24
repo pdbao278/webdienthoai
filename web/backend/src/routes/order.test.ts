@@ -1,8 +1,12 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import request from 'supertest';
 import app from '../index';
 import { PrismaClient } from '@prisma/client';
 import jwt from 'jsonwebtoken';
+
+vi.mock('../services/email.service', () => ({
+  sendEmail: vi.fn().mockResolvedValue(true)
+}));
 
 const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-for-dev';
