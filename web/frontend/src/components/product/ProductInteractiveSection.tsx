@@ -128,7 +128,7 @@ export default function ProductInteractiveSection({ product, variants, minVarian
     try {
       setIsBuyingNow(true);
       deselectAll(); // Clear other selections so only this item is checked out
-      await addToCart(selectedVariant.id, 1);
+      await addToCart(selectedVariant.id, 1, true);
       router.push('/checkout');
     } catch (error: any) {
       if (error.message.includes('Vui lòng đăng nhập')) {

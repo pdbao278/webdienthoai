@@ -17,6 +17,8 @@ interface CartItem {
       id: string;
       sanPham: string;
       slug: string;
+      hang: string;
+      phanKhuc: string;
     };
   };
 }
@@ -28,7 +30,7 @@ interface CartState {
   voucherCode: string | null;
   discount: number;
   fetchCart: () => Promise<void>;
-  addToCart: (productVariantId: string, soLuong?: number) => Promise<void>;
+  addToCart: (productVariantId: string, soLuong?: number, overrideQuantity?: boolean) => Promise<void>;
   updateQuantity: (itemId: string, soLuong: number) => Promise<void>;
   removeItem: (itemId: string) => Promise<void>;
   clearCart: () => void;
@@ -85,7 +87,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       set({ error: err.message, isLoading: false });
     }
   },
-  addToCart: async (productVariantId, soLuong = 1) => {
+  addToCart: async (productVariantId, soLuong = 1, overrideQuantity = false) => {
     const token = useAuthStore.getState().token;
     if (!token) throw new Error('Vui lòng đăng nhập để thêm vào giỏ hàng');
 
@@ -97,7 +99,7 @@ export const useCartStore = create<CartState>((set, get) => ({
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ productVariantId, soLuong })
+        body: JSON.stringify({ productVariantId, soLuong, overrideQuantity })
       });
       
       const data = await res.json();

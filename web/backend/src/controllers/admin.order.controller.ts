@@ -28,6 +28,7 @@ export const getOrders = async (req: AuthRequest, res: Response): Promise<void> 
         where: whereClause,
         include: {
           user: { select: { hoTen: true, email: true, sdt: true } },
+          voucher: { select: { maVoucher: true, giaTri: true, loaiGiamGia: true } },
           items: {
             include: {
               productVariant: {
@@ -79,6 +80,9 @@ export const updateOrderStatus = async (req: AuthRequest, res: Response): Promis
       return;
     }
 
+    const userExists = await prisma.user.findUnique({ where: { id: userId } });
+    const updaterId = userExists ? userId : null;
+
     const updatedOrder = await prisma.$transaction(async (tx) => {
       const updated = await tx.order.update({
         where: { id },
@@ -89,7 +93,7 @@ export const updateOrderStatus = async (req: AuthRequest, res: Response): Promis
         data: {
           orderId: id,
           hanhDong: `Cập nhật trạng thái: ${currentStatus} → ${newStatus}`,
-          nguoiThucHienId: userId
+          nguoiThucHienId: updaterId
         }
       });
 
@@ -129,6 +133,9 @@ export const scanOrderQr = async (req: AuthRequest, res: Response): Promise<void
       return;
     }
 
+    const userExists = await prisma.user.findUnique({ where: { id: userId } });
+    const updaterId = userExists ? userId : null;
+
     const updatedOrder = await prisma.$transaction(async (tx) => {
       const updated = await tx.order.update({
         where: { id: order.id },
@@ -139,7 +146,7 @@ export const scanOrderQr = async (req: AuthRequest, res: Response): Promise<void
         data: {
           orderId: order.id,
           hanhDong: 'Hoàn thành qua quét QR tại quầy',
-          nguoiThucHienId: userId
+          nguoiThucHienId: updaterId
         }
       });
 

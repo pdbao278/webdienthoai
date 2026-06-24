@@ -34,6 +34,7 @@ interface VariantForm {
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<ProductData[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const { token } = useAuthStore();
   
@@ -200,13 +201,31 @@ export default function AdminProductsPage() {
     }
   };
 
+  const filteredProducts = products.filter(p => 
+    p.sanPham.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    p.hang.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    p.phanKhuc.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-bold text-slate-800">Quản lý Sản phẩm</h1>
-        <Button variant="primary" onClick={handleOpenAddModal}>
-          <i className="fa-solid fa-plus mr-2"></i> Thêm sản phẩm
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <div className="relative">
+            <i className="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input 
+              type="text" 
+              placeholder="Tìm kiếm sản phẩm, hãng..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full sm:w-64 pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none transition-all" 
+            />
+          </div>
+          <Button variant="primary" onClick={handleOpenAddModal} className="w-full sm:w-auto whitespace-nowrap">
+            <i className="fa-solid fa-plus mr-2"></i> Thêm sản phẩm
+          </Button>
+        </div>
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
@@ -223,10 +242,10 @@ export default function AdminProductsPage() {
             <tbody className="divide-y divide-slate-100">
               {isLoading ? (
                 <tr><td colSpan={4} className="px-6 py-8 text-center text-slate-500">Đang tải...</td></tr>
-              ) : products.length === 0 ? (
-                <tr><td colSpan={4} className="px-6 py-8 text-center text-slate-500">Chưa có sản phẩm nào</td></tr>
+              ) : filteredProducts.length === 0 ? (
+                <tr><td colSpan={4} className="px-6 py-8 text-center text-slate-500">Không tìm thấy sản phẩm nào</td></tr>
               ) : (
-                products.map(p => (
+                filteredProducts.map(p => (
                   <tr key={p.id} className="hover:bg-slate-50/50">
                     <td className="px-6 py-4 font-medium text-slate-900">{p.sanPham}</td>
                     <td className="px-6 py-4 text-slate-600">{p.hang}</td>

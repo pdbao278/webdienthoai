@@ -23,6 +23,7 @@ interface VoucherData {
 
 export default function AdminVouchersPage() {
   const [vouchers, setVouchers] = useState<VoucherData[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const { token } = useAuthStore();
   const [showModal, setShowModal] = useState(false);
@@ -137,13 +138,29 @@ export default function AdminVouchersPage() {
     }
   };
 
+  const filteredVouchers = vouchers.filter(v => 
+    v.maVoucher.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-bold text-slate-800">Quản lý Voucher</h1>
-        <Button variant="primary" onClick={handleOpenAddModal}>
-          <i className="fa-solid fa-plus mr-2"></i> Thêm Voucher
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <div className="relative">
+            <i className="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input 
+              type="text" 
+              placeholder="Tìm kiếm mã voucher..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full sm:w-64 pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none transition-all" 
+            />
+          </div>
+          <Button variant="primary" onClick={handleOpenAddModal} className="w-full sm:w-auto whitespace-nowrap">
+            <i className="fa-solid fa-plus mr-2"></i> Thêm Voucher
+          </Button>
+        </div>
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
@@ -162,9 +179,9 @@ export default function AdminVouchersPage() {
             <tbody className="divide-y divide-slate-100">
               {isLoading ? (
                 <tr><td colSpan={6} className="px-6 py-8 text-center text-slate-500">Đang tải...</td></tr>
-              ) : vouchers.length === 0 ? (
-                <tr><td colSpan={6} className="px-6 py-8 text-center text-slate-500">Chưa có voucher</td></tr>
-              ) : vouchers.map(v => (
+              ) : filteredVouchers.length === 0 ? (
+                <tr><td colSpan={6} className="px-6 py-8 text-center text-slate-500">Không tìm thấy voucher nào</td></tr>
+              ) : filteredVouchers.map(v => (
                 <tr key={v.id} className="hover:bg-slate-50/50">
                   <td className="px-6 py-4 font-bold text-sky-600">{v.maVoucher}</td>
                   <td className="px-6 py-4">{v.loaiGiamGia === 'PERCENTAGE' ? '% Phần trăm' : 'Số tiền'}</td>

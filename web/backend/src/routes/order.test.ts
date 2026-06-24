@@ -17,12 +17,14 @@ describe('Order API', () => {
   let productVariantId: string;
   let productId: string;
   let voucherCode: string;
+  let highSpendVoucherCode: string;
 
   beforeAll(async () => {
+    const rand = Math.floor(Math.random() * 1000000);
     // Create test user
     const user = await prisma.user.create({
       data: {
-        email: `orderuser_${Date.now()}@example.com`,
+        email: `orderuser_${Date.now()}_${rand}@example.com`,
         passwordHash: 'dummy',
         hoTen: 'Order User'
       }
@@ -33,13 +35,13 @@ describe('Order API', () => {
     // Create test product
     const product = await prisma.product.create({
       data: {
-        slug: `test-product-order-${Date.now()}`,
+        slug: `test-product-order-${Date.now()}-${rand}`,
         hang: 'Apple',
         sanPham: 'Test Product Order',
         phanKhuc: 'FLAGSHIP',
         variants: {
           create: [{
-            sku: `test-variant-${Date.now()}`,
+            sku: `test-variant-${Date.now()}-${rand}`,
             ramGb: 8,
             dungLuongGb: 256,
             mauSac: 'Đen',
@@ -64,7 +66,7 @@ describe('Order API', () => {
     });
 
     // Create test voucher
-    voucherCode = `TESTVOUCHER${Date.now()}`;
+    voucherCode = `TESTVOUCHER${Date.now()}${rand}`;
     await prisma.voucher.create({
       data: {
         maVoucher: voucherCode,
@@ -78,18 +80,38 @@ describe('Order API', () => {
         nguoiTaoId: user.id // Admin in real case
       }
     });
+
+    // Create high-spend test voucher (e.g. requires 30M, but our order is only 18M)
+    highSpendVoucherCode = `HIGHVOUCHER${Date.now()}${rand}`;
+    await prisma.voucher.create({
+      data: {
+        maVoucher: highSpendVoucherCode,
+        loaiGiamGia: 'FIXED_AMOUNT',
+        giaTri: 1000000,
+        donToiThieu: 30000000, // 30 million
+        batDau: new Date(Date.now() - 86400000),
+        ketThuc: new Date(Date.now() + 86400000),
+        soLuong: 5,
+        daSuDung: 0,
+        nguoiTaoId: user.id
+      }
+    });
   });
 
   afterAll(async () => {
+    if (voucherCode || highSpendVoucherCode) {
+      await prisma.voucher.deleteMany({
+        where: {
+          maVoucher: { in: [voucherCode, highSpendVoucherCode].filter(Boolean) }
+        }
+      });
+    }
     if (userId) {
       await prisma.orderActivityLog.deleteMany({ where: { order: { userId } } });
       await prisma.orderItem.deleteMany({ where: { order: { userId } } });
       await prisma.order.deleteMany({ where: { userId } });
       await prisma.cartItem.deleteMany({ where: { userId } });
       await prisma.user.deleteMany({ where: { id: userId } });
-    }
-    if (voucherCode) {
-      await prisma.voucher.deleteMany({ where: { maVoucher: voucherCode } });
     }
     if (productId) {
       await prisma.productVariant.deleteMany({ where: { productId } });
@@ -149,6 +171,30 @@ describe('Order API', () => {
       // Check Voucher Usage
       const v = await prisma.voucher.findUnique({ where: { maVoucher: voucherCode } });
       expect(v?.daSuDung).toBe(1);
+    });
+
+    it('should fail to create order if voucher minimum spend is not met', async () => {
+      // Re-add product variant to cart since previous test cleared it on success
+      await prisma.cartItem.create({
+        data: {
+          userId,
+          productVariantId,
+          soLuong: 1
+        }
+      });
+
+      const res = await request(app)
+        .post('/api/orders')
+        .set('Authorization', `Bearer ${userToken}`)
+        .send({
+          sdtLienHe: '0901234567',
+          thoiGianHenLayHang: new Date(Date.now() + 86400000).toISOString(),
+          voucherCode: highSpendVoucherCode,
+          phuongThucThanhToan: 'TienMat'
+        });
+
+      expect(res.status).toBe(400);
+      expect(res.body.error).toContain('tối thiểu');
     });
 
     it('should cancel order and restore stock', async () => {

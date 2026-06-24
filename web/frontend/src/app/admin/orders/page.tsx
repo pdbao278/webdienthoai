@@ -8,6 +8,13 @@ import toast from 'react-hot-toast';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 
+const formatDateTime = (dateStr: string) => {
+  const d = new Date(dateStr);
+  const time = d.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+  const date = d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  return `${time} ngày ${date}`;
+};
+
 interface OrderUser {
   hoTen: string;
   email: string;
@@ -22,17 +29,31 @@ interface OrderItemVariant {
 
 interface OrderItem {
   soLuong: number;
+  donGia: number;
   productVariant: OrderItemVariant;
+}
+
+interface OrderVoucher {
+  maVoucher: string;
+  giaTri: number;
+  loaiGiamGia: string;
 }
 
 interface OrderData {
   id: string;
   maNhanHang: string;
+  tongTienHang: number;
+  tienGiamGia: number;
   thanhTien: number;
   trangThai: string;
   createdAt: string;
   user: OrderUser;
   items: OrderItem[];
+  voucher?: OrderVoucher | null;
+  sdtLienHe: string;
+  ghiChu: string | null;
+  thoiGianHenLayHang: string;
+  phuongThucThanhToan: string | null;
 }
 
 const ORDER_STATUS_MAP: Record<string, string> = {
@@ -53,8 +74,8 @@ const STATUS_COLORS: Record<string, string> = {
 
 /** Chuyển đổi trạng thái hợp lệ (máy trạng thái) */
 const VALID_TRANSITIONS: Record<string, string[]> = {
-  'DA_DAT': ['DANG_CHUAN_BI', 'DA_HUY'],
-  'DANG_CHUAN_BI': ['CHO_NHAN_HANG', 'DA_HUY'],
+  'DA_DAT': ['DANG_CHUAN_BI', 'CHO_NHAN_HANG', 'HOAN_THANH', 'DA_HUY'],
+  'DANG_CHUAN_BI': ['CHO_NHAN_HANG', 'HOAN_THANH', 'DA_HUY'],
   'CHO_NHAN_HANG': ['HOAN_THANH', 'DA_HUY'],
   'HOAN_THANH': [],
   'DA_HUY': [],
@@ -64,11 +85,13 @@ export default function AdminOrdersPage() {
   const [allOrders, setAllOrders] = useState<OrderData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('ALL');
+  const [searchTerm, setSearchTerm] = useState('');
   const { token } = useAuthStore();
   
   const [showQRModal, setShowQRModal] = useState(false);
   const [qrCode, setQrCode] = useState('');
   const [isScanning, setIsScanning] = useState(false);
+  const [selectedOrderDetail, setSelectedOrderDetail] = useState<OrderData | null>(null);
 
   const fetchOrders = async () => {
     try {
@@ -151,22 +174,40 @@ export default function AdminOrdersPage() {
     return acc;
   }, {} as Record<string, number>);
 
-  const filteredOrders = activeTab === 'ALL' 
+  const tabFilteredOrders = activeTab === 'ALL' 
     ? allOrders 
     : allOrders.filter(o => o.trangThai === activeTab);
+
+  const filteredOrders = tabFilteredOrders.filter(o => 
+    o.maNhanHang.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    o.user.hoTen.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (o.user.sdt && o.user.sdt.includes(searchTerm))
+  );
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-bold text-slate-800">Quản lý Đơn hàng</h1>
         
-        <Button 
-          variant="primary" 
-          onClick={() => setShowQRModal(true)}
-          className="whitespace-nowrap w-full sm:w-auto"
-        >
-          <i className="fa-solid fa-qrcode mr-2"></i> Quét mã nhận hàng
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <div className="relative">
+            <i className="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input 
+              type="text" 
+              placeholder="Tìm kiếm mã đơn, tên, SĐT..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full sm:w-64 pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none transition-all" 
+            />
+          </div>
+          <Button 
+            variant="primary" 
+            onClick={() => setShowQRModal(true)}
+            className="whitespace-nowrap w-full sm:w-auto"
+          >
+            <i className="fa-solid fa-qrcode mr-2"></i> Quét mã nhận hàng
+          </Button>
+        </div>
       </div>
 
       {/* Tabs */}
@@ -221,7 +262,12 @@ export default function AdminOrdersPage() {
                   return (
                     <tr key={order.id} className="hover:bg-slate-50/50">
                       <td className="px-6 py-4">
-                        <div className="font-medium text-slate-900">{order.maNhanHang}</div>
+                        <button 
+                          onClick={() => setSelectedOrderDetail(order)}
+                          className="font-semibold text-sky-600 hover:text-sky-800 hover:underline text-left block focus:outline-none"
+                        >
+                          {order.maNhanHang}
+                        </button>
                         <div className="text-xs text-slate-500 mt-1">{new Date(order.createdAt).toLocaleString('vi-VN')}</div>
                       </td>
                       <td className="px-6 py-4">
@@ -300,6 +346,133 @@ export default function AdminOrdersPage() {
                 >
                   Xác nhận giao hàng
                 </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Order Detail Modal */}
+      {selectedOrderDetail && (
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100">
+            <div className="p-6 md:p-8">
+              {/* Header */}
+              <div className="flex justify-between items-start border-b border-slate-100 pb-4 mb-6">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <i className="fa-solid fa-file-invoice text-sky-500"></i> Chi tiết đơn hàng: {selectedOrderDetail.maNhanHang}
+                  </h3>
+                  <span className={`inline-block mt-2 px-2.5 py-1 text-xs font-semibold rounded-full ${STATUS_COLORS[selectedOrderDetail.trangThai] || 'bg-slate-100 text-slate-800'}`}>
+                    {ORDER_STATUS_MAP[selectedOrderDetail.trangThai]}
+                  </span>
+                </div>
+                <button 
+                  onClick={() => setSelectedOrderDetail(null)} 
+                  className="text-slate-400 hover:text-slate-600 hover:bg-slate-50 p-2 rounded-full transition-colors"
+                >
+                  <i className="fa-solid fa-xmark text-xl"></i>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                {/* Buyer info */}
+                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
+                  <h4 className="font-bold text-slate-800 text-sm border-b border-slate-200/60 pb-1 mb-2">Thông tin khách hàng</h4>
+                  <div className="text-sm"><span className="text-slate-500">Họ tên:</span> <strong className="text-slate-800">{selectedOrderDetail.user.hoTen}</strong></div>
+                  <div className="text-sm"><span className="text-slate-500">Email:</span> <span className="text-slate-800">{selectedOrderDetail.user.email}</span></div>
+                  <div className="text-sm"><span className="text-slate-500">SĐT Liên hệ:</span> <span className="text-slate-800">{selectedOrderDetail.sdtLienHe || selectedOrderDetail.user.sdt || '—'}</span></div>
+                  {selectedOrderDetail.ghiChu && (
+                    <div className="text-sm mt-1 bg-white p-2.5 rounded-lg border border-slate-100"><span className="text-slate-500">Ghi chú:</span> <span className="text-slate-700 italic">{selectedOrderDetail.ghiChu}</span></div>
+                  )}
+                </div>
+
+                {/* Date/time and payment info */}
+                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
+                  <h4 className="font-bold text-slate-800 text-sm border-b border-slate-200/60 pb-1 mb-2">Thời gian & Thanh toán</h4>
+                  <div className="text-sm"><span className="text-slate-500">Ngày đặt hàng:</span> <span className="text-slate-800">{formatDateTime(selectedOrderDetail.createdAt)}</span></div>
+                  <div className="text-sm"><span className="text-slate-500">Ngày giờ hẹn lấy:</span> <strong className="text-sky-700">{formatDateTime(selectedOrderDetail.thoiGianHenLayHang)}</strong></div>
+                  <div className="text-sm"><span className="text-slate-500">Phương thức:</span> <span className="text-slate-800 font-medium">{selectedOrderDetail.phuongThucThanhToan === 'TienMat' ? 'Tiền mặt tại cửa hàng' : 'Chuyển khoản / Quét mã ngân hàng'}</span></div>
+                </div>
+              </div>
+
+              {/* Products list */}
+              <div className="border border-slate-100 rounded-2xl overflow-hidden mb-6">
+                <div className="bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-600 grid grid-cols-12 border-b border-slate-100">
+                  <div className="col-span-6">Sản phẩm</div>
+                  <div className="col-span-2 text-center">SL</div>
+                  <div className="col-span-2 text-right">Đơn giá</div>
+                  <div className="col-span-2 text-right">Tạm tính</div>
+                </div>
+                <div className="divide-y divide-slate-100 max-h-[160px] overflow-y-auto">
+                  {selectedOrderDetail.items.map((item, idx) => (
+                    <div key={idx} className="px-4 py-3 text-sm grid grid-cols-12 items-center">
+                      <div className="col-span-6 font-medium text-slate-800">
+                        {item.productVariant.product.sanPham}{!item.productVariant.product.sanPham.includes(`${item.productVariant.dungLuongGb}GB`) ? ` - ${item.productVariant.dungLuongGb}GB` : ''} - {item.productVariant.mauSac}
+                      </div>
+                      <div className="col-span-2 text-center text-slate-600">{item.soLuong}</div>
+                      <div className="col-span-2 text-right text-slate-600">{formatCurrency(item.donGia)}</div>
+                      <div className="col-span-2 text-right font-medium text-slate-800">{formatCurrency(item.donGia * item.soLuong)}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pricing section (Before, after voucher) */}
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2 mb-6">
+                <div className="flex justify-between text-sm">
+                  <span className="text-slate-500">Tổng tiền hàng:</span>
+                  <span className="font-medium text-slate-800">{formatCurrency(selectedOrderDetail.tongTienHang)}</span>
+                </div>
+                <div className="flex justify-between text-sm items-center">
+                  <span className="text-slate-500 flex items-center gap-1.5">
+                    Khuyến mãi/Voucher:
+                    {selectedOrderDetail.voucher ? (
+                      <span className="bg-rose-50 text-rose-700 px-2 py-0.5 rounded-lg text-xs font-bold border border-rose-100 uppercase">
+                        {selectedOrderDetail.voucher.maVoucher}
+                      </span>
+                    ) : (
+                      <span className="text-slate-400 text-xs italic">Không dùng</span>
+                    )}
+                  </span>
+                  <span className="font-medium text-rose-600">
+                    -{formatCurrency(selectedOrderDetail.tienGiamGia)}
+                  </span>
+                </div>
+                <div className="flex justify-between border-t border-slate-200 pt-2 mt-2">
+                  <span className="font-bold text-slate-800">Thành tiền thanh toán:</span>
+                  <span className="font-bold text-lg text-sky-700">{formatCurrency(selectedOrderDetail.thanhTien)}</span>
+                </div>
+              </div>
+
+              {/* Footer actions */}
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-slate-100 pt-6">
+                <Button variant="secondary" onClick={() => setSelectedOrderDetail(null)} className="w-full sm:w-auto">
+                  Đóng
+                </Button>
+                
+                {getNextStatuses(selectedOrderDetail.trangThai).length > 0 && (
+                  <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
+                    <span className="text-xs text-slate-500 font-semibold whitespace-nowrap">Chuyển trạng thái:</span>
+                    <select
+                      value=""
+                      onChange={(e) => {
+                        if (e.target.value) {
+                          handleUpdateStatus(selectedOrderDetail.id, e.target.value);
+                          setSelectedOrderDetail(null);
+                        }
+                      }}
+                      className="px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:border-sky-500 outline-none text-slate-700 font-semibold shadow-sm transition"
+                    >
+                      <option value="">Chọn trạng thái tiếp theo...</option>
+                      {getNextStatuses(selectedOrderDetail.trangThai).map((s) => (
+                        <option key={s} value={s}>
+                          {ORDER_STATUS_MAP[s]}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
               </div>
             </div>
           </div>

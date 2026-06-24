@@ -114,8 +114,19 @@ Giai đoạn M3 tập trung vào việc xây dựng hệ thống quản trị (A
   - **Dependencies**: None
   - **Estimated scope**: Medium
 
+### Phase 5: User Management (Admin Only)
+- [ ] **Task 11: API & UI Quản lý Người dùng**
+  - **Description**: Xây dựng API (backend) và giao diện (frontend) cho phép Admin quản lý danh sách người dùng, cập nhật quyền (Role: CUSTOMER, MANAGER, ADMIN), và tìm kiếm người dùng.
+  - **Acceptance criteria**:
+    - [ ] API `GET /api/admin/users` liệt kê và phân trang người dùng (có filter/search theo email/tên).
+    - [ ] API `PATCH /api/admin/users/:id/role` thay đổi role người dùng.
+    - [ ] Giao diện `/admin/users` hiển thị danh sách người dùng và có chức năng thay đổi quyền, tìm kiếm.
+  - **Verification**: Test với tài khoản Admin thay đổi quyền của tài khoản Customer thành Manager.
+  - **Dependencies**: Task 1
+  - **Estimated scope**: Medium
+
 ### Checkpoint: Complete
-- [ ] All acceptance criteria met for Phase 1, 2, 3, 4.
+- [ ] All acceptance criteria met for Phase 1, 2, 3, 4, 5.
 - [ ] Project builds correctly.
 - [ ] Ready for human review.
 

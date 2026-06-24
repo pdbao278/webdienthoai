@@ -22,7 +22,9 @@ export const getCart = async (req: AuthRequest, res: Response): Promise<void> =>
               select: {
                 id: true,
                 sanPham: true,
-                slug: true
+                slug: true,
+                hang: true,
+                phanKhuc: true
               }
             }
           }
@@ -41,7 +43,7 @@ export const getCart = async (req: AuthRequest, res: Response): Promise<void> =>
 export const addToCart = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const userId = req.user!.id;
-    const { productVariantId, soLuong } = addToCartSchema.parse(req.body);
+    const { productVariantId, soLuong, overrideQuantity } = addToCartSchema.parse(req.body);
 
     const variant = await prisma.productVariant.findUnique({ where: { id: productVariantId } });
     if (!variant) {
@@ -61,7 +63,7 @@ export const addToCart = async (req: AuthRequest, res: Response): Promise<void> 
     });
 
     if (existingCartItem) {
-      const newQty = existingCartItem.soLuong + soLuong;
+      const newQty = overrideQuantity ? soLuong : existingCartItem.soLuong + soLuong;
       if (variant.tonKho < newQty) {
         res.status(400).json({ error: 'Không đủ số lượng tồn kho' });
         return;

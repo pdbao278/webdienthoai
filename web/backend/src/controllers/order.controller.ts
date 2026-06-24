@@ -15,7 +15,11 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
 
     const cartItems = await prisma.cartItem.findMany({
       where: data.cartItemIds ? { userId, id: { in: data.cartItemIds } } : { userId },
-      include: { productVariant: true },
+      include: { 
+        productVariant: {
+          include: { product: true }
+        }
+      },
     });
 
     if (cartItems.length === 0) {
@@ -48,7 +52,7 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
       let voucherId = null;
 
       if (data.voucherCode) {
-        const voucher = await tx.voucher.findUnique({ where: { maVoucher: data.voucherCode } });
+        const voucher = await tx.voucher.findUnique({ where: { maVoucher: data.voucherCode.toUpperCase() } });
         if (!voucher) {
           throw new Error('Mã voucher không tồn tại');
         }
@@ -56,12 +60,33 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
         if (now < voucher.batDau || now > voucher.ketThuc) {
           throw new Error('Mã voucher không trong thời gian sử dụng');
         }
-        if (tongTienHang < voucher.donToiThieu) {
-          throw new Error(`Đơn hàng tối thiểu ${voucher.donToiThieu}đ để áp dụng voucher này`);
+
+        // Calculate eligible items subtotal
+        let eligibleSubtotal = 0;
+        if (!voucher.apDungCho || voucher.apDungCho === 'tat_ca') {
+          eligibleSubtotal = tongTienHang;
+        } else if (voucher.apDungCho.startsWith('hang:')) {
+          const targetBrand = voucher.apDungCho.replace('hang:', '').toLowerCase();
+          eligibleSubtotal = cartItems
+            .filter(item => item.productVariant.product.hang.toLowerCase() === targetBrand)
+            .reduce((sum, item) => sum + item.soLuong * item.productVariant.giaBan, 0);
+        } else if (voucher.apDungCho.startsWith('phan_khuc:')) {
+          const targetSegment = voucher.apDungCho.replace('phan_khuc:', '').toLowerCase();
+          eligibleSubtotal = cartItems
+            .filter(item => item.productVariant.product.phanKhuc.toLowerCase() === targetSegment)
+            .reduce((sum, item) => sum + item.soLuong * item.productVariant.giaBan, 0);
+        }
+
+        if (eligibleSubtotal === 0) {
+          throw new Error('Đơn hàng không có sản phẩm nào thuộc phạm vi áp dụng của voucher');
+        }
+
+        if (eligibleSubtotal < voucher.donToiThieu) {
+          throw new Error(`Tổng giá trị các sản phẩm được áp dụng voucher phải tối thiểu ${voucher.donToiThieu}đ`);
         }
 
         if (voucher.loaiGiamGia === 'PERCENTAGE') {
-          tienGiamGia = Math.floor((tongTienHang * voucher.giaTri) / 100);
+          tienGiamGia = Math.floor((eligibleSubtotal * voucher.giaTri) / 100);
           if (voucher.toiDaGiam && tienGiamGia > voucher.toiDaGiam) {
             tienGiamGia = voucher.toiDaGiam;
           }
@@ -169,7 +194,7 @@ export const validateVoucher = async (req: AuthRequest, res: Response): Promise<
   try {
     const { voucherCode } = validateVoucherSchema.parse(req.body);
 
-    const voucher = await prisma.voucher.findUnique({ where: { maVoucher: voucherCode } });
+    const voucher = await prisma.voucher.findUnique({ where: { maVoucher: voucherCode.toUpperCase() } });
     if (!voucher) {
       res.status(404).json({ error: 'Mã voucher không tồn tại' });
       return;

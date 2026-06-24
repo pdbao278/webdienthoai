@@ -14,10 +14,11 @@ describe('Cart API', () => {
   let productId: string;
 
   beforeAll(async () => {
+    const rand = Math.floor(Math.random() * 1000000);
     // Create test user
     const user = await prisma.user.create({
       data: {
-        email: `cartuser_${Date.now()}@example.com`,
+        email: `cartuser_${Date.now()}_${rand}@example.com`,
         passwordHash: 'dummy',
         hoTen: 'Cart User'
       }
@@ -28,13 +29,13 @@ describe('Cart API', () => {
     // Create test product
     const product = await prisma.product.create({
       data: {
-        slug: `test-product-cart-${Date.now()}`,
+        slug: `test-product-cart-${Date.now()}-${rand}`,
         hang: 'Samsung',
         sanPham: 'Test Product Cart',
         phanKhuc: 'TAM_TRUNG',
         variants: {
           create: [{
-            sku: `test-variant-${Date.now()}`,
+            sku: `test-variant-${Date.now()}-${rand}`,
             ramGb: 8,
             dungLuongGb: 256,
             mauSac: 'Đen',
@@ -114,6 +115,20 @@ describe('Cart API', () => {
       expect(res.status).toBe(200);
       expect(res.body.cartItem.soLuong).toBe(5); // 2 + 3
     });
+
+    it('should override quantity instead of incrementing if overrideQuantity is true', async () => {
+      const res = await request(app)
+        .post('/api/cart')
+        .set('Authorization', `Bearer ${userToken}`)
+        .send({
+          productVariantId,
+          soLuong: 1,
+          overrideQuantity: true
+        });
+
+      expect(res.status).toBe(200);
+      expect(res.body.cartItem.soLuong).toBe(1); // Overridden to 1 instead of 5 + 1 = 6
+    });
   });
 
   describe('GET /api/cart', () => {
@@ -125,7 +140,7 @@ describe('Cart API', () => {
       expect(res.status).toBe(200);
       expect(Array.isArray(res.body)).toBe(true);
       expect(res.body.length).toBe(1);
-      expect(res.body[0].soLuong).toBe(5);
+      expect(res.body[0].soLuong).toBe(1);
       expect(res.body[0].productVariant.product.sanPham).toBe('Test Product Cart');
     });
   });

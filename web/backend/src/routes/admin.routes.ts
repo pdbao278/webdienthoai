@@ -4,6 +4,7 @@ import { getOrders, updateOrderStatus, scanOrderQr } from '../controllers/admin.
 import { createProduct, updateProduct, deleteProduct, uploadImage } from '../controllers/admin.product.controller';
 import { getVouchers, createVoucher, updateVoucher, deleteVoucher } from '../controllers/admin.voucher.controller';
 import { getStats } from '../controllers/admin.stats.controller';
+import { getUsers, updateUserRole } from '../controllers/admin.user.controller';
 import multer from 'multer';
 
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 * 1024 * 1024 } });
@@ -32,5 +33,9 @@ router.delete('/vouchers/:id', authorize(['ADMIN']), deleteVoucher);
 
 // ─── Thống kê — Chỉ ADMIN ──────────────────────────────────────
 router.get('/stats', authorize(['ADMIN']), getStats);
+
+// ─── Người dùng — Chỉ ADMIN ─────────────────────────────────────
+router.get('/users', authorize(['ADMIN']), getUsers);
+router.patch('/users/:id/role', authorize(['ADMIN']), updateUserRole);
 
 export default router;

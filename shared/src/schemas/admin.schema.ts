@@ -17,8 +17,8 @@ export type OrderStatusType = z.infer<typeof OrderStatusEnum>;
  *                                          → DA_HUY (từ bất kỳ trạng thái nào trước HOAN_THANH)
  */
 export const VALID_ORDER_TRANSITIONS: Record<string, string[]> = {
-  DA_DAT: ['DANG_CHUAN_BI', 'DA_HUY'],
-  DANG_CHUAN_BI: ['CHO_NHAN_HANG', 'DA_HUY'],
+  DA_DAT: ['DANG_CHUAN_BI', 'CHO_NHAN_HANG', 'HOAN_THANH', 'DA_HUY'],
+  DANG_CHUAN_BI: ['CHO_NHAN_HANG', 'HOAN_THANH', 'DA_HUY'],
   CHO_NHAN_HANG: ['HOAN_THANH', 'DA_HUY'],
   HOAN_THANH: [],
   DA_HUY: [],
@@ -109,6 +109,13 @@ export const addReviewSchema = z.object({
   comment: z.string().optional().nullable(),
 });
 
+// ─── User ────────────────────────────────────────────────────────
+export const UserRoleEnum = z.enum(['CUSTOMER', 'MANAGER', 'ADMIN']);
+
+export const updateUserRoleSchema = z.object({
+  role: UserRoleEnum,
+});
+
 // ─── Exports types ───────────────────────────────────────────────
 export type UpdateOrderStatusInput = z.infer<typeof updateOrderStatusSchema>;
 export type ScanOrderQrInput = z.infer<typeof scanOrderQrSchema>;
@@ -117,3 +124,4 @@ export type UpdateProductInput = z.infer<typeof updateProductSchema>;
 export type CreateVoucherInput = z.infer<typeof createVoucherSchema>;
 export type UpdateVoucherInput = z.infer<typeof updateVoucherSchema>;
 export type AddReviewInput = z.infer<typeof addReviewSchema>;
+export type UpdateUserRoleInput = z.infer<typeof updateUserRoleSchema>;

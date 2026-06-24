@@ -15,16 +15,47 @@ import { formatCurrency } from '@/lib/utils';
 import toast from 'react-hot-toast';
 
 export default function CheckoutPage() {
-  const { items, fetchCart, clearCart, voucherCode, discount, setVoucher, clearVoucher, selectedItemIds } = useCartStore();
+  const { items, fetchCart, clearCart, voucherCode, discount, setVoucher, clearVoucher, selectedItemIds, isLoading } = useCartStore();
   const { user, isLoggedIn, token } = useAuthStore();
   const router = useRouter();
 
   const [voucherCodeInput, setVoucherCodeInput] = useState(voucherCode || '');
   const [isValidatingVoucher, setIsValidatingVoucher] = useState(false);
+  const [appliedVoucher, setAppliedVoucher] = useState<any>(null);
 
   useEffect(() => {
     setVoucherCodeInput(voucherCode || '');
+    if (!voucherCode) {
+      setAppliedVoucher(null);
+    }
   }, [voucherCode]);
+
+  useEffect(() => {
+    if (voucherCode && !appliedVoucher && token) {
+      const fetchVoucher = async () => {
+        try {
+          const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
+          const res = await fetch(`${API_URL}/orders/validate-voucher`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({ voucherCode })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            setAppliedVoucher(data);
+          } else {
+            clearVoucher();
+          }
+        } catch (e) {
+          clearVoucher();
+        }
+      };
+      fetchVoucher();
+    }
+  }, [voucherCode, token, appliedVoucher, clearVoucher]);
 
   const generateDates = useMemo(() => {
     const dates = [];
@@ -77,8 +108,83 @@ export default function CheckoutPage() {
   }, [isLoggedIn, router, fetchCart]);
 
   const selectedItems = useMemo(() => items.filter(item => selectedItemIds.includes(item.id)), [items, selectedItemIds]);
+
+  useEffect(() => {
+    if (isLoggedIn && !isLoading && selectedItems.length === 0) {
+      router.push('/cart');
+    }
+  }, [isLoggedIn, isLoading, selectedItems.length, router]);
   const subtotal = selectedItems.reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
-  const total = subtotal - discount;
+  
+  const calculateVoucherDiscount = (itemsList: typeof items, voucher: any) => {
+    if (!voucher) return 0;
+    
+    let eligibleSubtotal = 0;
+    const apDungCho = voucher.apDungCho || 'tat_ca';
+    
+    if (apDungCho === 'tat_ca') {
+      eligibleSubtotal = subtotal;
+    } else if (apDungCho.startsWith('hang:')) {
+      const brand = apDungCho.replace('hang:', '').toLowerCase();
+      eligibleSubtotal = itemsList
+        .filter(item => item.productVariant?.product?.hang?.toLowerCase() === brand)
+        .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+    } else if (apDungCho.startsWith('phan_khuc:')) {
+      const segment = apDungCho.replace('phan_khuc:', '').toLowerCase();
+      eligibleSubtotal = itemsList
+        .filter(item => item.productVariant?.product?.phanKhuc?.toLowerCase() === segment)
+        .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+    }
+
+    if (eligibleSubtotal === 0 || eligibleSubtotal < voucher.donToiThieu) {
+      return 0;
+    }
+
+    let d = 0;
+    if (voucher.loaiGiamGia === 'PERCENTAGE') {
+      d = Math.floor((eligibleSubtotal * voucher.giaTri) / 100);
+      if (voucher.toiDaGiam && d > voucher.toiDaGiam) {
+        d = voucher.toiDaGiam;
+      }
+    } else {
+      d = voucher.giaTri;
+    }
+
+    if (d > subtotal) d = subtotal;
+    return d;
+  };
+
+  useEffect(() => {
+    if (appliedVoucher) {
+      let eligibleSubtotal = 0;
+      const apDungCho = appliedVoucher.apDungCho || 'tat_ca';
+      if (apDungCho === 'tat_ca') {
+        eligibleSubtotal = subtotal;
+      } else if (apDungCho.startsWith('hang:')) {
+        const brand = apDungCho.replace('hang:', '').toLowerCase();
+        eligibleSubtotal = selectedItems
+          .filter(item => item.productVariant?.product?.hang?.toLowerCase() === brand)
+          .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+      } else if (apDungCho.startsWith('phan_khuc:')) {
+        const segment = apDungCho.replace('phan_khuc:', '').toLowerCase();
+        eligibleSubtotal = selectedItems
+          .filter(item => item.productVariant?.product?.phanKhuc?.toLowerCase() === segment)
+          .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+      }
+
+      if (eligibleSubtotal === 0 || eligibleSubtotal < appliedVoucher.donToiThieu) {
+        clearVoucher();
+        setVoucherCodeInput('');
+        setAppliedVoucher(null);
+        toast.error(`Mã giảm giá đã bị hủy do đơn hàng không còn đủ điều kiện áp dụng (tối thiểu ${formatCurrency(appliedVoucher.donToiThieu).replace('₫', 'đ')})`);
+      } else {
+        const d = calculateVoucherDiscount(selectedItems, appliedVoucher);
+        if (d !== discount) {
+          setVoucher(appliedVoucher.maVoucher, d);
+        }
+      }
+    }
+  }, [selectedItems, appliedVoucher, discount, subtotal, setVoucher, clearVoucher]);
 
   const handleApplyVoucher = async () => {
     if (!voucherCodeInput) return;
@@ -96,29 +202,46 @@ export default function CheckoutPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Lỗi voucher');
       
-      if (subtotal < data.donToiThieu) {
-        throw new Error(`Đơn hàng tối thiểu ${formatCurrency(data.donToiThieu)}`);
+      // Check scope and minimum spend
+      let eligibleSubtotal = 0;
+      const apDungCho = data.apDungCho || 'tat_ca';
+      if (apDungCho === 'tat_ca') {
+        eligibleSubtotal = subtotal;
+      } else if (apDungCho.startsWith('hang:')) {
+        const brand = apDungCho.replace('hang:', '').toLowerCase();
+        eligibleSubtotal = selectedItems
+          .filter(item => item.productVariant?.product?.hang?.toLowerCase() === brand)
+          .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+      } else if (apDungCho.startsWith('phan_khuc:')) {
+        const segment = apDungCho.replace('phan_khuc:', '').toLowerCase();
+        eligibleSubtotal = selectedItems
+          .filter(item => item.productVariant?.product?.phanKhuc?.toLowerCase() === segment)
+          .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
       }
 
-      let d = 0;
-      if (data.loaiGiamGia === 'PERCENTAGE') {
-        d = Math.floor((subtotal * data.giaTri) / 100);
-        if (data.toiDaGiam && d > data.toiDaGiam) d = data.toiDaGiam;
-      } else {
-        d = data.giaTri;
+      if (eligibleSubtotal === 0) {
+        throw new Error('Đơn hàng không có sản phẩm nào thuộc phạm vi áp dụng của voucher');
       }
+
+      if (eligibleSubtotal < data.donToiThieu) {
+        throw new Error(`Tổng giá trị các sản phẩm được áp dụng voucher phải tối thiểu ${formatCurrency(data.donToiThieu)}`);
+      }
+
+      const d = calculateVoucherDiscount(selectedItems, data);
       
-      if (d > subtotal) d = subtotal;
-      
+      setAppliedVoucher(data);
       setVoucher(voucherCodeInput, d);
       toast.success('Áp dụng voucher thành công');
     } catch (err: any) {
       toast.error(err.message);
       clearVoucher();
+      setAppliedVoucher(null);
     } finally {
       setIsValidatingVoucher(false);
     }
   };
+
+  const total = subtotal - discount;
 
   const onSubmit = async (data: CreateOrderInput) => {
     try {
@@ -151,9 +274,6 @@ export default function CheckoutPage() {
   };
 
   if (!isLoggedIn || selectedItems.length === 0) {
-    if (isLoggedIn && selectedItems.length === 0 && items.length > 0) {
-      router.push('/cart');
-    }
     return null;
   }
 
@@ -289,22 +409,49 @@ export default function CheckoutPage() {
               <div className="border-t border-slate-100 pt-4 mb-4">
                 <div className="border border-dashed border-slate-300 bg-slate-50 p-4 rounded-xl mb-4">
                   <label className="block text-sm font-medium text-slate-800 mb-2">Nhập mã giảm giá (Voucher)</label>
-                  <div className="flex gap-2">
-                    <input 
-                      type="text" 
-                      value={voucherCodeInput}
-                      onChange={(e) => setVoucherCodeInput(e.target.value)}
-                      placeholder="MÃ GIẢM GIÁ" 
-                      className="flex-1 min-w-0 px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none uppercase"
-                    />
-                    <button 
-                      className="whitespace-nowrap flex-shrink-0 px-4 py-2 border border-sky-600 text-sky-600 bg-white rounded-lg text-sm font-medium hover:bg-sky-50 transition disabled:opacity-50"
-                      onClick={handleApplyVoucher} 
-                      disabled={isValidatingVoucher || !voucherCodeInput}
-                    >
-                      Áp dụng
-                    </button>
-                  </div>
+                  {voucherCode ? (
+                    <div className="flex flex-col bg-emerald-50 border border-emerald-200 rounded-lg p-3 text-sm">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
+                          <i className="fa-solid fa-ticket text-emerald-600"></i>
+                          <span className="font-semibold text-emerald-800 uppercase">{voucherCode}</span>
+                        </div>
+                        <button 
+                          onClick={() => {
+                            clearVoucher();
+                            setVoucherCodeInput('');
+                            setAppliedVoucher(null);
+                            toast.success('Đã hủy áp dụng voucher');
+                          }}
+                          className="text-slate-400 hover:text-rose-500 p-1 transition"
+                          title="Hủy áp dụng"
+                        >
+                          <i className="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                      </div>
+                      <div className="mt-1.5 flex items-center space-x-1.5 text-xs text-emerald-600 font-medium">
+                        <i className="fa-solid fa-circle-check text-[10px]"></i>
+                        <span>Đã áp dụng thành công</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex gap-2">
+                      <input 
+                        type="text" 
+                        value={voucherCodeInput}
+                        onChange={(e) => setVoucherCodeInput(e.target.value)}
+                        placeholder="MÃ GIẢM GIÁ" 
+                        className="flex-1 min-w-0 px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none uppercase"
+                      />
+                      <button 
+                        className="whitespace-nowrap flex-shrink-0 px-4 py-2 border border-sky-600 text-sky-600 bg-white rounded-lg text-sm font-medium hover:bg-sky-50 transition disabled:opacity-50"
+                        onClick={handleApplyVoucher} 
+                        disabled={isValidatingVoucher || !voucherCodeInput}
+                      >
+                        {isValidatingVoucher ? 'Đang áp dụng...' : 'Áp dụng'}
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2 text-sm mb-4">

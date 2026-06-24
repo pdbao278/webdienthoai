@@ -17,3 +17,6 @@
 - [x] Task 8: Database Schema & API Đánh giá (Review)
 - [x] Task 9: UI Đánh giá trên Trang Chi tiết Sản phẩm
 - [x] Task 10: Khối So Sánh Sản phẩm (Product Comparison)
+
+## Phase 5: User Management (Admin Only)
+- [x] Task 11: API & UI Quản lý Người dùng

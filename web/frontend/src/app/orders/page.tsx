@@ -41,6 +41,7 @@ export default function OrdersPage() {
   const [allOrders, setAllOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('ALL');
+  const [selectedOrderForQr, setSelectedOrderForQr] = useState<Order | null>(null);
 
   const fetchOrders = async () => {
     try {
@@ -198,14 +199,12 @@ export default function OrdersPage() {
 
                 <div className="flex flex-col sm:flex-row justify-between items-center pt-4 border-t border-slate-100 gap-6">
                   {order.trangThai !== 'DA_HUY' && order.trangThai !== 'HOAN_THANH' && (
-                    <div className="flex gap-4 items-center bg-sky-50 p-3 rounded-xl border border-sky-100 w-full sm:w-auto">
-                      <div className="bg-white p-1 rounded-lg">
-                        <QRCodeSVG value={order.maNhanHang} size={60} />
-                      </div>
-                      <div className="text-xs text-slate-600">
-                        Đưa mã QR này<br/>cho nhân viên để nhận máy
-                      </div>
-                    </div>
+                    <button 
+                      onClick={() => setSelectedOrderForQr(order)}
+                      className="flex items-center gap-2 px-4 py-2.5 bg-sky-50 hover:bg-sky-100 border border-sky-100 hover:border-sky-200 rounded-xl text-sky-700 text-sm font-semibold transition"
+                    >
+                      <i className="fa-solid fa-qrcode text-base"></i> Mã QR Nhận Hàng
+                    </button>
                   )}
                   <div className="text-right w-full sm:w-auto ml-auto">
                     <div className="text-sm text-slate-500 mb-1">Tổng tiền</div>
@@ -218,6 +217,42 @@ export default function OrdersPage() {
         )}
       </main>
       <Footer />
+
+      {/* QR Code Popup Modal */}
+      {selectedOrderForQr && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl border border-slate-100 transform scale-100 transition-all">
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <h3 className="text-lg font-bold text-slate-800">Mã QR Nhận Hàng</h3>
+                <p className="text-xs text-slate-500 mt-1">Đưa mã QR này cho nhân viên để nhận máy và thanh toán</p>
+              </div>
+              <button 
+                onClick={() => setSelectedOrderForQr(null)}
+                className="text-slate-400 hover:text-slate-600 p-1.5 rounded-full hover:bg-slate-50 transition"
+              >
+                <i className="fa-solid fa-xmark text-lg"></i>
+              </button>
+            </div>
+
+            <div className="flex flex-col items-center bg-slate-50 p-6 rounded-2xl border border-slate-100 mb-6">
+              <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                <QRCodeSVG value={selectedOrderForQr.maNhanHang} size={200} />
+              </div>
+              <div className="mt-4 font-bold text-slate-800 text-lg uppercase tracking-wider">
+                {selectedOrderForQr.maNhanHang}
+              </div>
+            </div>
+
+            <button 
+              onClick={() => setSelectedOrderForQr(null)}
+              className="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-xl shadow-sm transition"
+            >
+              Đóng
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -163,7 +163,7 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
   2. **Chọn màu sắc:** Các nút chip kèm chấm tròn màu sắc thực tế.
 - **Tối ưu URL:** Tham số `v` rút gọn thay vì `sku` đầy đủ (VD: `?v=8-256-0`).
 - **Giá bán:** Hiển thị giá khuyến mãi nổi bật, giá gốc gạch ngang, badge phần trăm giảm. Cảnh báo "Tạm hết hàng" khi `tonKho <= 0`.
-- **CTA Buttons:** 2 nút ngang hàng — "Thêm vào giỏ" (viền) và "MUA NGAY" (đặc). "MUA NGAY" click → thêm giỏ → chuyển `/checkout`. Cả hai disabled khi hết hàng.
+- **CTA Buttons:** 2 nút ngang hàng — "Thêm vào giỏ" (viền) và "MUA NGAY" (đặc). "MUA NGAY" click → thêm vào giỏ hàng với chế độ ghi đè số lượng (`overrideQuantity: true`) để tránh cộng dồn nếu sản phẩm đã có sẵn → chuyển hướng sang `/checkout`. Cả hai disabled khi hết hàng.
 - **Chính sách mua hàng & Bảo hành:** Hiển thị 3 dòng: Đổi trả 12 tháng, Bảo hành chính hãng, Bộ sản phẩm đi kèm.
 - **Đánh giá sản phẩm:** Widget gọn nằm trong cột phải. Hiển thị điểm trung bình + số lượng. Form viết đánh giá ẩn mặc định (collapsible). Danh sách review mặc định 2 bài, nút "Xem tất cả".
 - Tình trạng tồn kho thay đổi theo biến thể được chọn.
@@ -188,8 +188,8 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 - **Yêu cầu đăng nhập** để sử dụng giỏ hàng (lưu Database, không hỗ trợ localStorage cho Guest).
 - Mini-cart ở header.
 - Trang giỏ hàng: thay đổi số lượng, xóa SP. Chỉ cho phép thêm nếu `ton_kho > 0`.
-- Tích hợp ô **Nhập mã giảm giá (Voucher)** ngay tại phần Tóm tắt đơn hàng của Giỏ hàng.
-- Click "Thêm vào giỏ" → Toast "Thêm thành công". Click "Mua ngay" ở trang chi tiết → Tự động thêm vào giỏ và chuyển thẳng sang trang Thanh toán (Checkout).
+- Tích hợp ô **Nhập mã giảm giá (Voucher)** ngay tại phần Tóm tắt đơn hàng của Giỏ hàng. Khi áp dụng thành công, giao diện hiển thị mã voucher kèm nút hủy (dấu X) để hủy bỏ.
+- Click "Thêm vào giỏ" → Toast "Thêm thành công" (hành vi cộng dồn số lượng). Click "Mua ngay" ở trang chi tiết → Tự động thêm vào giỏ bằng cách ghi đè số lượng cố định là 1 (hoặc số lượng được chọn trên PDP, không cộng dồn) và chuyển thẳng sang trang Thanh toán (Checkout).
 
 #### FR-07: Đặt trước & Nhận tại cửa hàng — Click & Collect (P0)
 - **Mô hình MVP**: 1 cửa hàng duy nhất, **100% thanh toán tại quầy** (không đặt cọc online).
@@ -199,7 +199,7 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
   - Cung cấp SĐT liên hệ và ghi chú.
 - Hẹn giờ nhận máy: Tách thành 2 dropdown chọn **Ngày nhận** (Hôm nay, Ngày mai, Ngày kia) và **Khung giờ nhận** (Sáng, Trưa, Chiều, Tối).
 - Mã nhận hàng: Nhận QR Code/mã số sau khi đặt thành công, xuất trình khi nhận hàng.
-- **Tích hợp Voucher:** Hỗ trợ nhập và áp dụng mã giảm giá trực tiếp trên trang Thanh toán (dữ liệu đồng bộ 2 chiều với Giỏ hàng).
+- **Tích hợp Voucher:** Hỗ trợ nhập và áp dụng mã giảm giá trực tiếp trên trang Thanh toán (dữ liệu đồng bộ 2 chiều với Giỏ hàng). Khi áp dụng thành công, giao diện hiển thị mã voucher kèm nút hủy (dấu X).
 - **Thành tiền** = `Tổng tiền hàng − Voucher giảm giá` (Phí ship = 0đ).
 
 #### FR-08: Quản Lý Đơn Hàng — Customer (P0)
@@ -222,20 +222,38 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
   - **Manager (Nhân viên tại quầy)**:
     - Gom hàng (Pick & Pack): Nhận thông báo đơn đặt trước để chuẩn bị hàng.
     - Quét mã QR khách để đối chiếu và xác nhận giao hàng.
-    - Cập nhật phương thức thanh toán (Tiền mặt / Chuyển khoản). Hệ thống tự trừ tồn kho khi xác nhận Hoàn thành.
+    - Cập nhật phương thức thanh toán (Tiền mặt / Chuyển khoản). Hệ thống tự trừ tồn kho khi khách hàng nhận máy và đơn chuyển sang `HOAN_THANH`.
   - **Admin (Chủ shop)**: Toàn quyền hệ thống.
     - Cài đặt thời gian hủy đơn tự động (mặc định 24 giờ).
     - Báo cáo doanh thu và hiệu suất xử lý đơn.
-- Quản lý sản phẩm (CRUD, import CSV, quản lý gallery ảnh/video, tồn kho).
-- Quản lý đơn hàng: Lọc theo trạng thái, xem chi tiết, điều hướng luồng trạng thái.
-- **Order Activity Log**: Lưu vết mọi hành động để audit.
+- **Tìm kiếm quản trị (Admin Search)**: Tích hợp thanh tìm kiếm nhanh tại header chung của Admin và các ô tìm kiếm chuyên biệt theo từng trang quản lý:
+  - *Quản lý Đơn hàng*: Tìm kiếm theo mã đơn (`maNhanHang`), họ tên khách hàng, hoặc số điện thoại.
+  - *Quản lý Sản phẩm*: Tìm kiếm theo tên sản phẩm, hãng sản xuất, hoặc phân khúc.
+  - *Quản lý Voucher*: Tìm kiếm theo ký tự của mã voucher.
+- **QR Scanner Simulator**: Module giả lập quét mã nhận hàng tại quầy. Nhân viên nhập mã nhận hàng dạng `ORD-XXXXXX` trực tiếp để xác nhận đơn hàng đã giao và tự động chuyển trạng thái đơn hàng sang `HOAN_THANH`.
+- **Quản lý sản phẩm (CRUD, import CSV, quản lý gallery ảnh/video, tồn kho)**:
+  - **Ràng buộc xóa an toàn (Safe Delete Variant)**: Ngăn chặn Admin xóa vĩnh viễn một phiên bản cấu hình (variant/SKU) nếu SKU đó đã tồn tại trong lịch sử đặt hàng của khách để bảo toàn tính toàn vẹn dữ liệu đơn hàng. Admin chỉ được phép hạ tồn kho của SKU đó về 0.
+- **Quản lý đơn hàng**: Lọc theo trạng thái, xem chi tiết, điều hướng luồng trạng thái đơn hàng:
+  - **Xem chi tiết đơn hàng (Detail Popup Modal)**: Khi Admin/Manager nhấn vào mã đơn hàng trong danh sách, hệ thống hiển thị popup modal chi tiết chứa: thông tin người đặt (họ tên, email, SĐT liên hệ), ngày giờ đặt hàng, ngày giờ hẹn nhận máy, danh sách chi tiết các mặt hàng (tên sản phẩm, RAM/ROM, màu, đơn giá, số lượng), tổng giá trị đơn hàng trước và sau khi giảm giá, mã voucher được áp dụng, ghi chú và phương thức thanh toán. Hỗ trợ thao tác cập nhật trạng thái trực tiếp trên popup.
+  - **Linh hoạt hóa trạng thái**: Cho phép chuyển trạng thái trực tiếp từ `Đã đặt` sang `Chờ nhận hàng` hoặc `Hoàn thành` thay vì bắt buộc đi tuần tự qua `Đang chuẩn bị`, giúp tối ưu hóa thời gian phục vụ tại quầy khi khách hàng đến nhận máy trực tiếp.
+- **Order Activity Log**: Hệ thống tự động ghi nhật ký lịch sử mọi hành động thay đổi trạng thái đơn hàng để phục vụ công tác đối soát.
 - Quản lý Users, Reviews.
 - **Thống kê doanh thu** (chỉ Admin): Biểu đồ theo Ngày/Tuần/Tháng, lịch sử lên đến 1 năm. Click vào mốc thời gian để xem danh sách đơn hàng tương ứng.
 
 #### FR-10: Quản Lý Khuyến Mãi & Voucher (P1)
 - CRUD Voucher (chỉ Admin có quyền):
   - Mã giảm giá, loại (% hoặc cố định VNĐ), mức giảm tối đa.
-  - Điều kiện: Đơn tối thiểu, phạm vi áp dụng (toàn bộ hoặc SP/Hãng cụ thể).
+  - Điều kiện & Phạm vi áp dụng (`apDungCho`):
+    - `tat_ca`: Áp dụng cho toàn bộ sản phẩm được chọn.
+    - `hang:<Brand>` (ví dụ: `Apple`, `Samsung`): Chỉ áp dụng cho các sản phẩm thuộc hãng tương ứng.
+    - `phan_khuc:<Segment>` (ví dụ: `gaming`, `pho_thong`): Chỉ áp dụng cho các sản phẩm thuộc phân khúc tương ứng.
+  - Ràng buộc logic kiểm tra & tính toán (Backend & Frontend):
+    - **Đơn tối thiểu (`donToiThieu`)**: Chỉ tính tổng tiền của các sản phẩm hợp lệ trong giỏ hàng đáp ứng phạm vi áp dụng của voucher. Nếu tổng tiền sản phẩm hợp lệ nhỏ hơn `donToiThieu`, voucher không được phép áp dụng.
+    - **Mức giảm giá**: Tính toán phần trăm giảm giá `%` hoặc số tiền cố định chỉ dựa trên các sản phẩm hợp lệ, giới hạn bởi mức giảm tối đa (`toiDaGiam`) và tổng tiền của các sản phẩm hợp lệ.
+    - **Tính nguyên tử (Concurrency)**: Số lượt đã sử dụng (`daSuDung`) được cập nhật nguyên tử bằng transaction DB (`prisma.$transaction`), kiểm tra điều kiện `daSuDung < soLuong` để chặn race condition khi nhiều người dùng áp cùng một mã giới hạn.
+    - **Thời hạn sử dụng**: So khớp ngày giờ hiện tại (`now`) nằm trong phạm vi `batDau` và `ketThuc`.
+    - **Chuẩn hóa ký tự**: Toàn bộ luồng áp mã voucher và tra cứu được tự động chuyển đổi sang chữ in hoa (`.toUpperCase()`) để tránh lỗi phân biệt hoa/thường.
+    - **Cập nhật động & Phòng chống gian lận (Reactive Validation)**: Giỏ hàng và trang Checkout tự động tính toán lại mức giảm giá hợp lệ theo thời gian thực khi người dùng thay đổi số lượng, hoặc chọn/bỏ chọn mặt hàng. Nếu tổng giá trị sản phẩm hợp lệ tụt xuống dưới mức đơn tối thiểu (`donToiThieu`) sau khi thay đổi giỏ hàng, hệ thống sẽ tự động hủy bỏ áp dụng voucher và cảnh báo cho người dùng, ngăn chặn tuyệt đối trường hợp "áp voucher cho đơn lớn rồi bỏ bớt sản phẩm để mua đơn nhỏ". Đồng thời, Backend bắt buộc thực thi lại toàn bộ các kiểm tra này trong transaction DB khi tạo đơn hàng (`createOrder`) để đảm bảo an toàn tuyệt đối.
   - Thời hạn (bắt đầu — kết thúc), giới hạn lượt sử dụng.
 - Audit Log: Lưu người tạo, lịch sử cập nhật.
 
@@ -443,6 +461,10 @@ webdienthoai/
 
 | Phiên bản | Ngày | Người thay đổi | Nội dung thay đổi | Lý do |
 |---|---|---|---|---|
+| v4.11 | 2026-06-24 | Antigravity | Triển khai cơ chế tự động hủy voucher và cảnh báo khi giỏ hàng thay đổi không còn đạt điều kiện áp dụng (ngăn chặn gian lận voucher). Viết thêm test case bảo vệ cho backend order creation. | Bảo mật hệ thống thanh toán và tránh thất thoát doanh thu từ lạm dụng voucher. |
+| v4.10 | 2026-06-24 | Antigravity | Khắc phục lỗi cộng dồn số lượng khi click "Mua ngay": bổ sung tham số `overrideQuantity` vào Zod schema và API thêm giỏ hàng, cập nhật frontend store và trang PDP để ghi đè số lượng cố định về 1 thay vì cộng dồn. | Đáp ứng yêu cầu nghiệp vụ về luồng đặt hàng trực tiếp qua nút "Mua ngay". |
+| v4.9 | 2026-06-24 | Antigravity | Kiểm tra toàn diện hệ thống voucher: triển khai ràng buộc phạm vi áp dụng (`apDungCho`), tính toán giảm giá và đơn tối thiểu trên các sản phẩm hợp lệ, Reactive UI cập nhật giảm giá theo giỏ hàng, chuẩn hóa in hoa mã và bảo vệ chống race condition. | Đáp ứng chính xác yêu cầu nghiệp vụ về điều kiện áp dụng voucher và bảo mật giao dịch. |
+| v4.8 | 2026-06-24 | Antigravity | Bổ sung tính năng hiển thị và hủy áp dụng mã giảm giá (voucher) bằng dấu X trực tiếp tại Tóm tắt đơn hàng. | Đáp ứng yêu cầu nghiệp vụ về UX cho luồng đặt hàng và giỏ hàng. |
 | v4.7 | 2026-06-24 | Antigravity | Đồng bộ tài liệu Design & PRD với UI thực tế: Cập nhật FR-03 (bố cục Grid 7:5, CTA theme Rose thay Sky, xóa sticky cột phải, Variant Selector 2 bước, Buy Box, Chính sách BH). Cập nhật wireframe trang chi tiết (section 6.3) phản ánh đúng cấu trúc component hiện tại. | Đảm bảo tài liệu thiết kế luôn đồng bộ với code thực tế, tránh lệch lạc khi phát triển tiếp. |
 | v4.6 | 2026-06-24 | Antigravity | Hoàn tất M2 & Chuẩn hóa Seeding: Khắc phục lỗi bất đồng bộ UI/DB với cơ chế UUID động. Đồng bộ ô nhập Voucher cho cả trang Giỏ hàng và Thanh toán. Cải tiến nút "Mua ngay" điều hướng thông minh. Cập nhật cơ chế xác thực Email dùng DateTime. | Nâng cao độ ổn định hệ thống, đồng nhất trải nghiệm mua hàng và xử lý dứt điểm các lỗi logic giỏ hàng/thanh toán. |
 | v4.5 | 2026-06-24 | Antigravity | Tối ưu hóa URL biến thể bằng tham số `v` ngắn gọn. Đồng bộ Database với 130 sản phẩm từ HTML Mockup (chứa link ảnh Cloudinary chuẩn) thay cho dữ liệu mẫu cũ. | Cải thiện UX/SEO qua URL ngắn, giải quyết lỗi hiển thị ảnh (broken images) và nâng cao độ trung thực của giao diện so với bản thiết kế mockup. |
