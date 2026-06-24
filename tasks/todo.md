@@ -64,11 +64,11 @@
 ## Task 6: Giao diện Base Layout & Trang chủ (Frontend)
 **Description:** Xây dựng root layout gồm Header (Mega Menu dọc cho điện thoại), Footer, và Trang chủ (Banner, Brand row, Grid nổi bật).
 **Acceptance criteria:**
-- [ ] Header hiển thị menu dọc (HoangHa style) với các hãng Điện thoại khi hover. Khóa tính năng Laptop/Phụ kiện.
-- [ ] Trang chủ gọi `GET /api/products` để render Grid sản phẩm bán chạy/nổi bật.
-- [ ] Card sản phẩm tái sử dụng (`ProductCard.tsx`) thiết kế theo mockup.
+- [x] Header hiển thị menu dọc (HoangHa style) với các hãng Điện thoại khi hover. Khóa tính năng Laptop/Phụ kiện.
+- [x] Trang chủ gọi `GET /api/products` để render Grid sản phẩm bán chạy/nổi bật.
+- [x] Card sản phẩm tái sử dụng (`ProductCard.tsx`) thiết kế theo mockup.
 **Verification:**
-- [ ] Mở trang chủ (`/`), đảm bảo responsive hiển thị đúng và hover menu mượt mà.
+- [x] Mở trang chủ (`/`), đảm bảo responsive hiển thị đúng và hover menu mượt mà.
 **Dependencies:** 5
 **Files likely touched:** `web/frontend/src/app/layout.tsx`, `web/frontend/src/app/(shop)/page.tsx`, `web/frontend/src/components/layout/*`, `web/frontend/src/components/product/ProductCard.tsx`
 **Estimated scope:** L
