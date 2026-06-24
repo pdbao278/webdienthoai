@@ -1,0 +1,148 @@
+import { Response } from 'express';
+import { PrismaClient } from '@prisma/client';
+import { AuthRequest } from '../middlewares/auth.middleware';
+import { addToCartSchema, updateCartItemSchema } from '@phonestore/shared';
+
+const prisma = new PrismaClient();
+
+export const getCart = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const userId = req.user!.id;
+    const cartItems = await prisma.cartItem.findMany({
+      where: { userId },
+      include: {
+        product: {
+          select: {
+            id: true,
+            sanPham: true,
+            slug: true,
+            giaBan: true,
+            tonKho: true,
+            media: {
+              where: { isThumbnail: true },
+              take: 1,
+            }
+          }
+        }
+      },
+      orderBy: { createdAt: 'desc' }
+    });
+
+    res.status(200).json(cartItems);
+  } catch (error: any) {
+    console.error(error);
+    res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
+  }
+};
+
+export const addToCart = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const userId = req.user!.id;
+    const { productId, soLuong } = addToCartSchema.parse(req.body);
+
+    const product = await prisma.product.findUnique({ where: { id: productId } });
+    if (!product) {
+      res.status(404).json({ error: 'Sản phẩm không tồn tại' });
+      return;
+    }
+
+    if (product.tonKho < soLuong) {
+      res.status(400).json({ error: 'Sản phẩm đã hết hàng hoặc không đủ số lượng' });
+      return;
+    }
+
+    const existingCartItem = await prisma.cartItem.findUnique({
+      where: {
+        userId_productId: { userId, productId }
+      }
+    });
+
+    if (existingCartItem) {
+      const newQty = existingCartItem.soLuong + soLuong;
+      if (product.tonKho < newQty) {
+        res.status(400).json({ error: 'Không đủ số lượng tồn kho' });
+        return;
+      }
+      const updated = await prisma.cartItem.update({
+        where: { id: existingCartItem.id },
+        data: { soLuong: newQty }
+      });
+      res.status(200).json({ message: 'Đã cập nhật giỏ hàng', cartItem: updated });
+      return;
+    }
+
+    const cartItem = await prisma.cartItem.create({
+      data: {
+        userId,
+        productId,
+        soLuong
+      }
+    });
+
+    res.status(201).json({ message: 'Đã thêm vào giỏ hàng', cartItem });
+  } catch (error: any) {
+    if (error.errors) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      console.error(error);
+      res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
+    }
+  }
+};
+
+export const updateCartItem = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const userId = req.user!.id;
+    const cartItemId = req.params.id;
+    const { soLuong } = updateCartItemSchema.parse(req.body);
+
+    const cartItem = await prisma.cartItem.findUnique({
+      where: { id: cartItemId },
+      include: { product: true }
+    });
+
+    if (!cartItem || cartItem.userId !== userId) {
+      res.status(404).json({ error: 'Không tìm thấy sản phẩm trong giỏ hàng' });
+      return;
+    }
+
+    if (cartItem.product.tonKho < soLuong) {
+      res.status(400).json({ error: 'Không đủ số lượng tồn kho' });
+      return;
+    }
+
+    const updated = await prisma.cartItem.update({
+      where: { id: cartItemId },
+      data: { soLuong }
+    });
+
+    res.status(200).json({ message: 'Đã cập nhật số lượng', cartItem: updated });
+  } catch (error: any) {
+    if (error.errors) {
+      res.status(400).json({ error: error.errors });
+    } else {
+      console.error(error);
+      res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
+    }
+  }
+};
+
+export const removeFromCart = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const userId = req.user!.id;
+    const cartItemId = req.params.id;
+
+    const cartItem = await prisma.cartItem.findUnique({ where: { id: cartItemId } });
+    if (!cartItem || cartItem.userId !== userId) {
+      res.status(404).json({ error: 'Không tìm thấy sản phẩm trong giỏ hàng' });
+      return;
+    }
+
+    await prisma.cartItem.delete({ where: { id: cartItemId } });
+
+    res.status(200).json({ message: 'Đã xóa sản phẩm khỏi giỏ hàng' });
+  } catch (error: any) {
+    console.error(error);
+    res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
+  }
+};

@@ -36,6 +36,8 @@ model User {
   createdAt      DateTime  @default(now()) @map("created_at")
   updatedAt      DateTime  @updatedAt @map("updated_at")
 
+  cartItems      CartItem[]
+
   @@map("users")
 }
 
@@ -94,6 +96,7 @@ model Product {
   updatedAt           DateTime       @updatedAt @map("updated_at")
 
   media               ProductMedia[]
+  cartItems           CartItem[]
 
   @@map("products")
 }
@@ -110,4 +113,19 @@ model ProductMedia {
   product      Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@map("product_media")
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  productId String   @map("product_id")
+  soLuong   Int      @map("so_luong")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@map("cart_items")
 }
