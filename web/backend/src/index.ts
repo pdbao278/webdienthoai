@@ -8,6 +8,7 @@ import { ping } from '@phonestore/shared';
 import authRoutes from './routes/auth.routes';
 import productRoutes from './routes/product.routes';
 import cartRoutes from './routes/cart.routes';
+import chatRoutes from './routes/chat.routes';
 
 import adminRoutes from './routes/admin.routes';
 import orderRoutes from './routes/order.routes';
@@ -31,6 +32,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/chat', chatRoutes);
 app.get('/api/search', searchProducts);
 
 app.get('/', (req, res) => {

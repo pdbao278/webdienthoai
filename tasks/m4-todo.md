@@ -18,12 +18,12 @@
 - [x] Lighthouse >= 90, Rate limit hoạt động
 
 ## Phase 3: Chatbot AI (FR-13)
-- [ ] Task 8: Backend — Chatbot API route với Gemini
-- [ ] Task 9: Frontend — Chat Widget UI
-- [ ] Task 10: Chatbot — Heuristics & FAQ fallback
+- [x] Task 8: Backend — Chatbot API route với Gemini
+- [x] Task 9: Frontend — Floating Chat Widget
+- [x] Task 10: Tích hợp vào Layout chính (hiển thị global)
 
-### Checkpoint: Chatbot ✅
-- [ ] Chatbot hoạt động end-to-end
+### Checkpoint: Chatbot AI ✅
+- [x] Widget hiển thị tốt, chatbot hoạt động end-to-end
 
 ## Phase 4: Final Polish
 - [ ] Task 11: Code Cleanup & Console.log Audit

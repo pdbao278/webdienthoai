@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
+import ChatWidget from '@/components/layout/ChatWidget';
 
 const inter = Inter({
   subsets: ["vietnamese", "latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans bg-slate-50 text-slate-900">
         <Toaster position="top-right" />
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
