@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProductGallery from '@/components/product/ProductGallery';
@@ -22,6 +23,35 @@ async function getProduct(slug: string) {
     console.error(error);
     return null;
   }
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const product = await getProduct(resolvedParams.slug);
+
+  if (!product) {
+    return { title: 'Sản phẩm không tồn tại | PhoneStore' };
+  }
+
+  const desc = product.moTa || `Khám phá điện thoại ${product.sanPham} chính hãng.`;
+  const img = product.media?.find((m: any) => m.isThumbnail)?.url || '/placeholder.png';
+
+  return {
+    title: `${product.sanPham} | PhoneStore`,
+    description: desc.length > 150 ? desc.substring(0, 147) + '...' : desc,
+    openGraph: {
+      title: `${product.sanPham} | PhoneStore`,
+      description: desc.length > 150 ? desc.substring(0, 147) + '...' : desc,
+      images: [img],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.sanPham} | PhoneStore`,
+      description: desc.length > 150 ? desc.substring(0, 147) + '...' : desc,
+      images: [img],
+    }
+  };
 }
 
 export default async function ProductDetailPage({ 
@@ -62,6 +92,31 @@ export default async function ProductDetailPage({
       <Header />
       
       <main className="flex-1 container mx-auto px-4 py-8">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org/",
+              "@type": "Product",
+              name: product.sanPham,
+              image: product.media?.find((m: any) => m.isThumbnail)?.url || undefined,
+              description: product.moTa || undefined,
+              brand: {
+                "@type": "Brand",
+                name: product.hang
+              },
+              sku: product.slug,
+              offers: {
+                "@type": "Offer",
+                url: `https://phonestore.com/phone/${product.slug}`,
+                priceCurrency: "VND",
+                price: minVariant.giaBan,
+                availability: "https://schema.org/InStock"
+              }
+            })
+          }}
+        />
+
         {/* Breadcrumb */}
         <nav className="text-xs md:text-sm text-slate-500 mb-5 flex items-center space-x-2">
           <a href="/" className="hover:text-blue-600">Trang chủ</a>

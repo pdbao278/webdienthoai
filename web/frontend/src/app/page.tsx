@@ -3,6 +3,13 @@ import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
 import ProductCard from '@/components/product/ProductCard';
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'PhoneStore - Điện thoại chính hãng, giá tốt nhất',
+  description: 'Trải nghiệm mua sắm điện thoại di động chính hãng với PhoneStore. Click & Collect tiện lợi, thanh toán tại cửa hàng.',
+};
+
 export const revalidate = 60; // Revalidate every minute
 
 async function getProducts() {
@@ -77,7 +84,7 @@ export default async function Home() {
             <div className="relative rounded-2xl overflow-hidden shadow-sm min-h-[380px] bg-gradient-to-br from-green-50 to-sky-100 flex items-center p-8 md:p-12">
                 <div className="max-w-[450px] relative z-10">
                     <span className="inline-block bg-sky-600/10 text-sky-600 px-3 py-1 rounded-full font-semibold text-xs mb-4">Sản phẩm nổi bật</span>
-                    <h2 className="font-[Outfit] text-3xl md:text-4xl font-bold leading-tight mb-4 text-slate-800">Galaxy S24 Ultra - Đỉnh cao công nghệ AI</h2>
+                    <h1 className="font-[Outfit] text-3xl md:text-4xl font-bold leading-tight mb-4 text-slate-800">Galaxy S24 Ultra - Đỉnh cao công nghệ AI</h1>
                     <p className="text-slate-500 mb-6 text-sm">Khám phá quyền năng Galaxy AI giúp dịch thuật trực tiếp, tìm kiếm thông minh và chụp zoom chuyên nghiệp.</p>
                     <button className="bg-sky-600 text-white px-6 py-3 rounded-full font-semibold text-sm transition-colors hover:bg-sky-700">Đặt trước ngay</button>
                 </div>

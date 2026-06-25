@@ -4,6 +4,12 @@ import ProductCard from '@/components/product/ProductCard';
 import FilterBar from '@/components/product/FilterBar';
 import { Suspense } from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Điện thoại di động chính hãng | PhoneStore',
+  description: 'Khám phá các dòng điện thoại thông minh mới nhất từ Apple, Samsung, Xiaomi, OPPO. Giá tốt, bảo hành chính hãng.',
+};
 
 async function getProducts(searchParams: { [key: string]: string | string[] | undefined }) {
   try {

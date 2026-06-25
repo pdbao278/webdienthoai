@@ -1,13 +1,13 @@
 # M4 — TODO: Nâng cao & Tương tác (Hoàn thiện & Phát hành)
 
 ## Phase 1: SEO Foundation
-- [ ] Task 1: SEO — Metadata động cho tất cả các trang
-- [ ] Task 2: SEO — JSON-LD Product Schema trên PDP
-- [ ] Task 3: SEO — Dynamic Sitemap & Robots.txt
-- [ ] Task 4: SEO — Semantic HTML & Heading Audit
+- [x] Task 1: SEO — Metadata động cho tất cả các trang
+- [x] Task 2: SEO — JSON-LD Product Schema trên PDP
+- [x] Task 3: SEO — Dynamic Sitemap & Robots.txt
+- [x] Task 4: SEO — Semantic HTML & Heading Audit
 
 ### Checkpoint: SEO Foundation ✅
-- [ ] Build thành công, mọi trang có metadata riêng
+- [x] Build thành công, mọi trang có metadata riêng
 
 ## Phase 2: Performance & Security
 - [ ] Task 5: Backend — Rate Limiting, Security Headers & CORS
