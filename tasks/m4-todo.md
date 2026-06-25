@@ -26,8 +26,8 @@
 - [x] Widget hiển thị tốt, chatbot hoạt động end-to-end
 
 ## Phase 4: Final Polish
-- [ ] Task 11: Code Cleanup & Console.log Audit
-- [ ] Task 12: Final Build Verification & Lighthouse Audit
+- [x] Task 11: Code Cleanup & Console.log Audit
+- [x] Task 12: Production Build & Final QA
 
-### Checkpoint: M4 Complete 🚀
-- [ ] Tất cả criteria đạt, sẵn sàng deploy
+### Checkpoint: Final Polish ✅
+- [x] Ready for Launch! M4 Hoàn tất., sẵn sàng deploy
