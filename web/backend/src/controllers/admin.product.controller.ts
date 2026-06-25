@@ -113,7 +113,6 @@ export const updateProduct = async (req: AuthRequest, res: Response): Promise<vo
     }
 
     const updated = await prisma.$transaction(async (tx) => {
-      // 1. Update general info and specs
       const updatedProduct = await tx.product.update({
         where: { id },
         data: {

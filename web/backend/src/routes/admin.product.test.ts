@@ -91,6 +91,20 @@ describe('Admin Product API', () => {
     });
   });
 
+  describe('PATCH /api/admin/products/:id', () => {
+    it('should update isActive status', async () => {
+      const res = await request(app)
+        .patch(`/api/admin/products/${productId}`)
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send({ isActive: false });
+      
+      expect(res.status).toBe(200);
+      
+      const p = await prisma.product.findUnique({ where: { id: productId } });
+      expect(p?.isActive).toBe(false);
+    });
+  });
+
   describe('DELETE /api/admin/products/:id', () => {
     it('deletes product and calls cloudinary destroy', async () => {
       const res = await request(app)
