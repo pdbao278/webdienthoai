@@ -75,6 +75,26 @@ describe('Admin Product API', () => {
       expect(res.body.media.length).toBe(1);
       productId = res.body.id;
     });
+
+    it('creates a new product with relative url and null fields', async () => {
+      const res = await request(app)
+        .post('/api/admin/products')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send({
+          sanPham: 'Test Product Null ' + Date.now(),
+          hang: 'Apple',
+          phanKhuc: 'FLAGSHIP',
+          moTa: 'Desc',
+          variants: [
+            { sku: 'TEST-SKU-NULL-' + Date.now(), ramGb: 8, dungLuongGb: 256, mauSac: 'Den', giaGoc: 1000, giaBan: 900, tonKho: 10, imageUrl: null }
+          ],
+          media: [
+            { url: '/data/dienthoai/test.jpg', publicId: null, isThumbnail: true, loai: 'IMAGE' }
+          ]
+        });
+
+      expect(res.status).toBe(201);
+    });
   });
 
   describe('PATCH /api/admin/products/:id', () => {

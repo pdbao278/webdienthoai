@@ -45,15 +45,15 @@ const variantSchema = z.object({
   ramGb: z.number().int().positive(),
   dungLuongGb: z.number().int().positive(),
   mauSac: z.string().min(1, 'Màu sắc là bắt buộc'),
-  imageUrl: z.string().optional(),
+  imageUrl: z.string().optional().nullable(),
   giaGoc: z.number().int().nonnegative(),
   giaBan: z.number().int().nonnegative(),
   tonKho: z.number().int().nonnegative(),
 });
 
 const mediaSchema = z.object({
-  url: z.string().url(),
-  publicId: z.string().optional(),
+  url: z.string(),
+  publicId: z.string().optional().nullable(),
   loai: z.enum(['IMAGE', 'VIDEO']).default('IMAGE'),
   isThumbnail: z.boolean().default(false),
 });
