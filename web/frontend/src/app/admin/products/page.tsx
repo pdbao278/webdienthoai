@@ -79,7 +79,7 @@ export default function AdminProductsPage() {
 
   const handleOpenAddModal = () => {
     setEditingProduct(null);
-    setFormData({ sanPham: '', hang: '', phanKhuc: 'TAM_TRUNG', moTa: '' });
+    setFormData({ sanPham: '', hang: '', phanKhuc: 'TAM_TRUNG', moTa: '', isActive: true });
     setVariants([{ sku: '', ramGb: 8, dungLuongGb: 256, mauSac: '', giaGoc: 0, giaBan: 0, tonKho: 10 }]);
     setMedia([]);
     setShowModal(true);
@@ -381,7 +381,7 @@ export default function AdminProductsPage() {
                           <i className="fa-solid fa-trash text-sm"></i>
                         </button>
                       )}
-                      <Input label="SKU" value={v.sku} onChange={e => { const newV = [...variants]; newV[i].sku = e.target.value; setVariants(newV); }} />
+                      {/* SKU is auto-generated, no input needed */}
                       <Input label="Màu sắc" value={v.mauSac} onChange={e => { const newV = [...variants]; newV[i].mauSac = e.target.value; setVariants(newV); }} />
                       <Input label="RAM (GB)" type="number" value={v.ramGb} onChange={e => { const newV = [...variants]; newV[i].ramGb = Number(e.target.value); setVariants(newV); }} />
                       <Input label="ROM (GB)" type="number" value={v.dungLuongGb} onChange={e => { const newV = [...variants]; newV[i].dungLuongGb = Number(e.target.value); setVariants(newV); }} />

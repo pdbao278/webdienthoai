@@ -1,9 +1,9 @@
 [
   {
-    "id": "xiaomi-xiaomi-16-ultra-512gb",
-    "slug": "xiaomi-16-ultra-512gb",
+    "id": "xiaomi-xiaomi-16-ultra",
+    "slug": "xiaomi-16-ultra",
     "hang": "Xiaomi",
-    "san_pham": "Xiaomi 16 Ultra 512GB",
+    "san_pham": "Xiaomi 16 Ultra",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Xiaomi 16 Ultra 512GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.73 inches",
@@ -46,7 +46,7 @@
     ],
     "variants": [
       {
-        "sku": "xiaomi-16-ultra-512gb-16-512-0",
+        "sku": "xiaomi-16-ultra-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -58,10 +58,10 @@
     ]
   },
   {
-    "id": "xiaomi-xiaomi-16-256gb",
-    "slug": "xiaomi-16-256gb",
+    "id": "xiaomi-xiaomi-16",
+    "slug": "xiaomi-16",
     "hang": "Xiaomi",
-    "san_pham": "Xiaomi 16 256GB",
+    "san_pham": "Xiaomi 16",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Xiaomi 16 256GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.36 inches",
@@ -101,7 +101,7 @@
     ],
     "variants": [
       {
-        "sku": "xiaomi-16-256gb-12-256-0",
+        "sku": "xiaomi-16-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -113,10 +113,10 @@
     ]
   },
   {
-    "id": "xiaomi-xiaomi-15-pro-512gb",
-    "slug": "xiaomi-15-pro-512gb",
+    "id": "xiaomi-xiaomi-15-pro",
+    "slug": "xiaomi-15-pro",
     "hang": "Xiaomi",
-    "san_pham": "Xiaomi 15 Pro 512GB",
+    "san_pham": "Xiaomi 15 Pro",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Xiaomi 15 Pro 512GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 4, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.73 inches",
@@ -155,7 +155,7 @@
     ],
     "variants": [
       {
-        "sku": "xiaomi-15-pro-512gb-16-512-0",
+        "sku": "xiaomi-15-pro-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -167,10 +167,10 @@
     ]
   },
   {
-    "id": "xiaomi-xiaomi-15-256gb",
-    "slug": "xiaomi-15-256gb",
+    "id": "xiaomi-xiaomi-15",
+    "slug": "xiaomi-15",
     "hang": "Xiaomi",
-    "san_pham": "Xiaomi 15 256GB",
+    "san_pham": "Xiaomi 15",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Xiaomi 15 256GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 4, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.36 inches",
@@ -209,7 +209,7 @@
     ],
     "variants": [
       {
-        "sku": "xiaomi-15-256gb-12-256-0",
+        "sku": "xiaomi-15-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -385,10 +385,10 @@
     ]
   },
   {
-    "id": "xiaomi-poco-f7-pro-512gb",
-    "slug": "poco-f7-pro-512gb",
+    "id": "xiaomi-poco-f7-pro",
+    "slug": "poco-f7-pro",
     "hang": "Xiaomi",
-    "san_pham": "Poco F7 Pro 512GB",
+    "san_pham": "Poco F7 Pro",
     "phan_khuc": "gaming",
     "mo_ta": "Điện thoại Poco F7 Pro 512GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 4, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.67 inches",
@@ -429,7 +429,7 @@
     ],
     "variants": [
       {
-        "sku": "poco-f7-pro-512gb-12-512-0",
+        "sku": "poco-f7-pro-12-512-0",
         "ram_gb": 12,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -441,10 +441,10 @@
     ]
   },
   {
-    "id": "xiaomi-redmi-14c-128gb",
-    "slug": "redmi-14c-128gb",
+    "id": "xiaomi-redmi-14c",
+    "slug": "redmi-14c",
     "hang": "Xiaomi",
-    "san_pham": "Redmi 14C 128GB",
+    "san_pham": "Redmi 14C",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại Redmi 14C 128GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G81, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.88 inches",
@@ -480,7 +480,7 @@
     ],
     "variants": [
       {
-        "sku": "redmi-14c-128gb-4-128-0",
+        "sku": "redmi-14c-4-128-0",
         "ram_gb": 4,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -492,10 +492,10 @@
     ]
   },
   {
-    "id": "xiaomi-redmi-a3-64gb",
-    "slug": "redmi-a3-64gb",
+    "id": "xiaomi-redmi-a3",
+    "slug": "redmi-a3",
     "hang": "Xiaomi",
-    "san_pham": "Redmi A3 64GB",
+    "san_pham": "Redmi A3",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại Redmi A3 64GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G36, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.71 inches",
@@ -531,7 +531,7 @@
     ],
     "variants": [
       {
-        "sku": "redmi-a3-64gb-3-64-0",
+        "sku": "redmi-a3-3-64-0",
         "ram_gb": 3,
         "dung_luong_gb": 64,
         "mau_sac": "Đen",

@@ -1,9 +1,9 @@
 [
   {
-    "id": "vivo-vivo-x200-pro-512gb",
-    "slug": "vivo-x200-pro-512gb",
+    "id": "vivo-vivo-x200-pro",
+    "slug": "vivo-x200-pro",
     "hang": "vivo",
-    "san_pham": "vivo X200 Pro 512GB",
+    "san_pham": "vivo X200 Pro",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại vivo X200 Pro 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9400, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -45,7 +45,7 @@
     ],
     "variants": [
       {
-        "sku": "vivo-x200-pro-512gb-16-512-0",
+        "sku": "vivo-x200-pro-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -57,10 +57,10 @@
     ]
   },
   {
-    "id": "vivo-vivo-v40-pro-5g-512gb",
-    "slug": "vivo-v40-pro-5g-512gb",
+    "id": "vivo-vivo-v40-pro-5g",
+    "slug": "vivo-v40-pro-5g",
     "hang": "vivo",
-    "san_pham": "vivo V40 Pro 5G 512GB",
+    "san_pham": "vivo V40 Pro 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại vivo V40 Pro 5G 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9200+, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -101,7 +101,7 @@
     ],
     "variants": [
       {
-        "sku": "vivo-v40-pro-5g-512gb-12-512-0",
+        "sku": "vivo-v40-pro-5g-12-512-0",
         "ram_gb": 12,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -113,10 +113,10 @@
     ]
   },
   {
-    "id": "vivo-vivo-v40-lite-256gb",
-    "slug": "vivo-v40-lite-256gb",
+    "id": "vivo-vivo-v40-lite",
+    "slug": "vivo-v40-lite",
     "hang": "vivo",
-    "san_pham": "vivo V40 Lite 256GB",
+    "san_pham": "vivo V40 Lite",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại vivo V40 Lite 256GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 685, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.67 inches",
@@ -157,7 +157,7 @@
     ],
     "variants": [
       {
-        "sku": "vivo-v40-lite-256gb-8-256-0",
+        "sku": "vivo-v40-lite-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -169,10 +169,10 @@
     ]
   },
   {
-    "id": "vivo-vivo-v30-pro-512gb",
-    "slug": "vivo-v30-pro-512gb",
+    "id": "vivo-vivo-v30-pro",
+    "slug": "vivo-v30-pro",
     "hang": "vivo",
-    "san_pham": "vivo V30 Pro 512GB",
+    "san_pham": "vivo V30 Pro",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại vivo V30 Pro 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8200, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -211,7 +211,7 @@
     ],
     "variants": [
       {
-        "sku": "vivo-v30-pro-512gb-12-512-0",
+        "sku": "vivo-v30-pro-12-512-0",
         "ram_gb": 12,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -223,10 +223,10 @@
     ]
   },
   {
-    "id": "vivo-vivo-y100-128gb",
-    "slug": "vivo-y100-128gb",
+    "id": "vivo-vivo-y100",
+    "slug": "vivo-y100",
     "hang": "vivo",
-    "san_pham": "vivo Y100 128GB",
+    "san_pham": "vivo Y100",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại vivo Y100 128GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 685, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.67 inches",
@@ -265,7 +265,7 @@
     ],
     "variants": [
       {
-        "sku": "vivo-y100-128gb-8-128-0",
+        "sku": "vivo-y100-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -277,10 +277,10 @@
     ]
   },
   {
-    "id": "vivo-vivo-y200-5g-256gb",
-    "slug": "vivo-y200-5g-256gb",
+    "id": "vivo-vivo-y200-5g",
+    "slug": "vivo-y200-5g",
     "hang": "vivo",
-    "san_pham": "vivo Y200 5G 256GB",
+    "san_pham": "vivo Y200 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại vivo Y200 5G 256GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 4 Gen 2, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.67 inches",
@@ -318,7 +318,7 @@
     ],
     "variants": [
       {
-        "sku": "vivo-y200-5g-256gb-8-256-0",
+        "sku": "vivo-y200-5g-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -330,10 +330,10 @@
     ]
   },
   {
-    "id": "vivo-vivo-y18s-128gb",
-    "slug": "vivo-y18s-128gb",
+    "id": "vivo-vivo-y18s",
+    "slug": "vivo-y18s",
     "hang": "vivo",
-    "san_pham": "vivo Y18s 128GB",
+    "san_pham": "vivo Y18s",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại vivo Y18s 128GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.56 inches",
@@ -370,7 +370,7 @@
     ],
     "variants": [
       {
-        "sku": "vivo-y18s-128gb-6-128-0",
+        "sku": "vivo-y18s-6-128-0",
         "ram_gb": 6,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -382,10 +382,10 @@
     ]
   },
   {
-    "id": "vivo-vivo-y03-64gb",
-    "slug": "vivo-y03-64gb",
+    "id": "vivo-vivo-y03",
+    "slug": "vivo-y03",
     "hang": "vivo",
-    "san_pham": "vivo Y03 64GB",
+    "san_pham": "vivo Y03",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại vivo Y03 64GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.56 inches",
@@ -422,7 +422,7 @@
     ],
     "variants": [
       {
-        "sku": "vivo-y03-64gb-4-64-0",
+        "sku": "vivo-y03-4-64-0",
         "ram_gb": 4,
         "dung_luong_gb": 64,
         "mau_sac": "Đen",
@@ -434,10 +434,10 @@
     ]
   },
   {
-    "id": "vivo-vivo-t3-ultra-256gb",
-    "slug": "vivo-t3-ultra-256gb",
+    "id": "vivo-vivo-t3-ultra",
+    "slug": "vivo-t3-ultra",
     "hang": "vivo",
-    "san_pham": "vivo T3 Ultra 256GB",
+    "san_pham": "vivo T3 Ultra",
     "phan_khuc": "gaming",
     "mo_ta": "Điện thoại vivo T3 Ultra 256GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9200+, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -480,7 +480,7 @@
     ],
     "variants": [
       {
-        "sku": "vivo-t3-ultra-256gb-12-256-0",
+        "sku": "vivo-t3-ultra-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -492,10 +492,10 @@
     ]
   },
   {
-    "id": "vivo-vivo-x100-ultra-512gb",
-    "slug": "vivo-x100-ultra-512gb",
+    "id": "vivo-vivo-x100-ultra",
+    "slug": "vivo-x100-ultra",
     "hang": "vivo",
-    "san_pham": "vivo X100 Ultra 512GB",
+    "san_pham": "vivo X100 Ultra",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại vivo X100 Ultra 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -537,7 +537,7 @@
     ],
     "variants": [
       {
-        "sku": "vivo-x100-ultra-512gb-16-512-0",
+        "sku": "vivo-x100-ultra-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",

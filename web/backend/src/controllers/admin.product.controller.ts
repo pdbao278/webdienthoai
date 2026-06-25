@@ -16,6 +16,15 @@ const generateSlug = (name: string) => {
   return name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + '-' + Date.now();
 };
 
+/**
+ * Tự sinh SKU từ slug + thông tin variant.
+ * Format: {slug}-{ramGb}-{dungLuongGb}-{colorIndex}
+ * VD: galaxy-s26-ultra-16-256-0
+ */
+const generateSku = (productSlug: string, ramGb: number, dungLuongGb: number, colorIndex: number): string => {
+  return `${productSlug}-${ramGb}-${dungLuongGb}-${colorIndex}`;
+};
+
 export const getAdminProducts = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const products = await prisma.product.findMany({
@@ -48,17 +57,20 @@ export const createProduct = async (req: AuthRequest, res: Response): Promise<vo
 
     const { sanPham, hang, phanKhuc, moTa, variants, media, ...otherFields } = parsed.data;
 
+    const slug = generateSlug(sanPham);
+    const baseSlug = slug.replace(/-\d+$/, ''); // Bỏ timestamp suffix cho SKU
+
     const newProduct = await prisma.product.create({
       data: {
-        slug: generateSlug(sanPham),
+        slug,
         sanPham,
         hang,
         phanKhuc,
         moTa,
         ...otherFields,
         variants: {
-          create: variants.map((v) => ({
-            sku: v.sku,
+          create: variants.map((v, idx) => ({
+            sku: v.sku || generateSku(baseSlug, v.ramGb, v.dungLuongGb, idx),
             ramGb: v.ramGb,
             dungLuongGb: v.dungLuongGb,
             mauSac: v.mauSac,
@@ -126,44 +138,47 @@ export const updateProduct = async (req: AuthRequest, res: Response): Promise<vo
 
       // 2. Sync variants if provided
       if (variants) {
-        const existingSkus = existingProduct.variants.map(v => v.sku);
-        const newSkus = variants.map(v => v.sku);
+        const getVariantKey = (v: any) => `${v.ramGb}-${v.dungLuongGb}-${v.mauSac}`;
+        const existingKeys = existingProduct.variants.map(getVariantKey);
+        const newKeys = variants.map(getVariantKey);
+        
+        const baseSlug = existingProduct.slug.replace(/-\d+$/, '');
 
         // Delete removed variants
-        const skusToDelete = existingSkus.filter(sku => !newSkus.includes(sku));
-        for (const sku of skusToDelete) {
-          const variant = existingProduct.variants.find(v => v.sku === sku)!;
+        const keysToDelete = existingKeys.filter(k => !newKeys.includes(k));
+        for (const key of keysToDelete) {
+          const variant = existingProduct.variants.find(v => getVariantKey(v) === key)!;
           // Check if variant has order items
           const hasOrders = await tx.orderItem.findFirst({
             where: { productVariantId: variant.id }
           });
           if (hasOrders) {
-            throw new Error(`Không thể xóa phiên bản ${sku} do đã có lịch sử đơn hàng. Vui lòng hạ tồn kho về 0 thay vì xóa.`);
+            throw new Error(`Không thể xóa phiên bản ${variant.ramGb}GB-${variant.dungLuongGb}GB ${variant.mauSac} do đã có lịch sử đơn hàng. Vui lòng hạ tồn kho về 0 thay vì xóa.`);
           }
           await tx.productVariant.delete({ where: { id: variant.id } });
         }
 
         // Upsert remaining/new variants
-        for (const v of variants) {
-          const existing = existingProduct.variants.find(ev => ev.sku === v.sku);
+        for (let idx = 0; idx < variants.length; idx++) {
+          const v = variants[idx];
+          const key = getVariantKey(v);
+          const existing = existingProduct.variants.find(ev => getVariantKey(ev) === key);
+          
           if (existing) {
             await tx.productVariant.update({
               where: { id: existing.id },
               data: {
-                ramGb: v.ramGb,
-                dungLuongGb: v.dungLuongGb,
-                mauSac: v.mauSac,
-                imageUrl: v.imageUrl,
                 giaGoc: v.giaGoc,
                 giaBan: v.giaBan,
-                tonKho: v.tonKho
+                tonKho: v.tonKho,
+                imageUrl: v.imageUrl
               }
             });
           } else {
             await tx.productVariant.create({
               data: {
                 productId: id,
-                sku: v.sku,
+                sku: v.sku || generateSku(baseSlug, v.ramGb, v.dungLuongGb, idx),
                 ramGb: v.ramGb,
                 dungLuongGb: v.dungLuongGb,
                 mauSac: v.mauSac,

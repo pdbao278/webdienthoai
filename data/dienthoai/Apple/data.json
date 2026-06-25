@@ -1,9 +1,9 @@
 [
   {
-    "id": "apple-iphone-17-pro-max-256gb",
-    "slug": "iphone-17-pro-max-256gb",
+    "id": "apple-iphone-17-pro-max",
+    "slug": "iphone-17-pro-max",
     "hang": "Apple",
-    "san_pham": "iPhone 17 Pro Max 256GB",
+    "san_pham": "iPhone 17 Pro Max",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại iPhone 17 Pro Max 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A19 Pro (3nm), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.9 inches",
@@ -44,7 +44,7 @@
     ],
     "variants": [
       {
-        "sku": "iphone-17-pro-max-256gb-12-256-0",
+        "sku": "iphone-17-pro-max-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -56,10 +56,10 @@
     ]
   },
   {
-    "id": "apple-iphone-17-pro-256gb",
-    "slug": "iphone-17-pro-256gb",
+    "id": "apple-iphone-17-pro",
+    "slug": "iphone-17-pro",
     "hang": "Apple",
-    "san_pham": "iPhone 17 Pro 256GB",
+    "san_pham": "iPhone 17 Pro",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại iPhone 17 Pro 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A19 Pro (3nm), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.3 inches",
@@ -98,7 +98,7 @@
     ],
     "variants": [
       {
-        "sku": "iphone-17-pro-256gb-12-256-0",
+        "sku": "iphone-17-pro-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -110,10 +110,10 @@
     ]
   },
   {
-    "id": "apple-iphone-17-slim-256gb",
-    "slug": "iphone-17-slim-256gb",
+    "id": "apple-iphone-17-slim",
+    "slug": "iphone-17-slim",
     "hang": "Apple",
-    "san_pham": "iPhone 17 Slim 256GB",
+    "san_pham": "iPhone 17 Slim",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại iPhone 17 Slim 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A19 (3nm), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.6 inches",
@@ -153,7 +153,7 @@
     ],
     "variants": [
       {
-        "sku": "iphone-17-slim-256gb-8-256-0",
+        "sku": "iphone-17-slim-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -165,10 +165,10 @@
     ]
   },
   {
-    "id": "apple-iphone-17-128gb",
-    "slug": "iphone-17-128gb",
+    "id": "apple-iphone-17",
+    "slug": "iphone-17",
     "hang": "Apple",
-    "san_pham": "iPhone 17 128GB",
+    "san_pham": "iPhone 17",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại iPhone 17 128GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A19 (3nm), bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.1 inches",
@@ -206,7 +206,7 @@
     ],
     "variants": [
       {
-        "sku": "iphone-17-128gb-8-128-0",
+        "sku": "iphone-17-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -218,10 +218,10 @@
     ]
   },
   {
-    "id": "apple-iphone-se-4-128gb",
-    "slug": "iphone-se-4-128gb",
+    "id": "apple-iphone-se-4",
+    "slug": "iphone-se-4",
     "hang": "Apple",
-    "san_pham": "iPhone SE 4 128GB",
+    "san_pham": "iPhone SE 4",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại iPhone SE 4 128GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A18 (3nm), bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.1 inches",
@@ -258,7 +258,7 @@
     ],
     "variants": [
       {
-        "sku": "iphone-se-4-128gb-8-128-0",
+        "sku": "iphone-se-4-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -270,10 +270,10 @@
     ]
   },
   {
-    "id": "apple-iphone-16-pro-max-256gb",
-    "slug": "iphone-16-pro-max-256gb",
+    "id": "apple-iphone-16-pro-max",
+    "slug": "iphone-16-pro-max",
     "hang": "Apple",
-    "san_pham": "iPhone 16 Pro Max 256GB",
+    "san_pham": "iPhone 16 Pro Max",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại iPhone 16 Pro Max 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A18 Pro (3nm), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.9 inches",
@@ -312,7 +312,7 @@
     ],
     "variants": [
       {
-        "sku": "iphone-16-pro-max-256gb-8-256-0",
+        "sku": "iphone-16-pro-max-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -324,10 +324,10 @@
     ]
   },
   {
-    "id": "apple-iphone-16-pro-128gb",
-    "slug": "iphone-16-pro-128gb",
+    "id": "apple-iphone-16-pro",
+    "slug": "iphone-16-pro",
     "hang": "Apple",
-    "san_pham": "iPhone 16 Pro 128GB",
+    "san_pham": "iPhone 16 Pro",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại iPhone 16 Pro 128GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A18 Pro (3nm), bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.3 inches",
@@ -364,7 +364,7 @@
     ],
     "variants": [
       {
-        "sku": "iphone-16-pro-128gb-8-128-0",
+        "sku": "iphone-16-pro-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -376,10 +376,10 @@
     ]
   },
   {
-    "id": "apple-iphone-16-plus-128gb",
-    "slug": "iphone-16-plus-128gb",
+    "id": "apple-iphone-16-plus",
+    "slug": "iphone-16-plus",
     "hang": "Apple",
-    "san_pham": "iPhone 16 Plus 128GB",
+    "san_pham": "iPhone 16 Plus",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại iPhone 16 Plus 128GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A18 (3nm), bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -416,7 +416,7 @@
     ],
     "variants": [
       {
-        "sku": "iphone-16-plus-128gb-8-128-0",
+        "sku": "iphone-16-plus-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -428,10 +428,10 @@
     ]
   },
   {
-    "id": "apple-iphone-16-128gb",
-    "slug": "iphone-16-128gb",
+    "id": "apple-iphone-16",
+    "slug": "iphone-16",
     "hang": "Apple",
-    "san_pham": "iPhone 16 128GB",
+    "san_pham": "iPhone 16",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại iPhone 16 128GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A18 (3nm), bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.1 inches",
@@ -468,7 +468,7 @@
     ],
     "variants": [
       {
-        "sku": "iphone-16-128gb-8-128-0",
+        "sku": "iphone-16-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -480,10 +480,10 @@
     ]
   },
   {
-    "id": "apple-iphone-15-pro-max-256gb",
-    "slug": "iphone-15-pro-max-256gb",
+    "id": "apple-iphone-15-pro-max",
+    "slug": "iphone-15-pro-max",
     "hang": "Apple",
-    "san_pham": "iPhone 15 Pro Max 256GB",
+    "san_pham": "iPhone 15 Pro Max",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại iPhone 15 Pro Max 256GB chính hãng từ Apple. Thiết kế sang trọng, hiệu năng vượt trội với chip Apple A17 Pro (3nm), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -522,7 +522,7 @@
     ],
     "variants": [
       {
-        "sku": "iphone-15-pro-max-256gb-8-256-0",
+        "sku": "iphone-15-pro-max-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",

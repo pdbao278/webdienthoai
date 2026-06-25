@@ -1,9 +1,9 @@
 [
   {
-    "id": "realme-realme-gt6-5g-256gb",
-    "slug": "realme-gt6-5g-256gb",
+    "id": "realme-realme-gt6-5g",
+    "slug": "realme-gt6-5g",
     "hang": "realme",
-    "san_pham": "realme GT6 5G 256GB",
+    "san_pham": "realme GT6 5G",
     "phan_khuc": "gaming",
     "mo_ta": "Điện thoại realme GT6 5G 256GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 3, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -46,7 +46,7 @@
     ],
     "variants": [
       {
-        "sku": "realme-gt6-5g-256gb-12-256-0",
+        "sku": "realme-gt6-5g-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -166,10 +166,10 @@
     ]
   },
   {
-    "id": "realme-realme-c67-128gb",
-    "slug": "realme-c67-128gb",
+    "id": "realme-realme-c67",
+    "slug": "realme-c67",
     "hang": "realme",
-    "san_pham": "realme C67 128GB",
+    "san_pham": "realme C67",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại realme C67 128GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 685, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.72 inches",
@@ -207,7 +207,7 @@
     ],
     "variants": [
       {
-        "sku": "realme-c67-128gb-8-128-0",
+        "sku": "realme-c67-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -219,10 +219,10 @@
     ]
   },
   {
-    "id": "realme-realme-c65-128gb",
-    "slug": "realme-c65-128gb",
+    "id": "realme-realme-c65",
+    "slug": "realme-c65",
     "hang": "realme",
-    "san_pham": "realme C65 128GB",
+    "san_pham": "realme C65",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại realme C65 128GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.67 inches",
@@ -259,7 +259,7 @@
     ],
     "variants": [
       {
-        "sku": "realme-c65-128gb-6-128-0",
+        "sku": "realme-c65-6-128-0",
         "ram_gb": 6,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -271,10 +271,10 @@
     ]
   },
   {
-    "id": "realme-realme-note-60-64gb",
-    "slug": "realme-note-60-64gb",
+    "id": "realme-realme-note-60",
+    "slug": "realme-note-60",
     "hang": "realme",
-    "san_pham": "realme Note 60 64GB",
+    "san_pham": "realme Note 60",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại realme Note 60 64GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T612, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.74 inches",
@@ -311,7 +311,7 @@
     ],
     "variants": [
       {
-        "sku": "realme-note-60-64gb-4-64-0",
+        "sku": "realme-note-60-4-64-0",
         "ram_gb": 4,
         "dung_luong_gb": 64,
         "mau_sac": "Đen",
@@ -323,10 +323,10 @@
     ]
   },
   {
-    "id": "realme-realme-c53-128gb",
-    "slug": "realme-c53-128gb",
+    "id": "realme-realme-c53",
+    "slug": "realme-c53",
     "hang": "realme",
-    "san_pham": "realme C53 128GB",
+    "san_pham": "realme C53",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại realme C53 128GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T612, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.74 inches",
@@ -363,7 +363,7 @@
     ],
     "variants": [
       {
-        "sku": "realme-c53-128gb-6-128-0",
+        "sku": "realme-c53-6-128-0",
         "ram_gb": 6,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -375,10 +375,10 @@
     ]
   },
   {
-    "id": "realme-realme-note-50-64gb",
-    "slug": "realme-note-50-64gb",
+    "id": "realme-realme-note-50",
+    "slug": "realme-note-50",
     "hang": "realme",
-    "san_pham": "realme Note 50 64GB",
+    "san_pham": "realme Note 50",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại realme Note 50 64GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T612, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.74 inches",
@@ -415,7 +415,7 @@
     ],
     "variants": [
       {
-        "sku": "realme-note-50-64gb-3-64-0",
+        "sku": "realme-note-50-3-64-0",
         "ram_gb": 3,
         "dung_luong_gb": 64,
         "mau_sac": "Đen",
@@ -427,10 +427,10 @@
     ]
   },
   {
-    "id": "realme-realme-gt5-pro-256gb",
-    "slug": "realme-gt5-pro-256gb",
+    "id": "realme-realme-gt5-pro",
+    "slug": "realme-gt5-pro",
     "hang": "realme",
-    "san_pham": "realme GT5 Pro 256GB",
+    "san_pham": "realme GT5 Pro",
     "phan_khuc": "gaming",
     "mo_ta": "Điện thoại realme GT5 Pro 256GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -471,7 +471,7 @@
     ],
     "variants": [
       {
-        "sku": "realme-gt5-pro-256gb-12-256-0",
+        "sku": "realme-gt5-pro-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -483,10 +483,10 @@
     ]
   },
   {
-    "id": "realme-realme-c61-128gb",
-    "slug": "realme-c61-128gb",
+    "id": "realme-realme-c61",
+    "slug": "realme-c61",
     "hang": "realme",
-    "san_pham": "realme C61 128GB",
+    "san_pham": "realme C61",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại realme C61 128GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T612, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.74 inches",
@@ -523,7 +523,7 @@
     ],
     "variants": [
       {
-        "sku": "realme-c61-128gb-4-128-0",
+        "sku": "realme-c61-4-128-0",
         "ram_gb": 4,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",

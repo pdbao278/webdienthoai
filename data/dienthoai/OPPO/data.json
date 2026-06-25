@@ -1,9 +1,9 @@
 [
   {
-    "id": "oppo-find-x8-ultra-512gb",
-    "slug": "find-x8-ultra-512gb",
+    "id": "oppo-find-x8-ultra",
+    "slug": "find-x8-ultra",
     "hang": "OPPO",
-    "san_pham": "Find X8 Ultra 512GB",
+    "san_pham": "Find X8 Ultra",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Find X8 Ultra 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9400 / Snapdragon 8 Gen 4, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.82 inches",
@@ -45,7 +45,7 @@
     ],
     "variants": [
       {
-        "sku": "find-x8-ultra-512gb-16-512-0",
+        "sku": "find-x8-ultra-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -57,10 +57,10 @@
     ]
   },
   {
-    "id": "oppo-find-n3-fold-512gb",
-    "slug": "find-n3-fold-512gb",
+    "id": "oppo-find-n3-fold",
+    "slug": "find-n3-fold",
     "hang": "OPPO",
-    "san_pham": "Find N3 Fold 512GB",
+    "san_pham": "Find N3 Fold",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Find N3 Fold 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 2, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "7.82 inches (Chính) / 6.31 inches (Phụ)",
@@ -99,7 +99,7 @@
     ],
     "variants": [
       {
-        "sku": "find-n3-fold-512gb-16-512-0",
+        "sku": "find-n3-fold-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -111,10 +111,10 @@
     ]
   },
   {
-    "id": "oppo-reno14-pro-5g-512gb",
-    "slug": "reno14-pro-5g-512gb",
+    "id": "oppo-reno14-pro-5g",
+    "slug": "reno14-pro-5g",
     "hang": "OPPO",
-    "san_pham": "Reno14 Pro 5G 512GB",
+    "san_pham": "Reno14 Pro 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Reno14 Pro 5G 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8400, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -153,7 +153,7 @@
     ],
     "variants": [
       {
-        "sku": "reno14-pro-5g-512gb-12-512-0",
+        "sku": "reno14-pro-5g-12-512-0",
         "ram_gb": 12,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -165,10 +165,10 @@
     ]
   },
   {
-    "id": "oppo-reno14-5g-256gb",
-    "slug": "reno14-5g-256gb",
+    "id": "oppo-reno14-5g",
+    "slug": "reno14-5g",
     "hang": "OPPO",
-    "san_pham": "Reno14 5G 256GB",
+    "san_pham": "Reno14 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Reno14 5G 256GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8300, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -207,7 +207,7 @@
     ],
     "variants": [
       {
-        "sku": "reno14-5g-256gb-12-256-0",
+        "sku": "reno14-5g-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -219,10 +219,10 @@
     ]
   },
   {
-    "id": "oppo-reno13-pro-5g-256gb",
-    "slug": "reno13-pro-5g-256gb",
+    "id": "oppo-reno13-pro-5g",
+    "slug": "reno13-pro-5g",
     "hang": "OPPO",
-    "san_pham": "Reno13 Pro 5G 256GB",
+    "san_pham": "Reno13 Pro 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Reno13 Pro 5G 256GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8350, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.83 inches",
@@ -263,7 +263,7 @@
     ],
     "variants": [
       {
-        "sku": "reno13-pro-5g-256gb-12-256-0",
+        "sku": "reno13-pro-5g-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -275,10 +275,10 @@
     ]
   },
   {
-    "id": "oppo-reno13-5g-256gb",
-    "slug": "reno13-5g-256gb",
+    "id": "oppo-reno13-5g",
+    "slug": "reno13-5g",
     "hang": "OPPO",
-    "san_pham": "Reno13 5G 256GB",
+    "san_pham": "Reno13 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Reno13 5G 256GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8300, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.59 inches",
@@ -319,7 +319,7 @@
     ],
     "variants": [
       {
-        "sku": "reno13-5g-256gb-8-256-0",
+        "sku": "reno13-5g-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -331,10 +331,10 @@
     ]
   },
   {
-    "id": "oppo-oppo-a3-pro-5g-256gb",
-    "slug": "oppo-a3-pro-5g-256gb",
+    "id": "oppo-oppo-a3-pro-5g",
+    "slug": "oppo-a3-pro-5g",
     "hang": "OPPO",
-    "san_pham": "OPPO A3 Pro 5G 256GB",
+    "san_pham": "OPPO A3 Pro 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại OPPO A3 Pro 5G 256GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 6300, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.67 inches",
@@ -372,7 +372,7 @@
     ],
     "variants": [
       {
-        "sku": "oppo-a3-pro-5g-256gb-8-256-0",
+        "sku": "oppo-a3-pro-5g-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -384,10 +384,10 @@
     ]
   },
   {
-    "id": "oppo-oppo-a3-128gb",
-    "slug": "oppo-a3-128gb",
+    "id": "oppo-oppo-a3",
+    "slug": "oppo-a3",
     "hang": "OPPO",
-    "san_pham": "OPPO A3 128GB",
+    "san_pham": "OPPO A3",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại OPPO A3 128GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 680, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.67 inches",
@@ -425,7 +425,7 @@
     ],
     "variants": [
       {
-        "sku": "oppo-a3-128gb-6-128-0",
+        "sku": "oppo-a3-6-128-0",
         "ram_gb": 6,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -437,10 +437,10 @@
     ]
   },
   {
-    "id": "oppo-oppo-a18-64gb",
-    "slug": "oppo-a18-64gb",
+    "id": "oppo-oppo-a18",
+    "slug": "oppo-a18",
     "hang": "OPPO",
-    "san_pham": "OPPO A18 64GB",
+    "san_pham": "OPPO A18",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại OPPO A18 64GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.56 inches",
@@ -477,7 +477,7 @@
     ],
     "variants": [
       {
-        "sku": "oppo-a18-64gb-4-64-0",
+        "sku": "oppo-a18-4-64-0",
         "ram_gb": 4,
         "dung_luong_gb": 64,
         "mau_sac": "Đen",
@@ -489,10 +489,10 @@
     ]
   },
   {
-    "id": "oppo-find-x7-ultra-512gb",
-    "slug": "find-x7-ultra-512gb",
+    "id": "oppo-find-x7-ultra",
+    "slug": "find-x7-ultra",
     "hang": "OPPO",
-    "san_pham": "Find X7 Ultra 512GB",
+    "san_pham": "Find X7 Ultra",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Find X7 Ultra 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.82 inches",
@@ -533,7 +533,7 @@
     ],
     "variants": [
       {
-        "sku": "find-x7-ultra-512gb-16-512-0",
+        "sku": "find-x7-ultra-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",

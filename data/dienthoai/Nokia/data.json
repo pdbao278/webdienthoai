@@ -1,9 +1,9 @@
 [
   {
-    "id": "nokia-nokia-xr21-5g-128gb",
-    "slug": "nokia-xr21-5g-128gb",
+    "id": "nokia-nokia-xr21-5g",
+    "slug": "nokia-xr21-5g",
     "hang": "Nokia",
-    "san_pham": "Nokia XR21 5G 128GB",
+    "san_pham": "Nokia XR21 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Nokia XR21 5G 128GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 695 5G, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.49 inches",
@@ -41,7 +41,7 @@
     ],
     "variants": [
       {
-        "sku": "nokia-xr21-5g-128gb-6-128-0",
+        "sku": "nokia-xr21-5g-6-128-0",
         "ram_gb": 6,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -53,10 +53,10 @@
     ]
   },
   {
-    "id": "nokia-nokia-g42-5g-128gb",
-    "slug": "nokia-g42-5g-128gb",
+    "id": "nokia-nokia-g42-5g",
+    "slug": "nokia-g42-5g",
     "hang": "Nokia",
-    "san_pham": "Nokia G42 5G 128GB",
+    "san_pham": "Nokia G42 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Nokia G42 5G 128GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 480+ 5G, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.56 inches",
@@ -93,7 +93,7 @@
     ],
     "variants": [
       {
-        "sku": "nokia-g42-5g-128gb-6-128-0",
+        "sku": "nokia-g42-5g-6-128-0",
         "ram_gb": 6,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -105,10 +105,10 @@
     ]
   },
   {
-    "id": "nokia-nokia-c32-128gb",
-    "slug": "nokia-c32-128gb",
+    "id": "nokia-nokia-c32",
+    "slug": "nokia-c32",
     "hang": "Nokia",
-    "san_pham": "Nokia C32 128GB",
+    "san_pham": "Nokia C32",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại Nokia C32 128GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc SC9863A, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.5 inches",
@@ -145,7 +145,7 @@
     ],
     "variants": [
       {
-        "sku": "nokia-c32-128gb-4-128-0",
+        "sku": "nokia-c32-4-128-0",
         "ram_gb": 4,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -412,10 +412,10 @@
     ]
   },
   {
-    "id": "nokia-nokia-g22-128gb",
-    "slug": "nokia-g22-128gb",
+    "id": "nokia-nokia-g22",
+    "slug": "nokia-g22",
     "hang": "Nokia",
-    "san_pham": "Nokia G22 128GB",
+    "san_pham": "Nokia G22",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại Nokia G22 128GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T606, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.52 inches",
@@ -452,7 +452,7 @@
     ],
     "variants": [
       {
-        "sku": "nokia-g22-128gb-4-128-0",
+        "sku": "nokia-g22-4-128-0",
         "ram_gb": 4,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -464,10 +464,10 @@
     ]
   },
   {
-    "id": "nokia-nokia-c12-64gb",
-    "slug": "nokia-c12-64gb",
+    "id": "nokia-nokia-c12",
+    "slug": "nokia-c12",
     "hang": "Nokia",
-    "san_pham": "Nokia C12 64GB",
+    "san_pham": "Nokia C12",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại Nokia C12 64GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc SC9863A1, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.3 inches",
@@ -504,7 +504,7 @@
     ],
     "variants": [
       {
-        "sku": "nokia-c12-64gb-3-64-0",
+        "sku": "nokia-c12-3-64-0",
         "ram_gb": 3,
         "dung_luong_gb": 64,
         "mau_sac": "Đen",

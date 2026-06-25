@@ -1,9 +1,9 @@
 [
   {
-    "id": "motorola-motorola-edge-50-ultra-512gb",
-    "slug": "motorola-edge-50-ultra-512gb",
+    "id": "motorola-motorola-edge-50-ultra",
+    "slug": "motorola-edge-50-ultra",
     "hang": "Motorola",
-    "san_pham": "Motorola Edge 50 Ultra 512GB",
+    "san_pham": "Motorola Edge 50 Ultra",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Motorola Edge 50 Ultra 512GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 3 (Mặt lưng gỗ/da thật), bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -45,7 +45,7 @@
     ],
     "variants": [
       {
-        "sku": "motorola-edge-50-ultra-512gb-16-512-0",
+        "sku": "motorola-edge-50-ultra-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -57,10 +57,10 @@
     ]
   },
   {
-    "id": "motorola-motorola-razr-50-ultra-512gb",
-    "slug": "motorola-razr-50-ultra-512gb",
+    "id": "motorola-motorola-razr-50-ultra",
+    "slug": "motorola-razr-50-ultra",
     "hang": "Motorola",
-    "san_pham": "Motorola Razr 50 Ultra 512GB",
+    "san_pham": "Motorola Razr 50 Ultra",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Motorola Razr 50 Ultra 512GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 3, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.9 inches chính",
@@ -100,7 +100,7 @@
     ],
     "variants": [
       {
-        "sku": "motorola-razr-50-ultra-512gb-12-512-0",
+        "sku": "motorola-razr-50-ultra-12-512-0",
         "ram_gb": 12,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -112,10 +112,10 @@
     ]
   },
   {
-    "id": "motorola-motorola-edge-50-pro-256gb",
-    "slug": "motorola-edge-50-pro-256gb",
+    "id": "motorola-motorola-edge-50-pro",
+    "slug": "motorola-edge-50-pro",
     "hang": "Motorola",
-    "san_pham": "Motorola Edge 50 Pro 256GB",
+    "san_pham": "Motorola Edge 50 Pro",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Motorola Edge 50 Pro 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7 Gen 3, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -154,7 +154,7 @@
     ],
     "variants": [
       {
-        "sku": "motorola-edge-50-pro-256gb-12-256-0",
+        "sku": "motorola-edge-50-pro-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -166,10 +166,10 @@
     ]
   },
   {
-    "id": "motorola-motorola-edge-50-fusion-256gb",
-    "slug": "motorola-edge-50-fusion-256gb",
+    "id": "motorola-motorola-edge-50-fusion",
+    "slug": "motorola-edge-50-fusion",
     "hang": "Motorola",
-    "san_pham": "Motorola Edge 50 Fusion 256GB",
+    "san_pham": "Motorola Edge 50 Fusion",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Motorola Edge 50 Fusion 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7s Gen 2, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -208,7 +208,7 @@
     ],
     "variants": [
       {
-        "sku": "motorola-edge-50-fusion-256gb-8-256-0",
+        "sku": "motorola-edge-50-fusion-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -220,10 +220,10 @@
     ]
   },
   {
-    "id": "motorola-motorola-moto-g85-5g-256gb",
-    "slug": "motorola-moto-g85-5g-256gb",
+    "id": "motorola-motorola-moto-g85-5g",
+    "slug": "motorola-moto-g85-5g",
     "hang": "Motorola",
-    "san_pham": "Motorola Moto G85 5G 256GB",
+    "san_pham": "Motorola Moto G85 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Motorola Moto G85 5G 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 6s Gen 3 (Màn hình cong), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.67 inches",
@@ -260,7 +260,7 @@
     ],
     "variants": [
       {
-        "sku": "motorola-moto-g85-5g-256gb-8-256-0",
+        "sku": "motorola-moto-g85-5g-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -272,10 +272,10 @@
     ]
   },
   {
-    "id": "motorola-motorola-razr-50-256gb",
-    "slug": "motorola-razr-50-256gb",
+    "id": "motorola-motorola-razr-50",
+    "slug": "motorola-razr-50",
     "hang": "Motorola",
-    "san_pham": "Motorola Razr 50 256GB",
+    "san_pham": "Motorola Razr 50",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Motorola Razr 50 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 7300X, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.9 inches chính",
@@ -313,7 +313,7 @@
     ],
     "variants": [
       {
-        "sku": "motorola-razr-50-256gb-8-256-0",
+        "sku": "motorola-razr-50-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -325,10 +325,10 @@
     ]
   },
   {
-    "id": "motorola-motorola-moto-g54-5g-128gb",
-    "slug": "motorola-moto-g54-5g-128gb",
+    "id": "motorola-motorola-moto-g54-5g",
+    "slug": "motorola-moto-g54-5g",
     "hang": "Motorola",
-    "san_pham": "Motorola Moto G54 5G 128GB",
+    "san_pham": "Motorola Moto G54 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Motorola Moto G54 5G 128GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 7020, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.5 inches",
@@ -365,7 +365,7 @@
     ],
     "variants": [
       {
-        "sku": "motorola-moto-g54-5g-128gb-8-128-0",
+        "sku": "motorola-moto-g54-5g-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -377,10 +377,10 @@
     ]
   },
   {
-    "id": "motorola-motorola-moto-g24-power-128gb",
-    "slug": "motorola-moto-g24-power-128gb",
+    "id": "motorola-motorola-moto-g24-power",
+    "slug": "motorola-moto-g24-power",
     "hang": "Motorola",
-    "san_pham": "Motorola Moto G24 Power 128GB",
+    "san_pham": "Motorola Moto G24 Power",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại Motorola Moto G24 Power 128GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.56 inches",
@@ -420,7 +420,7 @@
     ],
     "variants": [
       {
-        "sku": "motorola-moto-g24-power-128gb-4-128-0",
+        "sku": "motorola-moto-g24-power-4-128-0",
         "ram_gb": 4,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -432,10 +432,10 @@
     ]
   },
   {
-    "id": "motorola-motorola-moto-g14-64gb",
-    "slug": "motorola-moto-g14-64gb",
+    "id": "motorola-motorola-moto-g14",
+    "slug": "motorola-moto-g14",
     "hang": "Motorola",
-    "san_pham": "Motorola Moto G14 64GB",
+    "san_pham": "Motorola Moto G14",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại Motorola Moto G14 64GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T616, bộ nhớ trong 64GB.",
     "man_hinh_cong_nghe": "6.5 inches",
@@ -472,7 +472,7 @@
     ],
     "variants": [
       {
-        "sku": "motorola-moto-g14-64gb-4-64-0",
+        "sku": "motorola-moto-g14-4-64-0",
         "ram_gb": 4,
         "dung_luong_gb": 64,
         "mau_sac": "Đen",
@@ -484,10 +484,10 @@
     ]
   },
   {
-    "id": "motorola-motorola-edge-40-neo-256gb",
-    "slug": "motorola-edge-40-neo-256gb",
+    "id": "motorola-motorola-edge-40-neo",
+    "slug": "motorola-edge-40-neo",
     "hang": "Motorola",
-    "san_pham": "Motorola Edge 40 Neo 256GB",
+    "san_pham": "Motorola Edge 40 Neo",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Motorola Edge 40 Neo 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 7030, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.55 inches",
@@ -526,7 +526,7 @@
     ],
     "variants": [
       {
-        "sku": "motorola-edge-40-neo-256gb-8-256-0",
+        "sku": "motorola-edge-40-neo-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",

@@ -41,7 +41,7 @@ export const ProductSegmentEnum = z.enum([
 ]);
 
 const variantSchema = z.object({
-  sku: z.string().min(1, 'SKU là bắt buộc'),
+  sku: z.string().optional(), // SKU tự sinh bởi backend, Admin không cần nhập
   ramGb: z.number().int().positive(),
   dungLuongGb: z.number().int().positive(),
   mauSac: z.string().min(1, 'Màu sắc là bắt buộc'),

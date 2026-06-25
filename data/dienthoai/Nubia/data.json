@@ -112,10 +112,10 @@
     ]
   },
   {
-    "id": "nubia-nubia-z60-ultra-512gb",
-    "slug": "nubia-z60-ultra-512gb",
+    "id": "nubia-nubia-z60-ultra",
+    "slug": "nubia-z60-ultra",
     "hang": "Nubia",
-    "san_pham": "Nubia Z60 Ultra 512GB",
+    "san_pham": "Nubia Z60 Ultra",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Nubia Z60 Ultra 512GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3 (Ống kính tiêu cự 35mm), bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.8 inches",
@@ -157,7 +157,7 @@
     ],
     "variants": [
       {
-        "sku": "nubia-z60-ultra-512gb-16-512-0",
+        "sku": "nubia-z60-ultra-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -169,10 +169,10 @@
     ]
   },
   {
-    "id": "nubia-nubia-focus-pro-5g-256gb",
-    "slug": "nubia-focus-pro-5g-256gb",
+    "id": "nubia-nubia-focus-pro-5g",
+    "slug": "nubia-focus-pro-5g",
     "hang": "Nubia",
-    "san_pham": "Nubia Focus Pro 5G 256GB",
+    "san_pham": "Nubia Focus Pro 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Nubia Focus Pro 5G 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T760 (Thiết kế máy ảnh cơ học), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.72 inches",
@@ -209,7 +209,7 @@
     ],
     "variants": [
       {
-        "sku": "nubia-focus-pro-5g-256gb-8-256-0",
+        "sku": "nubia-focus-pro-5g-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -221,10 +221,10 @@
     ]
   },
   {
-    "id": "nubia-nubia-neo-2-5g-256gb",
-    "slug": "nubia-neo-2-5g-256gb",
+    "id": "nubia-nubia-neo-2-5g",
+    "slug": "nubia-neo-2-5g",
     "hang": "Nubia",
-    "san_pham": "Nubia Neo 2 5G 256GB",
+    "san_pham": "Nubia Neo 2 5G",
     "phan_khuc": "gaming",
     "mo_ta": "Điện thoại Nubia Neo 2 5G 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T820 (Phím vai trigger cảm ứng), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.72 inches",
@@ -264,7 +264,7 @@
     ],
     "variants": [
       {
-        "sku": "nubia-neo-2-5g-256gb-8-256-0",
+        "sku": "nubia-neo-2-5g-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -276,10 +276,10 @@
     ]
   },
   {
-    "id": "nubia-nubia-focus-5g-128gb",
-    "slug": "nubia-focus-5g-128gb",
+    "id": "nubia-nubia-focus-5g",
+    "slug": "nubia-focus-5g",
     "hang": "Nubia",
-    "san_pham": "Nubia Focus 5G 128GB",
+    "san_pham": "Nubia Focus 5G",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại Nubia Focus 5G 128GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T760, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.56 inches",
@@ -315,7 +315,7 @@
     ],
     "variants": [
       {
-        "sku": "nubia-focus-5g-128gb-6-128-0",
+        "sku": "nubia-focus-5g-6-128-0",
         "ram_gb": 6,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -327,10 +327,10 @@
     ]
   },
   {
-    "id": "nubia-nubia-neo-5g-256gb",
-    "slug": "nubia-neo-5g-256gb",
+    "id": "nubia-nubia-neo-5g",
+    "slug": "nubia-neo-5g",
     "hang": "Nubia",
-    "san_pham": "Nubia Neo 5G 256GB",
+    "san_pham": "Nubia Neo 5G",
     "phan_khuc": "gaming",
     "mo_ta": "Điện thoại Nubia Neo 5G 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T820, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.6 inches",
@@ -368,7 +368,7 @@
     ],
     "variants": [
       {
-        "sku": "nubia-neo-5g-256gb-8-256-0",
+        "sku": "nubia-neo-5g-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -380,10 +380,10 @@
     ]
   },
   {
-    "id": "nubia-nubia-music-128gb",
-    "slug": "nubia-music-128gb",
+    "id": "nubia-nubia-music",
+    "slug": "nubia-music",
     "hang": "Nubia",
-    "san_pham": "Nubia Music 128GB",
+    "san_pham": "Nubia Music",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại Nubia Music 128GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc SC9863A (Loa khủng đĩa than 600%), bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.6 inches",
@@ -419,7 +419,7 @@
     ],
     "variants": [
       {
-        "sku": "nubia-music-128gb-4-128-0",
+        "sku": "nubia-music-4-128-0",
         "ram_gb": 4,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -431,10 +431,10 @@
     ]
   },
   {
-    "id": "nubia-nubia-redmagic-8s-pro-256gb",
-    "slug": "nubia-redmagic-8s-pro-256gb",
+    "id": "nubia-nubia-redmagic-8s-pro",
+    "slug": "nubia-redmagic-8s-pro",
     "hang": "Nubia",
-    "san_pham": "Nubia RedMagic 8S Pro 256GB",
+    "san_pham": "Nubia RedMagic 8S Pro",
     "phan_khuc": "gaming",
     "mo_ta": "Điện thoại Nubia RedMagic 8S Pro 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 2, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.8 inches",
@@ -475,7 +475,7 @@
     ],
     "variants": [
       {
-        "sku": "nubia-redmagic-8s-pro-256gb-12-256-0",
+        "sku": "nubia-redmagic-8s-pro-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -487,10 +487,10 @@
     ]
   },
   {
-    "id": "nubia-nubia-z50s-pro-256gb",
-    "slug": "nubia-z50s-pro-256gb",
+    "id": "nubia-nubia-z50s-pro",
+    "slug": "nubia-z50s-pro",
     "hang": "Nubia",
-    "san_pham": "Nubia Z50S Pro 256GB",
+    "san_pham": "Nubia Z50S Pro",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Nubia Z50S Pro 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 2, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -528,7 +528,7 @@
     ],
     "variants": [
       {
-        "sku": "nubia-z50s-pro-256gb-12-256-0",
+        "sku": "nubia-z50s-pro-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",

@@ -70,15 +70,11 @@ export default function ProductInteractiveSection({ product, variants, minVarian
   }, [minVariant]);
 
   // Group unique configurations (combinations of ramGb and dungLuongGb)
-  const uniqueConfigs = variants.reduce((acc: { ramGb: number; dungLuongGb: number }[], v) => {
-    if (!acc.some(item => item.ramGb === v.ramGb && item.dungLuongGb === v.dungLuongGb)) {
-      acc.push({ ramGb: v.ramGb, dungLuongGb: v.dungLuongGb });
-    }
-    return acc;
-  }, []).sort((a, b) => {
-    if (a.ramGb !== b.ramGb) return a.ramGb - b.ramGb;
-    return a.dungLuongGb - b.dungLuongGb;
-  });
+  const uniqueConfigs = Array.from(
+    new Map(
+      variants.map(v => [`${v.ramGb}-${v.dungLuongGb}`, { ramGb: v.ramGb, dungLuongGb: v.dungLuongGb }])
+    ).values()
+  ).sort((a, b) => (a.ramGb !== b.ramGb ? a.ramGb - b.ramGb : a.dungLuongGb - b.dungLuongGb));
 
   // Get available colors for the selected configuration
   const availableColorsForConfig = Array.from(
@@ -147,55 +143,59 @@ export default function ProductInteractiveSection({ product, variants, minVarian
       {/* Configuration Selectors */}
       <div className="space-y-4">
         {/* Configuration Selector */}
-        <div>
-          <span className="text-xs uppercase tracking-wider text-slate-400 font-bold block mb-2">1. Chọn dung lượng:</span>
-          <div className="flex flex-wrap gap-2">
-            {uniqueConfigs.map(config => {
-              const isSelected = selectedVariant.ramGb === config.ramGb && selectedVariant.dungLuongGb === config.dungLuongGb;
-              return (
-                <button
-                  key={`${config.ramGb}-${config.dungLuongGb}`}
-                  onClick={() => handleConfigSelect(config.ramGb, config.dungLuongGb)}
-                  className={`px-3.5 py-1.5 border rounded-xl text-xs md:text-sm font-semibold transition-all outline-none cursor-pointer ${
-                    isSelected 
-                      ? 'border-blue-500 bg-blue-50/50 text-blue-600 ring-1 ring-blue-500/10' 
-                      : 'border-slate-200 hover:border-slate-300 text-slate-700 bg-white'
-                  }`}
-                >
-                  {config.ramGb}GB - {config.dungLuongGb}GB
-                </button>
-              );
-            })}
+        {uniqueConfigs.length > 1 && (
+          <div>
+            <span className="text-xs uppercase tracking-wider text-slate-400 font-bold block mb-2">1. Chọn dung lượng:</span>
+            <div className="flex flex-wrap gap-2">
+              {uniqueConfigs.map(config => {
+                const isSelected = selectedVariant.ramGb === config.ramGb && selectedVariant.dungLuongGb === config.dungLuongGb;
+                return (
+                  <button
+                    key={`${config.ramGb}-${config.dungLuongGb}`}
+                    onClick={() => handleConfigSelect(config.ramGb, config.dungLuongGb)}
+                    className={`px-3.5 py-1.5 border rounded-xl text-xs md:text-sm font-semibold transition-all outline-none cursor-pointer ${
+                      isSelected 
+                        ? 'border-blue-500 bg-blue-50/50 text-blue-600 ring-1 ring-blue-500/10' 
+                        : 'border-slate-200 hover:border-slate-300 text-slate-700 bg-white'
+                    }`}
+                  >
+                    {config.ramGb}GB - {config.dungLuongGb}GB
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Color Selector */}
-        <div>
-          <span className="text-xs uppercase tracking-wider text-slate-400 font-bold block mb-2">2. Chọn màu sắc:</span>
-          <div className="flex flex-wrap gap-2">
-            {availableColorsForConfig.map(color => {
-              const isSelected = selectedVariant.mauSac === color;
-              const colorHex = getColorHex(color);
-              return (
-                <button
-                  key={color}
-                  onClick={() => handleColorSelect(color)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 border rounded-full text-xs md:text-sm font-medium transition-all outline-none cursor-pointer ${
-                    isSelected 
-                      ? 'border-blue-500 bg-blue-50/50 text-blue-600 ring-1 ring-blue-500/10' 
-                      : 'border-slate-200 hover:border-slate-300 text-slate-700 bg-white'
-                  }`}
-                >
-                  <span 
-                    className="w-3.5 h-3.5 rounded-full border border-slate-300/40 inline-block shrink-0" 
-                    style={{ backgroundColor: colorHex }}
-                  />
-                  <span>{color}</span>
-                </button>
-              );
-            })}
+        {availableColorsForConfig.length > 1 && (
+          <div>
+            <span className="text-xs uppercase tracking-wider text-slate-400 font-bold block mb-2">2. Chọn màu sắc:</span>
+            <div className="flex flex-wrap gap-2">
+              {availableColorsForConfig.map(color => {
+                const isSelected = selectedVariant.mauSac === color;
+                const colorHex = getColorHex(color);
+                return (
+                  <button
+                    key={color}
+                    onClick={() => handleColorSelect(color)}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 border rounded-full text-xs md:text-sm font-medium transition-all outline-none cursor-pointer ${
+                      isSelected 
+                        ? 'border-blue-500 bg-blue-50/50 text-blue-600 ring-1 ring-blue-500/10' 
+                        : 'border-slate-200 hover:border-slate-300 text-slate-700 bg-white'
+                    }`}
+                  >
+                    <span 
+                      className="w-3.5 h-3.5 rounded-full border border-slate-300/40 inline-block shrink-0" 
+                      style={{ backgroundColor: colorHex }}
+                    />
+                    <span>{color}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Price tag mimicking TGDD's Flash Sale or online promo */}

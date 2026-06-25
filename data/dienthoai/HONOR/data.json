@@ -1,9 +1,9 @@
 [
   {
-    "id": "honor-honor-magic6-pro-5g-512gb",
-    "slug": "honor-magic6-pro-5g-512gb",
+    "id": "honor-honor-magic6-pro-5g",
+    "slug": "honor-magic6-pro-5g",
     "hang": "HONOR",
-    "san_pham": "HONOR Magic6 Pro 5G 512GB",
+    "san_pham": "HONOR Magic6 Pro 5G",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại HONOR Magic6 Pro 5G 512GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.8 inches",
@@ -45,7 +45,7 @@
     ],
     "variants": [
       {
-        "sku": "honor-magic6-pro-5g-512gb-16-512-0",
+        "sku": "honor-magic6-pro-5g-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -57,10 +57,10 @@
     ]
   },
   {
-    "id": "honor-honor-magic-v2-512gb",
-    "slug": "honor-magic-v2-512gb",
+    "id": "honor-honor-magic-v2",
+    "slug": "honor-magic-v2",
     "hang": "HONOR",
-    "san_pham": "HONOR Magic V2 512GB",
+    "san_pham": "HONOR Magic V2",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại HONOR Magic V2 512GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 2 (Siêu mỏng 9.9mm), bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "7.92 inches chính",
@@ -98,7 +98,7 @@
     ],
     "variants": [
       {
-        "sku": "honor-magic-v2-512gb-16-512-0",
+        "sku": "honor-magic-v2-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -110,10 +110,10 @@
     ]
   },
   {
-    "id": "honor-honor-200-pro-5g-512gb",
-    "slug": "honor-200-pro-5g-512gb",
+    "id": "honor-honor-200-pro-5g",
+    "slug": "honor-200-pro-5g",
     "hang": "HONOR",
-    "san_pham": "HONOR 200 Pro 5G 512GB",
+    "san_pham": "HONOR 200 Pro 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại HONOR 200 Pro 5G 512GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 3 (Camera Studio Harcourt), bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -152,7 +152,7 @@
     ],
     "variants": [
       {
-        "sku": "honor-200-pro-5g-512gb-12-512-0",
+        "sku": "honor-200-pro-5g-12-512-0",
         "ram_gb": 12,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -164,10 +164,10 @@
     ]
   },
   {
-    "id": "honor-honor-x9b-5g-256gb",
-    "slug": "honor-x9b-5g-256gb",
+    "id": "honor-honor-x9b-5g",
+    "slug": "honor-x9b-5g",
     "hang": "HONOR",
-    "san_pham": "HONOR X9b 5G 256GB",
+    "san_pham": "HONOR X9b 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại HONOR X9b 5G 256GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 6 Gen 1 (Màn hình chống rơi 360 độ), bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -207,7 +207,7 @@
     ],
     "variants": [
       {
-        "sku": "honor-x9b-5g-256gb-12-256-0",
+        "sku": "honor-x9b-5g-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -219,10 +219,10 @@
     ]
   },
   {
-    "id": "honor-honor-200-5g-256gb",
-    "slug": "honor-200-5g-256gb",
+    "id": "honor-honor-200-5g",
+    "slug": "honor-200-5g",
     "hang": "HONOR",
-    "san_pham": "HONOR 200 5G 256GB",
+    "san_pham": "HONOR 200 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại HONOR 200 5G 256GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7 Gen 3, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -260,7 +260,7 @@
     ],
     "variants": [
       {
-        "sku": "honor-200-5g-256gb-12-256-0",
+        "sku": "honor-200-5g-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -272,10 +272,10 @@
     ]
   },
   {
-    "id": "honor-honor-90-5g-256gb",
-    "slug": "honor-90-5g-256gb",
+    "id": "honor-honor-90-5g",
+    "slug": "honor-90-5g",
     "hang": "HONOR",
-    "san_pham": "HONOR 90 5G 256GB",
+    "san_pham": "HONOR 90 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại HONOR 90 5G 256GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7 Gen 1, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -313,7 +313,7 @@
     ],
     "variants": [
       {
-        "sku": "honor-90-5g-256gb-12-256-0",
+        "sku": "honor-90-5g-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -325,10 +325,10 @@
     ]
   },
   {
-    "id": "honor-honor-x8b-256gb",
-    "slug": "honor-x8b-256gb",
+    "id": "honor-honor-x8b",
+    "slug": "honor-x8b",
     "hang": "HONOR",
-    "san_pham": "HONOR X8b 256GB",
+    "san_pham": "HONOR X8b",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại HONOR X8b 256GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 680, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -365,7 +365,7 @@
     ],
     "variants": [
       {
-        "sku": "honor-x8b-256gb-8-256-0",
+        "sku": "honor-x8b-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -377,10 +377,10 @@
     ]
   },
   {
-    "id": "honor-honor-x7b-128gb",
-    "slug": "honor-x7b-128gb",
+    "id": "honor-honor-x7b",
+    "slug": "honor-x7b",
     "hang": "HONOR",
-    "san_pham": "HONOR X7b 128GB",
+    "san_pham": "HONOR X7b",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại HONOR X7b 128GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 680, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.8 inches",
@@ -419,7 +419,7 @@
     ],
     "variants": [
       {
-        "sku": "honor-x7b-128gb-8-128-0",
+        "sku": "honor-x7b-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -431,10 +431,10 @@
     ]
   },
   {
-    "id": "honor-honor-x6a-128gb",
-    "slug": "honor-x6a-128gb",
+    "id": "honor-honor-x6a",
+    "slug": "honor-x6a",
     "hang": "HONOR",
-    "san_pham": "HONOR X6a 128GB",
+    "san_pham": "HONOR X6a",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại HONOR X6a 128GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G36, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.56 inches",
@@ -470,7 +470,7 @@
     ],
     "variants": [
       {
-        "sku": "honor-x6a-128gb-4-128-0",
+        "sku": "honor-x6a-4-128-0",
         "ram_gb": 4,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -482,10 +482,10 @@
     ]
   },
   {
-    "id": "honor-honor-magic6-lite-256gb",
-    "slug": "honor-magic6-lite-256gb",
+    "id": "honor-honor-magic6-lite",
+    "slug": "honor-magic6-lite",
     "hang": "HONOR",
-    "san_pham": "HONOR Magic6 Lite 256GB",
+    "san_pham": "HONOR Magic6 Lite",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại HONOR Magic6 Lite 256GB chính hãng từ HONOR. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 6 Gen 1, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.78 inches",
@@ -526,7 +526,7 @@
     ],
     "variants": [
       {
-        "sku": "honor-magic6-lite-256gb-8-256-0",
+        "sku": "honor-magic6-lite-8-256-0",
         "ram_gb": 8,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",

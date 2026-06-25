@@ -1,9 +1,9 @@
 [
   {
-    "id": "samsung-galaxy-s26-ultra-256gb",
-    "slug": "galaxy-s26-ultra-256gb",
+    "id": "samsung-galaxy-s26-ultra",
+    "slug": "galaxy-s26-ultra",
     "hang": "Samsung",
-    "san_pham": "Galaxy S26 Ultra 256GB",
+    "san_pham": "Galaxy S26 Ultra",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Galaxy S26 Ultra 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.8 inches",
@@ -44,7 +44,7 @@
     ],
     "variants": [
       {
-        "sku": "galaxy-s26-ultra-256gb-16-256-0",
+        "sku": "galaxy-s26-ultra-16-256-0",
         "ram_gb": 16,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -56,10 +56,10 @@
     ]
   },
   {
-    "id": "samsung-galaxy-s26-plus-256gb",
-    "slug": "galaxy-s26-plus-256gb",
+    "id": "samsung-galaxy-s26-plus",
+    "slug": "galaxy-s26-plus",
     "hang": "Samsung",
-    "san_pham": "Galaxy S26 Plus 256GB",
+    "san_pham": "Galaxy S26 Plus",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Galaxy S26 Plus 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 2600 / Snapdragon 8 Gen 5, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches",
@@ -98,7 +98,7 @@
     ],
     "variants": [
       {
-        "sku": "galaxy-s26-plus-256gb-12-256-0",
+        "sku": "galaxy-s26-plus-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -110,10 +110,10 @@
     ]
   },
   {
-    "id": "samsung-galaxy-s26-128gb",
-    "slug": "galaxy-s26-128gb",
+    "id": "samsung-galaxy-s26",
+    "slug": "galaxy-s26",
     "hang": "Samsung",
-    "san_pham": "Galaxy S26 128GB",
+    "san_pham": "Galaxy S26",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Galaxy S26 128GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 2600 / Snapdragon 8 Gen 5, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.2 inches",
@@ -151,7 +151,7 @@
     ],
     "variants": [
       {
-        "sku": "galaxy-s26-128gb-12-128-0",
+        "sku": "galaxy-s26-12-128-0",
         "ram_gb": 12,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -163,10 +163,10 @@
     ]
   },
   {
-    "id": "samsung-galaxy-z-fold7-512gb",
-    "slug": "galaxy-z-fold7-512gb",
+    "id": "samsung-galaxy-z-fold7",
+    "slug": "galaxy-z-fold7",
     "hang": "Samsung",
-    "san_pham": "Galaxy Z Fold7 512GB",
+    "san_pham": "Galaxy Z Fold7",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Galaxy Z Fold7 512GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 512GB.",
     "man_hinh_cong_nghe": "7.6 inches (Chính) / 6.3 inches (Phụ)",
@@ -205,7 +205,7 @@
     ],
     "variants": [
       {
-        "sku": "galaxy-z-fold7-512gb-16-512-0",
+        "sku": "galaxy-z-fold7-16-512-0",
         "ram_gb": 16,
         "dung_luong_gb": 512,
         "mau_sac": "Đen",
@@ -217,10 +217,10 @@
     ]
   },
   {
-    "id": "samsung-galaxy-z-flip7-256gb",
-    "slug": "galaxy-z-flip7-256gb",
+    "id": "samsung-galaxy-z-flip7",
+    "slug": "galaxy-z-flip7",
     "hang": "Samsung",
-    "san_pham": "Galaxy Z Flip7 256GB",
+    "san_pham": "Galaxy Z Flip7",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Galaxy Z Flip7 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.7 inches (Chính) / 3.9 inches (Phụ)",
@@ -258,7 +258,7 @@
     ],
     "variants": [
       {
-        "sku": "galaxy-z-flip7-256gb-12-256-0",
+        "sku": "galaxy-z-flip7-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -270,10 +270,10 @@
     ]
   },
   {
-    "id": "samsung-galaxy-s25-ultra-256gb",
-    "slug": "galaxy-s25-ultra-256gb",
+    "id": "samsung-galaxy-s25-ultra",
+    "slug": "galaxy-s25-ultra",
     "hang": "Samsung",
-    "san_pham": "Galaxy S25 Ultra 256GB",
+    "san_pham": "Galaxy S25 Ultra",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Galaxy S25 Ultra 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 4, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.8 inches",
@@ -314,7 +314,7 @@
     ],
     "variants": [
       {
-        "sku": "galaxy-s25-ultra-256gb-16-256-0",
+        "sku": "galaxy-s25-ultra-16-256-0",
         "ram_gb": 16,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -326,10 +326,10 @@
     ]
   },
   {
-    "id": "samsung-galaxy-s25-256gb",
-    "slug": "galaxy-s25-256gb",
+    "id": "samsung-galaxy-s25",
+    "slug": "galaxy-s25",
     "hang": "Samsung",
-    "san_pham": "Galaxy S25 256GB",
+    "san_pham": "Galaxy S25",
     "phan_khuc": "flagship",
     "mo_ta": "Điện thoại Galaxy S25 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 2500, bộ nhớ trong 256GB.",
     "man_hinh_cong_nghe": "6.2 inches",
@@ -367,7 +367,7 @@
     ],
     "variants": [
       {
-        "sku": "galaxy-s25-256gb-12-256-0",
+        "sku": "galaxy-s25-12-256-0",
         "ram_gb": 12,
         "dung_luong_gb": 256,
         "mau_sac": "Đen",
@@ -379,10 +379,10 @@
     ]
   },
   {
-    "id": "samsung-galaxy-a55-5g-128gb",
-    "slug": "galaxy-a55-5g-128gb",
+    "id": "samsung-galaxy-a55-5g",
+    "slug": "galaxy-a55-5g",
     "hang": "Samsung",
-    "san_pham": "Galaxy A55 5G 128GB",
+    "san_pham": "Galaxy A55 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Galaxy A55 5G 128GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 1480, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.6 inches",
@@ -419,7 +419,7 @@
     ],
     "variants": [
       {
-        "sku": "galaxy-a55-5g-128gb-8-128-0",
+        "sku": "galaxy-a55-5g-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -431,10 +431,10 @@
     ]
   },
   {
-    "id": "samsung-galaxy-a35-5g-128gb",
-    "slug": "galaxy-a35-5g-128gb",
+    "id": "samsung-galaxy-a35-5g",
+    "slug": "galaxy-a35-5g",
     "hang": "Samsung",
-    "san_pham": "Galaxy A35 5G 128GB",
+    "san_pham": "Galaxy A35 5G",
     "phan_khuc": "tam_trung",
     "mo_ta": "Điện thoại Galaxy A35 5G 128GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 1380, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.6 inches",
@@ -471,7 +471,7 @@
     ],
     "variants": [
       {
-        "sku": "galaxy-a35-5g-128gb-8-128-0",
+        "sku": "galaxy-a35-5g-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
@@ -483,10 +483,10 @@
     ]
   },
   {
-    "id": "samsung-galaxy-a15-128gb",
-    "slug": "galaxy-a15-128gb",
+    "id": "samsung-galaxy-a15",
+    "slug": "galaxy-a15",
     "hang": "Samsung",
-    "san_pham": "Galaxy A15 128GB",
+    "san_pham": "Galaxy A15",
     "phan_khuc": "pho_thong",
     "mo_ta": "Điện thoại Galaxy A15 128GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G99, bộ nhớ trong 128GB.",
     "man_hinh_cong_nghe": "6.5 inches",
@@ -522,7 +522,7 @@
     ],
     "variants": [
       {
-        "sku": "galaxy-a15-128gb-8-128-0",
+        "sku": "galaxy-a15-8-128-0",
         "ram_gb": 8,
         "dung_luong_gb": 128,
         "mau_sac": "Đen",
