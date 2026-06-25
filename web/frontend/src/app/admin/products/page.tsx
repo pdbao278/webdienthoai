@@ -272,28 +272,36 @@ export default function AdminProductsPage() {
                 <th className="px-6 py-4 font-semibold">Sản phẩm</th>
                 <th className="px-6 py-4 font-semibold">Hãng</th>
                 <th className="px-6 py-4 font-semibold">Phân khúc</th>
+                <th className="px-6 py-4 font-semibold text-center">Trạng thái</th>
                 <th className="px-6 py-4 font-semibold text-right">Thao tác</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {isLoading ? (
-                <tr><td colSpan={4} className="px-6 py-8 text-center text-slate-500">Đang tải...</td></tr>
+                <tr><td colSpan={5} className="px-6 py-8 text-center text-slate-500">Đang tải...</td></tr>
               ) : filteredProducts.length === 0 ? (
-                <tr><td colSpan={4} className="px-6 py-8 text-center text-slate-500">Không tìm thấy sản phẩm nào</td></tr>
+                <tr><td colSpan={5} className="px-6 py-8 text-center text-slate-500">Không tìm thấy sản phẩm nào</td></tr>
               ) : (
                 filteredProducts.map(p => (
-                  <tr key={p.id} className="hover:bg-slate-50/50">
+                  <tr key={p.id} className="hover:bg-slate-50/50 transition-colors">
                     <td className="px-6 py-4 font-medium text-slate-900">{p.sanPham}</td>
                     <td className="px-6 py-4 text-slate-600">{p.hang}</td>
-                    <td className="px-6 py-4 text-slate-600">{p.phanKhuc}</td>
+                    <td className="px-6 py-4 text-slate-600">
+                      <span className="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium">
+                        {p.phanKhuc === 'FLAGSHIP' ? 'Flagship' : p.phanKhuc === 'TAM_TRUNG' ? 'Tầm trung' : p.phanKhuc === 'PHO_THONG' ? 'Phổ thông' : 'Gaming'}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <label className="relative inline-flex items-center cursor-pointer" title={p.isActive === false ? 'Bật để hiển thị' : 'Tắt để ẩn'}>
+                        <input type="checkbox" className="sr-only peer" checked={p.isActive !== false} onChange={() => handleToggleStatus(p)} />
+                        <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-sky-500"></div>
+                      </label>
+                    </td>
                     <td className="px-6 py-4 text-right space-x-2">
-                      <button onClick={() => handleToggleStatus(p)} className="text-slate-500 hover:text-slate-700 p-2" title={p.isActive === false ? 'Hiện sản phẩm' : 'Ẩn sản phẩm'}>
-                        <i className={`fa-solid ${p.isActive === false ? 'fa-eye' : 'fa-eye-slash'}`}></i>
-                      </button>
-                      <button onClick={() => handleEdit(p)} className="text-blue-500 hover:text-blue-700 p-2" title="Chỉnh sửa">
+                      <button onClick={() => handleEdit(p)} className="text-blue-500 hover:text-blue-700 hover:bg-blue-50 p-2 rounded-lg transition-colors" title="Chỉnh sửa">
                         <i className="fa-solid fa-pen-to-square"></i>
                       </button>
-                      <button onClick={() => handleDelete(p.id)} className="text-red-500 hover:text-red-700 p-2" title="Xóa vĩnh viễn">
+                      <button onClick={() => handleDelete(p.id)} className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-colors" title="Xóa vĩnh viễn">
                         <i className="fa-solid fa-trash"></i>
                       </button>
                     </td>
