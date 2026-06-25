@@ -17,18 +17,35 @@ describe('Product API', () => {
         hang: 'Apple',
         sanPham: 'API Test Product',
         phanKhuc: 'FLAGSHIP',
+        isActive: true,
         media: {
           create: [{ url: 'http://test', isThumbnail: true }]
         }
       }
     });
     productId = product.id;
+
+    // Create an inactive product
+    const inactiveProduct = await prisma.product.create({
+      data: {
+        slug: 'inactive-' + Date.now(),
+        hang: 'Apple',
+        sanPham: 'Inactive Product',
+        phanKhuc: 'PHO_THONG',
+        isActive: false
+      }
+    });
+    (global as any).inactiveProductId = inactiveProduct.id;
+    (global as any).inactiveProductSlug = inactiveProduct.slug;
   });
 
   afterAll(async () => {
     if (productId) {
       await prisma.productMedia.deleteMany({ where: { productId } });
       await prisma.product.delete({ where: { id: productId } });
+    }
+    if ((global as any).inactiveProductId) {
+      await prisma.product.delete({ where: { id: (global as any).inactiveProductId } });
     }
     await prisma.$disconnect();
   });
@@ -48,6 +65,12 @@ describe('Product API', () => {
       expect(res.body.data.length).toBeGreaterThan(0);
       expect(res.body.data.every((p: any) => p.hang.toLowerCase().includes('apple'))).toBe(true);
     });
+
+    it('should NOT return inactive products', async () => {
+      const res = await request(app).get('/api/products');
+      expect(res.status).toBe(200);
+      expect(res.body.data.some((p: any) => p.slug === (global as any).inactiveProductSlug)).toBe(false);
+    });
   });
 
   describe('GET /api/products/:slug', () => {
@@ -60,6 +83,11 @@ describe('Product API', () => {
 
     it('should return 404 for invalid slug', async () => {
       const res = await request(app).get('/api/products/invalid-slug-1234');
+      expect(res.status).toBe(404);
+    });
+
+    it('should return 404 for inactive product', async () => {
+      const res = await request(app).get(`/api/products/${(global as any).inactiveProductSlug}`);
       expect(res.status).toBe(404);
     });
 

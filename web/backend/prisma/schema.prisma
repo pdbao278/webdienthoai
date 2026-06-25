@@ -105,6 +105,7 @@ model Product {
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+  isActive  Boolean  @default(true) @map("is_active")
 
   media    ProductMedia[]
   variants ProductVariant[]

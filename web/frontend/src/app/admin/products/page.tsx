@@ -14,6 +14,7 @@ interface ProductData {
   hang: string;
   phanKhuc: string;
   slug: string;
+  isActive: boolean;
 }
 
 interface MediaItem {
@@ -36,6 +37,7 @@ export default function AdminProductsPage() {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<'ACTIVE' | 'INACTIVE'>('ACTIVE');
   const { token } = useAuthStore();
   
   const [showModal, setShowModal] = useState(false);
@@ -47,6 +49,7 @@ export default function AdminProductsPage() {
     hang: '',
     phanKhuc: 'TAM_TRUNG',
     moTa: '',
+    isActive: true,
   });
   
   const [variants, setVariants] = useState<VariantForm[]>([{
@@ -59,7 +62,7 @@ export default function AdminProductsPage() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch(getApiUrl('/products?limit=100'));
+      const res = await authFetch('/admin/products', token!);
       if (!res.ok) throw new Error('Lỗi tải sản phẩm');
       const data = await res.json();
       setProducts(data.data || []);
@@ -95,6 +98,7 @@ export default function AdminProductsPage() {
         hang: data.hang,
         phanKhuc: data.phanKhuc,
         moTa: data.moTa || '',
+        isActive: data.isActive,
       });
       setVariants(data.variants.map((v: any) => ({
         sku: v.sku,
@@ -201,11 +205,28 @@ export default function AdminProductsPage() {
     }
   };
 
-  const filteredProducts = products.filter(p => 
-    p.sanPham.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    p.hang.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    p.phanKhuc.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleToggleStatus = async (product: ProductData) => {
+    try {
+      const newStatus = product.isActive === false ? true : false;
+      const res = await authFetchJson(`/admin/products/${product.id}`, token!, {
+        method: 'PATCH',
+        body: JSON.stringify({ isActive: newStatus })
+      });
+      if (!res.ok) throw new Error('Cập nhật trạng thái thất bại');
+      toast.success(newStatus ? 'Sản phẩm đã được mở lại' : 'Đã ẩn sản phẩm');
+      fetchProducts();
+    } catch (error: any) {
+      toast.error(error.message || 'Lỗi hệ thống');
+    }
+  };
+
+  const filteredProducts = products.filter(p => {
+    const matchesTab = activeTab === 'ACTIVE' ? p.isActive !== false : p.isActive === false;
+    const matchesSearch = p.sanPham.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.hang.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.phanKhuc.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesTab && matchesSearch;
+  });
 
   return (
     <div className="space-y-6">
@@ -226,6 +247,21 @@ export default function AdminProductsPage() {
             <i className="fa-solid fa-plus mr-2"></i> Thêm sản phẩm
           </Button>
         </div>
+      </div>
+
+      <div className="flex space-x-1 bg-slate-100 p-1 rounded-xl w-fit">
+        <button
+          onClick={() => setActiveTab('ACTIVE')}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'ACTIVE' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+        >
+          Khả dụng
+        </button>
+        <button
+          onClick={() => setActiveTab('INACTIVE')}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'INACTIVE' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+        >
+          Đã ngừng kinh doanh
+        </button>
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
@@ -251,10 +287,13 @@ export default function AdminProductsPage() {
                     <td className="px-6 py-4 text-slate-600">{p.hang}</td>
                     <td className="px-6 py-4 text-slate-600">{p.phanKhuc}</td>
                     <td className="px-6 py-4 text-right space-x-2">
-                      <button onClick={() => handleEdit(p)} className="text-blue-500 hover:text-blue-700 p-2">
+                      <button onClick={() => handleToggleStatus(p)} className="text-slate-500 hover:text-slate-700 p-2" title={p.isActive === false ? 'Hiện sản phẩm' : 'Ẩn sản phẩm'}>
+                        <i className={`fa-solid ${p.isActive === false ? 'fa-eye' : 'fa-eye-slash'}`}></i>
+                      </button>
+                      <button onClick={() => handleEdit(p)} className="text-blue-500 hover:text-blue-700 p-2" title="Chỉnh sửa">
                         <i className="fa-solid fa-pen-to-square"></i>
                       </button>
-                      <button onClick={() => handleDelete(p.id)} className="text-red-500 hover:text-red-700 p-2">
+                      <button onClick={() => handleDelete(p.id)} className="text-red-500 hover:text-red-700 p-2" title="Xóa vĩnh viễn">
                         <i className="fa-solid fa-trash"></i>
                       </button>
                     </td>
@@ -290,6 +329,12 @@ export default function AdminProductsPage() {
                     <option value="PHO_THONG">Phổ thông</option>
                     <option value="GAMING">Gaming</option>
                   </select>
+                </div>
+                <div className="space-y-1.5 flex items-center h-full pt-6">
+                  <label className="flex items-center space-x-2 cursor-pointer">
+                    <input type="checkbox" className="w-5 h-5 text-sky-500 rounded border-slate-300 focus:ring-sky-500" checked={formData.isActive} onChange={e => setFormData({...formData, isActive: e.target.checked})} />
+                    <span className="text-sm font-medium text-slate-700">Đang bán (Hiển thị cho khách hàng)</span>
+                  </label>
                 </div>
               </div>
 

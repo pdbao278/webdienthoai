@@ -16,6 +16,27 @@ const generateSlug = (name: string) => {
   return name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + '-' + Date.now();
 };
 
+export const getAdminProducts = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const products = await prisma.product.findMany({
+      orderBy: { createdAt: 'desc' },
+      include: {
+        media: {
+          where: { isThumbnail: true },
+          take: 1
+        },
+        variants: {
+          orderBy: { giaBan: 'asc' }
+        }
+      }
+    });
+    res.status(200).json({ data: products });
+  } catch (error) {
+    console.error('getAdminProducts Error:', error);
+    res.status(500).json({ error: 'Lỗi tải danh sách sản phẩm' });
+  }
+};
+
 export const createProduct = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     // Validate input với Zod

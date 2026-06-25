@@ -7,7 +7,9 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
   try {
     const query = productQuerySchema.parse(req.query);
     
-    const where: Prisma.ProductWhereInput = {};
+    const where: Prisma.ProductWhereInput = {
+      isActive: true
+    };
     
     if (query.hang) {
       where.hang = { contains: query.hang, mode: 'insensitive' };
@@ -76,7 +78,7 @@ export const getProductBySlug = async (req: Request, res: Response): Promise<voi
   try {
     const { slug } = req.params;
     const product = await prisma.product.findUnique({
-      where: { slug },
+      where: { slug, isActive: true },
       include: {
         media: {
           orderBy: { thuTu: 'asc' }
@@ -106,6 +108,7 @@ export const searchProducts = async (req: Request, res: Response): Promise<void>
 
     const products = await prisma.product.findMany({
       where: {
+        isActive: true,
         OR: [
           { sanPham: { contains: q, mode: 'insensitive' } },
           { hang: { contains: q, mode: 'insensitive' } }

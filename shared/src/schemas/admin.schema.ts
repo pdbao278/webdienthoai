@@ -83,6 +83,7 @@ export const createProductSchema = z.object({
   // Nested
   variants: z.array(variantSchema).min(1, 'Cần ít nhất 1 phiên bản'),
   media: z.array(mediaSchema).optional(),
+  isActive: z.boolean().optional().default(true),
 });
 
 export const updateProductSchema = createProductSchema.partial();

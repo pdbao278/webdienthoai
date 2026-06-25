@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { authenticate, authorize } from '../middlewares/auth.middleware';
 import { getOrders, updateOrderStatus, scanOrderQr } from '../controllers/admin.order.controller';
-import { createProduct, updateProduct, deleteProduct, uploadImage } from '../controllers/admin.product.controller';
+import { getAdminProducts, createProduct, updateProduct, deleteProduct, uploadImage } from '../controllers/admin.product.controller';
 import { getVouchers, createVoucher, updateVoucher, deleteVoucher } from '../controllers/admin.voucher.controller';
 import { getStats } from '../controllers/admin.stats.controller';
 import { getUsers, updateUserRole } from '../controllers/admin.user.controller';
@@ -20,6 +20,7 @@ router.patch('/orders/:id/status', authorize(['ADMIN', 'MANAGER']), updateOrderS
 router.post('/orders/scan', authorize(['ADMIN', 'MANAGER']), scanOrderQr);
 
 // ─── Sản phẩm — Chỉ ADMIN ──────────────────────────────────────
+router.get('/products', authorize(['ADMIN', 'MANAGER']), getAdminProducts);
 router.post('/products', authorize(['ADMIN']), createProduct);
 router.patch('/products/:id', authorize(['ADMIN']), updateProduct);
 router.delete('/products/:id', authorize(['ADMIN']), deleteProduct);
