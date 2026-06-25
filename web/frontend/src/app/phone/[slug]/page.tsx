@@ -117,7 +117,7 @@ export default async function ProductDetailPage({
                 price: minVariant.giaBan,
                 availability: "https://schema.org/InStock"
               }
-            })
+            }).replace(/</g, '\\u003c')
           }}
         />
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import DOMPurify from 'isomorphic-dompurify';
 
 type Message = {
   role: 'user' | 'model';
@@ -97,7 +98,7 @@ export default function ChatWidget() {
             <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div 
                 className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === 'user' ? 'bg-sky-600 text-white rounded-tr-sm' : 'bg-white text-slate-700 shadow-sm border border-slate-100 rounded-tl-sm'}`}
-                dangerouslySetInnerHTML={msg.role === 'model' ? { __html: msg.text } : undefined}
+                dangerouslySetInnerHTML={msg.role === 'model' ? { __html: DOMPurify.sanitize(msg.text) } : undefined}
               >
                 {msg.role === 'user' ? msg.text : undefined}
               </div>
