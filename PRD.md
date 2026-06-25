@@ -226,6 +226,7 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 
 #### FR-12: Quản Lý Sản Phẩm (Admin) (P0)
 - CRUD sản phẩm, import CSV, quản lý gallery ảnh/video.
+- Cơ chế Soft-delete (Ẩn/Hiện sản phẩm) để bảo toàn lịch sử đơn hàng mà không cần xóa vật lý. Danh sách sản phẩm được chia tab (Khả dụng / Đã ngừng kinh doanh).
 - Quản lý tồn kho (Inventory).
 - **Ràng buộc xóa an toàn (Safe Delete Variant)**: Ngăn chặn xóa vĩnh viễn một phiên bản (variant) nếu SKU đó đã từng được đặt hàng, nhằm bảo toàn tính toàn vẹn dữ liệu đơn hàng. Admin chỉ được phép ẩn hoặc hạ tồn kho về 0.
 
@@ -401,8 +402,9 @@ webdienthoai/
 | | slug | VARCHAR | URL-friendly name | `samsung-galaxy-s24-ultra` |
 | | hang | VARCHAR | Hãng sản xuất | Samsung, Apple, Xiaomi, OPPO |
 | | san_pham | VARCHAR | Tên sản phẩm | Galaxy S24 Ultra 256GB |
-| | phan_khuc | ENUM | Phân khúc | `flagship`, `tam_trung`, `pho_thong`, `gaming` |
+| | phan_khuc | ENUM | Phân khúc (FLAGSHIP, TAM_TRUNG, PHO_THONG, GAMING) | FLAGSHIP |
 | | mo_ta | TEXT | Mô tả sản phẩm | |
+| | is_active | BOOLEAN | Trạng thái hiển thị (Khả dụng / Đã ngừng) | TRUE |
 | **Màn hình** | man_hinh_cong_nghe | VARCHAR | Công nghệ màn hình | Dynamic AMOLED 2X, Super Retina XDR |
 | | man_hinh_kich_thuoc | DECIMAL | Kích thước (inch) | 6.8 |
 | | man_hinh_do_phan_giai | VARCHAR | Độ phân giải | QHD+ (3120 × 1440) |
