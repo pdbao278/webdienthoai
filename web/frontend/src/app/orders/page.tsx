@@ -36,7 +36,7 @@ interface Order {
 }
 
 export default function OrdersPage() {
-  const { isLoggedIn, token } = useAuthStore();
+  const { isLoggedIn, token, _hasHydrated } = useAuthStore();
   const router = useRouter();
   const [allOrders, setAllOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,12 +60,14 @@ export default function OrdersPage() {
   };
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      router.push('/login');
-    } else {
-      fetchOrders();
+    if (_hasHydrated) {
+      if (!isLoggedIn) {
+        router.push('/login');
+      } else {
+        fetchOrders();
+      }
     }
-  }, [isLoggedIn, router]);
+  }, [isLoggedIn, router, _hasHydrated, token]);
 
   const handleCancel = async (id: string) => {
     if (window.confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?')) {
@@ -120,7 +122,7 @@ export default function OrdersPage() {
     ? allOrders 
     : allOrders.filter(o => o.trangThai === activeTab);
 
-  if (!isLoggedIn) return null;
+  if (!isLoggedIn || !_hasHydrated) return null;
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">

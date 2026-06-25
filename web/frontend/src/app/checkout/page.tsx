@@ -16,7 +16,7 @@ import toast from 'react-hot-toast';
 
 export default function CheckoutPage() {
   const { items, fetchCart, clearCart, voucherCode, discount, setVoucher, clearVoucher, selectedItemIds, isLoading } = useCartStore();
-  const { user, isLoggedIn, token } = useAuthStore();
+  const { user, isLoggedIn, token, _hasHydrated } = useAuthStore();
   const router = useRouter();
 
   const [voucherCodeInput, setVoucherCodeInput] = useState(voucherCode || '');
@@ -100,12 +100,14 @@ export default function CheckoutPage() {
   }, [selectedDate, selectedTime, setValue]);
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      router.push('/login');
-    } else {
-      fetchCart();
+    if (_hasHydrated) {
+      if (!isLoggedIn) {
+        router.push('/login');
+      } else {
+        fetchCart();
+      }
     }
-  }, [isLoggedIn, router, fetchCart]);
+  }, [isLoggedIn, router, fetchCart, _hasHydrated]);
 
   const selectedItems = useMemo(() => items.filter(item => selectedItemIds.includes(item.id)), [items, selectedItemIds]);
 
@@ -273,7 +275,7 @@ export default function CheckoutPage() {
     }
   };
 
-  if (!isLoggedIn || selectedItems.length === 0) {
+  if (!isLoggedIn || !_hasHydrated || selectedItems.length === 0) {
     return null;
   }
 

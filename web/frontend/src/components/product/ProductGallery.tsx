@@ -42,6 +42,7 @@ export default function ProductGallery({ media }: { media: MediaItem[] }) {
             src={currentMedia.url} 
             alt="Product image" 
             fill
+            priority={true}
             className="object-contain group-hover:scale-110 transition-transform duration-500 p-2"
           />
         )}

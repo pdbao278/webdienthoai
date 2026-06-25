@@ -17,7 +17,7 @@ export default function CartPage() {
     voucherCode, discount, setVoucher, clearVoucher,
     selectedItemIds, toggleItemSelection, selectAll, deselectAll
   } = useCartStore();
-  const { isLoggedIn, token } = useAuthStore();
+  const { isLoggedIn, token, _hasHydrated } = useAuthStore();
   const router = useRouter();
   const [isUpdating, setIsUpdating] = useState(false);
   const [voucherCodeInput, setVoucherCodeInput] = useState(voucherCode || '');
@@ -25,12 +25,14 @@ export default function CartPage() {
   const [appliedVoucher, setAppliedVoucher] = useState<any>(null);
 
   useEffect(() => {
-    if (!isLoggedIn) {
-      router.push('/login');
-    } else {
-      fetchCart();
+    if (_hasHydrated) {
+      if (!isLoggedIn) {
+        router.push('/login');
+      } else {
+        fetchCart();
+      }
     }
-  }, [isLoggedIn, router, fetchCart]);
+  }, [isLoggedIn, router, fetchCart, _hasHydrated]);
 
   useEffect(() => {
     setVoucherCodeInput(voucherCode || '');
@@ -232,7 +234,7 @@ export default function CartPage() {
     }
   };
 
-  if (!isLoggedIn) return null;
+  if (!isLoggedIn || !_hasHydrated) return null;
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">

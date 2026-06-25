@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
 
 export default function AdminGuard({ children }: { children: React.ReactNode }) {
-  const { user, isLoggedIn } = useAuthStore();
+  const { user, isLoggedIn, _hasHydrated } = useAuthStore();
   const router = useRouter();
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
@@ -15,7 +15,7 @@ export default function AdminGuard({ children }: { children: React.ReactNode }) 
   }, []);
 
   useEffect(() => {
-    if (isMounted) {
+    if (isMounted && _hasHydrated) {
       if (!isLoggedIn) {
         router.push('/login');
       } else if (user?.role !== 'ADMIN' && user?.role !== 'MANAGER') {
@@ -27,9 +27,9 @@ export default function AdminGuard({ children }: { children: React.ReactNode }) 
         }
       }
     }
-  }, [isMounted, isLoggedIn, user, router, pathname]);
+  }, [isMounted, _hasHydrated, isLoggedIn, user, router, pathname]);
 
-  if (!isMounted) return null;
+  if (!isMounted || !_hasHydrated) return null;
   if (!isLoggedIn || (user?.role !== 'ADMIN' && user?.role !== 'MANAGER')) return null;
 
   return <>{children}</>;
