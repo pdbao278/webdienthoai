@@ -1,6 +1,12 @@
 export function matchHeuristics(message: string): string | null {
   const normalized = message.toLowerCase();
   
+  // Security / Injection Blocker
+  const injectionKeywords = ['bỏ qua lệnh', 'ignore', 'prompt', 'bỏ qua các lệnh', 'quên đi lệnh', 'system prompt', 'đóng vai'];
+  if (injectionKeywords.some(kw => normalized.includes(kw))) {
+    return 'Xin lỗi, tôi chỉ có thể hỗ trợ bạn các thông tin liên quan đến sản phẩm và dịch vụ của cửa hàng PhoneStore.';
+  }
+
   if (normalized.includes('giao hàng') || normalized.includes('phí ship')) {
     return 'PhoneStore miễn phí giao hàng cho mọi đơn hàng trị giá trên 5 triệu đồng. Các đơn hàng dưới 5 triệu sẽ có phí vận chuyển tùy thuộc vào vị trí của bạn.';
   }
