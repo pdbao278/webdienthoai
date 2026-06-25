@@ -225,6 +225,20 @@ export const deleteProduct = async (req: AuthRequest, res: Response): Promise<vo
       return;
     }
 
+    // Kiểm tra lịch sử đơn hàng
+    const orderItemsCount = await prisma.orderItem.count({
+      where: {
+        productVariant: {
+          productId: id
+        }
+      }
+    });
+
+    if (orderItemsCount > 0) {
+      res.status(400).json({ error: 'Không thể xóa sản phẩm đã có lịch sử đơn hàng. Vui lòng hạ tồn kho về 0 thay vì xóa.' });
+      return;
+    }
+
     // 1. Xóa trong DB bằng transaction trước
     await prisma.$transaction(async (tx) => {
       await tx.product.delete({ where: { id } });

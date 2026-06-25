@@ -103,4 +103,51 @@ describe('Admin Product API', () => {
       expect(p).toBeNull();
     });
   });
+
+  describe('DELETE /api/admin/products/:id with order history', () => {
+    it('prevents deleting a product that has order history', async () => {
+      // Create a test product
+      const res = await request(app)
+        .post('/api/admin/products')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .send({
+          sanPham: 'Product with order ' + Date.now(),
+          hang: 'Apple',
+          phanKhuc: 'FLAGSHIP',
+          variants: [{ sku: 'SKU-ORDER-' + Date.now(), ramGb: 8, dungLuongGb: 256, mauSac: 'Den', giaGoc: 1000, giaBan: 900, tonKho: 10 }]
+        });
+      
+      const prodId = res.body.id;
+      const variantId = res.body.variants[0].id;
+
+      // Create an order for this variant
+      const order = await prisma.order.create({
+        data: {
+          userId: adminId,
+          tongTienHang: 900,
+          thanhTien: 900,
+          sdtLienHe: '0123456789',
+          thoiGianHenLayHang: new Date(),
+          maNhanHang: 'TEST-' + Date.now(),
+          items: {
+            create: [{ productVariantId: variantId, soLuong: 1, donGia: 900 }]
+          }
+        }
+      });
+
+      // Try to delete the product
+      const deleteRes = await request(app)
+        .delete(`/api/admin/products/${prodId}`)
+        .set('Authorization', `Bearer ${adminToken}`);
+
+      expect(deleteRes.status).toBe(400);
+      expect(deleteRes.body.error).toContain('lịch sử đơn hàng');
+
+      // Cleanup
+      await prisma.orderItem.deleteMany({ where: { orderId: order.id } });
+      await prisma.order.delete({ where: { id: order.id } });
+      await prisma.productVariant.deleteMany({ where: { productId: prodId } });
+      await prisma.product.delete({ where: { id: prodId } });
+    });
+  });
 });
