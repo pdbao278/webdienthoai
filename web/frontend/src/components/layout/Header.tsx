@@ -27,10 +27,29 @@ export default function Header() {
             </Link>
 
             {/* Search Autocomplete */}
-            <div className="relative w-full max-w-[450px] hidden md:block">
-                <input type="text" className="w-full h-[42px] pl-10 pr-4 bg-slate-100 border border-slate-200 rounded-full text-sm text-slate-800 transition-all focus:bg-white focus:border-sky-600 focus:ring-[3px] focus:ring-sky-600/10 outline-none" placeholder="Tìm kiếm hãng, tên điện thoại, chip xử lý..." />
-                <i className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
-            </div>
+            <form 
+              className="relative w-full max-w-[450px] hidden md:block" 
+              onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.target as HTMLFormElement;
+                const input = form.elements.namedItem('q') as HTMLInputElement;
+                if (input.value.trim()) {
+                  window.location.href = `/phone?q=${encodeURIComponent(input.value.trim())}`;
+                } else {
+                  window.location.href = '/phone';
+                }
+              }}
+            >
+                <input 
+                  type="text" 
+                  name="q"
+                  className="w-full h-[42px] pl-10 pr-4 bg-slate-100 border border-slate-200 rounded-full text-sm text-slate-800 transition-all focus:bg-white focus:border-sky-600 focus:ring-[3px] focus:ring-sky-600/10 outline-none" 
+                  placeholder="Tìm kiếm hãng, tên điện thoại, chip xử lý..." 
+                />
+                <button type="submit" className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-sky-600">
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
 
             {/* Header Actions */}
             <div className="flex items-center gap-6">

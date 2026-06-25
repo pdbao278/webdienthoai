@@ -71,6 +71,39 @@ describe('Product API', () => {
       expect(res.status).toBe(200);
       expect(res.body.data.some((p: any) => p.slug === (global as any).inactiveProductSlug)).toBe(false);
     });
+
+    it('should filter by search query (q)', async () => {
+      const res = await request(app).get('/api/products?q=API Test');
+      expect(res.status).toBe(200);
+      expect(res.body.data.length).toBeGreaterThan(0);
+      expect(res.body.data.some((p: any) => p.sanPham.includes('API Test'))).toBe(true);
+    });
+
+    it('should sort by price ascending (gia_asc)', async () => {
+      // Create a test product with variants to ensure sorting works
+      const cheapProd = await prisma.product.create({
+        data: {
+          slug: `cheap-${Date.now()}`,
+          hang: 'Apple',
+          sanPham: 'Cheap Phone',
+          phanKhuc: 'PHO_THONG',
+          variants: {
+            create: [{ sku: `cheap-var-${Date.now()}`, ramGb: 4, dungLuongGb: 64, mauSac: 'Den', giaGoc: 100, giaBan: 50, tonKho: 10 }]
+          }
+        }
+      });
+      
+      const res = await request(app).get('/api/products?sort=gia_asc');
+      expect(res.status).toBe(200);
+      const prices = res.body.data.map((p: any) => Math.min(...p.variants.map((v:any) => v.giaBan)));
+      // Ensure sorted ascending
+      for (let i = 0; i < prices.length - 1; i++) {
+        expect(prices[i]).toBeLessThanOrEqual(prices[i+1]);
+      }
+      
+      await prisma.productVariant.deleteMany({ where: { productId: cheapProd.id } });
+      await prisma.product.delete({ where: { id: cheapProd.id } });
+    });
   });
 
   describe('GET /api/products/:slug', () => {

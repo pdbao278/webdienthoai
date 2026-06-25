@@ -20,9 +20,18 @@ export default function FilterBar() {
 
   const currentHang = searchParams.get('hang') || '';
   const currentSort = searchParams.get('sort') || 'newest';
+  const currentQ = searchParams.get('q') || '';
 
   return (
     <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex flex-wrap gap-4 items-center mb-6">
+      {currentQ && (
+        <div className="flex items-center space-x-2 bg-sky-50 text-sky-700 px-3 py-1.5 rounded-lg text-sm font-medium">
+          <span>Tìm kiếm: "{currentQ}"</span>
+          <button onClick={() => updateFilter('q', '')} className="hover:text-red-500 ml-2">
+            <i className="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      )}
       <div className="flex items-center space-x-2">
         <span className="text-sm font-medium text-slate-700">Hãng:</span>
         <select 

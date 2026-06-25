@@ -14,6 +14,12 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
     if (query.hang) {
       where.hang = { contains: query.hang, mode: 'insensitive' };
     }
+    if (query.q) {
+      where.OR = [
+        { sanPham: { contains: query.q, mode: 'insensitive' } },
+        { hang: { contains: query.q, mode: 'insensitive' } }
+      ];
+    }
     
     const variantQuery: any = {};
     if (query.minPrice || query.maxPrice) {
@@ -35,20 +41,22 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
     }
 
     let orderBy: any = { createdAt: 'desc' };
-    // Prisma requires raw queries to sort by min/max of 1-to-M relation, but for simplicity we ignore sorting by price for now 
-    // or sort it in memory if limit is small. Or we don't sort by price.
-    // If we MUST sort by price, we could add a `minGiaBan` cached field on `Product`, but let's just skip price sorting at DB level.
     
     const page = query.page || 1;
     const limit = query.limit || 12;
     const skip = (page - 1) * limit;
 
-    const [products, total] = await Promise.all([
-      prisma.product.findMany({
+    // We fetch all matching products if sorting by price, since Prisma doesn't support 
+    // sorting by aggregate of a relation directly in findMany.
+    const requiresPriceSort = query.sort === 'gia_asc' || query.sort === 'gia_desc';
+
+    let products: any[] = [];
+    let total = 0;
+
+    if (requiresPriceSort) {
+      // In-memory sort approach (acceptable for small catalogs)
+      let allProducts = await prisma.product.findMany({
         where,
-        orderBy,
-        skip,
-        take: limit,
         include: {
           media: {
             where: { isThumbnail: true },
@@ -56,9 +64,38 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
           },
           variants: true
         }
-      }),
-      prisma.product.count({ where })
-    ]);
+      });
+      
+      allProducts.sort((a, b) => {
+        const getMinPrice = (p: any) => p.variants.length > 0 ? Math.min(...p.variants.map((v: any) => v.giaBan)) : Infinity;
+        const minA = getMinPrice(a);
+        const minB = getMinPrice(b);
+        return query.sort === 'gia_asc' ? minA - minB : minB - minA;
+      });
+      
+      total = allProducts.length;
+      products = allProducts.slice(skip, skip + limit);
+    } else {
+      // Standard database pagination
+      const [fetchedProducts, count] = await Promise.all([
+        prisma.product.findMany({
+          where,
+          orderBy,
+          skip,
+          take: limit,
+          include: {
+            media: {
+              where: { isThumbnail: true },
+              take: 1
+            },
+            variants: true
+          }
+        }),
+        prisma.product.count({ where })
+      ]);
+      products = fetchedProducts;
+      total = count;
+    }
 
     res.status(200).json({
       data: products,

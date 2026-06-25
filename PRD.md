@@ -169,9 +169,9 @@ PhoneStore **không** cố gắng trở thành sàn TMĐT đa mặt hàng (chỉ
 - Tình trạng tồn kho thay đổi theo biến thể được chọn.
 - Bảng thông số kỹ thuật chi tiết.
 
-#### FR-04: Tìm Kiếm (P0)
-- Autocomplete theo tên, model chip, hãng.
-- Trang kết quả với highlight từ khóa.
+#### FR-04: Tìm Kiếm & Bộ Lọc (P0)
+- **Tìm kiếm toàn cục (Global Search):** Thanh tìm kiếm trên Header cho phép Autocomplete theo tên sản phẩm, hãng. Người dùng nhấn Enter sẽ chuyển hướng tới trang danh sách kèm từ khóa (`/phone?q=...`).
+- **Tìm kiếm tùy từng trang (Contextual Search & Filters):** Tại trang danh sách sản phẩm, thanh FilterBar cho phép kết hợp từ khóa tìm kiếm (`q`) với các bộ lọc Hãng và Sắp xếp (Giá tăng/giảm dần, Mới nhất). Các trạng thái này phải được lưu trữ trên URL Params.
 
 #### FR-05: Authentication (P0)
 - Đăng nhập/Đăng ký bằng Email, Họ Tên & Mật khẩu.

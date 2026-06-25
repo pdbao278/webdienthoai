@@ -121,7 +121,7 @@ describe('Admin Product API', () => {
       expect(res.status).toBe(200);
       
       const p = await prisma.product.findUnique({ where: { id: productId } });
-      expect(p?.isActive).toBe(false);
+      expect(p?.isActive).toBe(false); // test assertion
     });
   });
 
