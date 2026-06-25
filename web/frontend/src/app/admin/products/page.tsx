@@ -37,6 +37,7 @@ export default function AdminProductsPage() {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<'ACTIVE' | 'INACTIVE'>('ACTIVE');
   const { token } = useAuthStore();
   
   const [showModal, setShowModal] = useState(false);
@@ -219,57 +220,13 @@ export default function AdminProductsPage() {
     }
   };
 
-  const matchSearch = (p: ProductData) => {
-    return p.sanPham.toLowerCase().includes(searchTerm.toLowerCase()) ||
-           p.hang.toLowerCase().includes(searchTerm.toLowerCase()) ||
-           p.phanKhuc.toLowerCase().includes(searchTerm.toLowerCase());
-  };
-
-  const activeProducts = products.filter(p => p.isActive !== false && matchSearch(p));
-  const inactiveProducts = products.filter(p => p.isActive === false && matchSearch(p));
-
-  const renderTable = (data: ProductData[], emptyMessage: string) => (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-      <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm whitespace-nowrap">
-          <thead className="bg-slate-50 border-b border-slate-200 text-slate-600">
-            <tr>
-              <th className="px-6 py-4 font-semibold">Sản phẩm</th>
-              <th className="px-6 py-4 font-semibold">Hãng</th>
-              <th className="px-6 py-4 font-semibold">Phân khúc</th>
-              <th className="px-6 py-4 font-semibold text-right">Thao tác</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-100">
-            {isLoading ? (
-              <tr><td colSpan={4} className="px-6 py-8 text-center text-slate-500">Đang tải...</td></tr>
-            ) : data.length === 0 ? (
-              <tr><td colSpan={4} className="px-6 py-8 text-center text-slate-500">{emptyMessage}</td></tr>
-            ) : (
-              data.map(p => (
-                <tr key={p.id} className="hover:bg-slate-50/50">
-                  <td className="px-6 py-4 font-medium text-slate-900">{p.sanPham}</td>
-                  <td className="px-6 py-4 text-slate-600">{p.hang}</td>
-                  <td className="px-6 py-4 text-slate-600">{p.phanKhuc}</td>
-                  <td className="px-6 py-4 text-right space-x-2">
-                    <button onClick={() => handleToggleStatus(p)} className="text-slate-500 hover:text-slate-700 p-2" title={p.isActive === false ? 'Hiện sản phẩm' : 'Ẩn sản phẩm'}>
-                      <i className={`fa-solid ${p.isActive === false ? 'fa-eye' : 'fa-eye-slash'}`}></i>
-                    </button>
-                    <button onClick={() => handleEdit(p)} className="text-blue-500 hover:text-blue-700 p-2" title="Chỉnh sửa">
-                      <i className="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    <button onClick={() => handleDelete(p.id)} className="text-red-500 hover:text-red-700 p-2" title="Xóa vĩnh viễn">
-                      <i className="fa-solid fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
+  const filteredProducts = products.filter(p => {
+    const matchesTab = activeTab === 'ACTIVE' ? p.isActive !== false : p.isActive === false;
+    const matchesSearch = p.sanPham.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.hang.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.phanKhuc.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesTab && matchesSearch;
+  });
 
   return (
     <div className="space-y-6">
@@ -292,15 +249,59 @@ export default function AdminProductsPage() {
         </div>
       </div>
 
-      <div className="space-y-8">
-        <div>
-          <h2 className="text-lg font-semibold text-slate-800 mb-4">Sản phẩm đang bán</h2>
-          {renderTable(activeProducts, 'Không có sản phẩm nào đang bán')}
-        </div>
+      <div className="flex space-x-1 bg-slate-100 p-1 rounded-xl w-fit">
+        <button
+          onClick={() => setActiveTab('ACTIVE')}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'ACTIVE' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+        >
+          Khả dụng
+        </button>
+        <button
+          onClick={() => setActiveTab('INACTIVE')}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'INACTIVE' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+        >
+          Đã ngừng kinh doanh
+        </button>
+      </div>
 
-        <div>
-          <h2 className="text-lg font-semibold text-slate-800 mb-4">Sản phẩm đã ẩn / Ngừng kinh doanh</h2>
-          {renderTable(inactiveProducts, 'Không có sản phẩm nào bị ẩn')}
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm whitespace-nowrap">
+            <thead className="bg-slate-50 border-b border-slate-200 text-slate-600">
+              <tr>
+                <th className="px-6 py-4 font-semibold">Sản phẩm</th>
+                <th className="px-6 py-4 font-semibold">Hãng</th>
+                <th className="px-6 py-4 font-semibold">Phân khúc</th>
+                <th className="px-6 py-4 font-semibold text-right">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              {isLoading ? (
+                <tr><td colSpan={4} className="px-6 py-8 text-center text-slate-500">Đang tải...</td></tr>
+              ) : filteredProducts.length === 0 ? (
+                <tr><td colSpan={4} className="px-6 py-8 text-center text-slate-500">Không tìm thấy sản phẩm nào</td></tr>
+              ) : (
+                filteredProducts.map(p => (
+                  <tr key={p.id} className="hover:bg-slate-50/50">
+                    <td className="px-6 py-4 font-medium text-slate-900">{p.sanPham}</td>
+                    <td className="px-6 py-4 text-slate-600">{p.hang}</td>
+                    <td className="px-6 py-4 text-slate-600">{p.phanKhuc}</td>
+                    <td className="px-6 py-4 text-right space-x-2">
+                      <button onClick={() => handleToggleStatus(p)} className="text-slate-500 hover:text-slate-700 p-2" title={p.isActive === false ? 'Hiện sản phẩm' : 'Ẩn sản phẩm'}>
+                        <i className={`fa-solid ${p.isActive === false ? 'fa-eye' : 'fa-eye-slash'}`}></i>
+                      </button>
+                      <button onClick={() => handleEdit(p)} className="text-blue-500 hover:text-blue-700 p-2" title="Chỉnh sửa">
+                        <i className="fa-solid fa-pen-to-square"></i>
+                      </button>
+                      <button onClick={() => handleDelete(p.id)} className="text-red-500 hover:text-red-700 p-2" title="Xóa vĩnh viễn">
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
 
