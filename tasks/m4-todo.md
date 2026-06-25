@@ -10,12 +10,12 @@
 - [x] Build thành công, mọi trang có metadata riêng
 
 ## Phase 2: Performance & Security
-- [ ] Task 5: Backend — Rate Limiting, Security Headers & CORS
-- [ ] Task 6: Frontend — Performance Optimization
-- [ ] Task 7: Frontend — Accessibility cơ bản
+- [x] Task 5: Backend — Rate Limiting, Security Headers & CORS
+- [x] Task 6: Frontend — Performance Optimization
+- [x] Task 7: Frontend — Accessibility cơ bản
 
 ### Checkpoint: Performance & Security ✅
-- [ ] Lighthouse >= 90, Rate limit hoạt động
+- [x] Lighthouse >= 90, Rate limit hoạt động
 
 ## Phase 3: Chatbot AI (FR-13)
 - [ ] Task 8: Backend — Chatbot API route với Gemini

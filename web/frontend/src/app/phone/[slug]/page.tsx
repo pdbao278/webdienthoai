@@ -7,8 +7,13 @@ import ProductSpecs from '@/components/product/ProductSpecs';
 import { Button } from '@/components/ui/Button';
 import ProductInteractiveSection from '@/components/product/ProductInteractiveSection';
 import ProductReviews from '@/components/product/ProductReviews';
-import CompareWidget from '@/components/product/CompareWidget';
 import ProductDescription from '@/components/product/ProductDescription';
+import dynamic from 'next/dynamic';
+
+const CompareWidget = dynamic(() => import('@/components/product/CompareWidget'), { 
+  ssr: false,
+  loading: () => <div className="h-64 bg-slate-50 animate-pulse mt-12 rounded-3xl border border-slate-100"></div>
+});
 
 async function getProduct(slug: string) {
   try {

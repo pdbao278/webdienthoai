@@ -1,10 +1,15 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/product/ProductCard';
-import FilterBar from '@/components/product/FilterBar';
 import { Suspense } from 'react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+
+const FilterBar = dynamic(() => import('@/components/product/FilterBar'), {
+  ssr: true, // FilterBar can still be SSR'd, but we split the bundle
+  loading: () => <div className="h-16 bg-white rounded-xl shadow-sm border border-slate-100 animate-pulse mb-6"></div>
+});
 
 export const metadata: Metadata = {
   title: 'Điện thoại di động chính hãng | PhoneStore',
