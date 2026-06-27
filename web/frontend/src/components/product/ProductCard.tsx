@@ -14,6 +14,9 @@ interface ProductCardProps {
       dungLuongGb: number;
     }[];
     media: { url: string }[];
+    reviews?: {
+      rating: number;
+    }[];
   };
 }
 
@@ -29,6 +32,12 @@ export default function ProductCard({ product }: ProductCardProps) {
   const dungLuongGb = minVariant?.dungLuongGb || '';
 
   const discount = giaGoc > 0 ? Math.round((1 - giaBan / giaGoc) * 100) : 0;
+
+  const reviews = product.reviews || [];
+  const reviewCount = reviews.length;
+  const averageRating = reviewCount > 0
+    ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviewCount).toFixed(1)
+    : '5.0';
 
   return (
     <Link href={`/phone/${product.slug}`} className="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col relative transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-sky-600/20 group">
@@ -64,8 +73,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
           <div className="flex items-center gap-1 mb-4">
               <i className="fa-solid fa-star text-amber-400 text-xs"></i>
-              <span className="text-xs font-semibold text-slate-800">4.9</span>
-              <span className="text-xs text-slate-500">(120 đánh giá)</span>
+              <span className="text-xs font-semibold text-slate-800">{averageRating}</span>
+              <span className="text-xs text-slate-500">({reviewCount} đánh giá)</span>
           </div>
           <div className="mt-auto flex gap-2">
               <div className="flex-1 bg-sky-600 text-white font-semibold text-sm h-[38px] rounded-xl transition-colors hover:bg-sky-700 flex items-center justify-center">

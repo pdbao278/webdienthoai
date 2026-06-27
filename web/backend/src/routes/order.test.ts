@@ -297,10 +297,18 @@ describe('Order API', () => {
         await prisma.orderItem.deleteMany({ where: { orderId: res.body.order.id } });
         await prisma.order.deleteMany({ where: { id: res.body.order.id } });
       }
-      await prisma.cartItem.deleteMany({ where: { userId } });
-      await prisma.voucher.deleteMany({ where: { maVoucher: hugeVoucherCode } });
-      await prisma.productVariant.deleteMany({ where: { id: otherProductVariantId } });
-      await prisma.product.deleteMany({ where: { id: otherProduct.id } });
+      if (userId) {
+        await prisma.cartItem.deleteMany({ where: { userId } });
+      }
+      if (hugeVoucherCode) {
+        await prisma.voucher.deleteMany({ where: { maVoucher: hugeVoucherCode } });
+      }
+      if (otherProductVariantId) {
+        await prisma.productVariant.deleteMany({ where: { id: otherProductVariantId } });
+      }
+      if (otherProduct?.id) {
+        await prisma.product.deleteMany({ where: { id: otherProduct.id } });
+      }
 
       expect(res.status).toBe(201);
       // Total = 36M + 20M = 56M

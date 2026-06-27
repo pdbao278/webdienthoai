@@ -45,23 +45,25 @@ export default async function Home() {
                             <i className="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:translate-x-1 transition-transform"></i>
                         </Link>
                         {/* Mega Menu Dropdown */}
-                        <div className="absolute left-full top-0 w-[600px] bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl shadow-xl hidden group-hover:grid grid-cols-2 gap-6 p-6 z-50 ml-2">
-                            <div>
-                                <div className="font-[Outfit] text-sm font-bold text-slate-800 mb-3 border-b border-slate-200 pb-1">Thương Hiệu Hot</div>
-                                <ul className="flex flex-col gap-2">
-                                    <li><Link href="/phone?hang=Apple" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Apple (iPhone)</Link></li>
-                                    <li><Link href="/phone?hang=Samsung" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Samsung Galaxy</Link></li>
-                                    <li><Link href="/phone?hang=Xiaomi" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Xiaomi</Link></li>
-                                    <li><Link href="/phone?hang=OPPO" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">OPPO</Link></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <div className="font-[Outfit] text-sm font-bold text-slate-800 mb-3 border-b border-slate-200 pb-1">Theo Phân Khúc & Nhu Cầu</div>
-                                <ul className="flex flex-col gap-2">
-                                    <li><Link href="/phone" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Điện thoại Flagship (Cao cấp)</Link></li>
-                                    <li><Link href="/phone" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Phân khúc Tầm Trung</Link></li>
-                                    <li><Link href="/phone" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Gaming Phone</Link></li>
-                                </ul>
+                        <div className="absolute left-full top-0 w-[608px] pl-2 hidden group-hover:block z-50">
+                            <div className="bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl shadow-xl grid grid-cols-2 gap-6 p-6">
+                                <div>
+                                    <div className="font-[Outfit] text-sm font-bold text-slate-800 mb-3 border-b border-slate-200 pb-1">Thương Hiệu Hot</div>
+                                    <ul className="flex flex-col gap-2">
+                                        <li><Link href="/phone?hang=Apple" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Apple (iPhone)</Link></li>
+                                        <li><Link href="/phone?hang=Samsung" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Samsung Galaxy</Link></li>
+                                        <li><Link href="/phone?hang=Xiaomi" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Xiaomi</Link></li>
+                                        <li><Link href="/phone?hang=OPPO" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">OPPO</Link></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div className="font-[Outfit] text-sm font-bold text-slate-800 mb-3 border-b border-slate-200 pb-1">Theo Phân Khúc & Nhu Cầu</div>
+                                    <ul className="flex flex-col gap-2">
+                                        <li><Link href="/phone" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Điện thoại Flagship (Cao cấp)</Link></li>
+                                        <li><Link href="/phone" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Phân khúc Tầm Trung</Link></li>
+                                        <li><Link href="/phone" className="text-sm text-slate-500 hover:text-sky-600 transition-colors">Gaming Phone</Link></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -113,9 +115,9 @@ export default async function Home() {
                       <h2 className="font-[Outfit] text-[1.35rem] font-bold text-slate-800">Danh sách điện thoại</h2>
                       {/* Category Tabs */}
                       <div className="hidden md:flex gap-2 bg-slate-100 p-1 rounded-full">
-                          <button className="px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-sky-600 shadow-sm">Tất cả</button>
-                          <button className="px-4 py-1.5 rounded-full text-xs font-semibold text-slate-500 hover:text-slate-700 transition-colors">Flagship nổi bật</button>
-                          <button className="px-4 py-1.5 rounded-full text-xs font-semibold text-slate-500 hover:text-slate-700 transition-colors">Tầm trung</button>
+                          <Link href="/phone" className="px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-sky-600 shadow-sm">Tất cả</Link>
+                          <Link href="/phone?minPrice=15000000" className="px-4 py-1.5 rounded-full text-xs font-semibold text-slate-500 hover:text-slate-700 transition-colors">Flagship nổi bật</Link>
+                          <Link href="/phone?minPrice=5000000&maxPrice=15000000" className="px-4 py-1.5 rounded-full text-xs font-semibold text-slate-500 hover:text-slate-700 transition-colors">Tầm trung</Link>
                       </div>
                   </div>
               </div>

@@ -69,13 +69,21 @@ describe('Cron Service Auto-Cancellation', () => {
   });
 
   afterAll(async () => {
-    // Cleanup database
-    await prisma.orderActivityLog.deleteMany({ where: { orderId } });
-    await prisma.orderItem.deleteMany({ where: { orderId } });
-    await prisma.order.deleteMany({ where: { id: orderId } });
-    await prisma.productVariant.deleteMany({ where: { id: variantId } });
-    await prisma.product.deleteMany({ where: { id: productId } });
-    await prisma.user.deleteMany({ where: { id: customerId } });
+    // Cleanup database safely
+    if (orderId) {
+      await prisma.orderActivityLog.deleteMany({ where: { orderId } });
+      await prisma.orderItem.deleteMany({ where: { orderId } });
+      await prisma.order.deleteMany({ where: { id: orderId } });
+    }
+    if (variantId) {
+      await prisma.productVariant.deleteMany({ where: { id: variantId } });
+    }
+    if (productId) {
+      await prisma.product.deleteMany({ where: { id: productId } });
+    }
+    if (customerId) {
+      await prisma.user.deleteMany({ where: { id: customerId } });
+    }
     await prisma.$disconnect();
   });
 

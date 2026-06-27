@@ -91,6 +91,12 @@ export default async function ProductDetailPage({
     );
   }
 
+  const reviews = product.reviews || [];
+  const reviewCount = reviews.length;
+  const averageRating = reviewCount > 0
+    ? (reviews.reduce((acc: any, r: any) => acc + r.rating, 0) / reviewCount).toFixed(1)
+    : '5.0';
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       <Header />
@@ -139,13 +145,9 @@ export default async function ProductDetailPage({
             <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
               <div className="flex items-center text-amber-400">
                 <i className="fa-solid fa-star mr-1"></i>
-                <span className="text-slate-700 font-bold">4.8</span>
+                <span className="text-slate-700 font-bold">{averageRating}</span>
                 <span className="mx-1">/ 5</span>
-                <span className="text-slate-400 ml-1">(24 đánh giá)</span>
-              </div>
-              <span className="text-slate-300">|</span>
-              <div className="flex items-center text-sky-600 font-semibold cursor-pointer hover:underline">
-                <i className="fa-solid fa-circle-plus mr-1"></i> So sánh cấu hình
+                <span className="text-slate-400 ml-1">({reviewCount} đánh giá)</span>
               </div>
             </div>
           </div>

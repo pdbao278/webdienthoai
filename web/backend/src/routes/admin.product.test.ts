@@ -178,10 +178,14 @@ describe('Admin Product API', () => {
       expect(deleteRes.body.error).toContain('lịch sử đơn hàng');
 
       // Cleanup
-      await prisma.orderItem.deleteMany({ where: { orderId: order.id } });
-      await prisma.order.delete({ where: { id: order.id } });
-      await prisma.productVariant.deleteMany({ where: { productId: prodId } });
-      await prisma.product.delete({ where: { id: prodId } });
+      if (order?.id) {
+        await prisma.orderItem.deleteMany({ where: { orderId: order.id } });
+        await prisma.order.delete({ where: { id: order.id } });
+      }
+      if (prodId) {
+        await prisma.productVariant.deleteMany({ where: { productId: prodId } });
+        await prisma.product.delete({ where: { id: prodId } });
+      }
     });
   });
 });

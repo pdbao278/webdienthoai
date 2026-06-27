@@ -28,7 +28,7 @@ export default function Header() {
 
             {/* Search Autocomplete */}
             <form 
-              className="relative w-full max-w-[450px] hidden md:block" 
+              className="relative w-full max-w-[320px] hidden md:block" 
               onSubmit={(e) => {
                 e.preventDefault();
                 const form = e.target as HTMLFormElement;
@@ -52,22 +52,28 @@ export default function Header() {
             </form>
 
             {/* Header Actions */}
-            <div className="flex items-center gap-6">
-                <Link href="/cart" className="flex items-center gap-2 text-slate-800 font-medium text-sm px-3 py-2 rounded-xl transition-all hover:bg-black/5">
+            <div className="flex items-center gap-6 flex-shrink-0">
+                <Link href="/cart" className="flex items-center gap-2 text-slate-800 font-medium text-sm px-3 py-2 rounded-xl transition-all hover:bg-black/5 flex-shrink-0">
                     <i className="fa-solid fa-basket-shopping text-lg text-slate-500"></i>
-                    <span className="hidden lg:inline">Giỏ Hàng</span>
+                    <span className="hidden lg:inline whitespace-nowrap">Giỏ Hàng</span>
                     <span className="bg-sky-600 text-white text-[12px] px-1.5 py-0.5 rounded-full font-semibold">{cartCount}</span>
                 </Link>
                 {isLoggedIn ? (
                   <>
-                    <Link href="/orders" className="flex items-center gap-2 text-slate-800 font-medium text-sm px-3 py-2 rounded-xl transition-all hover:bg-black/5 hidden sm:flex">
+                    <Link href="/orders" className="flex items-center gap-2 text-slate-800 font-medium text-sm px-3 py-2 rounded-xl transition-all hover:bg-black/5 hidden sm:flex flex-shrink-0">
                         <i className="fa-solid fa-receipt text-lg text-slate-500"></i>
-                        <span className="hidden lg:inline">Đơn Hàng</span>
+                        <span className="hidden lg:inline whitespace-nowrap">Đơn Hàng</span>
                     </Link>
-                    <div className="relative group cursor-pointer">
+                    {(user?.role === 'ADMIN' || user?.role === 'MANAGER') && (
+                      <Link href="/admin" className="flex items-center gap-2 text-sky-600 font-semibold text-sm px-3 py-2 rounded-xl transition-all hover:bg-sky-50 flex-shrink-0">
+                        <i className="fa-solid fa-shield-halved text-lg"></i>
+                        <span className="hidden lg:inline whitespace-nowrap">Quản trị</span>
+                      </Link>
+                    )}
+                    <div className="relative group cursor-pointer flex-shrink-0">
                       <div className="flex items-center gap-2 text-slate-800 font-medium text-sm px-3 py-2 rounded-xl transition-all hover:bg-black/5">
                         <i className="fa-regular fa-user text-lg text-slate-500"></i>
-                        <span className="hidden lg:inline truncate max-w-[120px]">{user?.hoTen || 'Tài khoản'}</span>
+                        <span className="hidden lg:inline truncate max-w-[120px] whitespace-nowrap">{user?.hoTen || 'Tài khoản'}</span>
                       </div>
                       <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
                         <div className="px-4 py-2 border-b border-slate-100 mb-1">
@@ -87,9 +93,9 @@ export default function Header() {
                     </div>
                   </>
                 ) : (
-                  <Link href="/login" className="flex items-center gap-2 text-slate-800 font-medium text-sm px-3 py-2 rounded-xl transition-all hover:bg-black/5">
+                  <Link href="/login" className="flex items-center gap-2 text-slate-800 font-medium text-sm px-3 py-2 rounded-xl transition-all hover:bg-black/5 flex-shrink-0">
                       <i className="fa-regular fa-user text-lg text-slate-500"></i>
-                      <span className="hidden lg:inline">Đăng nhập</span>
+                      <span className="hidden lg:inline whitespace-nowrap">Đăng nhập</span>
                   </Link>
                 )}
             </div>

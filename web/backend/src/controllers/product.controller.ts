@@ -62,7 +62,12 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
             where: { isThumbnail: true },
             take: 1
           },
-          variants: true
+          variants: true,
+          reviews: {
+            select: {
+              rating: true
+            }
+          }
         }
       });
       
@@ -88,7 +93,12 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
               where: { isThumbnail: true },
               take: 1
             },
-            variants: true
+            variants: true,
+            reviews: {
+              select: {
+                rating: true
+              }
+            }
           }
         }),
         prisma.product.count({ where })
@@ -120,7 +130,12 @@ export const getProductBySlug = async (req: Request, res: Response): Promise<voi
         media: {
           orderBy: { thuTu: 'asc' }
         },
-        variants: true
+        variants: true,
+        reviews: {
+          select: {
+            rating: true
+          }
+        }
       }
     });
 

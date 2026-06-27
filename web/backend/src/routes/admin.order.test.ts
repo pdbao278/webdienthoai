@@ -159,13 +159,19 @@ describe('Admin Order API', () => {
         const updatedVoucher = await prisma.voucher.findUnique({ where: { id: voucher.id } });
         expect(updatedVoucher?.daSuDung).toBe(0); // Restored from 1
       } finally {
-        // Cleanup
-        await prisma.orderActivityLog.deleteMany({ where: { orderId: cancelOrder.id } });
-        await prisma.orderItem.deleteMany({ where: { orderId: cancelOrder.id } });
-        await prisma.order.deleteMany({ where: { id: cancelOrder.id } });
-        await prisma.voucher.deleteMany({ where: { id: voucher.id } });
-        await prisma.productVariant.deleteMany({ where: { productId: product.id } });
-        await prisma.product.deleteMany({ where: { id: product.id } });
+        // Cleanup safely
+        if (cancelOrder?.id) {
+          await prisma.orderActivityLog.deleteMany({ where: { orderId: cancelOrder.id } });
+          await prisma.orderItem.deleteMany({ where: { orderId: cancelOrder.id } });
+          await prisma.order.deleteMany({ where: { id: cancelOrder.id } });
+        }
+        if (voucher?.id) {
+          await prisma.voucher.deleteMany({ where: { id: voucher.id } });
+        }
+        if (product?.id) {
+          await prisma.productVariant.deleteMany({ where: { productId: product.id } });
+          await prisma.product.deleteMany({ where: { id: product.id } });
+        }
       }
     });
   });
