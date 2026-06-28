@@ -6,6 +6,7 @@ import { formatCurrency } from '@/lib/utils';
 import AddToCartButton from './AddToCartButton';
 import { useCartStore } from '@/store/useCartStore';
 import toast from 'react-hot-toast';
+import { AlertCircle, RefreshCcw, ShieldCheck, Package } from 'lucide-react';
 
 interface Variant {
   id: string;
@@ -139,7 +140,7 @@ export default function ProductInteractiveSection({ product, variants, minVarian
   };
 
   return (
-    <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 space-y-6">
+    <div className="bg-white rounded-2xl p-6 shadow-card border border-slate-200/60 space-y-6">
       {/* Configuration Selectors */}
       <div className="space-y-4">
         {/* Configuration Selector */}
@@ -153,10 +154,10 @@ export default function ProductInteractiveSection({ product, variants, minVarian
                   <button
                     key={`${config.ramGb}-${config.dungLuongGb}`}
                     onClick={() => handleConfigSelect(config.ramGb, config.dungLuongGb)}
-                    className={`px-3.5 py-1.5 border rounded-xl text-xs md:text-sm font-semibold transition-all outline-none cursor-pointer ${
+                    className={`px-3.5 py-1.5 border rounded-xl text-xs md:text-sm font-semibold transition-all duration-200 outline-none cursor-pointer active:scale-[0.95] ${
                       isSelected 
-                        ? 'border-blue-500 bg-blue-50/50 text-blue-600 ring-1 ring-blue-500/10' 
-                        : 'border-slate-200 hover:border-slate-300 text-slate-700 bg-white'
+                        ? 'border-sky-500 bg-sky-50/50 text-sky-600 ring-1 ring-sky-500/10' 
+                        : 'border-slate-200/80 hover:border-slate-300 text-slate-700 bg-white'
                     }`}
                   >
                     {config.ramGb}GB - {config.dungLuongGb}GB
@@ -179,10 +180,10 @@ export default function ProductInteractiveSection({ product, variants, minVarian
                   <button
                     key={color}
                     onClick={() => handleColorSelect(color)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 border rounded-full text-xs md:text-sm font-medium transition-all outline-none cursor-pointer ${
+                    className={`flex items-center gap-1.5 px-3 py-1.5 border rounded-full text-xs md:text-sm font-medium transition-all duration-200 outline-none cursor-pointer active:scale-[0.95] ${
                       isSelected 
-                        ? 'border-blue-500 bg-blue-50/50 text-blue-600 ring-1 ring-blue-500/10' 
-                        : 'border-slate-200 hover:border-slate-300 text-slate-700 bg-white'
+                        ? 'border-sky-500 bg-sky-50/50 text-sky-600 ring-1 ring-sky-500/10' 
+                        : 'border-slate-200/80 hover:border-slate-300 text-slate-700 bg-white'
                     }`}
                   >
                     <span 
@@ -198,27 +199,27 @@ export default function ProductInteractiveSection({ product, variants, minVarian
         )}
       </div>
 
-      {/* Price tag mimicking TGDD's Flash Sale or online promo */}
-      <div className="bg-rose-50/30 rounded-2xl p-4 border border-rose-100 flex flex-col justify-center">
+      {/* Price tag */}
+      <div className="bg-rose-50/30 rounded-2xl p-4 border border-rose-100/60 flex flex-col justify-center">
         <span className="text-xs font-bold text-rose-500 uppercase tracking-wider mb-1">Giá bán Online:</span>
         <div className="flex items-baseline gap-2">
-          <span className="text-3xl font-extrabold text-rose-600">
+          <span className="font-[var(--font-outfit)] text-3xl font-bold text-rose-600 tabular-nums">
             {formatCurrency(giaBan).replace('₫', 'đ')}
           </span>
           {giaGoc > giaBan && (
-            <span className="text-slate-400 line-through text-sm">
+            <span className="text-slate-400 line-through text-sm tabular-nums">
               {formatCurrency(giaGoc).replace('₫', 'đ')}
             </span>
           )}
           {discount > 0 && (
-            <span className="bg-rose-100 text-rose-600 text-xs font-bold px-2 py-0.5 rounded-lg">
+            <span className="bg-rose-100/80 text-rose-600 text-xs font-bold px-2 py-0.5 rounded-lg">
               -{discount}%
             </span>
           )}
         </div>
         {selectedVariant.tonKho <= 0 && (
-          <p className="text-rose-600 text-xs font-bold mt-2 flex items-center gap-1">
-            <i className="fa-solid fa-circle-exclamation"></i> Tạm hết hàng tại hệ thống
+          <p className="text-rose-600 text-xs font-bold mt-2 flex items-center gap-1.5">
+            <AlertCircle size={14} strokeWidth={2} /> Tạm hết hàng tại hệ thống
           </p>
         )}
       </div>
@@ -228,32 +229,32 @@ export default function ProductInteractiveSection({ product, variants, minVarian
         <div className={selectedVariant.tonKho <= 0 ? 'opacity-50 pointer-events-none' : ''}>
           <AddToCartButton 
             productId={selectedVariant.id} 
-            className="h-14 rounded-2xl border-rose-500 hover:border-rose-600 text-rose-600 hover:bg-rose-50/50 active:scale-95" 
+            className="h-14 rounded-2xl border-rose-500 hover:border-rose-600 text-rose-600 hover:bg-rose-50/50 active:scale-[0.97]" 
           />
         </div>
         <button 
           disabled={selectedVariant.tonKho <= 0 || isBuyingNow}
           onClick={handleBuyNow}
-          className="w-full h-14 bg-rose-600 hover:bg-rose-700 text-white font-extrabold rounded-2xl shadow-sm hover:shadow active:scale-95 transition-all disabled:opacity-50 flex items-center justify-center cursor-pointer text-sm uppercase tracking-wider"
+          className="w-full h-14 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-2xl shadow-card hover:shadow-elevated active:scale-[0.97] transition-all duration-200 disabled:opacity-50 flex items-center justify-center cursor-pointer text-sm uppercase tracking-wider"
         >
           {isBuyingNow ? 'Đang xử lý...' : 'MUA NGAY'}
         </button>
       </div>
 
       {/* Purchase Policies Card */}
-      <div className="bg-slate-50/50 border border-slate-100 rounded-2xl p-4 space-y-3.5">
+      <div className="bg-slate-50/50 border border-slate-100/80 rounded-2xl p-4 space-y-3.5">
         <h5 className="font-bold text-slate-800 text-xs uppercase tracking-wider">Chính sách mua hàng & Bảo hành:</h5>
         <div className="grid grid-cols-1 gap-2.5 text-xs text-slate-600">
           <div className="flex items-start gap-2.5">
-            <i className="fa-solid fa-arrows-rotate text-blue-500 mt-0.5"></i>
+            <RefreshCcw size={14} className="text-sky-500 mt-0.5 shrink-0" strokeWidth={2} />
             <span>Hư gì đổi nấy 12 tháng tại các cửa hàng liên kết toàn quốc.</span>
           </div>
           <div className="flex items-start gap-2.5">
-            <i className="fa-solid fa-shield-halved text-blue-500 mt-0.5"></i>
+            <ShieldCheck size={14} className="text-sky-500 mt-0.5 shrink-0" strokeWidth={2} />
             <span>Bảo hành chính hãng điện thoại 1 năm tại trung tâm ủy quyền.</span>
           </div>
           <div className="flex items-start gap-2.5">
-            <i className="fa-solid fa-box-open text-blue-500 mt-0.5"></i>
+            <Package size={14} className="text-sky-500 mt-0.5 shrink-0" strokeWidth={2} />
             <span>Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Type-C.</span>
           </div>
         </div>

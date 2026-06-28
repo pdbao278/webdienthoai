@@ -7,6 +7,7 @@ import { authFetch, authFetchJson } from '@/lib/api';
 import toast from 'react-hot-toast';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { Search, QrCode, X, Receipt, Loader2 } from 'lucide-react';
 
 const formatDateTime = (dateStr: string) => {
   const d = new Date(dateStr);
@@ -65,11 +66,11 @@ const ORDER_STATUS_MAP: Record<string, string> = {
 };
 
 const STATUS_COLORS: Record<string, string> = {
-  'DA_DAT': 'bg-blue-100 text-blue-800',
-  'DANG_CHUAN_BI': 'bg-yellow-100 text-yellow-800',
-  'CHO_NHAN_HANG': 'bg-orange-100 text-orange-800',
-  'HOAN_THANH': 'bg-green-100 text-green-800',
-  'DA_HUY': 'bg-red-100 text-red-800',
+  'DA_DAT': 'bg-blue-50 text-blue-700 border border-blue-200',
+  'DANG_CHUAN_BI': 'bg-amber-50 text-amber-700 border border-amber-200',
+  'CHO_NHAN_HANG': 'bg-purple-50 text-purple-700 border border-purple-200',
+  'HOAN_THANH': 'bg-emerald-50 text-emerald-700 border border-emerald-200',
+  'DA_HUY': 'bg-rose-50 text-rose-700 border border-rose-200',
 };
 
 /** Chuyển đổi trạng thái hợp lệ (máy trạng thái) */
@@ -187,45 +188,45 @@ export default function AdminOrdersPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-2xl font-bold text-slate-800">Quản lý Đơn hàng</h1>
+        <h1 className="text-2xl font-[var(--font-outfit)] font-bold text-slate-800 tracking-tight">Quản lý Đơn hàng</h1>
         
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-          <div className="relative">
-            <i className="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <div className="relative group">
+            <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-sky-500 transition-colors" />
             <input 
               type="text" 
               placeholder="Tìm kiếm mã đơn, tên, SĐT..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full sm:w-64 pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none transition-all" 
+              className="w-full sm:w-64 pl-10 pr-4 py-2.5 bg-white border border-slate-200/80 rounded-xl text-sm font-medium focus:border-sky-500 focus:ring-2 focus:ring-sky-500/15 outline-none transition-all shadow-sm" 
             />
           </div>
           <Button 
             variant="primary" 
             onClick={() => setShowQRModal(true)}
-            className="whitespace-nowrap w-full sm:w-auto"
+            className="whitespace-nowrap w-full sm:w-auto bg-slate-800 hover:bg-slate-900 shadow-card hover:shadow-elevated rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-all"
           >
-            <i className="fa-solid fa-qrcode mr-2"></i> Quét mã nhận hàng
+            <QrCode size={18} strokeWidth={2.5} /> Quét mã nhận hàng
           </Button>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-2 overflow-x-auto">
-        <div className="flex space-x-2 min-w-max">
+      <div className="bg-slate-200/50 rounded-2xl p-1.5 overflow-x-auto w-fit">
+        <div className="flex space-x-1.5 min-w-max">
           {STATUS_TABS.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
+              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 flex items-center gap-2 active:scale-95 ${
                 activeTab === tab.id 
-                  ? 'bg-sky-50 text-sky-700 shadow-sm border border-sky-100' 
-                  : 'text-slate-600 hover:bg-slate-50 border border-transparent'
+                  ? 'bg-white text-slate-800 shadow-sm' 
+                  : 'text-slate-500 hover:text-slate-700'
               }`}
             >
               {tab.label}
-              <span className={`px-2 py-0.5 rounded-full text-xs ${
-                activeTab === tab.id ? 'bg-sky-200 text-sky-800' : 'bg-slate-100 text-slate-500'
+              <span className={`px-2 py-0.5 rounded-lg text-xs font-bold transition-colors ${
+                activeTab === tab.id ? 'bg-sky-100/50 text-sky-700' : 'bg-slate-300/50 text-slate-600'
               }`}>
                 {counts[tab.id]}
               </span>
@@ -234,56 +235,56 @@ export default function AdminOrdersPage() {
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-card border border-slate-200/60 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="bg-slate-50 border-b border-slate-200 text-slate-600">
+            <thead className="bg-slate-50 border-b border-slate-100 text-slate-600">
               <tr>
-                <th className="px-6 py-4 font-semibold">Mã đơn / QR</th>
-                <th className="px-6 py-4 font-semibold">Khách hàng</th>
-                <th className="px-6 py-4 font-semibold">Sản phẩm</th>
-                <th className="px-6 py-4 font-semibold">Tổng tiền</th>
-                <th className="px-6 py-4 font-semibold">Trạng thái</th>
-                <th className="px-6 py-4 font-semibold text-right">Thao tác</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Mã đơn / QR</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Khách hàng</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Sản phẩm</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Tổng tiền</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Trạng thái</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs text-right">Thao tác</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {isLoading ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-8 text-center text-slate-500">Đang tải dữ liệu...</td>
+                  <td colSpan={6} className="px-6 py-12 text-center text-slate-500"><Loader2 className="animate-spin inline-block mr-2" size={20} /> Đang tải dữ liệu...</td>
                 </tr>
               ) : filteredOrders.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-8 text-center text-slate-500">Không có đơn hàng nào</td>
+                  <td colSpan={6} className="px-6 py-12 text-center text-slate-500 font-medium">Không có đơn hàng nào</td>
                 </tr>
               ) : (
                 filteredOrders.map((order) => {
                   const nextStatuses = getNextStatuses(order.trangThai);
                   return (
-                    <tr key={order.id} className="hover:bg-slate-50/50">
+                    <tr key={order.id} className="hover:bg-slate-50/50 transition-colors">
                       <td className="px-6 py-4">
                         <button 
                           onClick={() => setSelectedOrderDetail(order)}
-                          className="font-semibold text-sky-600 hover:text-sky-800 hover:underline text-left block focus:outline-none"
+                          className="font-bold text-sky-600 hover:text-sky-800 hover:underline text-left block focus:outline-none uppercase tracking-wider"
                         >
                           {order.maNhanHang}
                         </button>
-                        <div className="text-xs text-slate-500 mt-1">{new Date(order.createdAt).toLocaleString('vi-VN')}</div>
+                        <div className="text-xs text-slate-500 mt-1.5 font-medium">{new Date(order.createdAt).toLocaleString('vi-VN')}</div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="font-medium text-slate-900">{order.user.hoTen}</div>
-                        <div className="text-xs text-slate-500">{order.user.sdt}</div>
+                        <div className="font-bold text-slate-800">{order.user.hoTen}</div>
+                        <div className="text-xs text-slate-500 font-medium mt-1">{order.user.sdt}</div>
                       </td>
                       <td className="px-6 py-4 max-w-[250px]">
-                        <div className="truncate text-slate-700" title={order.items.map((i) => `${i.soLuong}x ${i.productVariant.product.sanPham} ${i.productVariant.dungLuongGb}GB - ${i.productVariant.mauSac}`).join(', ')}>
+                        <div className="truncate text-slate-600 font-medium" title={order.items.map((i) => `${i.soLuong}x ${i.productVariant.product.sanPham} ${i.productVariant.dungLuongGb}GB - ${i.productVariant.mauSac}`).join(', ')}>
                           {order.items.map((i) => `${i.soLuong}x ${i.productVariant.product.sanPham} ${i.productVariant.dungLuongGb}GB`).join(', ')}
                         </div>
                       </td>
-                      <td className="px-6 py-4 font-medium text-sky-700">
+                      <td className="px-6 py-4 font-bold text-rose-600 tabular-nums">
                         {formatCurrency(order.thanhTien)}
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`px-2.5 py-1 text-xs font-medium rounded-full ${STATUS_COLORS[order.trangThai] || 'bg-slate-100 text-slate-800'}`}>
+                        <span className={`px-3 py-1.5 text-xs font-bold rounded-xl tracking-wide ${STATUS_COLORS[order.trangThai] || 'bg-slate-100 text-slate-800'}`}>
                           {ORDER_STATUS_MAP[order.trangThai]}
                         </span>
                       </td>
@@ -294,7 +295,7 @@ export default function AdminOrdersPage() {
                             onChange={(e) => {
                               if (e.target.value) handleUpdateStatus(order.id, e.target.value);
                             }}
-                            className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-sm focus:border-sky-500 outline-none"
+                            className="px-4 py-2 bg-slate-50 border border-slate-200/80 rounded-xl text-sm font-semibold focus:border-sky-500 focus:ring-2 focus:ring-sky-500/15 outline-none transition-all cursor-pointer text-slate-700"
                           >
                             <option value="">Chuyển trạng thái...</option>
                             {nextStatuses.map((s) => (
@@ -302,7 +303,7 @@ export default function AdminOrdersPage() {
                             ))}
                           </select>
                         ) : (
-                          <span className="text-xs text-slate-400">—</span>
+                          <span className="text-xs font-bold text-slate-300">—</span>
                         )}
                       </td>
                     </tr>
@@ -315,19 +316,19 @@ export default function AdminOrdersPage() {
       </div>
 
       {showQRModal && (
-        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-            <div className="p-6">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[var(--z-modal-backdrop)] flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl shadow-modal w-full max-w-md overflow-hidden animate-fade-in-up border border-slate-200/60">
+            <div className="p-8">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-lg font-bold text-slate-800">Giả lập máy quét QR</h3>
-                <button onClick={() => setShowQRModal(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
-                  <i className="fa-solid fa-xmark text-xl"></i>
+                <h3 className="text-xl font-[var(--font-outfit)] font-bold text-slate-800 tracking-tight">Giả lập máy quét QR</h3>
+                <button onClick={() => setShowQRModal(false)} className="text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-2 rounded-full transition-colors active:scale-95">
+                  <X size={20} strokeWidth={2} />
                 </button>
               </div>
               
-              <div className="bg-slate-50 p-8 rounded-xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center mb-6">
-                <i className="fa-solid fa-qrcode text-6xl text-slate-300 mb-4"></i>
-                <p className="text-sm text-slate-500 text-center">Trong thực tế, bạn sẽ dùng máy quét mã vạch.<br/>Ở đây, hãy nhập mã nhận hàng thủ công.</p>
+              <div className="bg-slate-50/80 p-8 rounded-3xl border-2 border-dashed border-slate-200/80 flex flex-col items-center justify-center mb-6">
+                <QrCode size={64} strokeWidth={1} className="text-slate-300 mb-4" />
+                <p className="text-sm text-slate-500 text-center font-medium leading-relaxed">Trong thực tế, bạn sẽ dùng máy quét mã vạch.<br/>Ở đây, hãy nhập mã nhận hàng thủ công.</p>
               </div>
 
               <div className="space-y-4">
@@ -339,7 +340,7 @@ export default function AdminOrdersPage() {
                   autoFocus
                 />
                 <Button 
-                  className="w-full" 
+                  className="w-full bg-slate-800 hover:bg-slate-900 text-white rounded-xl py-3.5 font-bold shadow-card hover:shadow-elevated transition-all duration-200 active:scale-95" 
                   onClick={handleScanQR}
                   isLoading={isScanning}
                   disabled={!qrCode.trim()}
@@ -354,108 +355,110 @@ export default function AdminOrdersPage() {
 
       {/* Order Detail Modal */}
       {selectedOrderDetail && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100">
-            <div className="p-6 md:p-8">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[var(--z-modal-backdrop)] flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl shadow-modal w-full max-w-2xl overflow-hidden animate-fade-in-up border border-slate-200/60">
+            <div className="p-6 md:p-8 max-h-[90vh] overflow-y-auto">
               {/* Header */}
-              <div className="flex justify-between items-start border-b border-slate-100 pb-4 mb-6">
+              <div className="flex justify-between items-start border-b border-slate-100 pb-5 mb-6 sticky top-0 bg-white z-10">
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                    <i className="fa-solid fa-file-invoice text-sky-500"></i> Chi tiết đơn hàng: {selectedOrderDetail.maNhanHang}
+                  <h3 className="text-xl font-[var(--font-outfit)] font-bold text-slate-900 flex items-center gap-2.5 tracking-tight">
+                    <div className="w-10 h-10 bg-sky-50 text-sky-600 rounded-xl flex items-center justify-center"><Receipt size={20} strokeWidth={2.5} /></div> Chi tiết đơn hàng: {selectedOrderDetail.maNhanHang}
                   </h3>
-                  <span className={`inline-block mt-2 px-2.5 py-1 text-xs font-semibold rounded-full ${STATUS_COLORS[selectedOrderDetail.trangThai] || 'bg-slate-100 text-slate-800'}`}>
+                  <span className={`inline-block mt-3 px-3 py-1.5 text-xs font-bold tracking-wide rounded-xl ${STATUS_COLORS[selectedOrderDetail.trangThai] || 'bg-slate-100 text-slate-800'}`}>
                     {ORDER_STATUS_MAP[selectedOrderDetail.trangThai]}
                   </span>
                 </div>
                 <button 
                   onClick={() => setSelectedOrderDetail(null)} 
-                  className="text-slate-400 hover:text-slate-600 hover:bg-slate-50 p-2 rounded-full transition-colors"
+                  className="text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-2 rounded-full transition-colors active:scale-95 mt-1"
                 >
-                  <i className="fa-solid fa-xmark text-xl"></i>
+                  <X size={20} strokeWidth={2} />
                 </button>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 {/* Buyer info */}
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
-                  <h4 className="font-bold text-slate-800 text-sm border-b border-slate-200/60 pb-1 mb-2">Thông tin khách hàng</h4>
-                  <div className="text-sm"><span className="text-slate-500">Họ tên:</span> <strong className="text-slate-800">{selectedOrderDetail.user.hoTen}</strong></div>
-                  <div className="text-sm"><span className="text-slate-500">Email:</span> <span className="text-slate-800">{selectedOrderDetail.user.email}</span></div>
-                  <div className="text-sm"><span className="text-slate-500">SĐT Liên hệ:</span> <span className="text-slate-800">{selectedOrderDetail.sdtLienHe || selectedOrderDetail.user.sdt || '—'}</span></div>
+                <div className="bg-slate-50/80 p-5 rounded-3xl border border-slate-200/60 space-y-2.5">
+                  <h4 className="font-bold text-slate-800 text-sm border-b border-slate-200/60 pb-2 mb-3 uppercase tracking-wider">Thông tin khách hàng</h4>
+                  <div className="text-sm"><span className="text-slate-500 font-medium">Họ tên:</span> <strong className="text-slate-800">{selectedOrderDetail.user.hoTen}</strong></div>
+                  <div className="text-sm"><span className="text-slate-500 font-medium">Email:</span> <span className="text-slate-800 font-semibold">{selectedOrderDetail.user.email}</span></div>
+                  <div className="text-sm"><span className="text-slate-500 font-medium">SĐT Liên hệ:</span> <span className="text-slate-800 font-semibold">{selectedOrderDetail.sdtLienHe || selectedOrderDetail.user.sdt || '—'}</span></div>
                   {selectedOrderDetail.ghiChu && (
-                    <div className="text-sm mt-1 bg-white p-2.5 rounded-lg border border-slate-100"><span className="text-slate-500">Ghi chú:</span> <span className="text-slate-700 italic">{selectedOrderDetail.ghiChu}</span></div>
+                    <div className="text-sm mt-2 bg-white p-3 rounded-xl border border-slate-100"><span className="text-slate-500 font-medium">Ghi chú:</span> <span className="text-slate-700 italic font-medium">{selectedOrderDetail.ghiChu}</span></div>
                   )}
                 </div>
 
                 {/* Date/time and payment info */}
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
-                  <h4 className="font-bold text-slate-800 text-sm border-b border-slate-200/60 pb-1 mb-2">Thời gian & Thanh toán</h4>
-                  <div className="text-sm"><span className="text-slate-500">Ngày đặt hàng:</span> <span className="text-slate-800">{formatDateTime(selectedOrderDetail.createdAt)}</span></div>
-                  <div className="text-sm"><span className="text-slate-500">Ngày giờ hẹn lấy:</span> <strong className="text-sky-700">{formatDateTime(selectedOrderDetail.thoiGianHenLayHang)}</strong></div>
-                  <div className="text-sm"><span className="text-slate-500">Phương thức:</span> <span className="text-slate-800 font-medium">{selectedOrderDetail.phuongThucThanhToan === 'TienMat' ? 'Tiền mặt tại cửa hàng' : 'Chuyển khoản / Quét mã ngân hàng'}</span></div>
+                <div className="bg-slate-50/80 p-5 rounded-3xl border border-slate-200/60 space-y-2.5">
+                  <h4 className="font-bold text-slate-800 text-sm border-b border-slate-200/60 pb-2 mb-3 uppercase tracking-wider">Thời gian & Thanh toán</h4>
+                  <div className="text-sm"><span className="text-slate-500 font-medium">Ngày đặt hàng:</span> <span className="text-slate-800 font-semibold">{formatDateTime(selectedOrderDetail.createdAt)}</span></div>
+                  <div className="text-sm"><span className="text-slate-500 font-medium">Ngày giờ hẹn lấy:</span> <strong className="text-sky-700">{formatDateTime(selectedOrderDetail.thoiGianHenLayHang)}</strong></div>
+                  <div className="text-sm"><span className="text-slate-500 font-medium">Phương thức:</span> <span className="text-slate-800 font-bold">{selectedOrderDetail.phuongThucThanhToan === 'TienMat' ? 'Tiền mặt tại cửa hàng' : 'Chuyển khoản / Quét mã ngân hàng'}</span></div>
                 </div>
               </div>
 
               {/* Products list */}
-              <div className="border border-slate-100 rounded-2xl overflow-hidden mb-6">
-                <div className="bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-600 grid grid-cols-12 border-b border-slate-100">
+              <div className="border border-slate-200/60 rounded-3xl overflow-hidden mb-6 shadow-sm">
+                <div className="bg-slate-50/80 px-5 py-3 text-xs font-bold text-slate-500 grid grid-cols-12 border-b border-slate-200/60 uppercase tracking-wider">
                   <div className="col-span-1 text-center">STT</div>
                   <div className="col-span-5">Sản phẩm</div>
                   <div className="col-span-2 text-center">SL</div>
                   <div className="col-span-2 text-right">Đơn giá</div>
                   <div className="col-span-2 text-right">Tạm tính</div>
                 </div>
-                <div className="divide-y divide-slate-100 max-h-[160px] overflow-y-auto">
+                <div className="divide-y divide-slate-100 max-h-[200px] overflow-y-auto">
                   {selectedOrderDetail.items.map((item, idx) => (
-                    <div key={idx} className="px-4 py-3 text-sm grid grid-cols-12 items-center">
-                      <div className="col-span-1 text-center text-slate-500">{idx + 1}</div>
-                      <div className="col-span-5 font-medium text-slate-800 truncate" title={`${item.productVariant.product.sanPham} ${item.productVariant.dungLuongGb}GB - ${item.productVariant.mauSac}`}>
+                    <div key={idx} className="px-5 py-3.5 text-sm grid grid-cols-12 items-center bg-white hover:bg-slate-50/50 transition-colors">
+                      <div className="col-span-1 text-center font-bold text-slate-400">{idx + 1}</div>
+                      <div className="col-span-5 font-bold text-slate-800 truncate" title={`${item.productVariant.product.sanPham} ${item.productVariant.dungLuongGb}GB - ${item.productVariant.mauSac}`}>
                         {item.productVariant.product.sanPham}{!item.productVariant.product.sanPham.includes(`${item.productVariant.dungLuongGb}GB`) ? ` - ${item.productVariant.dungLuongGb}GB` : ''} - {item.productVariant.mauSac}
                       </div>
-                      <div className="col-span-2 text-center text-slate-600">{item.soLuong}</div>
-                      <div className="col-span-2 text-right text-slate-600">{formatCurrency(item.donGia)}</div>
-                      <div className="col-span-2 text-right font-medium text-slate-800">{formatCurrency(item.donGia * item.soLuong)}</div>
+                      <div className="col-span-2 flex justify-center">
+                        <span className="font-bold text-slate-800 bg-slate-100 px-2.5 py-1 rounded-lg text-xs">{item.soLuong}</span>
+                      </div>
+                      <div className="col-span-2 text-right font-semibold text-slate-600 tabular-nums">{formatCurrency(item.donGia)}</div>
+                      <div className="col-span-2 text-right font-bold text-slate-800 tabular-nums">{formatCurrency(item.donGia * item.soLuong)}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Pricing section (Before, after voucher) */}
-              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2 mb-6">
+              <div className="bg-slate-50/80 p-6 rounded-3xl border border-slate-200/60 space-y-3 mb-8">
                 <div className="flex justify-between text-sm">
-                  <span className="text-slate-500">Tổng tiền hàng:</span>
-                  <span className="font-medium text-slate-800">{formatCurrency(selectedOrderDetail.tongTienHang)}</span>
+                  <span className="text-slate-500 font-semibold">Tổng tiền hàng:</span>
+                  <span className="font-bold text-slate-800 tabular-nums">{formatCurrency(selectedOrderDetail.tongTienHang)}</span>
                 </div>
                 <div className="flex justify-between text-sm items-center">
-                  <span className="text-slate-500 flex items-center gap-1.5">
+                  <span className="text-slate-500 font-semibold flex items-center gap-2">
                     Khuyến mãi/Voucher:
                     {selectedOrderDetail.voucher ? (
-                      <span className="bg-rose-50 text-rose-700 px-2 py-0.5 rounded-lg text-xs font-bold border border-rose-100 uppercase">
+                      <span className="bg-rose-50 text-rose-700 px-2.5 py-1 rounded-lg text-xs font-bold border border-rose-100 uppercase tracking-wider">
                         {selectedOrderDetail.voucher.maVoucher}
                       </span>
                     ) : (
-                      <span className="text-slate-400 text-xs italic">Không dùng</span>
+                      <span className="text-slate-400 text-xs italic font-medium">Không dùng</span>
                     )}
                   </span>
-                  <span className="font-medium text-rose-600">
+                  <span className="font-bold text-rose-600 tabular-nums">
                     -{formatCurrency(selectedOrderDetail.tienGiamGia)}
                   </span>
                 </div>
-                <div className="flex justify-between border-t border-slate-200 pt-2 mt-2">
-                  <span className="font-bold text-slate-800">Thành tiền thanh toán:</span>
-                  <span className="font-bold text-lg text-sky-700">{formatCurrency(selectedOrderDetail.thanhTien)}</span>
+                <div className="flex justify-between border-t border-slate-200/80 pt-4 mt-4">
+                  <span className="font-bold text-slate-800 text-base">Thành tiền thanh toán:</span>
+                  <span className="font-[var(--font-outfit)] font-bold text-2xl text-rose-600 tabular-nums">{formatCurrency(selectedOrderDetail.thanhTien)}</span>
                 </div>
               </div>
 
               {/* Footer actions */}
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-slate-100 pt-6">
-                <Button variant="secondary" onClick={() => setSelectedOrderDetail(null)} className="w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <Button variant="secondary" onClick={() => setSelectedOrderDetail(null)} className="w-full sm:w-auto rounded-xl px-6 font-bold shadow-sm">
                   Đóng
                 </Button>
                 
                 {getNextStatuses(selectedOrderDetail.trangThai).length > 0 && (
-                  <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
-                    <span className="text-xs text-slate-500 font-semibold whitespace-nowrap">Chuyển trạng thái:</span>
+                  <div className="flex items-center gap-3 w-full sm:w-auto justify-end bg-slate-50/80 p-2.5 rounded-2xl border border-slate-200/60">
+                    <span className="text-xs text-slate-500 font-bold uppercase tracking-wider whitespace-nowrap pl-2">Chuyển trạng thái:</span>
                     <select
                       value=""
                       onChange={(e) => {
@@ -464,9 +467,9 @@ export default function AdminOrdersPage() {
                           setSelectedOrderDetail(null);
                         }
                       }}
-                      className="px-3 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:border-sky-500 outline-none text-slate-700 font-semibold shadow-sm transition"
+                      className="px-4 py-2.5 bg-white border border-slate-200/80 rounded-xl text-sm font-bold focus:border-sky-500 focus:ring-2 focus:ring-sky-500/15 outline-none text-slate-800 shadow-sm transition-all cursor-pointer"
                     >
-                      <option value="">Chọn trạng thái tiếp theo...</option>
+                      <option value="">Chọn trạng thái tiếp...</option>
                       {getNextStatuses(selectedOrderDetail.trangThai).map((s) => (
                         <option key={s} value={s}>
                           {ORDER_STATUS_MAP[s]}

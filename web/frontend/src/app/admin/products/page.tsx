@@ -7,6 +7,7 @@ import { getApiUrl, authFetch, authFetchJson } from '@/lib/api';
 import toast from 'react-hot-toast';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { Search, Plus, Edit, Trash2, X, Loader2 } from 'lucide-react';
 
 interface ProductData {
   id: string;
@@ -231,63 +232,63 @@ export default function AdminProductsPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-2xl font-bold text-slate-800">Quản lý Sản phẩm</h1>
+        <h1 className="text-2xl font-[var(--font-outfit)] font-bold text-slate-800 tracking-tight">Quản lý Sản phẩm</h1>
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-          <div className="relative">
-            <i className="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <div className="relative group">
+            <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-sky-500 transition-colors" />
             <input 
               type="text" 
               placeholder="Tìm kiếm sản phẩm, hãng..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full sm:w-64 pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none transition-all" 
+              className="w-full sm:w-64 pl-10 pr-4 py-2.5 bg-white border border-slate-200/80 rounded-xl text-sm font-medium focus:border-sky-500 focus:ring-2 focus:ring-sky-500/15 outline-none transition-all shadow-sm" 
             />
           </div>
-          <Button variant="primary" onClick={handleOpenAddModal} className="w-full sm:w-auto whitespace-nowrap">
-            <i className="fa-solid fa-plus mr-2"></i> Thêm sản phẩm
+          <Button variant="primary" onClick={handleOpenAddModal} className="w-full sm:w-auto whitespace-nowrap bg-slate-800 hover:bg-slate-900 flex items-center justify-center gap-2 shadow-card hover:shadow-elevated rounded-xl font-bold transition-all active:scale-95">
+            <Plus size={18} strokeWidth={2.5} /> Thêm sản phẩm
           </Button>
         </div>
       </div>
 
-      <div className="flex space-x-1 bg-slate-100 p-1 rounded-xl w-fit">
+      <div className="flex space-x-2 bg-slate-200/50 p-1.5 rounded-2xl w-fit">
         <button
           onClick={() => setActiveTab('ACTIVE')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'ACTIVE' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+          className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 ${activeTab === 'ACTIVE' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
         >
           Khả dụng
         </button>
         <button
           onClick={() => setActiveTab('INACTIVE')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === 'INACTIVE' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+          className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 ${activeTab === 'INACTIVE' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
         >
           Đã ngừng kinh doanh
         </button>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-card border border-slate-200/60 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="bg-slate-50 border-b border-slate-200 text-slate-600">
+            <thead className="bg-slate-50 border-b border-slate-100 text-slate-600">
               <tr>
-                <th className="px-6 py-4 font-semibold">Sản phẩm</th>
-                <th className="px-6 py-4 font-semibold">Hãng</th>
-                <th className="px-6 py-4 font-semibold">Phân khúc</th>
-                <th className="px-6 py-4 font-semibold text-center">Trạng thái</th>
-                <th className="px-6 py-4 font-semibold text-right">Thao tác</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Sản phẩm</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Hãng</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Phân khúc</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs text-center">Trạng thái</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs text-right">Thao tác</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {isLoading ? (
-                <tr><td colSpan={5} className="px-6 py-8 text-center text-slate-500">Đang tải...</td></tr>
+                <tr><td colSpan={5} className="px-6 py-12 text-center text-slate-500"><Loader2 className="animate-spin inline-block mr-2" size={20} /> Đang tải...</td></tr>
               ) : filteredProducts.length === 0 ? (
-                <tr><td colSpan={5} className="px-6 py-8 text-center text-slate-500">Không tìm thấy sản phẩm nào</td></tr>
+                <tr><td colSpan={5} className="px-6 py-12 text-center text-slate-500 font-medium">Không tìm thấy sản phẩm nào</td></tr>
               ) : (
                 filteredProducts.map(p => (
                   <tr key={p.id} className="hover:bg-slate-50/50 transition-colors">
-                    <td className="px-6 py-4 font-medium text-slate-900">{p.sanPham}</td>
-                    <td className="px-6 py-4 text-slate-600">{p.hang}</td>
+                    <td className="px-6 py-4 font-bold text-slate-800">{p.sanPham}</td>
+                    <td className="px-6 py-4 text-slate-600 font-medium">{p.hang}</td>
                     <td className="px-6 py-4 text-slate-600">
-                      <span className="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-medium">
+                      <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-xs font-bold tracking-wide">
                         {p.phanKhuc === 'FLAGSHIP' ? 'Flagship' : p.phanKhuc === 'TAM_TRUNG' ? 'Tầm trung' : p.phanKhuc === 'PHO_THONG' ? 'Phổ thông' : 'Gaming'}
                       </span>
                     </td>
@@ -298,11 +299,11 @@ export default function AdminProductsPage() {
                       </label>
                     </td>
                     <td className="px-6 py-4 text-right space-x-2">
-                      <button onClick={() => handleEdit(p)} className="text-blue-500 hover:text-blue-700 hover:bg-blue-50 p-2 rounded-lg transition-colors" title="Chỉnh sửa">
-                        <i className="fa-solid fa-pen-to-square"></i>
+                      <button onClick={() => handleEdit(p)} className="text-sky-600 hover:text-sky-700 hover:bg-sky-50 p-2.5 rounded-xl transition-colors active:scale-95" title="Chỉnh sửa">
+                        <Edit size={18} strokeWidth={2} />
                       </button>
-                      <button onClick={() => handleDelete(p.id)} className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg transition-colors" title="Xóa vĩnh viễn">
-                        <i className="fa-solid fa-trash"></i>
+                      <button onClick={() => handleDelete(p.id)} className="text-rose-500 hover:text-rose-700 hover:bg-rose-50 p-2.5 rounded-xl transition-colors active:scale-95" title="Xóa vĩnh viễn">
+                        <Trash2 size={18} strokeWidth={2} />
                       </button>
                     </td>
                   </tr>
@@ -314,24 +315,24 @@ export default function AdminProductsPage() {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
-            <div className="p-6 border-b border-slate-100 flex justify-between items-center sticky top-0 bg-white z-10">
-              <h3 className="text-xl font-bold text-slate-800">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[var(--z-modal-backdrop)] flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl shadow-modal w-full max-w-4xl max-h-[90vh] overflow-y-auto border border-slate-200/60 animate-fade-in-up">
+            <div className="p-6 lg:p-8 border-b border-slate-100 flex justify-between items-center sticky top-0 bg-white/95 backdrop-blur-sm z-10">
+              <h3 className="text-xl font-[var(--font-outfit)] font-bold text-slate-800 tracking-tight">
                 {editingProduct ? 'Chỉnh sửa sản phẩm' : 'Thêm sản phẩm mới'}
               </h3>
-              <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-slate-600">
-                <i className="fa-solid fa-xmark text-xl"></i>
+              <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-2 rounded-full transition-colors active:scale-95">
+                <X size={20} strokeWidth={2} />
               </button>
             </div>
             
-            <div className="p-6 space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-6 lg:p-8 space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input label="Tên sản phẩm" value={formData.sanPham} onChange={e => setFormData({...formData, sanPham: e.target.value})} required />
                 <Input label="Hãng" value={formData.hang} onChange={e => setFormData({...formData, hang: e.target.value})} required />
-                <div className="space-y-1.5">
-                  <label className="block text-sm font-medium text-slate-700">Phân khúc</label>
-                  <select className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none" value={formData.phanKhuc} onChange={e => setFormData({...formData, phanKhuc: e.target.value})}>
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-slate-700">Phân khúc</label>
+                  <select className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200/80 rounded-xl focus:border-sky-500 focus:ring-2 focus:ring-sky-500/15 outline-none transition-all duration-200 cursor-pointer" value={formData.phanKhuc} onChange={e => setFormData({...formData, phanKhuc: e.target.value})}>
                     <option value="FLAGSHIP">Flagship</option>
                     <option value="TAM_TRUNG">Tầm trung</option>
                     <option value="PHO_THONG">Phổ thông</option>
@@ -339,46 +340,46 @@ export default function AdminProductsPage() {
                   </select>
                 </div>
                 <div className="space-y-1.5 flex items-center h-full pt-6">
-                  <label className="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" className="w-5 h-5 text-sky-500 rounded border-slate-300 focus:ring-sky-500" checked={formData.isActive} onChange={e => setFormData({...formData, isActive: e.target.checked})} />
-                    <span className="text-sm font-medium text-slate-700">Đang bán (Hiển thị cho khách hàng)</span>
+                  <label className="flex items-center space-x-3 cursor-pointer group">
+                    <input type="checkbox" className="w-5 h-5 text-sky-500 rounded border-slate-300 focus:ring-sky-500/20 cursor-pointer transition-colors" checked={formData.isActive} onChange={e => setFormData({...formData, isActive: e.target.checked})} />
+                    <span className="text-sm font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Đang bán (Hiển thị cho khách hàng)</span>
                   </label>
                 </div>
               </div>
 
               <div>
-                <h4 className="font-semibold text-slate-800 mb-3">Hình ảnh</h4>
+                <h4 className="font-bold text-slate-800 mb-4 tracking-tight">Hình ảnh</h4>
                 <div className="flex flex-wrap gap-4 mb-4">
                   {media.map((m, i) => (
-                    <div key={i} className="relative w-24 h-24 rounded-lg overflow-hidden border border-slate-200">
-                      <img src={m.url} alt="preview" className="w-full h-full object-cover" />
-                      <button onClick={() => setMedia(media.filter((_, idx) => idx !== i))} className="absolute top-1 right-1 bg-white rounded-full p-1 text-red-500 shadow hover:bg-red-50">
-                        <i className="fa-solid fa-times text-xs"></i>
+                    <div key={i} className="relative w-28 h-28 rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50 group">
+                      <img src={m.url} alt="preview" className="w-full h-full object-cover p-2 mix-blend-multiply" />
+                      <button onClick={() => setMedia(media.filter((_, idx) => idx !== i))} className="absolute top-2 right-2 bg-white rounded-full p-1.5 text-rose-500 shadow-sm hover:bg-rose-50 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <X size={14} strokeWidth={2.5} />
                       </button>
                     </div>
                   ))}
-                  <div className="w-24 h-24 border-2 border-dashed border-slate-300 rounded-lg flex flex-col items-center justify-center text-slate-500 cursor-pointer hover:bg-slate-50 hover:border-sky-400 transition-colors" onClick={() => fileInputRef.current?.click()}>
-                    {isUploading ? <i className="fa-solid fa-spinner fa-spin text-xl"></i> : <i className="fa-solid fa-plus text-xl"></i>}
-                    <span className="text-xs mt-1">Upload</span>
+                  <div className="w-28 h-28 border-2 border-dashed border-slate-300/80 rounded-2xl flex flex-col items-center justify-center text-slate-500 cursor-pointer hover:bg-sky-50 hover:border-sky-400 hover:text-sky-600 transition-all duration-200" onClick={() => fileInputRef.current?.click()}>
+                    {isUploading ? <Loader2 className="animate-spin mb-2" size={24} /> : <Plus size={24} strokeWidth={2} className="mb-2" />}
+                    <span className="text-xs font-semibold">Upload</span>
                   </div>
                   <input type="file" className="hidden" ref={fileInputRef} onChange={handleUploadImage} accept="image/*" />
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between items-center mb-3">
-                  <h4 className="font-semibold text-slate-800">Phiên bản (Variants)</h4>
-                  <Button variant="outline" onClick={() => setVariants([...variants, { sku: '', ramGb: 8, dungLuongGb: 256, mauSac: '', giaGoc: 0, giaBan: 0, tonKho: 10 }])}>
-                    <i className="fa-solid fa-plus mr-2"></i> Thêm phiên bản
+                <div className="flex justify-between items-center mb-4">
+                  <h4 className="font-bold text-slate-800 tracking-tight">Phiên bản (Variants)</h4>
+                  <Button variant="outline" className="rounded-xl font-bold bg-white text-slate-700 border-slate-200 hover:bg-slate-50 transition-colors shadow-sm" onClick={() => setVariants([...variants, { sku: '', ramGb: 8, dungLuongGb: 256, mauSac: '', giaGoc: 0, giaBan: 0, tonKho: 10 }])}>
+                    <Plus size={16} strokeWidth={2} className="mr-2" /> Thêm phiên bản
                   </Button>
                 </div>
                 
                 <div className="space-y-4">
                   {variants.map((v, i) => (
-                    <div key={i} className="p-4 border border-slate-200 rounded-xl bg-slate-50 grid grid-cols-2 md:grid-cols-4 gap-4 relative">
+                    <div key={i} className="p-5 border border-slate-200/80 rounded-2xl bg-slate-50/50 grid grid-cols-2 md:grid-cols-4 gap-5 relative">
                       {variants.length > 1 && (
-                        <button onClick={() => setVariants(variants.filter((_, idx) => idx !== i))} className="absolute -top-3 -right-3 bg-red-100 text-red-600 rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-200">
-                          <i className="fa-solid fa-trash text-sm"></i>
+                        <button onClick={() => setVariants(variants.filter((_, idx) => idx !== i))} className="absolute -top-3 -right-3 bg-white text-rose-500 shadow-md border border-slate-100 rounded-full w-8 h-8 flex items-center justify-center hover:bg-rose-50 transition-colors">
+                          <Trash2 size={14} strokeWidth={2} />
                         </button>
                       )}
                       {/* SKU is auto-generated, no input needed */}
@@ -395,9 +396,9 @@ export default function AdminProductsPage() {
 
             </div>
             
-            <div className="p-6 border-t border-slate-100 flex justify-end gap-3 actions sticky bottom-0 bg-white">
-              <Button variant="outline" onClick={() => setShowModal(false)}>Hủy</Button>
-              <Button variant="primary" onClick={handleSubmit} isLoading={isSubmitting}>Lưu sản phẩm</Button>
+            <div className="p-6 lg:p-8 border-t border-slate-100 flex justify-end gap-4 sticky bottom-0 bg-white/95 backdrop-blur-sm z-10 rounded-b-3xl">
+              <Button variant="outline" onClick={() => setShowModal(false)} className="rounded-xl px-6 py-2.5 font-bold">Hủy</Button>
+              <Button variant="primary" onClick={handleSubmit} isLoading={isSubmitting} className="rounded-xl px-6 py-2.5 font-bold shadow-card bg-sky-600 hover:bg-sky-700 text-white">Lưu sản phẩm</Button>
             </div>
           </div>
         </div>

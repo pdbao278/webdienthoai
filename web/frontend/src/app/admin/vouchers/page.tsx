@@ -7,6 +7,7 @@ import { authFetch, authFetchJson } from '@/lib/api';
 import toast from 'react-hot-toast';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { Search, Plus, Edit, Trash2, X, Loader2 } from 'lucide-react';
 
 interface VoucherData {
   id: string;
@@ -145,55 +146,59 @@ export default function AdminVouchersPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-2xl font-bold text-slate-800">Quản lý Voucher</h1>
+        <h1 className="text-2xl font-[var(--font-outfit)] font-bold text-slate-800 tracking-tight">Quản lý Voucher</h1>
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-          <div className="relative">
-            <i className="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <div className="relative group">
+            <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-sky-500 transition-colors" />
             <input 
               type="text" 
               placeholder="Tìm kiếm mã voucher..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full sm:w-64 pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-sm focus:border-sky-500 focus:ring-1 focus:ring-sky-500 outline-none transition-all" 
+              className="w-full sm:w-64 pl-10 pr-4 py-2.5 bg-white border border-slate-200/80 rounded-xl text-sm font-medium focus:border-sky-500 focus:ring-2 focus:ring-sky-500/15 outline-none transition-all shadow-sm" 
             />
           </div>
-          <Button variant="primary" onClick={handleOpenAddModal} className="w-full sm:w-auto whitespace-nowrap">
-            <i className="fa-solid fa-plus mr-2"></i> Thêm Voucher
+          <Button variant="primary" onClick={handleOpenAddModal} className="w-full sm:w-auto whitespace-nowrap bg-slate-800 hover:bg-slate-900 flex items-center justify-center gap-2 shadow-card hover:shadow-elevated rounded-xl font-bold transition-all active:scale-95">
+            <Plus size={18} strokeWidth={2.5} /> Thêm Voucher
           </Button>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-card border border-slate-200/60 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="bg-slate-50 border-b border-slate-200 text-slate-600">
+            <thead className="bg-slate-50 border-b border-slate-100 text-slate-600">
               <tr>
-                <th className="px-6 py-4 font-semibold">Mã</th>
-                <th className="px-6 py-4 font-semibold">Loại</th>
-                <th className="px-6 py-4 font-semibold">Giá trị</th>
-                <th className="px-6 py-4 font-semibold">Thời gian</th>
-                <th className="px-6 py-4 font-semibold">Đã dùng / Tổng</th>
-                <th className="px-6 py-4 font-semibold text-right">Thao tác</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Mã</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Loại</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Giá trị</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Thời gian</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs">Đã dùng / Tổng</th>
+                <th className="px-6 py-4 font-bold uppercase tracking-wider text-xs text-right">Thao tác</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {isLoading ? (
-                <tr><td colSpan={6} className="px-6 py-8 text-center text-slate-500">Đang tải...</td></tr>
+                <tr><td colSpan={6} className="px-6 py-12 text-center text-slate-500"><Loader2 className="animate-spin inline-block mr-2" size={20} /> Đang tải...</td></tr>
               ) : filteredVouchers.length === 0 ? (
-                <tr><td colSpan={6} className="px-6 py-8 text-center text-slate-500">Không tìm thấy voucher nào</td></tr>
+                <tr><td colSpan={6} className="px-6 py-12 text-center text-slate-500 font-medium">Không tìm thấy voucher nào</td></tr>
               ) : filteredVouchers.map(v => (
-                <tr key={v.id} className="hover:bg-slate-50/50">
-                  <td className="px-6 py-4 font-bold text-sky-600">{v.maVoucher}</td>
-                  <td className="px-6 py-4">{v.loaiGiamGia === 'PERCENTAGE' ? '% Phần trăm' : 'Số tiền'}</td>
-                  <td className="px-6 py-4 font-medium">{v.loaiGiamGia === 'PERCENTAGE' ? `${v.giaTri}%` : formatCurrency(v.giaTri)}</td>
-                  <td className="px-6 py-4 text-slate-500">{new Date(v.batDau).toLocaleDateString('vi-VN')} - {new Date(v.ketThuc).toLocaleDateString('vi-VN')}</td>
-                  <td className="px-6 py-4">{v.daSuDung} / {v.soLuong}</td>
+                <tr key={v.id} className="hover:bg-slate-50/50 transition-colors">
+                  <td className="px-6 py-4 font-bold text-sky-600 uppercase tracking-wider">{v.maVoucher}</td>
+                  <td className="px-6 py-4 font-medium text-slate-700">{v.loaiGiamGia === 'PERCENTAGE' ? '% Phần trăm' : 'Số tiền'}</td>
+                  <td className="px-6 py-4 font-bold text-slate-800 tabular-nums">{v.loaiGiamGia === 'PERCENTAGE' ? `${v.giaTri}%` : formatCurrency(v.giaTri)}</td>
+                  <td className="px-6 py-4 text-slate-500 font-medium">{new Date(v.batDau).toLocaleDateString('vi-VN')} - {new Date(v.ketThuc).toLocaleDateString('vi-VN')}</td>
+                  <td className="px-6 py-4">
+                    <span className="font-bold text-slate-800 bg-slate-100 px-2 py-1 rounded-lg">{v.daSuDung}</span>
+                    <span className="text-slate-400 mx-1">/</span>
+                    <span className="font-bold text-slate-600">{v.soLuong}</span>
+                  </td>
                   <td className="px-6 py-4 text-right space-x-2">
-                    <button onClick={() => handleEdit(v)} className="text-blue-500 hover:text-blue-700 p-2">
-                      <i className="fa-solid fa-pen-to-square"></i>
+                    <button onClick={() => handleEdit(v)} className="text-sky-600 hover:text-sky-700 hover:bg-sky-50 p-2.5 rounded-xl transition-colors active:scale-95" title="Chỉnh sửa">
+                      <Edit size={18} strokeWidth={2} />
                     </button>
-                    <button onClick={() => handleDelete(v.id)} className="text-red-500 hover:text-red-700 p-2">
-                      <i className="fa-solid fa-trash"></i>
+                    <button onClick={() => handleDelete(v.id)} className="text-rose-500 hover:text-rose-700 hover:bg-rose-50 p-2.5 rounded-xl transition-colors active:scale-95" title="Xóa">
+                      <Trash2 size={18} strokeWidth={2} />
                     </button>
                   </td>
                 </tr>
@@ -204,21 +209,21 @@ export default function AdminVouchersPage() {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden">
-            <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-              <h3 className="text-xl font-bold text-slate-800">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[var(--z-modal-backdrop)] flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl shadow-modal w-full max-w-lg overflow-hidden animate-fade-in-up border border-slate-200/60">
+            <div className="p-6 md:p-8 border-b border-slate-100 flex justify-between items-center">
+              <h3 className="text-xl font-[var(--font-outfit)] font-bold text-slate-800 tracking-tight">
                 {editingVoucher ? 'Chỉnh sửa Voucher' : 'Thêm Voucher mới'}
               </h3>
-              <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-slate-600">
-                <i className="fa-solid fa-xmark text-xl"></i>
+              <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-2 rounded-full transition-colors active:scale-95">
+                <X size={20} strokeWidth={2} />
               </button>
             </div>
-            <div className="p-6 space-y-4">
+            <div className="p-6 md:p-8 space-y-5">
               <Input label="Mã Voucher" placeholder="VD: TET2025" value={formData.maVoucher} onChange={e => setFormData({...formData, maVoucher: e.target.value.toUpperCase()})} required />
-              <div className="space-y-1.5">
-                <label className="block text-sm font-medium text-slate-700">Loại giảm giá</label>
-                <select className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none" value={formData.loaiGiamGia} onChange={e => setFormData({...formData, loaiGiamGia: e.target.value})}>
+              <div className="space-y-2">
+                <label className="block text-sm font-bold text-slate-700">Loại giảm giá</label>
+                <select className="w-full px-4 py-3 bg-slate-50 border border-slate-200/80 rounded-xl focus:border-sky-500 focus:ring-2 focus:ring-sky-500/15 outline-none font-semibold text-slate-700 transition-all cursor-pointer" value={formData.loaiGiamGia} onChange={e => setFormData({...formData, loaiGiamGia: e.target.value})}>
                   <option value="FIXED_AMOUNT">Số tiền cố định</option>
                   <option value="PERCENTAGE">Phần trăm (%)</option>
                 </select>
@@ -232,9 +237,9 @@ export default function AdminVouchersPage() {
                 <Input label="Ngày kết thúc" type="date" value={formData.ketThuc} onChange={e => setFormData({...formData, ketThuc: e.target.value})} required />
               </div>
             </div>
-            <div className="p-6 border-t border-slate-100 flex justify-end gap-3 bg-slate-50">
-              <Button variant="outline" onClick={() => setShowModal(false)}>Hủy</Button>
-              <Button variant="primary" onClick={handleSubmit} isLoading={isSubmitting}>Lưu Voucher</Button>
+            <div className="p-6 md:p-8 border-t border-slate-100 flex justify-end gap-3 bg-slate-50/50">
+              <Button variant="outline" onClick={() => setShowModal(false)} className="rounded-xl px-5 font-bold">Hủy</Button>
+              <Button variant="primary" onClick={handleSubmit} isLoading={isSubmitting} className="rounded-xl px-5 font-bold bg-sky-600 hover:bg-sky-700 text-white shadow-card">Lưu Voucher</Button>
             </div>
           </div>
         </div>

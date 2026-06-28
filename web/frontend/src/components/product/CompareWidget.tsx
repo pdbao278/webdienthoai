@@ -5,6 +5,7 @@ import { getApiUrl } from '@/lib/api';
 import { formatCurrency } from '@/lib/utils';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
+import { Search, Loader2, X, PlusCircle, Scale } from 'lucide-react';
 
 interface Variant {
   id: string;
@@ -170,10 +171,10 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
   ];
 
   return (
-    <div className="mt-12 bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 space-y-6">
+    <div className="mt-12 bg-white p-6 md:p-8 rounded-3xl shadow-card border border-slate-200/60 space-y-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900">So sánh sản phẩm</h2>
+          <h2 className="text-2xl font-bold text-slate-800 tracking-tight">So sánh sản phẩm</h2>
           <p className="text-slate-500 text-sm mt-1">Chọn tối đa 4 điện thoại để so sánh thông số cấu hình</p>
         </div>
         
@@ -182,7 +183,7 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
             <div className="relative">
               <input
                 type="text"
-                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-sky-500 text-sm"
+                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200/80 rounded-xl outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/15 text-sm transition-all duration-200"
                 placeholder="Tìm sản phẩm khác để so sánh..."
                 value={searchQuery}
                 onChange={(e) => {
@@ -191,14 +192,14 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
                 }}
                 onFocus={() => setShowDropdown(true)}
               />
-              <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+              <Search className="absolute left-3.5 top-3 text-slate-400" size={16} strokeWidth={2} />
               {isSearching && (
-                <i className="fa-solid fa-spinner fa-spin absolute right-3.5 top-3.5 text-slate-400 text-sm"></i>
+                <Loader2 className="absolute right-3.5 top-3 text-slate-400 animate-spin" size={16} strokeWidth={2} />
               )}
             </div>
 
             {showDropdown && searchQuery.trim().length >= 2 && (
-              <div className="absolute right-0 left-0 mt-2 bg-white border border-slate-100 shadow-xl rounded-2xl overflow-hidden z-20 max-h-60 overflow-y-auto">
+              <div className="absolute right-0 left-0 mt-2 bg-white border border-slate-100 shadow-dropdown rounded-2xl overflow-hidden z-[var(--z-dropdown)] max-h-60 overflow-y-auto">
                 {searchResults.length === 0 ? (
                   <div className="p-4 text-center text-slate-500 text-sm">Không tìm thấy sản phẩm nào</div>
                 ) : (
@@ -206,7 +207,7 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
                     <button
                       key={p.id}
                       onClick={() => handleAddProduct(p.slug)}
-                      className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-50 text-left border-b border-slate-100 last:border-0"
+                      className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-50 text-left border-b border-slate-100 last:border-0 transition-colors"
                     >
                       <img
                         src={p.media?.[0]?.url || 'https://placehold.co/100x100?text=No+Image'}
@@ -229,27 +230,27 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
       {/* Row of 4 Products */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {comparedList.map((product, idx) => (
-          <div key={product.id} className="border border-slate-150 rounded-2xl p-4 relative bg-slate-50/30 flex flex-col justify-between h-48 hover:shadow-sm transition-shadow">
+          <div key={product.id} className="border border-slate-200/60 rounded-2xl p-4 relative bg-slate-50/50 flex flex-col justify-between h-48 hover:shadow-card transition-all duration-300">
             {idx > 0 && (
               <button
                 onClick={() => handleRemoveProduct(idx)}
-                className="absolute top-2.5 right-2.5 w-6 h-6 rounded-full bg-red-50 text-red-500 hover:bg-red-100 hover:text-red-700 flex items-center justify-center transition-colors"
+                className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-rose-50 text-rose-500 hover:bg-rose-100 hover:text-rose-700 flex items-center justify-center transition-colors active:scale-95"
                 title="Xóa khỏi so sánh"
               >
-                <i className="fa-solid fa-xmark text-xs"></i>
+                <X size={14} strokeWidth={2} />
               </button>
             )}
             <div className="text-center space-y-1.5 flex-1 flex flex-col justify-center">
               <img
                 src={product.media.find(m => m.isThumbnail)?.url || '/placeholder.png'}
                 alt={product.sanPham}
-                className="w-16 h-16 object-contain mx-auto drop-shadow"
+                className="w-16 h-16 object-contain mx-auto drop-shadow-sm mix-blend-multiply"
               />
               <div className="font-bold text-slate-800 text-xs line-clamp-2 mt-1">{product.sanPham}</div>
               <div className="text-sky-600 font-extrabold text-xs">{formatCurrency(getMinPrice(product)).replace('₫', 'đ')}</div>
             </div>
             <Link href={`/phone/${product.slug}`}>
-              <span className="w-full text-center inline-block text-[10px] bg-white text-slate-700 font-bold py-1.5 border border-slate-200 rounded-lg hover:bg-sky-50 hover:text-sky-600 cursor-pointer transition-colors mt-2">
+              <span className="w-full text-center inline-block text-[10px] bg-white text-slate-700 font-bold py-2 border border-slate-200/80 rounded-xl hover:bg-slate-50 active:scale-95 cursor-pointer transition-all mt-2 shadow-xs hover:shadow-sm">
                 Xem chi tiết
               </span>
             </Link>
@@ -258,9 +259,9 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
         
         {/* Empty slots placeholders */}
         {Array.from({ length: 4 - comparedList.length }).map((_, i) => (
-          <div key={`empty-card-${i}`} className="border-2 border-dashed border-slate-200 rounded-2xl p-4 flex flex-col items-center justify-center h-48 text-slate-350 bg-slate-50/10">
-            <i className="fa-solid fa-circle-plus text-xl text-slate-300 mb-1"></i>
-            <span className="text-[10px] font-bold text-slate-400">Thêm sản phẩm</span>
+          <div key={`empty-card-${i}`} className="border-2 border-dashed border-slate-200/80 rounded-2xl p-4 flex flex-col items-center justify-center h-48 text-slate-400 bg-slate-50/50">
+            <PlusCircle size={24} strokeWidth={1.5} className="text-slate-300 mb-2" />
+            <span className="text-xs font-semibold text-slate-400">Thêm sản phẩm</span>
           </div>
         ))}
       </div>
@@ -276,27 +277,27 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
             setIsModalOpen(true);
           }}
           disabled={comparedList.length < 2}
-          className="px-8 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-200 disabled:text-slate-450 disabled:cursor-not-allowed text-white font-extrabold rounded-2xl transition-all shadow-md flex items-center gap-2 text-sm cursor-pointer"
+          className="px-8 py-3.5 bg-slate-800 hover:bg-slate-900 disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed text-white font-bold rounded-2xl transition-all duration-200 shadow-card hover:shadow-elevated active:scale-95 flex items-center gap-2 text-sm cursor-pointer"
         >
-          <i className="fa-solid fa-scale-balanced"></i>
+          <Scale size={18} strokeWidth={2} />
           <span>So sánh ngay ({comparedList.length} sản phẩm)</span>
         </button>
       </div>
 
       {/* Popup Comparison Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-6xl max-h-[85vh] overflow-hidden flex flex-col">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[var(--z-modal-backdrop)] flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl shadow-modal w-full max-w-6xl max-h-[85vh] overflow-hidden flex flex-col z-[var(--z-modal)] animate-fade-in-up">
             <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
               <div>
-                <h3 className="text-xl font-bold text-slate-800">Bảng so sánh thông số kỹ thuật</h3>
+                <h3 className="text-xl font-bold text-slate-800 tracking-tight">Bảng so sánh thông số kỹ thuật</h3>
                 <p className="text-slate-500 text-xs mt-0.5">So sánh chi tiết cấu hình và tính năng</p>
               </div>
               <button 
                 onClick={() => setIsModalOpen(false)} 
-                className="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-full bg-slate-100/80 text-slate-500 hover:bg-slate-200 hover:text-slate-700 flex items-center justify-center transition-colors active:scale-95"
               >
-                <i className="fa-solid fa-xmark text-lg"></i>
+                <X size={18} strokeWidth={2} />
               </button>
             </div>
             
@@ -304,45 +305,45 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
               <table className="w-full text-left border-collapse table-fixed min-w-[768px]">
                 <thead>
                   <tr className="bg-slate-50/50 border-b border-slate-100">
-                    <th className="w-1/5 p-4 font-semibold text-slate-500 text-sm">Thông số</th>
+                    <th className="w-1/5 p-4 font-semibold text-slate-500 text-sm border-r border-slate-100">Thông số</th>
                     {comparedList.map((product) => (
-                      <th key={product.id} className="p-4 text-center">
+                      <th key={product.id} className="p-4 text-center border-r border-slate-100 last:border-0">
                         <img
                           src={product.media.find(m => m.isThumbnail)?.url || '/placeholder.png'}
                           alt={product.sanPham}
-                          className="w-16 h-16 object-contain mx-auto drop-shadow mb-2"
+                          className="w-16 h-16 object-contain mx-auto drop-shadow-sm mb-2 mix-blend-multiply"
                         />
                         <div className="font-bold text-slate-800 text-xs line-clamp-1">{product.sanPham}</div>
                         <div className="text-sky-600 font-extrabold text-xs mt-0.5">{formatCurrency(getMinPrice(product)).replace('₫', 'đ')}</div>
                       </th>
                     ))}
                     {Array.from({ length: 4 - comparedList.length }).map((_, i) => (
-                      <th key={`modal-empty-th-${i}`} className="p-4 text-center text-slate-300">-</th>
+                      <th key={`modal-empty-th-${i}`} className="p-4 text-center text-slate-300 border-r border-slate-100 last:border-0">-</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
                   <tr className="hover:bg-slate-50/30">
-                    <td className="p-4 font-semibold text-slate-500">Bộ nhớ RAM</td>
+                    <td className="p-4 font-semibold text-slate-500 border-r border-slate-100 bg-slate-50/50">Bộ nhớ RAM</td>
                     {comparedList.map(p => (
-                      <td key={p.id} className="p-4 font-medium text-slate-800 text-center">{getVariantSummary(p, 'ramGb')}</td>
+                      <td key={p.id} className="p-4 font-medium text-slate-800 text-center border-r border-slate-100 last:border-0">{getVariantSummary(p, 'ramGb')}</td>
                     ))}
                     {Array.from({ length: 4 - comparedList.length }).map((_, i) => (
-                      <td key={`modal-empty-ram-${i}`} className="p-4 text-center text-slate-350">-</td>
+                      <td key={`modal-empty-ram-${i}`} className="p-4 text-center text-slate-300 border-r border-slate-100 last:border-0">-</td>
                     ))}
                   </tr>
                   <tr className="hover:bg-slate-50/30">
-                    <td className="p-4 font-semibold text-slate-500">Bộ nhớ lưu trữ</td>
+                    <td className="p-4 font-semibold text-slate-500 border-r border-slate-100 bg-slate-50/50">Bộ nhớ lưu trữ</td>
                     {comparedList.map(p => (
-                      <td key={p.id} className="p-4 font-medium text-slate-800 text-center">{getVariantSummary(p, 'dungLuongGb')}</td>
+                      <td key={p.id} className="p-4 font-medium text-slate-800 text-center border-r border-slate-100 last:border-0">{getVariantSummary(p, 'dungLuongGb')}</td>
                     ))}
                     {Array.from({ length: 4 - comparedList.length }).map((_, i) => (
-                      <td key={`modal-empty-rom-${i}`} className="p-4 text-center text-slate-350">-</td>
+                      <td key={`modal-empty-rom-${i}`} className="p-4 text-center text-slate-300 border-r border-slate-100 last:border-0">-</td>
                     ))}
                   </tr>
                   {specsRows.map(row => (
                     <tr key={row.key} className="hover:bg-slate-50/30">
-                      <td className="p-4 font-semibold text-slate-500">{row.label}</td>
+                      <td className="p-4 font-semibold text-slate-500 border-r border-slate-100 bg-slate-50/50">{row.label}</td>
                       {comparedList.map(p => {
                         const val = (p as any)[row.key];
                         let text = '-';
@@ -352,9 +353,9 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
                           text = `${val}${row.suffix || ''}`;
                         }
                         return (
-                          <td key={p.id} className="p-4 text-center font-medium text-slate-800">
+                          <td key={p.id} className="p-4 text-center font-medium text-slate-800 border-r border-slate-100 last:border-0">
                             {row.isBool ? (
-                              <span className={`px-2 py-0.5 rounded-md text-[10px] font-semibold ${val ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+                              <span className={`px-2 py-0.5 rounded-md text-[10px] font-semibold ${val ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-500'}`}>
                                 {text}
                               </span>
                             ) : (
@@ -364,7 +365,7 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
                         );
                       })}
                       {Array.from({ length: 4 - comparedList.length }).map((_, i) => (
-                        <td key={`modal-empty-${row.key}-${i}`} className="p-4 text-center text-slate-350">-</td>
+                        <td key={`modal-empty-${row.key}-${i}`} className="p-4 text-center text-slate-300 border-r border-slate-100 last:border-0">-</td>
                       ))}
                     </tr>
                   ))}
@@ -375,7 +376,7 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
             <div className="p-4 border-t border-slate-100 flex justify-end bg-slate-50/50">
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="px-6 py-2.5 bg-slate-850 hover:bg-slate-900 text-white rounded-xl font-semibold text-sm transition-colors cursor-pointer"
+                className="px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-xl font-semibold text-sm transition-all active:scale-95 shadow-card hover:shadow-elevated cursor-pointer"
               >
                 Đóng
               </button>

@@ -5,6 +5,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { getApiUrl, authFetchJson, authFetch } from '@/lib/api';
 import toast from 'react-hot-toast';
 import { Button } from '../ui/Button';
+import { Star, CheckCircle, X, Loader2 } from 'lucide-react';
 
 interface ReviewData {
   id: string;
@@ -121,20 +122,20 @@ export default function ProductReviews({ slug }: { slug: string }) {
   const displayedReviews = showAll ? reviews : reviews.slice(0, 2);
 
   return (
-    <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+    <div className="bg-white p-3 rounded-xl shadow-card border border-slate-200/60">
       {/* Header: title + rating + write button */}
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Đánh giá</span>
           <div className="flex text-amber-400 gap-px" style={{ fontSize: '10px' }}>
             {[1, 2, 3, 4, 5].map((star) => (
-              <i key={star} className={`fa-solid fa-star ${star <= Number(averageRating) ? '' : 'text-slate-200'}`}></i>
+              <Star key={star} size={10} fill={star <= Number(averageRating) ? 'currentColor' : 'none'} className={star <= Number(averageRating) ? '' : 'text-slate-200'} strokeWidth={1.5} />
             ))}
           </div>
           <span className="text-[11px] font-semibold text-slate-600">{averageRating}<span className="text-slate-400 font-normal"> ({reviews.length})</span></span>
         </div>
         {token && isEligible && (
-          <button onClick={() => setShowForm(!showForm)} className="text-[10px] text-sky-600 hover:text-sky-700 font-semibold cursor-pointer">
+          <button onClick={() => setShowForm(!showForm)} className="text-[10px] text-sky-600 hover:text-sky-700 font-semibold cursor-pointer transition-colors">
             {showForm ? 'Đóng' : '✎ Viết'}
           </button>
         )}
@@ -146,12 +147,12 @@ export default function ProductReviews({ slug }: { slug: string }) {
           <div className="flex items-center gap-1.5">
             <div className="flex text-amber-400 text-xs cursor-pointer gap-0.5">
               {[1, 2, 3, 4, 5].map((star) => (
-                <i key={star} className={`fa-solid fa-star ${star <= rating ? '' : 'text-slate-200'} hover:scale-110 transition-transform`} onClick={() => setRating(star)}></i>
+                <Star key={star} size={14} fill={star <= rating ? 'currentColor' : 'none'} className={`${star <= rating ? '' : 'text-slate-200'} hover:scale-110 transition-transform`} onClick={() => setRating(star)} strokeWidth={1.5} />
               ))}
             </div>
           </div>
           <textarea
-            className="w-full px-2.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:border-blue-500 resize-none text-[11px]"
+            className="w-full px-2.5 py-1.5 bg-slate-50/80 border border-slate-200 rounded-lg outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/15 resize-none text-[11px] transition-all duration-200"
             rows={2}
             placeholder="Chia sẻ trải nghiệm..."
             value={comment}
@@ -166,7 +167,7 @@ export default function ProductReviews({ slug }: { slug: string }) {
       {/* Ultra-compact review list */}
       <div className="space-y-1.5">
         {isLoading ? (
-          <div className="text-center py-2 text-slate-400 text-[11px]"><i className="fa-solid fa-spinner fa-spin mr-1"></i>Đang tải...</div>
+          <div className="text-center py-2 text-slate-400 text-[11px] flex items-center justify-center gap-1.5"><Loader2 size={12} className="animate-spin" />Đang tải...</div>
         ) : reviews.length === 0 ? (
           <div className="text-center py-2 text-slate-400 text-[11px]">Chưa có đánh giá nào.</div>
         ) : (
@@ -177,12 +178,12 @@ export default function ProductReviews({ slug }: { slug: string }) {
                   <div className="flex items-center gap-3">
                     <span className="font-bold text-slate-900 text-[15px]">{review.user.hoTen || 'Ẩn danh'}</span>
                     <span className="text-emerald-600 flex items-center gap-1.5 text-sm">
-                      <i className="fa-regular fa-circle-check"></i> Đã mua tại PhoneStore
+                      <CheckCircle size={14} strokeWidth={2} /> Đã mua tại PhoneStore
                     </span>
                   </div>
                   <div className="flex text-amber-500 text-[13px] gap-0.5">
                     {[1, 2, 3, 4, 5].map((star) => (
-                      <i key={star} className={`fa-solid fa-star ${star <= review.rating ? '' : 'text-slate-200'}`}></i>
+                      <Star key={star} size={13} fill={star <= review.rating ? 'currentColor' : 'none'} className={star <= review.rating ? '' : 'text-slate-200'} strokeWidth={1.5} />
                     ))}
                   </div>
                   {review.comment && (
@@ -193,13 +194,13 @@ export default function ProductReviews({ slug }: { slug: string }) {
                 </div>
                 {(isModerator || (user && review.userId === user.id)) && (
                   <button onClick={() => handleDeleteReview(review.id)} className="absolute top-0 right-0 text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity p-2" title="Xóa">
-                    <i className="fa-solid fa-xmark"></i>
+                    <X size={14} strokeWidth={2} />
                   </button>
                 )}
               </div>
             ))}
             {reviews.length > 2 && (
-              <button onClick={() => setShowAll(!showAll)} className="text-[11px] text-sky-600 hover:text-sky-700 font-semibold cursor-pointer">
+              <button onClick={() => setShowAll(!showAll)} className="text-[11px] text-sky-600 hover:text-sky-700 font-semibold cursor-pointer transition-colors">
                 {showAll ? '▲ Thu gọn' : `Xem tất cả ${reviews.length} đánh giá ▸`}
               </button>
             )}

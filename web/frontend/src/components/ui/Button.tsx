@@ -7,12 +7,12 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, isLoading, variant = 'primary', className = '', disabled, ...props }, ref) => {
-    const baseStyles = 'px-6 py-3 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center';
+    const baseStyles = 'px-6 py-3 rounded-xl font-semibold transition-all duration-200 ease-[var(--ease-out-expo)] flex items-center justify-center';
     
     const variants = {
-      primary: 'bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg active:scale-95',
-      secondary: 'bg-slate-800 text-white hover:bg-slate-900 shadow-md active:scale-95',
-      outline: 'bg-transparent border-2 border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50 active:scale-95'
+      primary: 'bg-sky-600 text-white hover:bg-sky-700 shadow-card hover:shadow-elevated active:scale-[0.97]',
+      secondary: 'bg-slate-800 text-white hover:bg-slate-900 shadow-card active:scale-[0.97]',
+      outline: 'bg-transparent border-2 border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50 active:scale-[0.97]'
     };
 
     return (

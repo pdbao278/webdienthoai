@@ -129,22 +129,22 @@ export default async function ProductDetailPage({
 
         {/* Breadcrumb */}
         <nav className="text-xs md:text-sm text-slate-500 mb-5 flex items-center space-x-2">
-          <a href="/" className="hover:text-blue-600">Trang chủ</a>
+          <a href="/" className="hover:text-sky-600 transition-colors">Trang chủ</a>
           <span>/</span>
-          <a href="/phone" className="hover:text-blue-600">Điện thoại</a>
+          <a href="/phone" className="hover:text-sky-600 transition-colors">Điện thoại</a>
           <span>/</span>
-          <a href={`/phone?hang=${product.hang}`} className="hover:text-blue-600">{product.hang}</a>
+          <a href={`/phone?hang=${product.hang}`} className="hover:text-sky-600 transition-colors">{product.hang}</a>
           <span>/</span>
           <span className="text-slate-800 font-medium">{product.sanPham}</span>
         </nav>
 
         {/* Product Title Section mimicking TGDD */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200 pb-4 mb-6 gap-3">
+        <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-200/60 pb-4 mb-6 gap-3">
           <div>
-            <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900">{product.sanPham}</h1>
+            <h1 className="text-2xl md:text-3xl font-[var(--font-outfit)] font-bold text-slate-800 tracking-tight">{product.sanPham}</h1>
             <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
               <div className="flex items-center text-amber-400">
-                <i className="fa-solid fa-star mr-1"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                 <span className="text-slate-700 font-bold">{averageRating}</span>
                 <span className="mx-1">/ 5</span>
                 <span className="text-slate-400 ml-1">({reviewCount} đánh giá)</span>

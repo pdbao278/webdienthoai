@@ -47,11 +47,11 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 font-sans text-slate-800">
-      <div className="bg-white max-w-md w-full rounded-2xl shadow-xl overflow-hidden">
+      <div className="bg-white max-w-md w-full rounded-3xl shadow-card border border-slate-200/60 overflow-hidden">
         <div className="p-8 space-y-6">
           <div className="text-center">
-            <h1 className="text-3xl font-bold tracking-tight text-slate-900">PhoneStore</h1>
-            <p className="text-slate-500 mt-2">Đăng nhập để tiếp tục</p>
+            <h1 className="text-3xl font-[var(--font-outfit)] font-bold tracking-tight text-slate-900">PhoneStore</h1>
+            <p className="text-slate-500 mt-2 text-sm">Đăng nhập để tiếp tục</p>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -72,7 +72,7 @@ export default function LoginPage() {
             />
 
             {error && (
-              <div className="p-3 rounded-xl bg-red-50 text-red-600 text-sm border border-red-100">
+              <div className="p-3 rounded-xl bg-red-50 text-red-600 text-sm border border-red-100 font-medium">
                 {error}
               </div>
             )}
@@ -84,7 +84,7 @@ export default function LoginPage() {
 
           <div className="text-center text-sm text-slate-500">
             Chưa có tài khoản?{' '}
-            <Link href="/register" className="font-semibold text-blue-600 hover:text-blue-500 hover:underline">
+            <Link href="/register" className="font-semibold text-sky-600 hover:text-sky-500 hover:underline transition-colors">
               Đăng ký ngay
             </Link>
           </div>

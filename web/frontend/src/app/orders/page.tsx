@@ -10,6 +10,7 @@ import { formatCurrency } from '@/lib/utils';
 import { Button } from '@/components/ui/Button';
 import toast from 'react-hot-toast';
 import { QRCodeSVG } from 'qrcode.react';
+import { ClipboardList, QrCode, X } from 'lucide-react';
 
 interface OrderItem {
   id: string;
@@ -91,11 +92,11 @@ export default function OrdersPage() {
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'DA_DAT': return <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-lg text-xs font-semibold">Đã đặt</span>;
-      case 'DANG_CHUAN_BI': return <span className="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-lg text-xs font-semibold">Đang chuẩn bị</span>;
-      case 'CHO_NHAN_HANG': return <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded-lg text-xs font-semibold">Chờ nhận hàng</span>;
-      case 'HOAN_THANH': return <span className="bg-green-100 text-green-700 px-2 py-1 rounded-lg text-xs font-semibold">Hoàn thành</span>;
-      case 'DA_HUY': return <span className="bg-red-100 text-red-700 px-2 py-1 rounded-lg text-xs font-semibold">Đã hủy</span>;
+      case 'DA_DAT': return <span className="bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1.5 rounded-xl text-xs font-bold tracking-wide">Đã đặt</span>;
+      case 'DANG_CHUAN_BI': return <span className="bg-amber-50 border border-amber-200 text-amber-700 px-3 py-1.5 rounded-xl text-xs font-bold tracking-wide">Đang chuẩn bị</span>;
+      case 'CHO_NHAN_HANG': return <span className="bg-purple-50 border border-purple-200 text-purple-700 px-3 py-1.5 rounded-xl text-xs font-bold tracking-wide">Chờ nhận hàng</span>;
+      case 'HOAN_THANH': return <span className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-xl text-xs font-bold tracking-wide">Hoàn thành</span>;
+      case 'DA_HUY': return <span className="bg-rose-50 border border-rose-200 text-rose-700 px-3 py-1.5 rounded-xl text-xs font-bold tracking-wide">Đã hủy</span>;
       default: return null;
     }
   };
@@ -127,27 +128,27 @@ export default function OrdersPage() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       <Header />
-      <main className="flex-1 container mx-auto px-4 py-8 max-w-4xl">
-        <h1 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-          <i className="fa-regular fa-clipboard"></i> Đơn hàng của tôi
+      <main className="flex-1 container mx-auto px-4 py-10 max-w-4xl">
+        <h1 className="text-2xl font-[var(--font-outfit)] font-bold text-slate-900 mb-8 flex items-center gap-3 tracking-tight">
+          <ClipboardList size={28} className="text-sky-600" /> Đơn hàng của tôi
         </h1>
 
         {/* Tabs */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-2 overflow-x-auto mb-6">
+        <div className="bg-white rounded-3xl shadow-card border border-slate-200/60 p-2 overflow-x-auto mb-8">
           <div className="flex space-x-2 min-w-max">
             {STATUS_TABS.map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
+                className={`px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-200 flex items-center gap-2 active:scale-95 ${
                   activeTab === tab.id 
-                    ? 'bg-sky-50 text-sky-700 shadow-sm border border-sky-100' 
-                    : 'text-slate-600 hover:bg-slate-50 border border-transparent'
+                    ? 'bg-sky-50 text-sky-700 shadow-sm border border-sky-200/60' 
+                    : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 border border-transparent'
                 }`}
               >
                 {tab.label}
-                <span className={`px-2 py-0.5 rounded-full text-xs ${
-                  activeTab === tab.id ? 'bg-sky-200 text-sky-800' : 'bg-slate-100 text-slate-500'
+                <span className={`px-2 py-0.5 rounded-lg text-xs font-bold transition-colors ${
+                  activeTab === tab.id ? 'bg-sky-200/50 text-sky-800' : 'bg-slate-100 text-slate-500'
                 }`}>
                   {counts[tab.id]}
                 </span>
@@ -157,29 +158,30 @@ export default function OrdersPage() {
         </div>
 
         {isLoading ? (
-          <div className="text-center py-10">Đang tải...</div>
+          <div className="text-center py-12 text-slate-400 flex items-center justify-center gap-2"><div className="w-5 h-5 border-2 border-sky-500 border-t-transparent rounded-full animate-spin"></div> Đang tải...</div>
         ) : filteredOrders.length === 0 ? (
-          <div className="bg-white rounded-2xl p-12 text-center shadow-sm">
-            <p className="text-slate-500 mb-6">Bạn chưa có đơn hàng nào trong trạng thái này.</p>
-            <Link href="/" className="inline-block bg-sky-600 text-white font-medium py-3 px-8 rounded-xl hover:bg-sky-700 transition">
+          <div className="bg-white rounded-3xl p-16 text-center shadow-card border border-slate-200/60 flex flex-col items-center">
+            <ClipboardList size={64} strokeWidth={1} className="text-slate-200 mb-6" />
+            <p className="text-slate-500 mb-8 font-medium">Bạn chưa có đơn hàng nào trong trạng thái này.</p>
+            <Link href="/" className="inline-flex items-center justify-center bg-slate-800 text-white font-semibold py-3.5 px-8 rounded-xl hover:bg-slate-900 transition-all duration-200 shadow-card hover:shadow-elevated active:scale-95">
               Mua sắm ngay
             </Link>
           </div>
         ) : (
           <div className="space-y-6">
             {filteredOrders.map(order => (
-              <div key={order.id} className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
-                <div className="flex flex-col md:flex-row justify-between md:items-center border-b border-slate-100 pb-4 mb-4 gap-4">
+              <div key={order.id} className="bg-white rounded-3xl shadow-card border border-slate-200/60 p-6 md:p-8 hover:shadow-elevated transition-shadow duration-300">
+                <div className="flex flex-col md:flex-row justify-between md:items-center border-b border-slate-100 pb-5 mb-5 gap-4">
                   <div>
-                    <div className="text-sm text-slate-500 mb-1">Mã đơn: <strong className="text-slate-800">{order.maNhanHang}</strong></div>
-                    <div className="text-xs text-slate-400">Ngày đặt: {new Date(order.createdAt).toLocaleString('vi-VN')}</div>
+                    <div className="text-sm text-slate-500 mb-1.5 font-medium">Mã đơn: <strong className="text-slate-800 font-bold tracking-wide uppercase">{order.maNhanHang}</strong></div>
+                    <div className="text-xs font-medium text-slate-400">Ngày đặt: {new Date(order.createdAt).toLocaleString('vi-VN')}</div>
                   </div>
                   <div className="flex items-center gap-3">
                     {getStatusBadge(order.trangThai)}
                     {order.trangThai === 'DA_DAT' && (
                       <button 
                         onClick={() => handleCancel(order.id)}
-                        className="text-xs text-red-600 border border-red-200 hover:bg-red-50 px-2 py-1 rounded-lg font-medium transition"
+                        className="text-xs text-rose-600 border border-rose-200 hover:bg-rose-50 px-3 py-1.5 rounded-xl font-bold transition-colors active:scale-95"
                       >
                         Hủy đơn
                       </button>
@@ -187,30 +189,30 @@ export default function OrdersPage() {
                   </div>
                 </div>
 
-                <div className="space-y-4 mb-6">
+                <div className="space-y-5 mb-6">
                   {order.items.map(item => (
                     <div key={item.id} className="flex justify-between items-center text-sm">
                       <div className="flex gap-4 items-center">
-                        <div className="font-medium text-slate-800">{item.soLuong}x</div>
-                        <div className="text-slate-600 line-clamp-1">{item.productVariant?.product?.sanPham}{!item.productVariant?.product?.sanPham.includes(`${item.productVariant?.dungLuongGb}GB`) ? ` - ${item.productVariant?.dungLuongGb}GB` : ''} - {item.productVariant?.mauSac}</div>
+                        <div className="font-bold text-slate-800 bg-slate-50 px-2 py-1 rounded-lg border border-slate-100">{item.soLuong}x</div>
+                        <div className="text-slate-700 font-medium line-clamp-2">{item.productVariant?.product?.sanPham}{!item.productVariant?.product?.sanPham.includes(`${item.productVariant?.dungLuongGb}GB`) ? ` - ${item.productVariant?.dungLuongGb}GB` : ''} - {item.productVariant?.mauSac}</div>
                       </div>
-                      <div className="font-medium text-slate-800">{formatCurrency(item.donGia)}</div>
+                      <div className="font-bold text-slate-800 tabular-nums">{formatCurrency(item.donGia)}</div>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex flex-col sm:flex-row justify-between items-center pt-4 border-t border-slate-100 gap-6">
+                <div className="flex flex-col sm:flex-row justify-between items-center pt-5 border-t border-slate-100 gap-6">
                   {order.trangThai !== 'DA_HUY' && order.trangThai !== 'HOAN_THANH' && (
                     <button 
                       onClick={() => setSelectedOrderForQr(order)}
-                      className="flex items-center gap-2 px-4 py-2.5 bg-sky-50 hover:bg-sky-100 border border-sky-100 hover:border-sky-200 rounded-xl text-sky-700 text-sm font-semibold transition"
+                      className="flex items-center justify-center gap-2 px-5 py-3 bg-sky-50/80 hover:bg-sky-100 border border-sky-200/60 rounded-xl text-sky-700 text-sm font-bold transition-all duration-200 active:scale-95 w-full sm:w-auto"
                     >
-                      <i className="fa-solid fa-qrcode text-base"></i> Mã QR Nhận Hàng
+                      <QrCode size={18} strokeWidth={2} /> Mã QR Nhận Hàng
                     </button>
                   )}
                   <div className="text-right w-full sm:w-auto ml-auto">
-                    <div className="text-sm text-slate-500 mb-1">Tổng tiền</div>
-                    <div className="text-2xl font-bold text-rose-600">{formatCurrency(order.thanhTien)}</div>
+                    <div className="text-sm font-semibold text-slate-500 mb-1.5">Tổng tiền</div>
+                    <div className="text-2xl font-[var(--font-outfit)] font-bold text-rose-600 tabular-nums">{formatCurrency(order.thanhTien)}</div>
                   </div>
                 </div>
               </div>
@@ -222,33 +224,33 @@ export default function OrdersPage() {
 
       {/* QR Code Popup Modal */}
       {selectedOrderForQr && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl border border-slate-100 transform scale-100 transition-all">
+        <div className="fixed inset-0 z-[var(--z-modal-backdrop)] flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-modal border border-slate-200/60 transform scale-100 transition-all animate-fade-in-up">
             <div className="flex justify-between items-start mb-6">
               <div>
-                <h3 className="text-lg font-bold text-slate-800">Mã QR Nhận Hàng</h3>
-                <p className="text-xs text-slate-500 mt-1">Đưa mã QR này cho nhân viên để nhận máy và thanh toán</p>
+                <h3 className="text-xl font-bold text-slate-800 tracking-tight">Mã QR Nhận Hàng</h3>
+                <p className="text-xs font-medium text-slate-500 mt-1">Đưa mã QR này cho nhân viên để nhận máy và thanh toán</p>
               </div>
               <button 
                 onClick={() => setSelectedOrderForQr(null)}
-                className="text-slate-400 hover:text-slate-600 p-1.5 rounded-full hover:bg-slate-50 transition"
+                className="text-slate-400 hover:text-slate-700 p-2 rounded-full hover:bg-slate-100 transition-colors active:scale-95 bg-slate-50"
               >
-                <i className="fa-solid fa-xmark text-lg"></i>
+                <X size={18} strokeWidth={2} />
               </button>
             </div>
 
-            <div className="flex flex-col items-center bg-slate-50 p-6 rounded-2xl border border-slate-100 mb-6">
-              <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+            <div className="flex flex-col items-center bg-slate-50/80 p-6 rounded-3xl border border-slate-200/60 mb-8">
+              <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
                 <QRCodeSVG value={selectedOrderForQr.maNhanHang} size={200} />
               </div>
-              <div className="mt-4 font-bold text-slate-800 text-lg uppercase tracking-wider">
+              <div className="mt-5 font-[var(--font-outfit)] font-bold text-slate-800 text-xl uppercase tracking-widest bg-white px-4 py-2 rounded-xl border border-slate-100 shadow-sm">
                 {selectedOrderForQr.maNhanHang}
               </div>
             </div>
 
             <button 
               onClick={() => setSelectedOrderForQr(null)}
-              className="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-medium rounded-xl shadow-sm transition"
+              className="w-full py-3.5 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl shadow-card hover:shadow-elevated transition-all duration-200 active:scale-95 text-sm"
             >
               Đóng
             </button>

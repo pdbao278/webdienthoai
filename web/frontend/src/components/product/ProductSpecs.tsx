@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { ChevronRight, X } from 'lucide-react';
 
 interface ProductSpecsProps {
   product: any;
@@ -96,8 +97,8 @@ export default function ProductSpecs({ product, variant }: ProductSpecsProps) {
 
   return (
     <>
-      <div className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm">
-        <h3 className="text-xl font-bold text-slate-800 mb-5">Thông số kỹ thuật</h3>
+      <div className="bg-white rounded-3xl p-6 border border-slate-200/60 shadow-card">
+        <h3 className="text-xl font-bold text-slate-800 mb-5 tracking-tight">Thông số kỹ thuật</h3>
         <div className="divide-y divide-slate-100 text-sm">
           {summarySpecs.map((spec, idx) => (
             <div key={idx} className="flex justify-between py-3">
@@ -108,26 +109,26 @@ export default function ProductSpecs({ product, variant }: ProductSpecsProps) {
         </div>
         <button
           onClick={() => setIsOpen(true)}
-          className="w-full mt-5 py-3 border border-blue-100 text-blue-600 rounded-2xl font-semibold hover:bg-blue-50/50 hover:border-blue-200 transition-all text-sm flex items-center justify-center gap-2"
+          className="w-full mt-5 py-3 border border-sky-100 text-sky-600 rounded-2xl font-semibold hover:bg-sky-50/50 hover:border-sky-200 transition-all text-sm flex items-center justify-center gap-2 active:scale-[0.98]"
         >
           <span>Xem cấu hình chi tiết</span>
-          <i className="fa-solid fa-chevron-right text-xs"></i>
+          <ChevronRight size={16} strokeWidth={2} />
         </button>
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[var(--z-modal-backdrop)] flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl shadow-modal w-full max-w-2xl max-h-[85vh] overflow-hidden flex flex-col z-[var(--z-modal)] animate-fade-in-up">
             <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
               <div>
-                <h3 className="text-xl font-bold text-slate-800">Thông số kỹ thuật chi tiết</h3>
+                <h3 className="text-xl font-bold text-slate-800 tracking-tight">Thông số kỹ thuật chi tiết</h3>
                 <p className="text-slate-500 text-xs mt-0.5">{product.sanPham}</p>
               </div>
               <button 
                 onClick={() => setIsOpen(false)} 
-                className="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-full bg-slate-100/80 text-slate-500 hover:bg-slate-200 hover:text-slate-700 flex items-center justify-center transition-colors active:scale-95"
               >
-                <i className="fa-solid fa-xmark text-lg"></i>
+                <X size={18} strokeWidth={2} />
               </button>
             </div>
             
@@ -138,7 +139,7 @@ export default function ProductSpecs({ product, variant }: ProductSpecsProps) {
                     <span className="w-1.5 h-4 bg-sky-500 rounded-full"></span>
                     {group.group}
                   </h4>
-                  <div className="rounded-2xl border border-slate-100 overflow-hidden bg-white">
+                  <div className="rounded-2xl border border-slate-200/60 overflow-hidden bg-white">
                     {group.items.map((item, iIdx) => (
                       <div 
                         key={iIdx} 
@@ -158,7 +159,7 @@ export default function ProductSpecs({ product, variant }: ProductSpecsProps) {
             <div className="p-4 border-t border-slate-100 flex justify-end bg-slate-50/50">
               <button
                 onClick={() => setIsOpen(false)}
-                className="px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-xl font-semibold text-sm transition-colors"
+                className="px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white rounded-xl font-semibold text-sm transition-all active:scale-95 shadow-card hover:shadow-elevated"
               >
                 Đóng
               </button>
