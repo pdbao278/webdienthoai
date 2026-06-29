@@ -17,12 +17,33 @@ import { startCronJobs } from './services/cron.service';
 import prisma from './lib/prisma';
 import { authRateLimiter } from './middlewares/rate-limit.middleware';
 
-startCronJobs();
+// Cron jobs chỉ chạy khi là long-running server (không phải serverless/Vercel)
+if (!process.env.VERCEL) {
+  startCronJobs();
+}
 
 const app = express();
 app.use(helmet());
+
+// CORS: cho phép frontend URL + tất cả Vercel preview URLs
+const allowedOrigins = [
+  process.env.FRONTEND_URL || 'http://localhost:3000',
+  'https://webdienthoai.vercel.app',
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: (origin, callback) => {
+    // Cho phép requests không có origin (mobile apps, server-to-server, cURL)
+    if (!origin) return callback(null, true);
+    // Cho phép origin trong whitelist hoặc Vercel preview URLs
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.vercel.app')
+    ) {
+      return callback(null, true);
+    }
+    callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
 }));
 app.use(express.json());
