@@ -11,7 +11,8 @@
     "dev": "concurrently \"npm run dev --workspace=web/frontend\" \"npm run dev --workspace=web/backend\"",
     "build": "npm run build --workspace=@phonestore/shared && npm run build --workspace=phonestore-backend && npm run build --workspace=frontend",
     "test": "npm run test --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present"
+    "lint": "npm run lint --workspaces --if-present",
+    "postinstall": "npm run build --workspace=@phonestore/shared"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
