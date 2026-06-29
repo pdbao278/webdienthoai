@@ -17,7 +17,7 @@ export const autoCancelExpiredOrders = async () => {
     });
 
     for (const order of expiredOrders) {
-      await prisma.$transaction(async (tx) => {
+      await prisma.$transaction(async (tx: any) => {
         await tx.order.update({
           where: { id: order.id },
           data: { trangThai: 'DA_HUY' }

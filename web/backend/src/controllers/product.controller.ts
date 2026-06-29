@@ -71,7 +71,7 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
         }
       });
       
-      allProducts.sort((a, b) => {
+      allProducts.sort((a: any, b: any) => {
         const getMinPrice = (p: any) => p.variants.length > 0 ? Math.min(...p.variants.map((v: any) => v.giaBan)) : Infinity;
         const minA = getMinPrice(a);
         const minB = getMinPrice(b);

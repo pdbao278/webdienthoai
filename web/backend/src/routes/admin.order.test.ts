@@ -194,7 +194,7 @@ describe('Admin Order API', () => {
       expect(res.body.trangThai).toBe('HOAN_THANH');
 
       const logs = await prisma.orderActivityLog.findMany({ where: { orderId } });
-      expect(logs.some(l => l.hanhDong.includes('Hoàn thành qua quét QR'))).toBe(true);
+      expect(logs.some((l: any) => l.hanhDong.includes('Hoàn thành qua quét QR'))).toBe(true);
     });
   });
 });
