@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   description: 'Trải nghiệm mua sắm điện thoại di động chính hãng với PhoneStore. Click & Collect tiện lợi, thanh toán tại cửa hàng.',
 };
 
-export const revalidate = 60; // Revalidate every minute
+export const dynamic = 'force-dynamic';
 
 async function getProducts() {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
-    const res = await fetch(`${apiUrl}/products?limit=8`, { next: { revalidate: 60 } });
+    const res = await fetch(`${apiUrl}/products?limit=8`, { cache: 'no-store' });
     if (!res.ok) return [];
     const json = await res.json();
     return json.data || [];
@@ -25,6 +25,7 @@ async function getProducts() {
     return [];
   }
 }
+
 
 export default async function Home() {
   const products = await getProducts();
