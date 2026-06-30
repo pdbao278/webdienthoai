@@ -11,7 +11,7 @@ import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/Button';
 import { useCartStore } from '@/store/useCartStore';
 import { useAuthStore } from '@/store/useAuthStore';
-import { formatCurrency } from '@/lib/utils';
+import { formatCurrency, calculateItemSubtotal } from '@/lib/utils';
 import toast from 'react-hot-toast';
 import { ClipboardCheck, User, Store, MapPin, CreditCard, Ticket, X, CheckCircle } from 'lucide-react';
 
@@ -117,7 +117,7 @@ export default function CheckoutPage() {
       router.push('/cart');
     }
   }, [isLoggedIn, isLoading, selectedItems.length, router]);
-  const subtotal = selectedItems.reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+  const subtotal = selectedItems.reduce((acc, item) => acc + calculateItemSubtotal(item.soLuong, item.productVariant?.giaBan || 0, item.productVariant?.giaBanGoc, !!item.productVariant?.flashSale), 0);
   
   const calculateVoucherDiscount = (itemsList: typeof items, voucher: any) => {
     if (!voucher) return 0;
@@ -131,12 +131,12 @@ export default function CheckoutPage() {
       const brand = apDungCho.replace('hang:', '').toLowerCase();
       eligibleSubtotal = itemsList
         .filter(item => item.productVariant?.product?.hang?.toLowerCase() === brand)
-        .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+        .reduce((acc, item) => acc + calculateItemSubtotal(item.soLuong, item.productVariant?.giaBan || 0, item.productVariant?.giaBanGoc, !!item.productVariant?.flashSale), 0);
     } else if (apDungCho.startsWith('phan_khuc:')) {
       const segment = apDungCho.replace('phan_khuc:', '').toLowerCase();
       eligibleSubtotal = itemsList
         .filter(item => item.productVariant?.product?.phanKhuc?.toLowerCase() === segment)
-        .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+        .reduce((acc, item) => acc + calculateItemSubtotal(item.soLuong, item.productVariant?.giaBan || 0, item.productVariant?.giaBanGoc, !!item.productVariant?.flashSale), 0);
     }
 
     if (eligibleSubtotal === 0 || eligibleSubtotal < voucher.donToiThieu) {
@@ -167,12 +167,12 @@ export default function CheckoutPage() {
         const brand = apDungCho.replace('hang:', '').toLowerCase();
         eligibleSubtotal = selectedItems
           .filter(item => item.productVariant?.product?.hang?.toLowerCase() === brand)
-          .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+          .reduce((acc, item) => acc + calculateItemSubtotal(item.soLuong, item.productVariant?.giaBan || 0, item.productVariant?.giaBanGoc, !!item.productVariant?.flashSale), 0);
       } else if (apDungCho.startsWith('phan_khuc:')) {
         const segment = apDungCho.replace('phan_khuc:', '').toLowerCase();
         eligibleSubtotal = selectedItems
           .filter(item => item.productVariant?.product?.phanKhuc?.toLowerCase() === segment)
-          .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+          .reduce((acc, item) => acc + calculateItemSubtotal(item.soLuong, item.productVariant?.giaBan || 0, item.productVariant?.giaBanGoc, !!item.productVariant?.flashSale), 0);
       }
 
       if (eligibleSubtotal === 0 || eligibleSubtotal < appliedVoucher.donToiThieu) {
@@ -214,12 +214,12 @@ export default function CheckoutPage() {
         const brand = apDungCho.replace('hang:', '').toLowerCase();
         eligibleSubtotal = selectedItems
           .filter(item => item.productVariant?.product?.hang?.toLowerCase() === brand)
-          .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+          .reduce((acc, item) => acc + calculateItemSubtotal(item.soLuong, item.productVariant?.giaBan || 0, item.productVariant?.giaBanGoc, !!item.productVariant?.flashSale), 0);
       } else if (apDungCho.startsWith('phan_khuc:')) {
         const segment = apDungCho.replace('phan_khuc:', '').toLowerCase();
         eligibleSubtotal = selectedItems
           .filter(item => item.productVariant?.product?.phanKhuc?.toLowerCase() === segment)
-          .reduce((acc, item) => acc + (item.productVariant?.giaBan * item.soLuong || 0), 0);
+          .reduce((acc, item) => acc + calculateItemSubtotal(item.soLuong, item.productVariant?.giaBan || 0, item.productVariant?.giaBanGoc, !!item.productVariant?.flashSale), 0);
       }
 
       if (eligibleSubtotal === 0) {
@@ -406,7 +406,14 @@ export default function CheckoutPage() {
                       <span className="text-slate-700 font-medium line-clamp-2">{item.productVariant?.product?.sanPham}{!item.productVariant?.product?.sanPham.includes(`${item.productVariant?.dungLuongGb}GB`) ? ` - ${item.productVariant?.dungLuongGb}GB` : ''} - {item.productVariant?.mauSac}</span>
                     </div>
                     <div className="text-right whitespace-nowrap">
-                      <span className="text-slate-500 text-xs font-semibold block">{item.soLuong} × {formatCurrency(item.productVariant?.giaBan || 0)}</span>
+                      <span className="text-slate-500 text-xs font-semibold block">
+                        {item.soLuong} × {formatCurrency(item.productVariant?.giaBan || 0)}
+                        {item.productVariant?.flashSale && item.soLuong > 1 && (
+                          <span className="block text-rose-500 text-[10px] mt-0.5">
+                            (1 giá Flash Sale, {item.soLuong - 1} giá gốc)
+                          </span>
+                        )}
+                      </span>
                     </div>
                   </div>
                 ))}

@@ -9,10 +9,17 @@ interface CartItem {
     id: string;
     sku: string;
     giaBan: number;
+    giaBanGoc?: number;
     tonKho: number;
     mauSac: string;
     dungLuongGb: number;
     imageUrl: string;
+    flashSale?: {
+      daBan: number;
+      soLuong: number;
+      giaGoc: number;
+      flashSaleItemId: string;
+    };
     product: {
       id: string;
       sanPham: string;
