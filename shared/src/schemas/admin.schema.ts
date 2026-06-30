@@ -127,3 +127,23 @@ export type CreateVoucherInput = z.infer<typeof createVoucherSchema>;
 export type UpdateVoucherInput = z.infer<typeof updateVoucherSchema>;
 export type AddReviewInput = z.infer<typeof addReviewSchema>;
 export type UpdateUserRoleInput = z.infer<typeof updateUserRoleSchema>;
+
+// ─── Flash Sale ──────────────────────────────────────────────────
+const flashSaleItemSchema = z.object({
+  productVariantId: z.string().min(1, 'Phiên bản sản phẩm là bắt buộc'),
+  giaFlashSale: z.number().int().nonnegative(),
+  soLuong: z.number().int().positive(),
+});
+
+export const createFlashSaleSchema = z.object({
+  ten: z.string().min(1, 'Tên chương trình là bắt buộc'),
+  batDau: z.string().datetime({ message: 'Thời gian bắt đầu không hợp lệ' }),
+  ketThuc: z.string().datetime({ message: 'Thời gian kết thúc không hợp lệ' }),
+  isActive: z.boolean().default(true),
+  items: z.array(flashSaleItemSchema).min(1, 'Cần ít nhất 1 sản phẩm khuyến mãi'),
+});
+
+export const updateFlashSaleSchema = createFlashSaleSchema.partial();
+
+export type CreateFlashSaleInput = z.infer<typeof createFlashSaleSchema>;
+export type UpdateFlashSaleInput = z.infer<typeof updateFlashSaleSchema>;

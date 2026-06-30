@@ -5,6 +5,7 @@ import { getAdminProducts, createProduct, updateProduct, deleteProduct, uploadIm
 import { getVouchers, createVoucher, updateVoucher, deleteVoucher } from '../controllers/admin.voucher.controller';
 import { getStats } from '../controllers/admin.stats.controller';
 import { getUsers, updateUserRole } from '../controllers/admin.user.controller';
+import adminFlashSaleRoutes from './admin.flash-sale.routes';
 import multer from 'multer';
 
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 * 1024 * 1024 } });
@@ -38,5 +39,8 @@ router.get('/stats', authorize(['ADMIN']), getStats);
 // ─── Người dùng — Chỉ ADMIN ─────────────────────────────────────
 router.get('/users', authorize(['ADMIN']), getUsers);
 router.patch('/users/:id/role', authorize(['ADMIN']), updateUserRole);
+
+// ─── Flash Sale — ADMIN + MANAGER ──────────────────────────────
+router.use('/flash-sales', authorize(['ADMIN', 'MANAGER']), adminFlashSaleRoutes);
 
 export default router;

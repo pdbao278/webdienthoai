@@ -9,7 +9,7 @@
 - [ ] API lấy sản phẩm tự override giá thành công khi có Flash Sale.
 
 ## Phase 2: Admin Operations
-- [ ] Task 3: Backend — API CRUD Flash Sale (`/api/admin/flash-sales`)
+- [x] Task 3: Backend — API CRUD Flash Sale (`/api/admin/flash-sales`)
 - [ ] Task 4: Frontend — UI Quản lý Flash Sale (`/admin/flash-sales`)
 
 ### Checkpoint: Admin Operations
