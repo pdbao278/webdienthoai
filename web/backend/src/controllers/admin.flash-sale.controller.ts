@@ -101,18 +101,47 @@ export const updateFlashSale = async (req: AuthRequest, res: Response): Promise<
         }
       });
 
-      // Update items if provided (complete replacement to simplify)
+      // Update items if provided (preserve daBan and perform safe upsert-like ops)
       if (data.items) {
-        await tx.flashSaleItem.deleteMany({ where: { flashSaleId: id } });
-        await tx.flashSaleItem.createMany({
-          data: data.items.map(item => ({
-            flashSaleId: id,
-            productVariantId: item.productVariantId,
-            giaFlashSale: item.giaFlashSale,
-            soLuong: item.soLuong,
-            daBan: 0
-          }))
-        });
+        const existingItems = await tx.flashSaleItem.findMany({ where: { flashSaleId: id } });
+        const existingVariantIds = existingItems.map(i => i.productVariantId);
+        const newVariantIds = data.items.map((i: any) => i.productVariantId);
+
+        const toDeleteIds = existingItems
+          .filter(i => !newVariantIds.includes(i.productVariantId))
+          .map(i => i.id);
+        
+        const toAdd = data.items.filter((i: any) => !existingVariantIds.includes(i.productVariantId));
+        const toUpdate = data.items.filter((i: any) => existingVariantIds.includes(i.productVariantId));
+
+        if (toDeleteIds.length > 0) {
+          await tx.flashSaleItem.deleteMany({ where: { id: { in: toDeleteIds } } });
+        }
+
+        if (toAdd.length > 0) {
+          await tx.flashSaleItem.createMany({
+            data: toAdd.map((item: any) => ({
+              flashSaleId: id,
+              productVariantId: item.productVariantId,
+              giaFlashSale: item.giaFlashSale,
+              soLuong: item.soLuong,
+              daBan: 0
+            }))
+          });
+        }
+
+        for (const item of toUpdate) {
+          const existingItem = existingItems.find(i => i.productVariantId === item.productVariantId);
+          if (existingItem) {
+            await tx.flashSaleItem.update({
+              where: { id: existingItem.id },
+              data: {
+                giaFlashSale: item.giaFlashSale,
+                soLuong: item.soLuong
+              }
+            });
+          }
+        }
       }
 
       return updated;

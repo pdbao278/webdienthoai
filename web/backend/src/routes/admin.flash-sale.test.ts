@@ -89,11 +89,35 @@ describe('Admin Flash Sale API', () => {
     expect(res.body.data.id).toBe(flashSaleId);
   });
 
-  it('should update a flash sale', async () => {
-    const payload = { ten: 'Mega Flash Sale' };
+  it('should update a flash sale and retain daBan for existing items', async () => {
+    // Simulate selling 2 items first
+    await prisma.flashSaleItem.updateMany({
+      where: { flashSaleId },
+      data: { daBan: 2 }
+    });
+
+    const payload = { 
+      ten: 'Mega Flash Sale',
+      items: [
+        {
+          productVariantId: variant.id,
+          giaFlashSale: 14000000,
+          soLuong: 20
+        }
+      ]
+    };
+    
     const res = await request(app).put(`/api/admin/flash-sales/${flashSaleId}`).send(payload);
     expect(res.status).toBe(200);
     expect(res.body.data.ten).toBe('Mega Flash Sale');
+
+    // Retrieve again to check items
+    const getRes = await request(app).get(`/api/admin/flash-sales/${flashSaleId}`);
+    const updatedItem = getRes.body.data.items.find((i: any) => i.productVariantId === variant.id);
+    expect(updatedItem).toBeDefined();
+    expect(updatedItem.soLuong).toBe(20);
+    expect(updatedItem.giaFlashSale).toBe(14000000);
+    expect(updatedItem.daBan).toBe(2); // Should NOT be reset to 0
   });
 
   it('should delete a flash sale', async () => {
