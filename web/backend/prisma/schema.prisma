@@ -131,6 +131,7 @@ model ProductVariant {
   product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
   cartItems  CartItem[]
   orderItems OrderItem[]
+  flashSaleItems FlashSaleItem[]
 
   @@map("product_variants")
 }
@@ -249,4 +250,33 @@ model Review {
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("reviews")
+}
+
+model FlashSale {
+  id        String   @id @default(uuid())
+  ten       String
+  batDau    DateTime @map("bat_dau")
+  ketThuc   DateTime @map("ket_thuc")
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  items FlashSaleItem[]
+
+  @@map("flash_sales")
+}
+
+model FlashSaleItem {
+  id               String @id @default(uuid())
+  flashSaleId      String @map("flash_sale_id")
+  productVariantId String @map("product_variant_id")
+  giaFlashSale     Int    @map("gia_flash_sale")
+  soLuong          Int    @map("so_luong")
+  daBan            Int    @default(0) @map("da_ban")
+
+  flashSale      FlashSale      @relation(fields: [flashSaleId], references: [id], onDelete: Cascade)
+  productVariant ProductVariant @relation(fields: [productVariantId], references: [id], onDelete: Cascade)
+
+  @@unique([flashSaleId, productVariantId])
+  @@map("flash_sale_items")
 }
