@@ -16,6 +16,7 @@
 | **M6** | Đặt hàng & Lịch sử cá nhân (Checkout) | FR-11, FR-12 |
 | **M7** | Vận hành & Thống kê (Operations) | FR-13, FR-14 |
 | **M8** | Tương tác & Nâng cao (Engagement) | FR-15, FR-16 |
+| **M9** | Tính năng Mở rộng (Extensions) | FR-17 |
 
 ---
 
@@ -190,6 +191,22 @@
 #### FR-16: Trợ lý Ảo Tư vấn — Chatbot (P2)
 - Widget góc màn hình (Soft & Clean). Tích hợp Gemini API trả lời FAQs.
 - Gợi ý link SP theo từ khóa. Lưu sessionStorage.
+
+---
+
+### Milestone 9: Tính năng Mở rộng (Extensions)
+*(Các nghiệp vụ đặc thù được yêu cầu bổ sung độc lập so với luồng MVP)*
+
+> **Tiêu chí hoàn thành (DoD):**
+> 1. Admin truy cập trang `Flash Sale` và cấu hình thành công các sản phẩm vào khung giờ nhất định.
+> 2. Giao diện trang chủ hiển thị đúng các mặt hàng giảm giá theo khung giờ hệ thống hiện tại.
+
+#### FR-17: Quản Lý & Hiển Thị Flash Sale (P0) - [NEW Tính Năng Mới]
+> **Ghi chú:** Đây là nghiệp vụ mở rộng mới được bổ sung độc lập.
+- **Quản trị (Admin):** CRUD các khung giờ Flash Sale. Admin có thể thêm các sản phẩm/biến thể (chọn màu sắc, dung lượng) vào Flash Sale, thiết lập giá Flash Sale (`gia_flash_sale`), số lượng giới hạn và thời gian (`batDau`, `ketThuc`). Chỉ tài khoản `ADMIN` mới có quyền truy cập chức năng này.
+- **Tự động hóa giá:** Giá sản phẩm tự động cập nhật về `gia_flash_sale` khi đến giờ và tự nhảy về giá gốc khi hết giờ, quản lý hoàn toàn bằng logic thời gian thực ở Backend thay vì cronjob.
+- **Trang chủ:** Hiển thị khu vực Flash Sale giữa 2 phần Banner. Tích hợp bộ đếm ngược thời gian (Countdown Timer) tránh lỗi Hydration. Hiển thị thanh trạng thái số lượng (Đã bán X/Tổng Y).
+- **Giới hạn mua hàng:** Mỗi khách hàng chỉ được mua tối đa 1 sản phẩm Flash Sale cho mỗi biến thể. Nếu mua từ 2 sản phẩm trở lên, sản phẩm đầu tiên tính giá Flash Sale, các sản phẩm còn lại tính giá gốc. Logic này áp dụng xuyên suốt từ Giỏ hàng tới lúc Checkout.
 
 ---
 
