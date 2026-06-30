@@ -76,7 +76,7 @@ export default function ProductGallery({ media }: { media: MediaItem[] }) {
                     </div>
                   </>
                 ) : (
-                  <Image src={img.url} alt={`Thumbnail ${idx}`} fill className="object-contain p-1.5" />
+                  <Image src={img.url} alt={`Thumbnail ${idx}`} fill sizes="68px" className="object-contain p-1.5" />
                 )}
               </div>
             </button>

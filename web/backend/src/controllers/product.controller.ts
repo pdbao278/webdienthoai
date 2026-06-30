@@ -54,32 +54,58 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
     let total = 0;
 
     if (requiresPriceSort) {
-      // In-memory sort approach (acceptable for small catalogs)
-      let allProducts = await prisma.product.findMany({
+      // Step 1: Fetch only IDs and variant prices for matching products (extremely fast and lightweight)
+      const matchingProducts = await prisma.product.findMany({
         where,
-        include: {
-          media: {
-            where: { isThumbnail: true },
-            take: 1
-          },
-          variants: true,
-          reviews: {
+        select: {
+          id: true,
+          variants: {
             select: {
-              rating: true
+              giaBan: true
             }
           }
         }
       });
       
-      allProducts.sort((a: any, b: any) => {
+      // Step 2: Sort the lightweight product identifiers
+      matchingProducts.sort((a: any, b: any) => {
         const getMinPrice = (p: any) => p.variants.length > 0 ? Math.min(...p.variants.map((v: any) => v.giaBan)) : Infinity;
         const minA = getMinPrice(a);
         const minB = getMinPrice(b);
         return query.sort === 'gia_asc' ? minA - minB : minB - minA;
       });
       
-      total = allProducts.length;
-      products = allProducts.slice(skip, skip + limit);
+      total = matchingProducts.length;
+      const pageProductIds = matchingProducts.slice(skip, skip + limit).map((p: any) => p.id);
+      
+      // Step 3: Hydrate only the products on the current page
+      if (pageProductIds.length > 0) {
+        const hydratedProducts = await prisma.product.findMany({
+          where: {
+            id: { in: pageProductIds }
+          },
+          include: {
+            media: {
+              where: { isThumbnail: true },
+              take: 1
+            },
+            variants: true,
+            reviews: {
+              select: {
+                rating: true
+              }
+            }
+          }
+        });
+        
+        // Map products to preserve sorted ID order
+        const productsMap = new Map(hydratedProducts.map((p) => [p.id, p]));
+        products = pageProductIds
+          .map((id) => productsMap.get(id))
+          .filter(Boolean) as any[];
+      } else {
+        products = [];
+      }
     } else {
       // Standard database pagination
       const [fetchedProducts, count] = await Promise.all([

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
-import ChatWidget from '@/components/layout/ChatWidget';
+import ChatWidget from '@/components/layout/ChatWidgetWrapper';
 
 const inter = Inter({
   subsets: ["vietnamese", "latin"],

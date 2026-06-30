@@ -104,6 +104,32 @@ describe('Product API', () => {
       await prisma.productVariant.deleteMany({ where: { productId: cheapProd.id } });
       await prisma.product.delete({ where: { id: cheapProd.id } });
     });
+
+    it('should sort by price descending (gia_desc)', async () => {
+      // Create an extremely expensive test product to ensure descending sort works
+      const expensiveProd = await prisma.product.create({
+        data: {
+          slug: `expensive-${Date.now()}`,
+          hang: 'Apple',
+          sanPham: 'Expensive Phone',
+          phanKhuc: 'FLAGSHIP',
+          variants: {
+            create: [{ sku: `exp-var-${Date.now()}`, ramGb: 16, dungLuongGb: 1024, mauSac: 'Gold', giaGoc: 100000000, giaBan: 90000000, tonKho: 10 }]
+          }
+        }
+      });
+      
+      const res = await request(app).get('/api/products?sort=gia_desc');
+      expect(res.status).toBe(200);
+      const prices = res.body.data.map((p: any) => Math.min(...p.variants.map((v:any) => v.giaBan)));
+      // Ensure sorted descending
+      for (let i = 0; i < prices.length - 1; i++) {
+        expect(prices[i]).toBeGreaterThanOrEqual(prices[i+1]);
+      }
+      
+      await prisma.productVariant.deleteMany({ where: { productId: expensiveProd.id } });
+      await prisma.product.delete({ where: { id: expensiveProd.id } });
+    });
   });
 
   describe('GET /api/products/:slug', () => {

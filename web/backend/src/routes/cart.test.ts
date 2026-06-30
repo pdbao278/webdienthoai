@@ -103,6 +103,20 @@ describe('Cart API', () => {
       expect(res.status).toBe(400);
     });
 
+    it('should fail with 404 if productVariantId is a valid UUID but variant does not exist', async () => {
+      const nonExistentUuid = '00000000-0000-0000-0000-000000000000';
+      const res = await request(app)
+        .post('/api/cart')
+        .set('Authorization', `Bearer ${userToken}`)
+        .send({
+          productVariantId: nonExistentUuid,
+          soLuong: 1
+        });
+
+      expect(res.status).toBe(404);
+      expect(res.body.error).toBe('Phiên bản sản phẩm không tồn tại');
+    });
+
     it('should increment quantity if item already in cart', async () => {
       const res = await request(app)
         .post('/api/cart')
