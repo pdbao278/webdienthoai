@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/useAuthStore';
 import AdminGuard from '@/components/layout/AdminGuard';
-import { LayoutDashboard, ClipboardList, Package, Ticket, Users, LogOut, Search, Store } from 'lucide-react';
+import { LayoutDashboard, ClipboardList, Package, Ticket, Users, LogOut, Search, Store, Zap } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -16,6 +16,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: 'Đơn hàng', href: '/admin/orders', icon: ClipboardList, roles: ['ADMIN', 'MANAGER'] },
     { name: 'Sản phẩm', href: '/admin/products', icon: Package, roles: ['ADMIN'] },
     { name: 'Khuyến mãi', href: '/admin/vouchers', icon: Ticket, roles: ['ADMIN'] },
+    { name: 'Flash Sale', href: '/admin/flash-sales', icon: Zap, roles: ['ADMIN'] },
     { name: 'Người dùng', href: '/admin/users', icon: Users, roles: ['ADMIN'] },
   ].filter(item => item.roles.includes(user?.role as string));
 
