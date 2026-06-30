@@ -10,7 +10,7 @@
 
 ## Phase 2: Admin Operations
 - [x] Task 3: Backend — API CRUD Flash Sale (`/api/admin/flash-sales`)
-- [ ] Task 4: Frontend — UI Quản lý Flash Sale (`/admin/flash-sales`)
+- [x] Task 4: Frontend — UI Quản lý Flash Sale (`/admin/flash-sales`)
 
 ### Checkpoint: Admin Operations
 - [ ] Admin CRUD được các chiến dịch Flash Sale và Variants kèm theo.
