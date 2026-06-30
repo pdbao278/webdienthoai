@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { Prisma } from '@prisma/client';
 import { productQuerySchema } from '@phonestore/shared';
 import prisma from '../lib/prisma';
+import { applyFlashSalePrices } from '../lib/flash-sale';
 
 export const getProducts = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -133,6 +134,18 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
       total = count;
     }
 
+    // Apply Flash Sale pricing to all variants in the result set
+    if (products.length > 0) {
+      for (const p of products) {
+        if (p.variants) {
+          p.variants = await applyFlashSalePrices(p.variants);
+          
+          // Re-sort variants by price if needed after flash sale override
+          p.variants.sort((a: any, b: any) => a.giaBan - b.giaBan);
+        }
+      }
+    }
+
     res.status(200).json({
       data: products,
       pagination: {
@@ -168,6 +181,11 @@ export const getProductBySlug = async (req: Request, res: Response): Promise<voi
     if (!product) {
       res.status(404).json({ error: 'Không tìm thấy sản phẩm' });
       return;
+    }
+
+    if (product.variants) {
+      product.variants = await applyFlashSalePrices(product.variants) as any;
+      product.variants.sort((a: any, b: any) => a.giaBan - b.giaBan);
     }
 
     res.status(200).json(product);
@@ -209,6 +227,15 @@ export const searchProducts = async (req: Request, res: Response): Promise<void>
         }
       }
     });
+
+    if (products.length > 0) {
+      for (const p of products) {
+        if (p.variants) {
+          p.variants = await applyFlashSalePrices(p.variants) as any;
+          p.variants.sort((a: any, b: any) => a.giaBan - b.giaBan);
+        }
+      }
+    }
 
     res.status(200).json({ data: products });
   } catch (error: any) {

@@ -2,6 +2,7 @@ import { Response } from 'express';
 import { AuthRequest } from '../middlewares/auth.middleware';
 import { addToCartSchema, updateCartItemSchema } from '@phonestore/shared';
 import prisma from '../lib/prisma';
+import { applyFlashSalePrices } from '../lib/flash-sale';
 
 export const getCart = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
@@ -32,6 +33,16 @@ export const getCart = async (req: AuthRequest, res: Response): Promise<void> =>
       },
       orderBy: { createdAt: 'desc' }
     });
+
+    if (cartItems.length > 0) {
+      const variants = cartItems.map(item => item.productVariant);
+      const updatedVariants = await applyFlashSalePrices(variants);
+      
+      // Re-map the variants back to cartItems
+      updatedVariants.forEach((variant, index) => {
+        (cartItems[index] as any).productVariant = variant;
+      });
+    }
 
     res.status(200).json(cartItems);
   } catch (error: any) {

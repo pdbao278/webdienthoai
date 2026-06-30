@@ -3,6 +3,7 @@ import { AuthRequest } from '../middlewares/auth.middleware';
 import { createOrderSchema, validateVoucherSchema } from '@phonestore/shared';
 import { sendEmail } from '../services/email.service';
 import prisma from '../lib/prisma';
+import { applyFlashSalePrices, calculateItemPrice } from '../lib/flash-sale';
 
 const generateMaNhanHang = () => {
   return `ORD-${Math.floor(100000 + Math.random() * 900000)}`;
@@ -27,12 +28,21 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
       return;
     }
 
+    // Apply flash sale prices to cart items
+    const variants = cartItems.map(item => item.productVariant);
+    const updatedVariants = await applyFlashSalePrices(variants);
+    updatedVariants.forEach((variant, index) => {
+      (cartItems[index] as any).productVariant = variant;
+    });
+
     const maNhanHang = generateMaNhanHang();
 
     const order = await prisma.$transaction(async (tx) => {
       let tongTienHang = 0;
       for (const item of cartItems) {
-        tongTienHang += item.soLuong * item.productVariant.giaBan;
+        const variant = item.productVariant as any;
+        const subtotal = calculateItemPrice(item.soLuong, variant.giaBanGoc || variant.giaBan, variant.flashSale);
+        tongTienHang += subtotal;
         
         // Atomic decrement with condition
         const updatedVariant = await tx.productVariant.updateMany({
@@ -45,6 +55,23 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
 
         if (updatedVariant.count === 0) {
           throw new Error(`Sản phẩm với cấu hình đã chọn không đủ tồn kho`);
+        }
+
+        // Increment Flash Sale sold quantity if applied
+        if (variant.flashSale && variant.flashSale.daBan < variant.flashSale.soLuong) {
+          const updatedFlashSaleItem = await tx.flashSaleItem.updateMany({
+            where: {
+              id: variant.flashSale.flashSaleItemId,
+              daBan: { lt: variant.flashSale.soLuong } // Ensure we don't oversell
+            },
+            data: { daBan: { increment: 1 } }
+          });
+          // Note: If updatedFlashSaleItem.count === 0, it means the flash sale just sold out right at this millisecond.
+          // Since the limit is strictly 1 per user, we either throw an error or just fallback to normal price.
+          // To keep it strictly atomic, we will throw an error to let user refresh cart.
+          if (updatedFlashSaleItem.count === 0) {
+            throw new Error('Sản phẩm Flash Sale bạn chọn vừa hết suất khuyến mãi, vui lòng tải lại giỏ hàng');
+          }
         }
       }
 
@@ -133,12 +160,18 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
       });
 
       // Create Order Items efficiently
-      const orderItemsData = cartItems.map(item => ({
-        orderId: newOrder.id,
-        productVariantId: item.productVariantId,
-        soLuong: item.soLuong,
-        donGia: item.productVariant.giaBan,
-      }));
+      const orderItemsData = cartItems.map(item => {
+        const variant = item.productVariant as any;
+        // donGia here represents the average or effective price per item if there is a mix of flash sale and normal price,
+        // but since we only have one `donGia` field, we will store the exact subtotal / soLuong or just use calculateItemPrice
+        const subtotal = calculateItemPrice(item.soLuong, variant.giaBanGoc || variant.giaBan, variant.flashSale);
+        return {
+          orderId: newOrder.id,
+          productVariantId: item.productVariantId,
+          soLuong: item.soLuong,
+          donGia: Math.round(subtotal / item.soLuong), // store the average price to ensure total is correct
+        };
+      });
       await tx.orderItem.createMany({ data: orderItemsData });
 
       // Create Activity Log
@@ -180,16 +213,20 @@ export const createOrder = async (req: AuthRequest, res: Response): Promise<void
         `;
         
         cartItems.forEach((item, index) => {
-          const name = `${item.productVariant.product.sanPham} ${item.productVariant.dungLuongGb}GB - ${item.productVariant.mauSac}`;
-          const price = formatCurrency(item.productVariant.giaBan);
-          const total = formatCurrency(item.productVariant.giaBan * item.soLuong);
+          const variant = item.productVariant as any;
+          const subtotal = calculateItemPrice(item.soLuong, variant.giaBanGoc || variant.giaBan, variant.flashSale);
+          
+          const name = `${variant.product.sanPham} ${variant.dungLuongGb}GB - ${variant.mauSac}`;
+          const averagePrice = formatCurrency(Math.round(subtotal / item.soLuong));
+          const totalStr = formatCurrency(subtotal);
+          
           itemsHtml += `
             <tr>
               <td style="text-align: center;">${index + 1}</td>
-              <td>${name}</td>
+              <td>${name} ${variant.flashSale && variant.flashSale.daBan < variant.flashSale.soLuong ? '<span style="color: #ef4444; font-size: 12px;">(Flash Sale)</span>' : ''}</td>
               <td style="text-align: center;">${item.soLuong}</td>
-              <td style="text-align: right;">${price}</td>
-              <td style="text-align: right;">${total}</td>
+              <td style="text-align: right;">${averagePrice}</td>
+              <td style="text-align: right;">${totalStr}</td>
             </tr>
           `;
         });
@@ -374,6 +411,12 @@ export const cancelOrder = async (req: AuthRequest, res: Response): Promise<void
           where: { id: item.productVariantId },
           data: { tonKho: { increment: item.soLuong } }
         });
+        
+        // Decrement Flash Sale count if it was a flash sale purchase (we can infer this if donGia doesn't match normal price, or query order time)
+        // Since it's complex to map exactly, and it's a cancellation, we can check if there's an active flash sale for this variant
+        // However, a better way is to skip decrementing flash sale daBan on cancel because flash sale is time-limited anyway.
+        // It's acceptable for Click & Collect Flash Sale to not return stock to the flash sale pool if cancelled, 
+        // to prevent abuse (holding stock and releasing). We will return regular tonKho only.
       }
 
       if (order.voucherId) {

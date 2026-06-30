@@ -2,7 +2,7 @@
 
 ## Phase 1: Database & Foundation
 - [x] Task 1: Cập nhật Prisma Schema (`FlashSale`, `FlashSaleItem`) & run migration
-- [ ] Task 2: Backend — Logic giá tự động (override `giaBan` thời gian thực trên API Product, Cart, Checkout)
+- [x] Task 2: Backend — Logic giá tự động (override `giaBan` thời gian thực trên API Product, Cart, Checkout)
 
 ### Checkpoint: Database & Foundation
 - [ ] Database có schema mới.
