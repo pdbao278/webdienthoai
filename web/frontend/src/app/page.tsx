@@ -2,7 +2,9 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
 import ProductCard from '@/components/product/ProductCard';
+import Banner from '@/components/ui/Banner';
 import { Smartphone, Laptop, Cable, ChevronRight, Lock } from 'lucide-react';
+import { FlashSaleSection } from '@/components/flash-sale/FlashSaleSection';
 
 import type { Metadata } from 'next';
 
@@ -109,6 +111,42 @@ export default async function Home() {
                   ))}
               </div>
           </div>
+      </section>
+
+      {/* Promotional Banner */}
+      <section className="py-4">
+        <div className="container mx-auto px-4 lg:px-6">
+          <Banner 
+            title="Săn Mùa Hè Sôi Động" 
+            description="Ưu đãi lên đến 40% cho các dòng điện thoại Flagship. Khám phá các phần quà hấp dẫn đi kèm, số lượng có hạn!" 
+            ctaText="Săn ngay" 
+            href="/phone?minPrice=15000000"
+            badge="Khuyến mãi Hot"
+            variant="primary"
+          />
+        </div>
+      </section>
+
+      <FlashSaleSection />
+
+      {/* Secondary Banners (Split Grid) - Moved above Products Filter */}
+      <section className="py-4 pb-8">
+        <div className="container mx-auto px-4 lg:px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Banner 
+            title="Thế Hệ Galaxy Mới" 
+            description="Trải nghiệm quyền năng AI mạnh mẽ cùng dòng điện thoại Samsung Galaxy S24 Series mới nhất." 
+            ctaText="Tìm hiểu thêm" 
+            href="/phone?hang=Samsung"
+            variant="secondary"
+          />
+          <Banner 
+            title="Đặc Quyền Premium" 
+            description="Tặng kèm gói bảo hành rơi vỡ 12 tháng cho mọi hóa đơn mua điện thoại trên 15 triệu." 
+            ctaText="Xem chi tiết" 
+            href="/chinh-sach-bao-hanh"
+            variant="primary"
+          />
+        </div>
       </section>
 
       {/* Products Grid Section */}
