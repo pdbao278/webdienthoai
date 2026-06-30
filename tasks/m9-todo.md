@@ -17,7 +17,7 @@
 
 ## Phase 3: Customer Discovery (Trang chủ)
 - [x] Task 5: Backend — API Public Flash Sale (`/api/flash-sales/current`)
-- [ ] Task 6: Frontend — UI Components (`CountdownTimer`, `FlashSaleProgressBar`)
+- [x] Task 6: Frontend — UI Components (`CountdownTimer`, `FlashSaleProgressBar`)
 - [ ] Task 7: Frontend — Tích hợp Section Flash Sale vào Trang chủ (giữa 2 Banner)
 
 ### Checkpoint: Customer Discovery & Final Polish
