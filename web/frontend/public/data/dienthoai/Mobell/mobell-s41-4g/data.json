@@ -1,0 +1,45 @@
+{
+  "id": "mobell-mobell-s41-4g",
+  "slug": "mobell-s41-4g",
+  "hang": "Mobell",
+  "san_pham": "Mobell S41 4G",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 1790000,
+  "gia_ban": 1490000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Mobell S41 4G chính hãng từ Mobell. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc SC9832E, bộ nhớ trong 16GB.",
+  "man_hinh_cong_nghe": "5.0 inches",
+  "man_hinh_kich_thuoc": 5,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "5MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "2MP",
+  "chip": "Unisoc SC9832E",
+  "ram_gb": 2,
+  "dung_luong_gb": 16,
+  "he_dieu_hanh": "Android 10 Go",
+  "pin_mah": 2200,
+  "sac_nhanh_w": 5,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 142,
+  "chong_nuoc": "Không",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227319/phonestore/products/Mobell/mobell-s41-4g/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227320/phonestore/products/Mobell/mobell-s41-4g/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227322/phonestore/products/Mobell/mobell-s41-4g/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Mobell/mobell-s41-4g/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "5G",
+    "nfc"
+  ]
+}

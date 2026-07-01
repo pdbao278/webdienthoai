@@ -1,0 +1,45 @@
+{
+  "id": "xiaomi-redmi-14c-128gb",
+  "slug": "redmi-14c-128gb",
+  "hang": "Xiaomi",
+  "san_pham": "Redmi 14C 128GB",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 3490000,
+  "gia_ban": 3190000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Redmi 14C 128GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G81, bộ nhớ trong 128GB.",
+  "man_hinh_cong_nghe": "6.88 inches",
+  "man_hinh_kich_thuoc": 6.88,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "13MP",
+  "chip": "MediaTek Helio G81",
+  "ram_gb": 4,
+  "dung_luong_gb": 128,
+  "he_dieu_hanh": "Xiaomi HyperOS 1.0",
+  "pin_mah": 5160,
+  "sac_nhanh_w": 18,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 211,
+  "chong_nuoc": "Không",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227651/phonestore/products/Xiaomi/redmi-14c-128gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227652/phonestore/products/Xiaomi/redmi-14c-128gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227653/phonestore/products/Xiaomi/redmi-14c-128gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Xiaomi/redmi-14c-128gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "5G",
+    "nfc"
+  ]
+}

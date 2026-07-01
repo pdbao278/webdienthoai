@@ -1,0 +1,51 @@
+{
+  "id": "motorola-motorola-edge-50-ultra-512gb",
+  "slug": "motorola-edge-50-ultra-512gb",
+  "hang": "Motorola",
+  "san_pham": "Motorola Edge 50 Ultra 512GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 26990000,
+  "gia_ban": 24990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Motorola Edge 50 Ultra 512GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 3 (Mặt lưng gỗ/da thật), bộ nhớ trong 512GB.",
+  "man_hinh_cong_nghe": "6.7 inches",
+  "man_hinh_kich_thuoc": 6.7,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 144,
+  "camera_sau": "50MP + 64MP + 50MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "50MP",
+  "chip": "Snapdragon 8s Gen 3 (Mặt lưng gỗ/da thật)",
+  "ram_gb": 16,
+  "dung_luong_gb": 512,
+  "he_dieu_hanh": "Android 14 (Hello UX)",
+  "pin_mah": 4500,
+  "sac_nhanh_w": 125,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 197,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227341/phonestore/products/Motorola/motorola-edge-50-ultra-512gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227342/phonestore/products/Motorola/motorola-edge-50-ultra-512gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227344/phonestore/products/Motorola/motorola-edge-50-ultra-512gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Motorola/motorola-edge-50-ultra-512gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "camera"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "aiEdit",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

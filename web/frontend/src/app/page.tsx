@@ -19,7 +19,7 @@ export const dynamic = 'force-dynamic';
 async function getProducts() {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
-    const res = await fetch(`${apiUrl}/products?limit=8`, { cache: 'no-store' });
+    const res = await fetch(`${apiUrl}/products?limit=24`, { cache: 'no-store' });
     if (!res.ok) return [];
     const json = await res.json();
     return json.data || [];
@@ -32,6 +32,10 @@ async function getProducts() {
 
 export default async function Home() {
   const products = await getProducts();
+  
+  // Find database products for Samsung & Apple banners
+  const samsungProduct = products.find((p: any) => p.hang?.toLowerCase() === 'samsung');
+  const appleProduct = products.find((p: any) => p.hang?.toLowerCase() === 'apple');
 
   return (
     <>
@@ -88,7 +92,7 @@ export default async function Home() {
             </div>
 
             {/* Right Banner Carousel */}
-            <HeroBannerCarousel />
+            <HeroBannerCarousel products={products} />
         </div>
       </section>
 
@@ -101,17 +105,17 @@ export default async function Home() {
             title="Thế Hệ Galaxy Mới" 
             description="Trải nghiệm quyền năng AI mạnh mẽ cùng dòng điện thoại Samsung Galaxy S26 Series mới nhất." 
             ctaText="Tìm hiểu thêm" 
-            href="/phone?hang=Samsung"
+            href={samsungProduct ? `/phone/${samsungProduct.slug}` : '/phone?hang=Samsung'}
             variant="secondary"
-            imageUrl="/data/dienthoai/Samsung/galaxy-s26-ultra-256gb/images/front.png"
+            imageUrl={samsungProduct?.media?.[0]?.url || 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=600&auto=format&fit=crop'}
           />
           <Banner 
             title="Đặc Quyền Premium" 
             description="Tặng kèm gói bảo hành rơi vỡ 12 tháng cho mọi hóa đơn mua điện thoại trên 15 triệu." 
             ctaText="Xem chi tiết" 
-            href="/chinh-sach-bao-hanh"
+            href={appleProduct ? `/phone/${appleProduct.slug}` : '/phone?hang=Apple'}
             variant="primary"
-            imageUrl="/data/dienthoai/Apple/iphone-16-pro-max-256gb/images/front.png"
+            imageUrl={appleProduct?.media?.[0]?.url || 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=600&auto=format&fit=crop'}
           />
         </div>
       </section>

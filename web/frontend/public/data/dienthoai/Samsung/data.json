@@ -1,0 +1,536 @@
+[
+  {
+    "id": "samsung-galaxy-s26-ultra-256gb",
+    "slug": "galaxy-s26-ultra-256gb",
+    "hang": "Samsung",
+    "san_pham": "Galaxy S26 Ultra 256GB",
+    "phan_khuc": "flagship",
+    "mo_ta": "Điện thoại Galaxy S26 Ultra 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.8 inches",
+    "man_hinh_kich_thuoc": 6.8,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "200MP + 50MP + 50MP + 12MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Snapdragon 8 Gen 5",
+    "he_dieu_hanh": "Android 16",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 45,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 228,
+    "chong_nuoc": "IP68",
+    "media": {
+      "images": [
+        "data/dienthoai/Samsung/galaxy-s26-ultra-256gb/images/front.svg",
+        "data/dienthoai/Samsung/galaxy-s26-ultra-256gb/images/back.svg",
+        "data/dienthoai/Samsung/galaxy-s26-ultra-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Samsung/galaxy-s26-ultra-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "camera"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "galaxy-s26-ultra-256gb-16-256-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 36990000,
+        "gia_ban": 34990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Samsung/galaxy-s26-ultra-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s26-plus-256gb",
+    "slug": "galaxy-s26-plus-256gb",
+    "hang": "Samsung",
+    "san_pham": "Galaxy S26 Plus 256GB",
+    "phan_khuc": "flagship",
+    "mo_ta": "Điện thoại Galaxy S26 Plus 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 2600 / Snapdragon 8 Gen 5, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.7 inches",
+    "man_hinh_kich_thuoc": 6.7,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 12MP + 10MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Exynos 2600 / Snapdragon 8 Gen 5",
+    "he_dieu_hanh": "Android 16",
+    "pin_mah": 4900,
+    "sac_nhanh_w": 45,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 195,
+    "chong_nuoc": "IP68",
+    "media": {
+      "images": [
+        "data/dienthoai/Samsung/galaxy-s26-plus-256gb/images/front.svg",
+        "data/dienthoai/Samsung/galaxy-s26-plus-256gb/images/back.svg",
+        "data/dienthoai/Samsung/galaxy-s26-plus-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Samsung/galaxy-s26-plus-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "galaxy-s26-plus-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 28990000,
+        "gia_ban": 26990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Samsung/galaxy-s26-plus-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s26-128gb",
+    "slug": "galaxy-s26-128gb",
+    "hang": "Samsung",
+    "san_pham": "Galaxy S26 128GB",
+    "phan_khuc": "flagship",
+    "mo_ta": "Điện thoại Galaxy S26 128GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 2600 / Snapdragon 8 Gen 5, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.2 inches",
+    "man_hinh_kich_thuoc": 6.2,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 12MP + 10MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Exynos 2600 / Snapdragon 8 Gen 5",
+    "he_dieu_hanh": "Android 16",
+    "pin_mah": 4000,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 167,
+    "chong_nuoc": "IP68",
+    "media": {
+      "images": [
+        "data/dienthoai/Samsung/galaxy-s26-128gb/images/front.svg",
+        "data/dienthoai/Samsung/galaxy-s26-128gb/images/back.svg",
+        "data/dienthoai/Samsung/galaxy-s26-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Samsung/galaxy-s26-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "galaxy-s26-128gb-12-128-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 128,
+        "mau_sac": "Đen",
+        "gia_goc": 22990000,
+        "gia_ban": 20990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Samsung/galaxy-s26-128gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "samsung-galaxy-z-fold7-512gb",
+    "slug": "galaxy-z-fold7-512gb",
+    "hang": "Samsung",
+    "san_pham": "Galaxy Z Fold7 512GB",
+    "phan_khuc": "flagship",
+    "mo_ta": "Điện thoại Galaxy Z Fold7 512GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 512GB.",
+    "man_hinh_cong_nghe": "7.6 inches (Chính) / 6.3 inches (Phụ)",
+    "man_hinh_kich_thuoc": 7.6,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 12MP + 10MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "10MP + 4MP dưới màn hình",
+    "chip": "Snapdragon 8 Gen 5",
+    "he_dieu_hanh": "Android 16",
+    "pin_mah": 4600,
+    "sac_nhanh_w": 45,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 235,
+    "chong_nuoc": "IPX8 / IP48",
+    "media": {
+      "images": [
+        "data/dienthoai/Samsung/galaxy-z-fold7-512gb/images/front.svg",
+        "data/dienthoai/Samsung/galaxy-z-fold7-512gb/images/back.svg",
+        "data/dienthoai/Samsung/galaxy-z-fold7-512gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Samsung/galaxy-z-fold7-512gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "galaxy-z-fold7-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Đen",
+        "gia_goc": 46990000,
+        "gia_ban": 44990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Samsung/galaxy-z-fold7-512gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "samsung-galaxy-z-flip7-256gb",
+    "slug": "galaxy-z-flip7-256gb",
+    "hang": "Samsung",
+    "san_pham": "Galaxy Z Flip7 256GB",
+    "phan_khuc": "flagship",
+    "mo_ta": "Điện thoại Galaxy Z Flip7 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 5, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.7 inches (Chính) / 3.9 inches (Phụ)",
+    "man_hinh_kich_thuoc": 6.7,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 12MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "10MP",
+    "chip": "Snapdragon 8 Gen 5",
+    "he_dieu_hanh": "Android 16",
+    "pin_mah": 4200,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 185,
+    "chong_nuoc": "IPX8 / IP48",
+    "media": {
+      "images": [
+        "data/dienthoai/Samsung/galaxy-z-flip7-256gb/images/front.svg",
+        "data/dienthoai/Samsung/galaxy-z-flip7-256gb/images/back.svg",
+        "data/dienthoai/Samsung/galaxy-z-flip7-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Samsung/galaxy-z-flip7-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "galaxy-z-flip7-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 26990000,
+        "gia_ban": 24990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Samsung/galaxy-z-flip7-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s25-ultra-256gb",
+    "slug": "galaxy-s25-ultra-256gb",
+    "hang": "Samsung",
+    "san_pham": "Galaxy S25 Ultra 256GB",
+    "phan_khuc": "flagship",
+    "mo_ta": "Điện thoại Galaxy S25 Ultra 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 4, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.8 inches",
+    "man_hinh_kich_thuoc": 6.8,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "200MP + 50MP + 50MP + 10MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Snapdragon 8 Gen 4",
+    "he_dieu_hanh": "Android 15",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 45,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 219,
+    "chong_nuoc": "IP68",
+    "media": {
+      "images": [
+        "data/dienthoai/Samsung/galaxy-s25-ultra-256gb/images/front.svg",
+        "data/dienthoai/Samsung/galaxy-s25-ultra-256gb/images/back.svg",
+        "data/dienthoai/Samsung/galaxy-s25-ultra-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Samsung/galaxy-s25-ultra-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "camera"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "galaxy-s25-ultra-256gb-16-256-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 34990000,
+        "gia_ban": 31490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Samsung/galaxy-s25-ultra-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "samsung-galaxy-s25-256gb",
+    "slug": "galaxy-s25-256gb",
+    "hang": "Samsung",
+    "san_pham": "Galaxy S25 256GB",
+    "phan_khuc": "flagship",
+    "mo_ta": "Điện thoại Galaxy S25 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 2500, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.2 inches",
+    "man_hinh_kich_thuoc": 6.2,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 12MP + 10MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "12MP",
+    "chip": "Exynos 2500",
+    "he_dieu_hanh": "Android 15",
+    "pin_mah": 4000,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 167,
+    "chong_nuoc": "IP68",
+    "media": {
+      "images": [
+        "data/dienthoai/Samsung/galaxy-s25-256gb/images/front.svg",
+        "data/dienthoai/Samsung/galaxy-s25-256gb/images/back.svg",
+        "data/dienthoai/Samsung/galaxy-s25-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Samsung/galaxy-s25-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "galaxy-s25-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 23990000,
+        "gia_ban": 20490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Samsung/galaxy-s25-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "samsung-galaxy-a55-5g-128gb",
+    "slug": "galaxy-a55-5g-128gb",
+    "hang": "Samsung",
+    "san_pham": "Galaxy A55 5G 128GB",
+    "phan_khuc": "tam_trung",
+    "mo_ta": "Điện thoại Galaxy A55 5G 128GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 1480, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.6 inches",
+    "man_hinh_kich_thuoc": 6.6,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 12MP + 5MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Exynos 1480",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 213,
+    "chong_nuoc": "IP67",
+    "media": {
+      "images": [
+        "data/dienthoai/Samsung/galaxy-a55-5g-128gb/images/front.svg",
+        "data/dienthoai/Samsung/galaxy-a55-5g-128gb/images/back.svg",
+        "data/dienthoai/Samsung/galaxy-a55-5g-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Samsung/galaxy-a55-5g-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "galaxy-a55-5g-128gb-8-128-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 128,
+        "mau_sac": "Đen",
+        "gia_goc": 9990000,
+        "gia_ban": 8990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Samsung/galaxy-a55-5g-128gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "samsung-galaxy-a35-5g-128gb",
+    "slug": "galaxy-a35-5g-128gb",
+    "hang": "Samsung",
+    "san_pham": "Galaxy A35 5G 128GB",
+    "phan_khuc": "tam_trung",
+    "mo_ta": "Điện thoại Galaxy A35 5G 128GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 1380, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.6 inches",
+    "man_hinh_kich_thuoc": 6.6,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 8MP + 5MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "13MP",
+    "chip": "Exynos 1380",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 209,
+    "chong_nuoc": "IP67",
+    "media": {
+      "images": [
+        "data/dienthoai/Samsung/galaxy-a35-5g-128gb/images/front.svg",
+        "data/dienthoai/Samsung/galaxy-a35-5g-128gb/images/back.svg",
+        "data/dienthoai/Samsung/galaxy-a35-5g-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Samsung/galaxy-a35-5g-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "galaxy-a35-5g-128gb-8-128-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 128,
+        "mau_sac": "Đen",
+        "gia_goc": 8290000,
+        "gia_ban": 7490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Samsung/galaxy-a35-5g-128gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "samsung-galaxy-a15-128gb",
+    "slug": "galaxy-a15-128gb",
+    "hang": "Samsung",
+    "san_pham": "Galaxy A15 128GB",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Galaxy A15 128GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G99, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.5 inches",
+    "man_hinh_kich_thuoc": 6.5,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "50MP + 5MP + 2MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "13MP",
+    "chip": "MediaTek Helio G99",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 25,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 200,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Samsung/galaxy-a15-128gb/images/front.svg",
+        "data/dienthoai/Samsung/galaxy-a15-128gb/images/back.svg",
+        "data/dienthoai/Samsung/galaxy-a15-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Samsung/galaxy-a15-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "galaxy-a15-128gb-8-128-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 128,
+        "mau_sac": "Đen",
+        "gia_goc": 4990000,
+        "gia_ban": 4290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Samsung/galaxy-a15-128gb/images/front.svg"
+      }
+    ]
+  }
+]

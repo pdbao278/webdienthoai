@@ -1,0 +1,51 @@
+{
+  "id": "vivo-vivo-x200-pro-512gb",
+  "slug": "vivo-x200-pro-512gb",
+  "hang": "vivo",
+  "san_pham": "vivo X200 Pro 512GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 29990000,
+  "gia_ban": 27990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại vivo X200 Pro 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9400, bộ nhớ trong 512GB.",
+  "man_hinh_cong_nghe": "6.78 inches",
+  "man_hinh_kich_thuoc": 6.78,
+  "man_hinh_do_phan_giai": "2K+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 200MP + 50MP Zeiss",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "32MP",
+  "chip": "Dimensity 9400",
+  "ram_gb": 16,
+  "dung_luong_gb": 512,
+  "he_dieu_hanh": "OriginOS 5 / Funtouch OS 15",
+  "pin_mah": 6000,
+  "sac_nhanh_w": 90,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 223,
+  "chong_nuoc": "IP69",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227617/phonestore/products/vivo/vivo-x200-pro-512gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227618/phonestore/products/vivo/vivo-x200-pro-512gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227620/phonestore/products/vivo/vivo-x200-pro-512gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/vivo/vivo-x200-pro-512gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "battery"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "aiEdit",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

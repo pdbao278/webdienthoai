@@ -1,0 +1,48 @@
+{
+  "id": "motorola-motorola-edge-40-neo-256gb",
+  "slug": "motorola-edge-40-neo-256gb",
+  "hang": "Motorola",
+  "san_pham": "Motorola Edge 40 Neo 256GB",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 8990000,
+  "gia_ban": 7990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Motorola Edge 40 Neo 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 7030, bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.55 inches",
+  "man_hinh_kich_thuoc": 6.55,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 144,
+  "camera_sau": "50MP + 13MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "32MP",
+  "chip": "Dimensity 7030",
+  "ram_gb": 8,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "Android 13",
+  "pin_mah": 5000,
+  "sac_nhanh_w": 68,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 170,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227324/phonestore/products/Motorola/motorola-edge-40-neo-256gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227326/phonestore/products/Motorola/motorola-edge-40-neo-256gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227328/phonestore/products/Motorola/motorola-edge-40-neo-256gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Motorola/motorola-edge-40-neo-256gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

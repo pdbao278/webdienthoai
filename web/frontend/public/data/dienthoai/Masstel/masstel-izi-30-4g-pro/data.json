@@ -1,0 +1,45 @@
+{
+  "id": "masstel-masstel-izi-30-4g-pro",
+  "slug": "masstel-izi-30-4g-pro",
+  "hang": "Masstel",
+  "san_pham": "Masstel Izi 30 4G Pro",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 650000,
+  "gia_ban": 590000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Masstel Izi 30 4G Pro chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Phông chữ cực lớn), bộ nhớ trong 1GB.",
+  "man_hinh_cong_nghe": "2.8 inches",
+  "man_hinh_kich_thuoc": 2.8,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "Không",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "Không",
+  "chip": "Unisoc T107 (Phông chữ cực lớn)",
+  "ram_gb": 1,
+  "dung_luong_gb": 1,
+  "he_dieu_hanh": "Masstel OS",
+  "pin_mah": 1800,
+  "sac_nhanh_w": 5,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 105,
+  "chong_nuoc": "Không",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227263/phonestore/products/Masstel/masstel-izi-30-4g-pro/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227265/phonestore/products/Masstel/masstel-izi-30-4g-pro/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227266/phonestore/products/Masstel/masstel-izi-30-4g-pro/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Masstel/masstel-izi-30-4g-pro/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "5G",
+    "nfc"
+  ]
+}

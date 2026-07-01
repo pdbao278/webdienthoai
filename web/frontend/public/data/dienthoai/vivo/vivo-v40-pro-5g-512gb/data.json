@@ -1,0 +1,50 @@
+{
+  "id": "vivo-vivo-v40-pro-5g-512gb",
+  "slug": "vivo-v40-pro-5g-512gb",
+  "hang": "vivo",
+  "san_pham": "vivo V40 Pro 5G 512GB",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 16990000,
+  "gia_ban": 15990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại vivo V40 Pro 5G 512GB chính hãng từ vivo. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 9200+, bộ nhớ trong 512GB.",
+  "man_hinh_cong_nghe": "6.78 inches",
+  "man_hinh_kich_thuoc": 6.78,
+  "man_hinh_do_phan_giai": "2K+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 50MP + 50MP Zeiss",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "50MP",
+  "chip": "Dimensity 9200+",
+  "ram_gb": 12,
+  "dung_luong_gb": 512,
+  "he_dieu_hanh": "Funtouch OS 14",
+  "pin_mah": 5500,
+  "sac_nhanh_w": 80,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 192,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227608/phonestore/products/vivo/vivo-v40-pro-5g-512gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227609/phonestore/products/vivo/vivo-v40-pro-5g-512gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227611/phonestore/products/vivo/vivo-v40-pro-5g-512gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/vivo/vivo-v40-pro-5g-512gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "battery"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

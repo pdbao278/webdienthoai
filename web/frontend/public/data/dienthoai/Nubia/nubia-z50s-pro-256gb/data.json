@@ -1,0 +1,47 @@
+{
+  "id": "nubia-nubia-z50s-pro-256gb",
+  "slug": "nubia-z50s-pro-256gb",
+  "hang": "Nubia",
+  "san_pham": "Nubia Z50S Pro 256GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 17990000,
+  "gia_ban": 14990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Nubia Z50S Pro 256GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 2, bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.78 inches",
+  "man_hinh_kich_thuoc": 6.78,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 50MP + 8MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "16MP",
+  "chip": "Snapdragon 8 Gen 2",
+  "ram_gb": 12,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "MyOS 13",
+  "pin_mah": 5100,
+  "sac_nhanh_w": 80,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 228,
+  "chong_nuoc": "Không",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227445/phonestore/products/Nubia/nubia-z50s-pro-256gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227446/phonestore/products/Nubia/nubia-z50s-pro-256gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227447/phonestore/products/Nubia/nubia-z50s-pro-256gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Nubia/nubia-z50s-pro-256gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

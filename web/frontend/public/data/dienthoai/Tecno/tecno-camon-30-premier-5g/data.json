@@ -1,0 +1,50 @@
+{
+  "id": "tecno-tecno-camon-30-premier-5g",
+  "slug": "tecno-camon-30-premier-5g",
+  "hang": "Tecno",
+  "san_pham": "Tecno Camon 30 Premier 5G",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 12990000,
+  "gia_ban": 11990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Tecno Camon 30 Premier 5G chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8200 Ultimate, bộ nhớ trong 512GB.",
+  "man_hinh_cong_nghe": "6.77 inches",
+  "man_hinh_kich_thuoc": 6.77,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 50MP + 50MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "50MP",
+  "chip": "Dimensity 8200 Ultimate",
+  "ram_gb": 12,
+  "dung_luong_gb": 512,
+  "he_dieu_hanh": "HiOS 14",
+  "pin_mah": 5000,
+  "sac_nhanh_w": 70,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 210,
+  "chong_nuoc": "IP54",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227556/phonestore/products/Tecno/tecno-camon-30-premier-5g/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227558/phonestore/products/Tecno/tecno-camon-30-premier-5g/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227559/phonestore/products/Tecno/tecno-camon-30-premier-5g/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Tecno/tecno-camon-30-premier-5g/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "camera"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

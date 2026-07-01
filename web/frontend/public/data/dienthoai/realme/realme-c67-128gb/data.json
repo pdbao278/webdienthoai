@@ -1,0 +1,47 @@
+{
+  "id": "realme-realme-c67-128gb",
+  "slug": "realme-c67-128gb",
+  "hang": "realme",
+  "san_pham": "realme C67 128GB",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 5290000,
+  "gia_ban": 4690000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại realme C67 128GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 685, bộ nhớ trong 128GB.",
+  "man_hinh_cong_nghe": "6.72 inches",
+  "man_hinh_kich_thuoc": 6.72,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "108MP + 2MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "8MP",
+  "chip": "Snapdragon 685",
+  "ram_gb": 8,
+  "dung_luong_gb": 128,
+  "he_dieu_hanh": "Android 14",
+  "pin_mah": 5000,
+  "sac_nhanh_w": 33,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 185,
+  "chong_nuoc": "IP54",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227500/phonestore/products/realme/realme-c67-128gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227502/phonestore/products/realme/realme-c67-128gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227503/phonestore/products/realme/realme-c67-128gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/realme/realme-c67-128gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "5G",
+    "nfc"
+  ]
+}

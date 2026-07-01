@@ -1,0 +1,537 @@
+[
+  {
+    "id": "realme-realme-gt6-5g-256gb",
+    "slug": "realme-gt6-5g-256gb",
+    "hang": "realme",
+    "san_pham": "realme GT6 5G 256GB",
+    "phan_khuc": "gaming",
+    "mo_ta": "Điện thoại realme GT6 5G 256GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 3, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.78 inches",
+    "man_hinh_kich_thuoc": 6.78,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 50MP + 8MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Snapdragon 8s Gen 3",
+    "he_dieu_hanh": "realme UI 5.0 (Android 14)",
+    "pin_mah": 5500,
+    "sac_nhanh_w": 120,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 191,
+    "chong_nuoc": "IP65",
+    "media": {
+      "images": [
+        "data/dienthoai/realme/realme-gt6-5g-256gb/images/front.svg",
+        "data/dienthoai/realme/realme-gt6-5g-256gb/images/back.svg",
+        "data/dienthoai/realme/realme-gt6-5g-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/realme/realme-gt6-5g-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "gaming",
+      "battery"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "realme-gt6-5g-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 16990000,
+        "gia_ban": 15990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/realme/realme-gt6-5g-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "realme-realme-13-pro-plus-5g",
+    "slug": "realme-13-pro-plus-5g",
+    "hang": "realme",
+    "san_pham": "realme 13 Pro Plus 5G",
+    "phan_khuc": "tam_trung",
+    "mo_ta": "Điện thoại realme 13 Pro Plus 5G chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7s Gen 2, bộ nhớ trong 512GB.",
+    "man_hinh_cong_nghe": "6.7 inches",
+    "man_hinh_kich_thuoc": 6.7,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 50MP + 8MP Sony LYT",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Snapdragon 7s Gen 2",
+    "he_dieu_hanh": "realme UI 5.0 (Android 14)",
+    "pin_mah": 5200,
+    "sac_nhanh_w": 80,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 190,
+    "chong_nuoc": "IP65",
+    "media": {
+      "images": [
+        "data/dienthoai/realme/realme-13-pro-plus-5g/images/front.svg",
+        "data/dienthoai/realme/realme-13-pro-plus-5g/images/back.svg",
+        "data/dienthoai/realme/realme-13-pro-plus-5g/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/realme/realme-13-pro-plus-5g/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "realme-13-pro-plus-5g-12-512-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 512,
+        "mau_sac": "Đen",
+        "gia_goc": 12990000,
+        "gia_ban": 11990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/realme/realme-13-pro-plus-5g/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "realme-realme-12-pro-plus-5g",
+    "slug": "realme-12-pro-plus-5g",
+    "hang": "realme",
+    "san_pham": "realme 12 Pro Plus 5G",
+    "phan_khuc": "tam_trung",
+    "mo_ta": "Điện thoại realme 12 Pro Plus 5G chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7s Gen 2, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.7 inches",
+    "man_hinh_kich_thuoc": 6.7,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 64MP + 8MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Snapdragon 7s Gen 2",
+    "he_dieu_hanh": "realme UI 5.0 (Android 14)",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 67,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 196,
+    "chong_nuoc": "IP65",
+    "media": {
+      "images": [
+        "data/dienthoai/realme/realme-12-pro-plus-5g/images/front.svg",
+        "data/dienthoai/realme/realme-12-pro-plus-5g/images/back.svg",
+        "data/dienthoai/realme/realme-12-pro-plus-5g/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/realme/realme-12-pro-plus-5g/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "realme-12-pro-plus-5g-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 11990000,
+        "gia_ban": 10490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/realme/realme-12-pro-plus-5g/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "realme-realme-c67-128gb",
+    "slug": "realme-c67-128gb",
+    "hang": "realme",
+    "san_pham": "realme C67 128GB",
+    "phan_khuc": "tam_trung",
+    "mo_ta": "Điện thoại realme C67 128GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 685, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.72 inches",
+    "man_hinh_kich_thuoc": 6.72,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "108MP + 2MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "8MP",
+    "chip": "Snapdragon 685",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 33,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 185,
+    "chong_nuoc": "IP54",
+    "media": {
+      "images": [
+        "data/dienthoai/realme/realme-c67-128gb/images/front.svg",
+        "data/dienthoai/realme/realme-c67-128gb/images/back.svg",
+        "data/dienthoai/realme/realme-c67-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/realme/realme-c67-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "realme-c67-128gb-8-128-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 128,
+        "mau_sac": "Đen",
+        "gia_goc": 5290000,
+        "gia_ban": 4690000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/realme/realme-c67-128gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "realme-realme-c65-128gb",
+    "slug": "realme-c65-128gb",
+    "hang": "realme",
+    "san_pham": "realme C65 128GB",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại realme C65 128GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.67 inches",
+    "man_hinh_kich_thuoc": 6.67,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "50MP + 2MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "8MP",
+    "chip": "MediaTek Helio G85",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 45,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 185,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/realme/realme-c65-128gb/images/front.svg",
+        "data/dienthoai/realme/realme-c65-128gb/images/back.svg",
+        "data/dienthoai/realme/realme-c65-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/realme/realme-c65-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "realme-c65-128gb-6-128-0",
+        "ram_gb": 6,
+        "dung_luong_gb": 128,
+        "mau_sac": "Đen",
+        "gia_goc": 3990000,
+        "gia_ban": 3590000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/realme/realme-c65-128gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "realme-realme-note-60-64gb",
+    "slug": "realme-note-60-64gb",
+    "hang": "realme",
+    "san_pham": "realme Note 60 64GB",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại realme Note 60 64GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T612, bộ nhớ trong 64GB.",
+    "man_hinh_cong_nghe": "6.74 inches",
+    "man_hinh_kich_thuoc": 6.74,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "32MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "5MP",
+    "chip": "Unisoc Tiger T612",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 10,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 187,
+    "chong_nuoc": "IP64 / Kháng lực ArmorShell",
+    "media": {
+      "images": [
+        "data/dienthoai/realme/realme-note-60-64gb/images/front.svg",
+        "data/dienthoai/realme/realme-note-60-64gb/images/back.svg",
+        "data/dienthoai/realme/realme-note-60-64gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/realme/realme-note-60-64gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "realme-note-60-64gb-4-64-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 64,
+        "mau_sac": "Đen",
+        "gia_goc": 2990000,
+        "gia_ban": 2690000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/realme/realme-note-60-64gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "realme-realme-c53-128gb",
+    "slug": "realme-c53-128gb",
+    "hang": "realme",
+    "san_pham": "realme C53 128GB",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại realme C53 128GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T612, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.74 inches",
+    "man_hinh_kich_thuoc": 6.74,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "50MP + 0.08MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "8MP",
+    "chip": "Unisoc Tiger T612",
+    "he_dieu_hanh": "Android 13",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 33,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 182,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/realme/realme-c53-128gb/images/front.svg",
+        "data/dienthoai/realme/realme-c53-128gb/images/back.svg",
+        "data/dienthoai/realme/realme-c53-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/realme/realme-c53-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "realme-c53-128gb-6-128-0",
+        "ram_gb": 6,
+        "dung_luong_gb": 128,
+        "mau_sac": "Đen",
+        "gia_goc": 4290000,
+        "gia_ban": 3690000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/realme/realme-c53-128gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "realme-realme-note-50-64gb",
+    "slug": "realme-note-50-64gb",
+    "hang": "realme",
+    "san_pham": "realme Note 50 64GB",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại realme Note 50 64GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T612, bộ nhớ trong 64GB.",
+    "man_hinh_cong_nghe": "6.74 inches",
+    "man_hinh_kich_thuoc": 6.74,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "13MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "5MP",
+    "chip": "Unisoc Tiger T612",
+    "he_dieu_hanh": "Android 13",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 10,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 186,
+    "chong_nuoc": "IP54",
+    "media": {
+      "images": [
+        "data/dienthoai/realme/realme-note-50-64gb/images/front.svg",
+        "data/dienthoai/realme/realme-note-50-64gb/images/back.svg",
+        "data/dienthoai/realme/realme-note-50-64gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/realme/realme-note-50-64gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "realme-note-50-64gb-3-64-0",
+        "ram_gb": 3,
+        "dung_luong_gb": 64,
+        "mau_sac": "Đen",
+        "gia_goc": 2490000,
+        "gia_ban": 2290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/realme/realme-note-50-64gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "realme-realme-gt5-pro-256gb",
+    "slug": "realme-gt5-pro-256gb",
+    "hang": "realme",
+    "san_pham": "realme GT5 Pro 256GB",
+    "phan_khuc": "gaming",
+    "mo_ta": "Điện thoại realme GT5 Pro 256GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.78 inches",
+    "man_hinh_kich_thuoc": 6.78,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 144,
+    "camera_sau": "50MP + 50MP + 8MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Snapdragon 8 Gen 3",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 5400,
+    "sac_nhanh_w": 100,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 218,
+    "chong_nuoc": "IP64",
+    "media": {
+      "images": [
+        "data/dienthoai/realme/realme-gt5-pro-256gb/images/front.svg",
+        "data/dienthoai/realme/realme-gt5-pro-256gb/images/back.svg",
+        "data/dienthoai/realme/realme-gt5-pro-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/realme/realme-gt5-pro-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "gaming"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "realme-gt5-pro-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 15990000,
+        "gia_ban": 13990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/realme/realme-gt5-pro-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "realme-realme-c61-128gb",
+    "slug": "realme-c61-128gb",
+    "hang": "realme",
+    "san_pham": "realme C61 128GB",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại realme C61 128GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T612, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.74 inches",
+    "man_hinh_kich_thuoc": 6.74,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "32MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "5MP",
+    "chip": "Unisoc Tiger T612",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 15,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 187,
+    "chong_nuoc": "IP54",
+    "media": {
+      "images": [
+        "data/dienthoai/realme/realme-c61-128gb/images/front.svg",
+        "data/dienthoai/realme/realme-c61-128gb/images/back.svg",
+        "data/dienthoai/realme/realme-c61-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/realme/realme-c61-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "realme-c61-128gb-4-128-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 128,
+        "mau_sac": "Đen",
+        "gia_goc": 3590000,
+        "gia_ban": 3290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/realme/realme-c61-128gb/images/front.svg"
+      }
+    ]
+  }
+]

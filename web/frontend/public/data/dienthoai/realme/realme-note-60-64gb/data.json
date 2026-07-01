@@ -1,0 +1,46 @@
+{
+  "id": "realme-realme-note-60-64gb",
+  "slug": "realme-note-60-64gb",
+  "hang": "realme",
+  "san_pham": "realme Note 60 64GB",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 2990000,
+  "gia_ban": 2690000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại realme Note 60 64GB chính hãng từ realme. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T612, bộ nhớ trong 64GB.",
+  "man_hinh_cong_nghe": "6.74 inches",
+  "man_hinh_kich_thuoc": 6.74,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "32MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "5MP",
+  "chip": "Unisoc Tiger T612",
+  "ram_gb": 4,
+  "dung_luong_gb": 64,
+  "he_dieu_hanh": "Android 14",
+  "pin_mah": 5000,
+  "sac_nhanh_w": 10,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 187,
+  "chong_nuoc": "IP64 / Kháng lực ArmorShell",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227514/phonestore/products/realme/realme-note-60-64gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227515/phonestore/products/realme/realme-note-60-64gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227517/phonestore/products/realme/realme-note-60-64gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/realme/realme-note-60-64gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "5G",
+    "nfc"
+  ]
+}

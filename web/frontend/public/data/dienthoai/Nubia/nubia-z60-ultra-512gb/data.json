@@ -1,0 +1,51 @@
+{
+  "id": "nubia-nubia-z60-ultra-512gb",
+  "slug": "nubia-z60-ultra-512gb",
+  "hang": "Nubia",
+  "san_pham": "Nubia Z60 Ultra 512GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 25990000,
+  "gia_ban": 23990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Nubia Z60 Ultra 512GB chính hãng từ Nubia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 3 (Ống kính tiêu cự 35mm), bộ nhớ trong 512GB.",
+  "man_hinh_cong_nghe": "6.8 inches",
+  "man_hinh_kich_thuoc": 6.8,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 64MP + 50MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "12MP dưới màn hình",
+  "chip": "Snapdragon 8 Gen 3 (Ống kính tiêu cự 35mm)",
+  "ram_gb": 16,
+  "dung_luong_gb": 512,
+  "he_dieu_hanh": "MyOS 14 (Android 14)",
+  "pin_mah": 6000,
+  "sac_nhanh_w": 80,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 246,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227448/phonestore/products/Nubia/nubia-z60-ultra-512gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227450/phonestore/products/Nubia/nubia-z60-ultra-512gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227451/phonestore/products/Nubia/nubia-z60-ultra-512gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Nubia/nubia-z60-ultra-512gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "camera",
+    "battery"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

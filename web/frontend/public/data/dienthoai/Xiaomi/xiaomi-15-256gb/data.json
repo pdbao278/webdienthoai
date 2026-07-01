@@ -1,0 +1,48 @@
+{
+  "id": "xiaomi-xiaomi-15-256gb",
+  "slug": "xiaomi-15-256gb",
+  "hang": "Xiaomi",
+  "san_pham": "Xiaomi 15 256GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 21990000,
+  "gia_ban": 19990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Xiaomi 15 256GB chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8 Gen 4, bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.36 inches",
+  "man_hinh_kich_thuoc": 6.36,
+  "man_hinh_do_phan_giai": "2K+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 50MP + 50MP Leica",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "32MP",
+  "chip": "Snapdragon 8 Gen 4",
+  "ram_gb": 12,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "Xiaomi HyperOS 1.5",
+  "pin_mah": 4800,
+  "sac_nhanh_w": 90,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 191,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227676/phonestore/products/Xiaomi/xiaomi-15-256gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227678/phonestore/products/Xiaomi/xiaomi-15-256gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227679/phonestore/products/Xiaomi/xiaomi-15-256gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Xiaomi/xiaomi-15-256gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

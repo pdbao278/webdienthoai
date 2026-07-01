@@ -1,0 +1,46 @@
+{
+  "id": "nokia-nokia-g42-5g-128gb",
+  "slug": "nokia-g42-5g-128gb",
+  "hang": "Nokia",
+  "san_pham": "Nokia G42 5G 128GB",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 5990000,
+  "gia_ban": 5290000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Nokia G42 5G 128GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 480+ 5G, bộ nhớ trong 128GB.",
+  "man_hinh_cong_nghe": "6.56 inches",
+  "man_hinh_kich_thuoc": 6.56,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "50MP + 2MP + 2MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "8MP",
+  "chip": "Snapdragon 480+ 5G",
+  "ram_gb": 6,
+  "dung_luong_gb": 128,
+  "he_dieu_hanh": "Android 13 (Hỗ trợ tự sửa chữa QuickFix)",
+  "pin_mah": 5000,
+  "sac_nhanh_w": 20,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 193,
+  "chong_nuoc": "IP52",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227408/phonestore/products/Nokia/nokia-g42-5g-128gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227409/phonestore/products/Nokia/nokia-g42-5g-128gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227410/phonestore/products/Nokia/nokia-g42-5g-128gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Nokia/nokia-g42-5g-128gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "5G",
+    "nfc"
+  ]
+}

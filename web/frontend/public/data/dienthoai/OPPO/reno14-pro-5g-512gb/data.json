@@ -1,0 +1,48 @@
+{
+  "id": "oppo-reno14-pro-5g-512gb",
+  "slug": "reno14-pro-5g-512gb",
+  "hang": "OPPO",
+  "san_pham": "Reno14 Pro 5G 512GB",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 19990000,
+  "gia_ban": 18990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Reno14 Pro 5G 512GB chính hãng từ OPPO. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 8400, bộ nhớ trong 512GB.",
+  "man_hinh_cong_nghe": "6.7 inches",
+  "man_hinh_kich_thuoc": 6.7,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 50MP + 8MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "50MP",
+  "chip": "Dimensity 8400",
+  "ram_gb": 12,
+  "dung_luong_gb": 512,
+  "he_dieu_hanh": "ColorOS 15",
+  "pin_mah": 5000,
+  "sac_nhanh_w": 80,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 186,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227478/phonestore/products/OPPO/reno14-pro-5g-512gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227479/phonestore/products/OPPO/reno14-pro-5g-512gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227481/phonestore/products/OPPO/reno14-pro-5g-512gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/OPPO/reno14-pro-5g-512gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

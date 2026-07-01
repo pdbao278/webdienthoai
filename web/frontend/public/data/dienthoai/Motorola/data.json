@@ -1,0 +1,540 @@
+[
+  {
+    "id": "motorola-motorola-edge-50-ultra-512gb",
+    "slug": "motorola-edge-50-ultra-512gb",
+    "hang": "Motorola",
+    "san_pham": "Motorola Edge 50 Ultra 512GB",
+    "phan_khuc": "flagship",
+    "mo_ta": "Điện thoại Motorola Edge 50 Ultra 512GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 3 (Mặt lưng gỗ/da thật), bộ nhớ trong 512GB.",
+    "man_hinh_cong_nghe": "6.7 inches",
+    "man_hinh_kich_thuoc": 6.7,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 144,
+    "camera_sau": "50MP + 64MP + 50MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "50MP",
+    "chip": "Snapdragon 8s Gen 3 (Mặt lưng gỗ/da thật)",
+    "he_dieu_hanh": "Android 14 (Hello UX)",
+    "pin_mah": 4500,
+    "sac_nhanh_w": 125,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 197,
+    "chong_nuoc": "IP68",
+    "media": {
+      "images": [
+        "data/dienthoai/Motorola/motorola-edge-50-ultra-512gb/images/front.svg",
+        "data/dienthoai/Motorola/motorola-edge-50-ultra-512gb/images/back.svg",
+        "data/dienthoai/Motorola/motorola-edge-50-ultra-512gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Motorola/motorola-edge-50-ultra-512gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "camera"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "aiEdit",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "motorola-edge-50-ultra-512gb-16-512-0",
+        "ram_gb": 16,
+        "dung_luong_gb": 512,
+        "mau_sac": "Đen",
+        "gia_goc": 26990000,
+        "gia_ban": 24990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Motorola/motorola-edge-50-ultra-512gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "motorola-motorola-razr-50-ultra-512gb",
+    "slug": "motorola-razr-50-ultra-512gb",
+    "hang": "Motorola",
+    "san_pham": "Motorola Razr 50 Ultra 512GB",
+    "phan_khuc": "flagship",
+    "mo_ta": "Điện thoại Motorola Razr 50 Ultra 512GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 8s Gen 3, bộ nhớ trong 512GB.",
+    "man_hinh_cong_nghe": "6.9 inches chính",
+    "man_hinh_kich_thuoc": 6.9,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "50MP + 50MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Snapdragon 8s Gen 3",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 4000,
+    "sac_nhanh_w": 45,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 189,
+    "chong_nuoc": "IPX8",
+    "media": {
+      "images": [
+        "data/dienthoai/Motorola/motorola-razr-50-ultra-512gb/images/front.svg",
+        "data/dienthoai/Motorola/motorola-razr-50-ultra-512gb/images/back.svg",
+        "data/dienthoai/Motorola/motorola-razr-50-ultra-512gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Motorola/motorola-razr-50-ultra-512gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "camera"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "motorola-razr-50-ultra-512gb-12-512-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 512,
+        "mau_sac": "Đen",
+        "gia_goc": 28990000,
+        "gia_ban": 26990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Motorola/motorola-razr-50-ultra-512gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "motorola-motorola-edge-50-pro-256gb",
+    "slug": "motorola-edge-50-pro-256gb",
+    "hang": "Motorola",
+    "san_pham": "Motorola Edge 50 Pro 256GB",
+    "phan_khuc": "tam_trung",
+    "mo_ta": "Điện thoại Motorola Edge 50 Pro 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7 Gen 3, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.7 inches",
+    "man_hinh_kich_thuoc": 6.7,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 144,
+    "camera_sau": "50MP + 10MP + 13MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "50MP",
+    "chip": "Snapdragon 7 Gen 3",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 4500,
+    "sac_nhanh_w": 125,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 186,
+    "chong_nuoc": "IP68",
+    "media": {
+      "images": [
+        "data/dienthoai/Motorola/motorola-edge-50-pro-256gb/images/front.svg",
+        "data/dienthoai/Motorola/motorola-edge-50-pro-256gb/images/back.svg",
+        "data/dienthoai/Motorola/motorola-edge-50-pro-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Motorola/motorola-edge-50-pro-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "motorola-edge-50-pro-256gb-12-256-0",
+        "ram_gb": 12,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 18990000,
+        "gia_ban": 17490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Motorola/motorola-edge-50-pro-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "motorola-motorola-edge-50-fusion-256gb",
+    "slug": "motorola-edge-50-fusion-256gb",
+    "hang": "Motorola",
+    "san_pham": "Motorola Edge 50 Fusion 256GB",
+    "phan_khuc": "tam_trung",
+    "mo_ta": "Điện thoại Motorola Edge 50 Fusion 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7s Gen 2, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.7 inches",
+    "man_hinh_kich_thuoc": 6.7,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 13MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Snapdragon 7s Gen 2",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 68,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 175,
+    "chong_nuoc": "IP68",
+    "media": {
+      "images": [
+        "data/dienthoai/Motorola/motorola-edge-50-fusion-256gb/images/front.svg",
+        "data/dienthoai/Motorola/motorola-edge-50-fusion-256gb/images/back.svg",
+        "data/dienthoai/Motorola/motorola-edge-50-fusion-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Motorola/motorola-edge-50-fusion-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "motorola-edge-50-fusion-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 10990000,
+        "gia_ban": 9990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Motorola/motorola-edge-50-fusion-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "motorola-motorola-moto-g85-5g-256gb",
+    "slug": "motorola-moto-g85-5g-256gb",
+    "hang": "Motorola",
+    "san_pham": "Motorola Moto G85 5G 256GB",
+    "phan_khuc": "tam_trung",
+    "mo_ta": "Điện thoại Motorola Moto G85 5G 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 6s Gen 3 (Màn hình cong), bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.67 inches",
+    "man_hinh_kich_thuoc": 6.67,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 8MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Snapdragon 6s Gen 3 (Màn hình cong)",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 30,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 173,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Motorola/motorola-moto-g85-5g-256gb/images/front.svg",
+        "data/dienthoai/Motorola/motorola-moto-g85-5g-256gb/images/back.svg",
+        "data/dienthoai/Motorola/motorola-moto-g85-5g-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Motorola/motorola-moto-g85-5g-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "motorola-moto-g85-5g-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 6990000,
+        "gia_ban": 6490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Motorola/motorola-moto-g85-5g-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "motorola-motorola-razr-50-256gb",
+    "slug": "motorola-razr-50-256gb",
+    "hang": "Motorola",
+    "san_pham": "Motorola Razr 50 256GB",
+    "phan_khuc": "flagship",
+    "mo_ta": "Điện thoại Motorola Razr 50 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 7300X, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.9 inches chính",
+    "man_hinh_kich_thuoc": 6.9,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 13MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Dimensity 7300X",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 4200,
+    "sac_nhanh_w": 30,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 188,
+    "chong_nuoc": "IPX8",
+    "media": {
+      "images": [
+        "data/dienthoai/Motorola/motorola-razr-50-256gb/images/front.svg",
+        "data/dienthoai/Motorola/motorola-razr-50-256gb/images/back.svg",
+        "data/dienthoai/Motorola/motorola-razr-50-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Motorola/motorola-razr-50-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "motorola-razr-50-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 21990000,
+        "gia_ban": 19990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Motorola/motorola-razr-50-256gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "motorola-motorola-moto-g54-5g-128gb",
+    "slug": "motorola-moto-g54-5g-128gb",
+    "hang": "Motorola",
+    "san_pham": "Motorola Moto G54 5G 128GB",
+    "phan_khuc": "tam_trung",
+    "mo_ta": "Điện thoại Motorola Moto G54 5G 128GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 7020, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.5 inches",
+    "man_hinh_kich_thuoc": 6.5,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 120,
+    "camera_sau": "50MP + 2MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "16MP",
+    "chip": "Dimensity 7020",
+    "he_dieu_hanh": "Android 13",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 15,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 177,
+    "chong_nuoc": "Chống tràn nước",
+    "media": {
+      "images": [
+        "data/dienthoai/Motorola/motorola-moto-g54-5g-128gb/images/front.svg",
+        "data/dienthoai/Motorola/motorola-moto-g54-5g-128gb/images/back.svg",
+        "data/dienthoai/Motorola/motorola-moto-g54-5g-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Motorola/motorola-moto-g54-5g-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "motorola-moto-g54-5g-128gb-8-128-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 128,
+        "mau_sac": "Đen",
+        "gia_goc": 4990000,
+        "gia_ban": 4290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Motorola/motorola-moto-g54-5g-128gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "motorola-motorola-moto-g24-power-128gb",
+    "slug": "motorola-moto-g24-power-128gb",
+    "hang": "Motorola",
+    "san_pham": "Motorola Moto G24 Power 128GB",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Motorola Moto G24 Power 128GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek Helio G85, bộ nhớ trong 128GB.",
+    "man_hinh_cong_nghe": "6.56 inches",
+    "man_hinh_kich_thuoc": 6.56,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "50MP + 2MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "8MP",
+    "chip": "MediaTek Helio G85",
+    "he_dieu_hanh": "Android 14",
+    "pin_mah": 6000,
+    "sac_nhanh_w": 30,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 197,
+    "chong_nuoc": "Chống tràn nước",
+    "media": {
+      "images": [
+        "data/dienthoai/Motorola/motorola-moto-g24-power-128gb/images/front.svg",
+        "data/dienthoai/Motorola/motorola-moto-g24-power-128gb/images/back.svg",
+        "data/dienthoai/Motorola/motorola-moto-g24-power-128gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Motorola/motorola-moto-g24-power-128gb/videos/intro.webm"
+      ]
+    },
+    "needs": [
+      "battery"
+    ],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "motorola-moto-g24-power-128gb-4-128-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 128,
+        "mau_sac": "Đen",
+        "gia_goc": 3690000,
+        "gia_ban": 3290000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Motorola/motorola-moto-g24-power-128gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "motorola-motorola-moto-g14-64gb",
+    "slug": "motorola-moto-g14-64gb",
+    "hang": "Motorola",
+    "san_pham": "Motorola Moto G14 64GB",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Motorola Moto G14 64GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc Tiger T616, bộ nhớ trong 64GB.",
+    "man_hinh_cong_nghe": "6.5 inches",
+    "man_hinh_kich_thuoc": 6.5,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "50MP + 2MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "8MP",
+    "chip": "Unisoc Tiger T616",
+    "he_dieu_hanh": "Android 13",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 15,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 177,
+    "chong_nuoc": "Chống tràn nước",
+    "media": {
+      "images": [
+        "data/dienthoai/Motorola/motorola-moto-g14-64gb/images/front.svg",
+        "data/dienthoai/Motorola/motorola-moto-g14-64gb/images/back.svg",
+        "data/dienthoai/Motorola/motorola-moto-g14-64gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Motorola/motorola-moto-g14-64gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "motorola-moto-g14-64gb-4-64-0",
+        "ram_gb": 4,
+        "dung_luong_gb": 64,
+        "mau_sac": "Đen",
+        "gia_goc": 2790000,
+        "gia_ban": 2390000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Motorola/motorola-moto-g14-64gb/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "motorola-motorola-edge-40-neo-256gb",
+    "slug": "motorola-edge-40-neo-256gb",
+    "hang": "Motorola",
+    "san_pham": "Motorola Edge 40 Neo 256GB",
+    "phan_khuc": "tam_trung",
+    "mo_ta": "Điện thoại Motorola Edge 40 Neo 256GB chính hãng từ Motorola. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 7030, bộ nhớ trong 256GB.",
+    "man_hinh_cong_nghe": "6.55 inches",
+    "man_hinh_kich_thuoc": 6.55,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 144,
+    "camera_sau": "50MP + 13MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "32MP",
+    "chip": "Dimensity 7030",
+    "he_dieu_hanh": "Android 13",
+    "pin_mah": 5000,
+    "sac_nhanh_w": 68,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 170,
+    "chong_nuoc": "IP68",
+    "media": {
+      "images": [
+        "data/dienthoai/Motorola/motorola-edge-40-neo-256gb/images/front.svg",
+        "data/dienthoai/Motorola/motorola-edge-40-neo-256gb/images/back.svg",
+        "data/dienthoai/Motorola/motorola-edge-40-neo-256gb/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Motorola/motorola-edge-40-neo-256gb/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "waterResist",
+      "fast",
+      "superFast",
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "motorola-edge-40-neo-256gb-8-256-0",
+        "ram_gb": 8,
+        "dung_luong_gb": 256,
+        "mau_sac": "Đen",
+        "gia_goc": 8990000,
+        "gia_ban": 7990000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Motorola/motorola-edge-40-neo-256gb/images/front.svg"
+      }
+    ]
+  }
+]

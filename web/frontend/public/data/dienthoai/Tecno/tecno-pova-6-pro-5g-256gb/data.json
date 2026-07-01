@@ -1,0 +1,51 @@
+{
+  "id": "tecno-tecno-pova-6-pro-5g-256gb",
+  "slug": "tecno-pova-6-pro-5g-256gb",
+  "hang": "Tecno",
+  "san_pham": "Tecno Pova 6 Pro 5G 256GB",
+  "phan_khuc": "gaming",
+  "gia_goc": 7490000,
+  "gia_ban": 6990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Tecno Pova 6 Pro 5G 256GB chính hãng từ Tecno. Thiết kế sang trọng, hiệu năng vượt trội với chip Dimensity 6080 (Thiết kế LED mecha), bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.78 inches",
+  "man_hinh_kich_thuoc": 6.78,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "108MP + 2MP + 0.08MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "32MP",
+  "chip": "Dimensity 6080 (Thiết kế LED mecha)",
+  "ram_gb": 12,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "HiOS 14",
+  "pin_mah": 6000,
+  "sac_nhanh_w": 70,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 195,
+  "chong_nuoc": "IP53",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227577/phonestore/products/Tecno/tecno-pova-6-pro-5g-256gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227578/phonestore/products/Tecno/tecno-pova-6-pro-5g-256gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227580/phonestore/products/Tecno/tecno-pova-6-pro-5g-256gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Tecno/tecno-pova-6-pro-5g-256gb/videos/intro.webm"
+    ]
+  },
+  "needs": [
+    "gaming",
+    "battery"
+  ],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "nokia-nokia-c12-64gb",
+  "slug": "nokia-c12-64gb",
+  "hang": "Nokia",
+  "san_pham": "Nokia C12 64GB",
+  "phan_khuc": "pho_thong",
+  "gia_goc": 2490000,
+  "gia_ban": 1990000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Nokia C12 64GB chính hãng từ Nokia. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc SC9863A1, bộ nhớ trong 64GB.",
+  "man_hinh_cong_nghe": "6.3 inches",
+  "man_hinh_kich_thuoc": 6.3,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 90,
+  "camera_sau": "8MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "5MP",
+  "chip": "Unisoc SC9863A1",
+  "ram_gb": 3,
+  "dung_luong_gb": 64,
+  "he_dieu_hanh": "Android 12 Go",
+  "pin_mah": 3000,
+  "sac_nhanh_w": 5,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 177,
+  "chong_nuoc": "IP52",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227395/phonestore/products/Nokia/nokia-c12-64gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227397/phonestore/products/Nokia/nokia-c12-64gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227398/phonestore/products/Nokia/nokia-c12-64gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Nokia/nokia-c12-64gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "5G",
+    "nfc"
+  ]
+}

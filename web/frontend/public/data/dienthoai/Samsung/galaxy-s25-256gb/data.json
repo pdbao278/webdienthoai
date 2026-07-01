@@ -1,0 +1,47 @@
+{
+  "id": "samsung-galaxy-s25-256gb",
+  "slug": "galaxy-s25-256gb",
+  "hang": "Samsung",
+  "san_pham": "Galaxy S25 256GB",
+  "phan_khuc": "flagship",
+  "gia_goc": 23990000,
+  "gia_ban": 20490000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Galaxy S25 256GB chính hãng từ Samsung. Thiết kế sang trọng, hiệu năng vượt trội với chip Exynos 2500, bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.2 inches",
+  "man_hinh_kich_thuoc": 6.2,
+  "man_hinh_do_phan_giai": "Full HD+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "50MP + 12MP + 10MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "12MP",
+  "chip": "Exynos 2500",
+  "ram_gb": 12,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "Android 15",
+  "pin_mah": 4000,
+  "sac_nhanh_w": 25,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 167,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227528/phonestore/products/Samsung/galaxy-s25-256gb/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227529/phonestore/products/Samsung/galaxy-s25-256gb/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227530/phonestore/products/Samsung/galaxy-s25-256gb/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Samsung/galaxy-s25-256gb/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "aiEdit",
+    "5G",
+    "nfc"
+  ]
+}

@@ -1,0 +1,512 @@
+[
+  {
+    "id": "masstel-masstel-izi-10-4g-pro",
+    "slug": "masstel-izi-10-4g-pro",
+    "hang": "Masstel",
+    "san_pham": "Masstel Izi 10 4G Pro",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Masstel Izi 10 4G Pro chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Hỗ trợ 4G VoLTE), bộ nhớ trong 1GB.",
+    "man_hinh_cong_nghe": "1.77 inches",
+    "man_hinh_kich_thuoc": 1.77,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "Không",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "Không",
+    "chip": "Unisoc T107 (Hỗ trợ 4G VoLTE)",
+    "he_dieu_hanh": "Masstel OS",
+    "pin_mah": 1000,
+    "sac_nhanh_w": 5,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 85,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Masstel/masstel-izi-10-4g-pro/images/front.svg",
+        "data/dienthoai/Masstel/masstel-izi-10-4g-pro/images/back.svg",
+        "data/dienthoai/Masstel/masstel-izi-10-4g-pro/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Masstel/masstel-izi-10-4g-pro/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "masstel-izi-10-4g-pro-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Đen",
+        "gia_goc": 450000,
+        "gia_ban": 390000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Masstel/masstel-izi-10-4g-pro/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "masstel-masstel-izi-20-4g-pro",
+    "slug": "masstel-izi-20-4g-pro",
+    "hang": "Masstel",
+    "san_pham": "Masstel Izi 20 4G Pro",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Masstel Izi 20 4G Pro chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107, bộ nhớ trong 1GB.",
+    "man_hinh_cong_nghe": "2.4 inches",
+    "man_hinh_kich_thuoc": 2.4,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "Không",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "Không",
+    "chip": "Unisoc T107",
+    "he_dieu_hanh": "Masstel OS",
+    "pin_mah": 1400,
+    "sac_nhanh_w": 5,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 92,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Masstel/masstel-izi-20-4g-pro/images/front.svg",
+        "data/dienthoai/Masstel/masstel-izi-20-4g-pro/images/back.svg",
+        "data/dienthoai/Masstel/masstel-izi-20-4g-pro/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Masstel/masstel-izi-20-4g-pro/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "masstel-izi-20-4g-pro-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Đen",
+        "gia_goc": 550000,
+        "gia_ban": 490000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Masstel/masstel-izi-20-4g-pro/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "masstel-masstel-izi-30-4g-pro",
+    "slug": "masstel-izi-30-4g-pro",
+    "hang": "Masstel",
+    "san_pham": "Masstel Izi 30 4G Pro",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Masstel Izi 30 4G Pro chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Phông chữ cực lớn), bộ nhớ trong 1GB.",
+    "man_hinh_cong_nghe": "2.8 inches",
+    "man_hinh_kich_thuoc": 2.8,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "Không",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "Không",
+    "chip": "Unisoc T107 (Phông chữ cực lớn)",
+    "he_dieu_hanh": "Masstel OS",
+    "pin_mah": 1800,
+    "sac_nhanh_w": 5,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 105,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Masstel/masstel-izi-30-4g-pro/images/front.svg",
+        "data/dienthoai/Masstel/masstel-izi-30-4g-pro/images/back.svg",
+        "data/dienthoai/Masstel/masstel-izi-30-4g-pro/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Masstel/masstel-izi-30-4g-pro/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "masstel-izi-30-4g-pro-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Đen",
+        "gia_goc": 650000,
+        "gia_ban": 590000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Masstel/masstel-izi-30-4g-pro/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "masstel-masstel-fami-60-4g-pro",
+    "slug": "masstel-fami-60-4g-pro",
+    "hang": "Masstel",
+    "san_pham": "Masstel Fami 60 4G Pro",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Masstel Fami 60 4G Pro chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Có phím SOS khẩn cấp), bộ nhớ trong 1GB.",
+    "man_hinh_cong_nghe": "2.0 inches",
+    "man_hinh_kich_thuoc": 2,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "Không",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "Không",
+    "chip": "Unisoc T107 (Có phím SOS khẩn cấp)",
+    "he_dieu_hanh": "Fami OS",
+    "pin_mah": 1400,
+    "sac_nhanh_w": 5,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 110,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Masstel/masstel-fami-60-4g-pro/images/front.svg",
+        "data/dienthoai/Masstel/masstel-fami-60-4g-pro/images/back.svg",
+        "data/dienthoai/Masstel/masstel-fami-60-4g-pro/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Masstel/masstel-fami-60-4g-pro/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "masstel-fami-60-4g-pro-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Đen",
+        "gia_goc": 850000,
+        "gia_ban": 750000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Masstel/masstel-fami-60-4g-pro/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "masstel-masstel-fami-12-4g",
+    "slug": "masstel-fami-12-4g",
+    "hang": "Masstel",
+    "san_pham": "Masstel Fami 12 4G",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Masstel Fami 12 4G chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Bàn phím nổi to rõ), bộ nhớ trong 1GB.",
+    "man_hinh_cong_nghe": "1.77 inches",
+    "man_hinh_kich_thuoc": 1.77,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "Không",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "Không",
+    "chip": "Unisoc T107 (Bàn phím nổi to rõ)",
+    "he_dieu_hanh": "Fami OS",
+    "pin_mah": 1400,
+    "sac_nhanh_w": 5,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 98,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Masstel/masstel-fami-12-4g/images/front.svg",
+        "data/dienthoai/Masstel/masstel-fami-12-4g/images/back.svg",
+        "data/dienthoai/Masstel/masstel-fami-12-4g/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Masstel/masstel-fami-12-4g/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "masstel-fami-12-4g-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Đen",
+        "gia_goc": 690000,
+        "gia_ban": 590000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Masstel/masstel-fami-12-4g/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "masstel-masstel-fami-50-4g-pro",
+    "slug": "masstel-fami-50-4g-pro",
+    "hang": "Masstel",
+    "san_pham": "Masstel Fami 50 4G Pro",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Masstel Fami 50 4G Pro chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Đèn pin kép siêu sáng), bộ nhớ trong 1GB.",
+    "man_hinh_cong_nghe": "2.2 inches",
+    "man_hinh_kich_thuoc": 2.2,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "Không",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "Không",
+    "chip": "Unisoc T107 (Đèn pin kép siêu sáng)",
+    "he_dieu_hanh": "Fami OS",
+    "pin_mah": 1600,
+    "sac_nhanh_w": 5,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 108,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Masstel/masstel-fami-50-4g-pro/images/front.svg",
+        "data/dienthoai/Masstel/masstel-fami-50-4g-pro/images/back.svg",
+        "data/dienthoai/Masstel/masstel-fami-50-4g-pro/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Masstel/masstel-fami-50-4g-pro/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "masstel-fami-50-4g-pro-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Đen",
+        "gia_goc": 890000,
+        "gia_ban": 790000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Masstel/masstel-fami-50-4g-pro/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "masstel-masstel-izi-55-4g-pro",
+    "slug": "masstel-izi-55-4g-pro",
+    "hang": "Masstel",
+    "san_pham": "Masstel Izi 55 4G Pro",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Masstel Izi 55 4G Pro chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107 (Nghe đài FM không cần tai nghe), bộ nhớ trong 1GB.",
+    "man_hinh_cong_nghe": "2.4 inches",
+    "man_hinh_kich_thuoc": 2.4,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "0.08MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "Không",
+    "chip": "Unisoc T107 (Nghe đài FM không cần tai nghe)",
+    "he_dieu_hanh": "Masstel OS",
+    "pin_mah": 1800,
+    "sac_nhanh_w": 5,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 112,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Masstel/masstel-izi-55-4g-pro/images/front.svg",
+        "data/dienthoai/Masstel/masstel-izi-55-4g-pro/images/back.svg",
+        "data/dienthoai/Masstel/masstel-izi-55-4g-pro/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Masstel/masstel-izi-55-4g-pro/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "masstel-izi-55-4g-pro-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Đen",
+        "gia_goc": 750000,
+        "gia_ban": 670000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Masstel/masstel-izi-55-4g-pro/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "masstel-masstel-izi-12-4g-pro",
+    "slug": "masstel-izi-12-4g-pro",
+    "hang": "Masstel",
+    "san_pham": "Masstel Izi 12 4G Pro",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Masstel Izi 12 4G Pro chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107, bộ nhớ trong 1GB.",
+    "man_hinh_cong_nghe": "1.77 inches",
+    "man_hinh_kich_thuoc": 1.77,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "Không",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "Không",
+    "chip": "Unisoc T107",
+    "he_dieu_hanh": "Masstel OS",
+    "pin_mah": 1000,
+    "sac_nhanh_w": 5,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 87,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Masstel/masstel-izi-12-4g-pro/images/front.svg",
+        "data/dienthoai/Masstel/masstel-izi-12-4g-pro/images/back.svg",
+        "data/dienthoai/Masstel/masstel-izi-12-4g-pro/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Masstel/masstel-izi-12-4g-pro/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "masstel-izi-12-4g-pro-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Đen",
+        "gia_goc": 490000,
+        "gia_ban": 420000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Masstel/masstel-izi-12-4g-pro/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "masstel-masstel-hapi-30-4g",
+    "slug": "masstel-hapi-30-4g",
+    "hang": "Masstel",
+    "san_pham": "Masstel HAPI 30 4G",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Masstel HAPI 30 4G chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip MediaTek MT6739, bộ nhớ trong 32GB.",
+    "man_hinh_cong_nghe": "5.0 inches",
+    "man_hinh_kich_thuoc": 5,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "5MP",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "2MP",
+    "chip": "MediaTek MT6739",
+    "he_dieu_hanh": "Android 11 Go",
+    "pin_mah": 2000,
+    "sac_nhanh_w": 5,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 145,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Masstel/masstel-hapi-30-4g/images/front.svg",
+        "data/dienthoai/Masstel/masstel-hapi-30-4g/images/back.svg",
+        "data/dienthoai/Masstel/masstel-hapi-30-4g/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Masstel/masstel-hapi-30-4g/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "masstel-hapi-30-4g-3-32-0",
+        "ram_gb": 3,
+        "dung_luong_gb": 32,
+        "mau_sac": "Đen",
+        "gia_goc": 1990000,
+        "gia_ban": 1790000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Masstel/masstel-hapi-30-4g/images/front.svg"
+      }
+    ]
+  },
+  {
+    "id": "masstel-masstel-izi-32-4g",
+    "slug": "masstel-izi-32-4g",
+    "hang": "Masstel",
+    "san_pham": "Masstel Izi 32 4G",
+    "phan_khuc": "pho_thong",
+    "mo_ta": "Điện thoại Masstel Izi 32 4G chính hãng từ Masstel. Thiết kế sang trọng, hiệu năng vượt trội với chip Unisoc T107, bộ nhớ trong 1GB.",
+    "man_hinh_cong_nghe": "2.8 inches",
+    "man_hinh_kich_thuoc": 2.8,
+    "man_hinh_do_phan_giai": "Full HD+",
+    "man_hinh_tan_so_quet": 90,
+    "camera_sau": "Không",
+    "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+    "camera_truoc": "Không",
+    "chip": "Unisoc T107",
+    "he_dieu_hanh": "Masstel OS",
+    "pin_mah": 1500,
+    "sac_nhanh_w": 5,
+    "ho_tro_5g": true,
+    "nfc": true,
+    "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+    "trong_luong_g": 103,
+    "chong_nuoc": "Không",
+    "media": {
+      "images": [
+        "data/dienthoai/Masstel/masstel-izi-32-4g/images/front.svg",
+        "data/dienthoai/Masstel/masstel-izi-32-4g/images/back.svg",
+        "data/dienthoai/Masstel/masstel-izi-32-4g/images/detail.svg"
+      ],
+      "videos": [
+        "data/dienthoai/Masstel/masstel-izi-32-4g/videos/intro.webm"
+      ]
+    },
+    "needs": [],
+    "specialFeatures": [
+      "5G",
+      "nfc"
+    ],
+    "variants": [
+      {
+        "sku": "masstel-izi-32-4g-1-1-0",
+        "ram_gb": 1,
+        "dung_luong_gb": 1,
+        "mau_sac": "Đen",
+        "gia_goc": 690000,
+        "gia_ban": 620000,
+        "ton_kho": 50,
+        "image_url": "data/dienthoai/Masstel/masstel-izi-32-4g/images/front.svg"
+      }
+    ]
+  }
+]

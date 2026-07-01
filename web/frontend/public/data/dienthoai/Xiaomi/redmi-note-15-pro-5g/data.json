@@ -1,0 +1,48 @@
+{
+  "id": "xiaomi-redmi-note-15-pro-5g",
+  "slug": "redmi-note-15-pro-5g",
+  "hang": "Xiaomi",
+  "san_pham": "Redmi Note 15 Pro 5G",
+  "phan_khuc": "tam_trung",
+  "gia_goc": 9490000,
+  "gia_ban": 8790000,
+  "ton_kho": 50,
+  "mo_ta": "Điện thoại Redmi Note 15 Pro 5G chính hãng từ Xiaomi. Thiết kế sang trọng, hiệu năng vượt trội với chip Snapdragon 7s Gen 4, bộ nhớ trong 256GB.",
+  "man_hinh_cong_nghe": "6.67 inches",
+  "man_hinh_kich_thuoc": 6.67,
+  "man_hinh_do_phan_giai": "2K+",
+  "man_hinh_tan_so_quet": 120,
+  "camera_sau": "108MP + 8MP + 2MP",
+  "camera_sau_tinh_nang": "Chống rung quang học OIS, tự động lấy nét PDAF, zoom số chất lượng cao",
+  "camera_truoc": "16MP",
+  "chip": "Snapdragon 7s Gen 4",
+  "ram_gb": 8,
+  "dung_luong_gb": 256,
+  "he_dieu_hanh": "Xiaomi HyperOS 2.0",
+  "pin_mah": 5200,
+  "sac_nhanh_w": 67,
+  "ho_tro_5g": true,
+  "nfc": true,
+  "sim": "2 Nano SIM hoặc 1 Nano + 1 eSIM",
+  "trong_luong_g": 187,
+  "chong_nuoc": "IP68",
+  "mau_sac": "Đen",
+  "media": {
+    "images": [
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227665/phonestore/products/Xiaomi/redmi-note-15-pro-5g/front.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227666/phonestore/products/Xiaomi/redmi-note-15-pro-5g/back.webp",
+      "https://res.cloudinary.com/dw9catzob/image/upload/v1782227667/phonestore/products/Xiaomi/redmi-note-15-pro-5g/detail.webp"
+    ],
+    "videos": [
+      "data/dienthoai/Xiaomi/redmi-note-15-pro-5g/videos/intro.webm"
+    ]
+  },
+  "needs": [],
+  "specialFeatures": [
+    "waterResist",
+    "fast",
+    "superFast",
+    "5G",
+    "nfc"
+  ]
+}
