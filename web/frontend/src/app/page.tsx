@@ -32,10 +32,6 @@ async function getProducts() {
 
 export default async function Home() {
   const products = await getProducts();
-  
-  // Find database products for Samsung & Apple banners
-  const samsungProduct = products.find((p: any) => p.hang?.toLowerCase() === 'samsung');
-  const appleProduct = products.find((p: any) => p.hang?.toLowerCase() === 'apple');
 
   return (
     <>
@@ -92,7 +88,7 @@ export default async function Home() {
             </div>
 
             {/* Right Banner Carousel */}
-            <HeroBannerCarousel products={products} />
+            <HeroBannerCarousel />
         </div>
       </section>
 
@@ -105,17 +101,17 @@ export default async function Home() {
             title="Thế Hệ Galaxy Mới" 
             description="Trải nghiệm quyền năng AI mạnh mẽ cùng dòng điện thoại Samsung Galaxy S26 Series mới nhất." 
             ctaText="Tìm hiểu thêm" 
-            href={samsungProduct ? `/phone/${samsungProduct.slug}` : '/phone?hang=Samsung'}
+            href="/phone/galaxy-s26-ultra-256gb"
             variant="secondary"
-            imageUrl={samsungProduct?.media?.[0]?.url || 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=600&auto=format&fit=crop'}
+            imageUrl="https://res.cloudinary.com/dw9catzob/image/upload/v1782227546/phonestore/products/Samsung/galaxy-s26-ultra-256gb/front.webp"
           />
           <Banner 
             title="Đặc Quyền Premium" 
             description="Tặng kèm gói bảo hành rơi vỡ 12 tháng cho mọi hóa đơn mua điện thoại trên 15 triệu." 
             ctaText="Xem chi tiết" 
-            href={appleProduct ? `/phone/${appleProduct.slug}` : '/phone?hang=Apple'}
+            href="/phone/iphone-16-pro-max-256gb"
             variant="primary"
-            imageUrl={appleProduct?.media?.[0]?.url || 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=600&auto=format&fit=crop'}
+            imageUrl="https://res.cloudinary.com/dw9catzob/image/upload/v1782227152/phonestore/products/Apple/iphone-16-pro-max-256gb/front.webp"
           />
         </div>
       </section>
