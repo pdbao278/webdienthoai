@@ -34,8 +34,8 @@ const STATIC_SLIDES: BannerSlide[] = [
   {
     id: 'static-1',
     tag: 'Siêu phẩm mới',
-    title: 'iPhone 16 Pro Max - Đỉnh cao Titan',
-    description: 'Chất liệu Titan cấp hàng không bền nhẹ tuyệt đối, nút Camera Control độc đáo nâng tầm trải nghiệm quay chụp chuyên nghiệp.',
+    title: 'iPhone 17 Pro Max - Đỉnh cao công nghệ',
+    description: 'Trải nghiệm chip Apple A19 Pro siêu mạnh mẽ, màn hình 6.9 inch tuyệt mỹ cùng camera cải tiến vượt bậc.',
     btnText: 'Mua ngay',
     href: '/phone?hang=Apple',
     imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=600&auto=format&fit=crop',
@@ -46,8 +46,8 @@ const STATIC_SLIDES: BannerSlide[] = [
   {
     id: 'static-2',
     tag: 'Sản phẩm nổi bật',
-    title: 'Galaxy S26 Ultra - Tuyệt tác công nghệ',
-    description: 'Mở ra kỷ nguyên di động tối tân cùng vi xử lý Snapdragon mạnh mẽ, camera 200MP siêu zoom bắt trọn mọi chi tiết.',
+    title: 'Galaxy S26 Ultra - Quyền năng AI mới',
+    description: 'Khám phá chụp ảnh zoom siêu đỉnh 200MP, cấu hình mạnh mẽ với Snapdragon 8 Gen 5 cùng các quyền năng Galaxy AI tối tân.',
     btnText: 'Đặt trước ngay',
     href: '/phone?hang=Samsung',
     imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=600&auto=format&fit=crop',
@@ -61,10 +61,59 @@ export default function HeroBannerCarousel({ products = [] }: HeroBannerCarousel
   const [current, setCurrent] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Map products from DB to slides dynamically
-  const featuredProducts = products
-    .filter(p => p.media && p.media.length > 0)
-    .slice(0, 3);
+  // Smart filtering logic to fetch the exact flagship hot products requested by user
+  const getBannerProducts = useCallback((): Product[] => {
+    if (!products || products.length === 0) return [];
+    
+    const bannerItems: Product[] = [];
+
+    // 1. Search for Apple flagships (iPhone 17 Pro/Max, 16 Pro/Max, 15 Pro/Max)
+    const iphone = products.find(p => 
+      p.hang?.toLowerCase() === 'apple' && 
+      (p.sanPham?.toLowerCase().includes('17 pro') || 
+       p.sanPham?.toLowerCase().includes('16 pro') || 
+       p.sanPham?.toLowerCase().includes('15 pro'))
+    ) || products.find(p => p.hang?.toLowerCase() === 'apple');
+
+    if (iphone) bannerItems.push(iphone);
+
+    // 2. Search for Samsung flagships (Galaxy S26 Ultra, S25 Ultra, S24 Ultra, Z Fold)
+    const samsung = products.find(p => 
+      p.hang?.toLowerCase() === 'samsung' && 
+      (p.sanPham?.toLowerCase().includes('s26 ultra') || 
+       p.sanPham?.toLowerCase().includes('s25 ultra') || 
+       p.sanPham?.toLowerCase().includes('s24 ultra') ||
+       p.sanPham?.toLowerCase().includes('z fold'))
+    ) || products.find(p => p.hang?.toLowerCase() === 'samsung' && p.phanKhuc === 'FLAGSHIP');
+
+    if (samsung) bannerItems.push(samsung);
+
+    // 3. Search for third flagship (Xiaomi 16, Xiaomi 15, Oppo Find, or any other flagship)
+    const thirdFlagship = products.find(p => 
+      p.id !== iphone?.id && 
+      p.id !== samsung?.id && 
+      (p.sanPham?.toLowerCase().includes('xiaomi 16') || 
+       p.sanPham?.toLowerCase().includes('xiaomi 15') || 
+       p.sanPham?.toLowerCase().includes('find n3') ||
+       p.phanKhuc === 'FLAGSHIP')
+    ) || products.find(p => p.id !== iphone?.id && p.id !== samsung?.id);
+
+    if (thirdFlagship) bannerItems.push(thirdFlagship);
+
+    // Fill remaining slides if less than 3
+    if (bannerItems.length < 3) {
+      for (const p of products) {
+        if (!bannerItems.some(item => item.id === p.id) && p.media && p.media.length > 0) {
+          bannerItems.push(p);
+          if (bannerItems.length >= 3) break;
+        }
+      }
+    }
+
+    return bannerItems.slice(0, 3);
+  }, [products]);
+
+  const featuredProducts = getBannerProducts();
 
   const slides: BannerSlide[] = featuredProducts.length > 0
     ? featuredProducts.map((p, idx) => {
@@ -74,11 +123,18 @@ export default function HeroBannerCarousel({ products = [] }: HeroBannerCarousel
           { bg: 'from-sky-50/60 via-white to-blue-50/30', g1: 'bg-sky-400/10', g2: 'bg-teal-400/10' }
         ];
         const grad = gradients[idx % gradients.length];
+        
+        // Refined tag/description mapping
+        let tag = 'Sản phẩm nổi bật';
+        if (p.phanKhuc === 'FLAGSHIP') {
+          tag = p.hang?.toLowerCase() === 'apple' ? 'Đỉnh cao Apple' : 'Siêu phẩm flagship';
+        }
+        
         return {
           id: p.id,
-          tag: p.phanKhuc === 'FLAGSHIP' ? 'Siêu phẩm cao cấp' : 'Sản phẩm nổi bật',
+          tag,
           title: p.sanPham,
-          description: p.moTa || 'Trải nghiệm cấu hình vượt trội cùng mức giá cực kỳ hấp dẫn tại PhoneStore.',
+          description: p.moTa || `Sở hữu ngay ${p.sanPham} chính hãng với cấu hình hàng đầu, camera đỉnh cao và thời lượng pin bền bỉ.`,
           btnText: 'Mua ngay',
           href: `/phone/${p.slug}`,
           imageUrl: p.media?.[0]?.url || 'https://placehold.co/600x600/png?text=No+Image',
@@ -104,7 +160,7 @@ export default function HeroBannerCarousel({ products = [] }: HeroBannerCarousel
     return () => clearInterval(interval);
   }, [isHovered, nextSlide]);
 
-  // If current slide index is out of bounds due to changing products list
+  // Ensure current slide index is valid if list length changes
   useEffect(() => {
     if (current >= slides.length) {
       setCurrent(0);
