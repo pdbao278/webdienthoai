@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { getCurrentFlashSale } from '../controllers/flash-sale.controller';
+import { getTodayFlashSales } from '../controllers/flash-sale.controller';
 
 const router = Router();
 
-router.get('/current', getCurrentFlashSale);
+router.get('/today', getTodayFlashSales);
 
 export default router;

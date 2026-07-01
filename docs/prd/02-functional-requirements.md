@@ -203,9 +203,16 @@
 
 #### FR-17: Quản Lý & Hiển Thị Flash Sale (P0) - [NEW Tính Năng Mới]
 > **Ghi chú:** Đây là nghiệp vụ mở rộng mới được bổ sung độc lập.
-- **Quản trị (Admin):** CRUD các khung giờ Flash Sale. Admin có thể thêm các sản phẩm/biến thể (chọn màu sắc, dung lượng) vào Flash Sale, thiết lập giá Flash Sale (`gia_flash_sale`), số lượng giới hạn và thời gian (`batDau`, `ketThuc`). Chỉ tài khoản `ADMIN` mới có quyền truy cập chức năng này.
-- **Tự động hóa giá:** Giá sản phẩm tự động cập nhật về `gia_flash_sale` khi đến giờ và tự nhảy về giá gốc khi hết giờ, quản lý hoàn toàn bằng logic thời gian thực ở Backend thay vì cronjob.
-- **Trang chủ:** Hiển thị khu vực Flash Sale giữa 2 phần Banner. Tích hợp bộ đếm ngược thời gian (Countdown Timer) tránh lỗi Hydration. Hiển thị thanh trạng thái số lượng (Đã bán X/Tổng Y).
+- **Quản trị (Admin):** CRUD các chương trình Flash Sale. Form cài đặt thiết kế cố định lịch trình: Admin chỉ được chọn 3 ngày (Hôm nay, Ngày mai, Mốt) và chọn các khung giờ cố định (00:00, 09:00, 12:00, 15:00, 18:00) thay vì chọn tự do. Hệ thống tự tính `batDau` và `ketThuc`. Admin có thể thêm sản phẩm/biến thể (chọn màu sắc, dung lượng) vào Flash Sale, thiết lập giá Flash Sale (`gia_flash_sale`), số lượng giới hạn.
+- **Tự động hóa giá:** Giá sản phẩm tự động cập nhật về `gia_flash_sale` khi đến giờ và tự nhảy về giá gốc khi hết giờ, quản lý hoàn toàn bằng logic thời gian thực ở Backend.
+- **Trang chủ (Giao diện "Khuyến mãi online"):** 
+  - Khối UI đặc biệt bao gồm Top Bar (Badge FLASH SALE, GIẢM ĐẾN 50%, các Tab danh mục như Điện Thoại, Apple, Laptop...).
+  - Thanh Timeline chia 5 khung giờ mặc định (00:00, 09:00, 12:00, 15:00, 18:00). Thanh này **luôn luôn hiển thị đủ 5 mốc thời gian của ngày hôm nay** kể cả khi không có dữ liệu Flash Sale trong DB.
+  - Khung giờ đang diễn ra sẽ hiển thị nổi bật dạng Segmented Control (nền cam, bo tròn) kèm Countdown Timer (`00 : 39 : 30`) chữ cam nền trắng. Hệ thống tự động chọn (active) và cuộn ngang (auto-scroll) tới khung giờ hiện hành khi tải trang.
+  - Các khung giờ tương lai sẽ hiển thị dạng tab chờ "Sắp diễn ra HH:MM".
+  - Với các khung giờ chưa đến giờ mở bán, **giá sản phẩm sẽ bị ẩn** đi các chữ số phía sau (ví dụ: `1?.???.??? ₫`) để tạo sự tò mò. Trạng thái thanh số lượng hiển thị "Mở bán X suất" (0%).
+  - Nếu click vào một khung giờ không có sản phẩm nào, hệ thống sẽ hiển thị khối thông báo rỗng "Chưa có sản phẩm flash sale.. Vui lòng quay lại sau nhé!".
+  - Hiển thị thanh trạng thái số lượng (Đã bán X/Tổng Y) dạng viên thuốc màu vàng cam kèm icon ngọn lửa/tia sét đối với slot đang diễn ra.
 - **Giới hạn mua hàng:** Mỗi khách hàng chỉ được mua tối đa 1 sản phẩm Flash Sale cho mỗi biến thể. Nếu mua từ 2 sản phẩm trở lên, sản phẩm đầu tiên tính giá Flash Sale, các sản phẩm còn lại tính giá gốc. Logic này áp dụng xuyên suốt từ Giỏ hàng tới lúc Checkout.
 
 ---

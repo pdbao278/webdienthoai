@@ -116,25 +116,15 @@ export default async function PhonePage({
         </div>
       </section>
 
-      {/* Brands Row */}
-      <section className="py-6">
-          <div className="container mx-auto px-4 lg:px-6">
-              <div className="flex justify-between gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                  {['Apple', 'Samsung', 'Xiaomi', 'OPPO', 'Vivo', 'Realme', 'Honor'].map(brand => (
-                    <Link key={brand} href={`/phone?hang=${brand}`} className="flex-1 min-w-[110px] h-[50px] bg-white border border-slate-200/60 rounded-xl flex items-center justify-center font-[var(--font-outfit)] font-semibold text-[0.9rem] text-slate-500 transition-all duration-200 ease-[var(--ease-out-expo)] hover:border-sky-500/40 hover:text-sky-600 hover:-translate-y-0.5 hover:shadow-card active:scale-[0.97]">
-                      {brand}
-                    </Link>
-                  ))}
-              </div>
-          </div>
-      </section>
 
       {/* Products Grid Section */}
-      <main className="flex-1 py-12">
+      <main className="flex-1 py-8">
         <div className="container mx-auto px-4 lg:px-6">
-          <h1 className="font-[var(--font-outfit)] text-[1.35rem] font-bold text-slate-800 tracking-tight mb-6">Danh sách điện thoại</h1>
-          
-          <Suspense fallback={<div className="h-16 bg-white rounded-2xl shadow-card border border-slate-200/60 animate-pulse mb-6" />}>
+          <h1 className="font-[var(--font-outfit)] text-[1.35rem] font-bold text-slate-800 tracking-tight mb-4">
+            Danh sách điện thoại
+          </h1>
+
+          <Suspense fallback={<div className="h-[52px] bg-white rounded-2xl shadow-card border border-slate-200/60 animate-pulse mb-6" />}>
             <FilterBar />
           </Suspense>
 
@@ -145,14 +135,14 @@ export default async function PhonePage({
                   <ProductCard key={p.id} product={p} />
                 ))}
               </div>
-              
+
               {/* Pagination */}
               {pagination && pagination.totalPages > 1 && (
                 <div className="flex justify-center mt-12 space-x-2">
                   {Array.from({ length: pagination.totalPages }).map((_, i) => {
                     const pageNum = i + 1;
                     const isActive = pageNum === (pagination.page || 1);
-                    
+
                     const pageQuery = new URLSearchParams();
                     Object.entries(resolvedParams).forEach(([key, value]) => {
                       if (typeof value === 'string') pageQuery.set(key, value);
@@ -160,10 +150,14 @@ export default async function PhonePage({
                     pageQuery.set('page', pageNum.toString());
 
                     return (
-                      <Link 
+                      <Link
                         key={pageNum}
                         href={`/phone?${pageQuery.toString()}`}
-                        className={`w-10 h-10 flex items-center justify-center rounded-xl font-medium transition-all duration-200 active:scale-[0.95] ${isActive ? 'bg-sky-600 text-white shadow-card' : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200/80 hover:border-slate-300'}`}
+                        className={`w-10 h-10 flex items-center justify-center rounded-xl font-medium transition-all duration-200 active:scale-[0.95] ${
+                          isActive
+                            ? 'bg-sky-600 text-white shadow-card'
+                            : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200/80 hover:border-slate-300'
+                        }`}
                       >
                         {pageNum}
                       </Link>
@@ -175,7 +169,9 @@ export default async function PhonePage({
           ) : (
             <div className="bg-white rounded-3xl p-12 text-center shadow-card border border-slate-200/60">
               <div className="text-slate-300 mb-4 flex justify-center">
-                <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </div>
               <h3 className="text-lg font-bold text-slate-700 tracking-tight">Không tìm thấy sản phẩm phù hợp</h3>
               <p className="text-slate-500 mt-2 text-sm">Vui lòng thử điều chỉnh lại bộ lọc.</p>

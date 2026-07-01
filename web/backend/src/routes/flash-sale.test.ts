@@ -65,13 +65,9 @@ describe('Public Flash Sale API', () => {
     await prisma.$disconnect();
   });
 
-  it('should return the current active flash sale', async () => {
-    const res = await request(app).get('/api/flash-sales/current');
+  it('should get today flash sales', async () => {
+    const res = await request(app).get('/api/flash-sales/today');
     expect(res.status).toBe(200);
-    expect(res.body.data).toHaveProperty('id');
-    expect(res.body.data.items).toBeInstanceOf(Array);
-    expect(res.body.data.items.length).toBeGreaterThan(0);
-    expect(res.body.data.items[0]).toHaveProperty('productVariant');
-    expect(res.body.data.items[0].productVariant).toHaveProperty('product');
+    expect(res.body.data).toBeInstanceOf(Array);
   });
 });

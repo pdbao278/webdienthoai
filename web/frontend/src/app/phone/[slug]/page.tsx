@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button';
 import ProductInteractiveSection from '@/components/product/ProductInteractiveSection';
 import ProductReviews from '@/components/product/ProductReviews';
 import ProductDescription from '@/components/product/ProductDescription';
+import Banner from '@/components/ui/Banner';
 import dynamic from 'next/dynamic';
 
 const CompareWidget = dynamic(() => import('@/components/product/CompareWidget'), { 
@@ -167,6 +168,18 @@ export default async function ProductDetailPage({
             <ProductReviews slug={product.slug} />
           </div>
         </div>
+
+        {/* Promotional Banner */}
+        <section className="mt-12">
+          <Banner 
+            title="Sắm Siêu Phẩm - Tặng Quà Khủng" 
+            description="Tặng ngay tai nghe không dây hoặc ốp lưng MagSafe khi mua các dòng điện thoại cao cấp. Trả góp 0%." 
+            ctaText="Tìm hiểu ngay" 
+            href="/chinh-sach-tra-gop"
+            badge="Ưu đãi Đặc quyền"
+            variant="secondary"
+          />
+        </section>
 
         <CompareWidget currentProduct={product} />
       </main>

@@ -57,11 +57,30 @@ export default function AdminFlashSalesPage() {
   
   const [formData, setFormData] = useState({
     ten: '',
-    batDau: '',
-    ketThuc: '',
+    ngay: '',
+    khungGio: '',
     isActive: true,
     items: [] as any[]
   });
+
+  const today = new Date();
+  const tmrw = new Date(today); tmrw.setDate(tmrw.getDate() + 1);
+  const dayAfter = new Date(today); dayAfter.setDate(dayAfter.getDate() + 2);
+  
+  const formatDateForSelect = (d: Date) => {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  };
+
+  const dayOptions = [
+    { value: formatDateForSelect(today), label: `Hôm nay (${today.toLocaleDateString('vi-VN')})` },
+    { value: formatDateForSelect(tmrw), label: `Ngày mai (${tmrw.toLocaleDateString('vi-VN')})` },
+    { value: formatDateForSelect(dayAfter), label: `Ngày mốt (${dayAfter.toLocaleDateString('vi-VN')})` },
+  ];
+
+  const timeSlots = ['00:00', '09:00', '12:00', '15:00', '18:00'];
 
   const fetchFlashSales = async () => {
     try {
@@ -99,8 +118,8 @@ export default function AdminFlashSalesPage() {
     setEditingFlashSale(null);
     setFormData({
       ten: '',
-      batDau: '',
-      ketThuc: '',
+      ngay: dayOptions[0].value,
+      khungGio: timeSlots[0],
       isActive: true,
       items: []
     });
@@ -116,10 +135,15 @@ export default function AdminFlashSalesPage() {
       const fullFS = data.data;
 
       setEditingFlashSale(fullFS);
+      const batDauDate = new Date(fullFS.batDau);
+      const ngay = formatDateForSelect(batDauDate);
+      const h = String(batDauDate.getHours()).padStart(2, '0');
+      const m = String(batDauDate.getMinutes()).padStart(2, '0');
+      
       setFormData({
         ten: fullFS.ten,
-        batDau: new Date(fullFS.batDau).toISOString().slice(0, 16),
-        ketThuc: new Date(fullFS.ketThuc).toISOString().slice(0, 16),
+        ngay: ngay,
+        khungGio: `${h}:${m}`,
         isActive: fullFS.isActive,
         items: fullFS.items.map((i: any) => ({
           productVariantId: i.productVariantId,
@@ -146,20 +170,39 @@ export default function AdminFlashSalesPage() {
   };
 
   const handleSubmit = async () => {
-    if (!formData.ten || !formData.batDau || !formData.ketThuc || formData.items.length === 0) {
+    if (!formData.ten || !formData.ngay || !formData.khungGio || formData.items.length === 0) {
       toast.error('Vui lòng nhập đủ thông tin và chọn ít nhất 1 sản phẩm');
       return;
     }
     
     setIsSubmitting(true);
     try {
+      // Tính toán batDau và ketThuc
+      const [year, month, day] = formData.ngay.split('-').map(Number);
+      const [hours, minutes] = formData.khungGio.split(':').map(Number);
+      
+      const batDau = new Date(year, month - 1, day, hours, minutes, 0);
+      let ketThuc = new Date(batDau);
+      
+      // Tính kết thúc dựa trên slot tiếp theo
+      if (hours === 0) ketThuc.setHours(9, 0, 0);
+      else if (hours === 9) ketThuc.setHours(12, 0, 0);
+      else if (hours === 12) ketThuc.setHours(15, 0, 0);
+      else if (hours === 15) ketThuc.setHours(18, 0, 0);
+      else if (hours === 18) {
+        ketThuc.setDate(ketThuc.getDate() + 1);
+        ketThuc.setHours(0, 0, 0);
+      } else {
+        ketThuc.setHours(hours + 3, 0, 0); // fallback
+      }
+
       const url = editingFlashSale ? `/admin/flash-sales/${editingFlashSale.id}` : '/admin/flash-sales';
       const method = editingFlashSale ? 'PUT' : 'POST';
 
       const payload = {
         ...formData,
-        batDau: new Date(formData.batDau).toISOString(),
-        ketThuc: new Date(formData.ketThuc).toISOString(),
+        batDau: batDau.toISOString(),
+        ketThuc: ketThuc.toISOString(),
         items: formData.items.map(i => ({
           productVariantId: i.productVariantId,
           giaFlashSale: Number(i.giaFlashSale),
@@ -297,8 +340,34 @@ export default function AdminFlashSalesPage() {
               <Input label="Tên chương trình" value={formData.ten} onChange={e => setFormData({...formData, ten: e.target.value})} required />
               
               <div className="grid grid-cols-2 gap-4">
-                <Input label="Bắt đầu" type="datetime-local" value={formData.batDau} onChange={e => setFormData({...formData, batDau: e.target.value})} required />
-                <Input label="Kết thúc" type="datetime-local" value={formData.ketThuc} onChange={e => setFormData({...formData, ketThuc: e.target.value})} required />
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Ngày diễn ra</label>
+                  <select 
+                    className="w-full px-3 py-2 bg-white border border-slate-200/80 rounded-lg text-sm focus:border-sky-500 focus:ring-2 focus:ring-sky-500/15 outline-none transition-all"
+                    value={formData.ngay}
+                    onChange={e => setFormData({...formData, ngay: e.target.value})}
+                    required
+                  >
+                    <option value="">-- Chọn ngày --</option>
+                    {dayOptions.map(d => (
+                      <option key={d.value} value={d.value}>{d.label}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Khung giờ</label>
+                  <select 
+                    className="w-full px-3 py-2 bg-white border border-slate-200/80 rounded-lg text-sm focus:border-sky-500 focus:ring-2 focus:ring-sky-500/15 outline-none transition-all"
+                    value={formData.khungGio}
+                    onChange={e => setFormData({...formData, khungGio: e.target.value})}
+                    required
+                  >
+                    <option value="">-- Chọn giờ --</option>
+                    {timeSlots.map(t => (
+                      <option key={t} value={t}>{t}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div className="flex items-center gap-2">

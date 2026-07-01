@@ -1,16 +1,17 @@
 import { Request, Response } from 'express';
 import prisma from '../lib/prisma';
 
-export const getCurrentFlashSale = async (req: Request, res: Response): Promise<void> => {
+export const getTodayFlashSales = async (req: Request, res: Response): Promise<void> => {
   try {
     const now = new Date();
-    const activeFlashSale = await prisma.flashSale.findFirst({
+    // Get all flash sales that have not ended yet (active or upcoming)
+    const flashSales = await prisma.flashSale.findMany({
       where: {
         isActive: true,
-        batDau: { lte: now },
-        ketThuc: { gte: now }
+        ketThuc: { gt: now }
       },
-      orderBy: { batDau: 'desc' },
+      orderBy: { batDau: 'asc' },
+      take: 4, // Get next 4 slots for timeline
       include: {
         items: {
           include: {
@@ -32,12 +33,7 @@ export const getCurrentFlashSale = async (req: Request, res: Response): Promise<
       }
     });
 
-    if (!activeFlashSale) {
-      res.status(200).json({ data: null });
-      return;
-    }
-
-    res.status(200).json({ data: activeFlashSale });
+    res.status(200).json({ data: flashSales });
   } catch (error: any) {
     res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
   }

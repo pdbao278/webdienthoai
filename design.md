@@ -131,6 +131,12 @@ Mặc dù danh mục đầy đủ gồm cả Điện thoại, Laptop và Phụ k
         *   Tên sản phẩm màu xám đá đậm (`text-slate-800`).
         *   Giá bán khuyến mãi màu Rose nhạt, giá gốc màu xám nhạt gạch ngang.
         *   Rating hiển thị bằng các ngôi sao màu vàng cát dịu (`text-amber-400`), không chói.
+*   **Khối Flash Sale (Khuyến mãi online)**:
+    *   **Tiêu đề & Top Bar**: Tiêu đề "Khuyến mãi online" ở góc trái. Bar ngang chứa các logo badge đặc trưng (FLASH SALE nền cam đỏ, GIẢM ĐẾN 50% xanh lá). Bên cạnh là các Tab danh mục (Điện Thoại, Apple, Laptop...).
+    *   **Thanh Timeline**: Luôn hiển thị 5 mốc giờ cố định (00:00, 09:00, 12:00, 15:00, 18:00) cho dù có sản phẩm hay không, thiết kế dạng Segmented Control bo tròn trên nền `bg-slate-100`. Khung giờ đang Active sẽ có nền màu cam sáng, chứa bộ đếm ngược định dạng khối `00 : 39 : 30` (chữ cam nền trắng). Hệ thống có tính năng cuộn ngang tự động (auto-scroll) tới khung giờ hiện hành.
+    *   **Product Card**: Thẻ trắng phẳng, giá giảm màu đỏ cam nổi bật. Phía trên giá giảm là tên sản phẩm, phía dưới là giá gốc gạch ngang kèm tag % màu đỏ nhạt. **Lưu ý**: Nếu khung giờ chưa bắt đầu, giá sẽ bị ẩn một phần (vd: `1?.???.??? ₫`) để tạo sự tò mò.
+    *   **Progress Bar**: Thanh trạng thái số lượng nằm ở đáy card, hình viên thuốc nền vàng cam, biểu tượng ngọn lửa/sét. Nếu đang diễn ra: "Còn X/Y suất", nếu chưa diễn ra: "Mở bán X suất" (mức progress ở 0%).
+    *   **Trạng thái rỗng**: Nếu một khung giờ chưa có sản phẩm Flash Sale, khối UI sản phẩm sẽ hiện thông báo "Chưa có sản phẩm flash sale.. Vui lòng quay lại sau nhé!".
 *   **Điện Thoại Theo Loại (Category Tabs)**:
     *   Các tab phân loại (Flagship, Tầm trung, Gaming...) chuyển đổi bằng hiệu ứng trượt mượt mà (smooth indicator).
 

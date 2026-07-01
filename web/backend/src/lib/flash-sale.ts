@@ -38,10 +38,13 @@ export async function getActiveFlashSaleMap() {
   return flashSaleMap;
 }
 
-export async function applyFlashSalePrices(variants: any[]) {
+export async function applyFlashSalePrices(
+  variants: any[],
+  getFlashSaleMapFn: () => Promise<Map<string, any>> = getActiveFlashSaleMap
+) {
   if (!variants || variants.length === 0) return variants;
 
-  const flashSaleMap = await getActiveFlashSaleMap();
+  const flashSaleMap = await getFlashSaleMapFn();
   if (flashSaleMap.size === 0) return variants;
 
   // Apply prices

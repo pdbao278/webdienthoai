@@ -95,7 +95,9 @@ describe('Product API', () => {
       
       const res = await request(app).get('/api/products?sort=gia_asc');
       expect(res.status).toBe(200);
-      const prices = res.body.data.map((p: any) => Math.min(...p.variants.map((v:any) => v.giaBan)));
+      // Only include products that have variants to avoid Math.min() returning Infinity
+      const productsWithVariants = res.body.data.filter((p: any) => p.variants && p.variants.length > 0);
+      const prices = productsWithVariants.map((p: any) => Math.min(...p.variants.map((v:any) => v.giaBan)));
       // Ensure sorted ascending
       for (let i = 0; i < prices.length - 1; i++) {
         expect(prices[i]).toBeLessThanOrEqual(prices[i+1]);
@@ -121,7 +123,9 @@ describe('Product API', () => {
       
       const res = await request(app).get('/api/products?sort=gia_desc');
       expect(res.status).toBe(200);
-      const prices = res.body.data.map((p: any) => Math.min(...p.variants.map((v:any) => v.giaBan)));
+      // Only include products that have variants to avoid Math.min() returning Infinity
+      const productsWithVariants = res.body.data.filter((p: any) => p.variants && p.variants.length > 0);
+      const prices = productsWithVariants.map((p: any) => Math.min(...p.variants.map((v:any) => v.giaBan)));
       // Ensure sorted descending
       for (let i = 0; i < prices.length - 1; i++) {
         expect(prices[i]).toBeGreaterThanOrEqual(prices[i+1]);
