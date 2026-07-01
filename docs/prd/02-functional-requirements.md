@@ -105,7 +105,8 @@
 - **Tìm kiếm tùy trang:** Kết hợp từ khóa (`q`) với bộ lọc và sắp xếp trên trang danh sách. Trạng thái lưu trên URL Params.
 
 #### FR-08: So Sánh Sản Phẩm (P1)
-- So sánh sản phẩm tại chân trang chi tiết. Đề xuất sản phẩm liên quan hoặc tìm kiếm nhanh để đối chiếu cấu hình (tối đa 4 sản phẩm).
+- **Tích hợp So Sánh & Gợi ý thông minh (Smart Quick Compare):** Phần so sánh sản phẩm được kết hợp trực tiếp với danh sách "Sản phẩm gợi ý". Thay vì dùng API AI phức tạp, hệ thống sẽ sử dụng thuật toán gợi ý cục bộ (Rule-based Heuristics hoặc các thư viện tính độ tương đồng có sẵn của Node.js như `ml-knn`, `content-based-recommender`). Thuật toán tự động lọc các máy có cùng mức giá (chênh lệch ± 15%), cùng phân khúc hoặc cấu hình tương đương (RAM/ROM). Người dùng có thể bấm chọn nhanh để đưa vào khay so sánh (tối đa 4 sản phẩm).
+- **Tìm kiếm & Đối chiếu:** Tích hợp thanh tìm kiếm nhanh ngay trong module so sánh để chủ động thêm sản phẩm khác. Bảng so sánh hiển thị đối chiếu thông số cấu hình trực quan theo hàng ngang.
 
 ---
 

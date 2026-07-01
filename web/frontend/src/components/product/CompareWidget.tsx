@@ -5,7 +5,7 @@ import { getApiUrl } from '@/lib/api';
 import { formatCurrency } from '@/lib/utils';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { Search, Loader2, X, PlusCircle, Scale } from 'lucide-react';
+import { Search, Loader2, X, PlusCircle, Scale, Sparkles } from 'lucide-react';
 
 interface Variant {
   id: string;
@@ -56,6 +56,8 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
   const [isSearching, setIsSearching] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [suggestions, setSuggestions] = useState<any[]>([]);
+  const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Lock body scroll when popup is open
@@ -104,6 +106,26 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
 
     return () => clearTimeout(delayDebounce);
   }, [searchQuery]);
+
+  // Fetch suggestions
+  useEffect(() => {
+    if (!currentProduct?.slug) return;
+    const fetchSuggestions = async () => {
+      setIsLoadingSuggestions(true);
+      try {
+        const res = await fetch(getApiUrl(`/products/${currentProduct.slug}/suggestions`));
+        if (res.ok) {
+          const data = await res.json();
+          setSuggestions(data.data || []);
+        }
+      } catch (err) {
+        console.error('Failed to fetch suggestions', err);
+      } finally {
+        setIsLoadingSuggestions(false);
+      }
+    };
+    fetchSuggestions();
+  }, [currentProduct?.slug]);
 
   const handleAddProduct = async (slug: string) => {
     if (comparedList.some(p => p.slug === slug)) {
@@ -226,6 +248,57 @@ export default function CompareWidget({ currentProduct }: { currentProduct: Prod
           </div>
         )}
       </div>
+
+      {/* Suggestions Section */}
+      {(isLoadingSuggestions || suggestions.length > 0) && comparedList.length < 4 && (
+        <div className="mt-2 bg-gradient-to-r from-sky-50/50 to-indigo-50/50 p-4 rounded-2xl border border-sky-100/50 animate-fade-in-up">
+          <div className="flex items-center gap-2 mb-3">
+            <Sparkles className="text-sky-500" size={16} strokeWidth={2.5} />
+            <span className="text-sm font-bold text-slate-700 tracking-tight">
+              Gợi ý so sánh thông minh
+            </span>
+          </div>
+          <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide snap-x">
+            {isLoadingSuggestions ? (
+              // Skeletons
+              Array.from({ length: 3 }).map((_, i) => (
+                <div key={`skeleton-${i}`} className="flex-shrink-0 snap-start flex items-center gap-3 px-3 py-2 bg-white/60 border border-slate-200/40 rounded-xl w-[220px] animate-pulse">
+                  <div className="w-10 h-10 bg-slate-200 rounded-lg shrink-0"></div>
+                  <div className="flex-1 space-y-2">
+                    <div className="h-3 bg-slate-200 rounded w-3/4"></div>
+                    <div className="h-2 bg-slate-200 rounded w-1/2"></div>
+                  </div>
+                  <div className="w-6 h-6 rounded-full bg-slate-200 shrink-0"></div>
+                </div>
+              ))
+            ) : (
+              // Actual suggestions
+              suggestions.filter(s => !comparedList.some(c => c.id === s.id)).map(s => (
+              <button
+                key={s.id}
+                onClick={() => handleAddProduct(s.slug)}
+                className="flex-shrink-0 snap-start flex items-center gap-3 px-3 py-2 bg-white hover:bg-sky-50/80 border border-slate-200/60 hover:border-sky-300 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 group w-[220px]"
+              >
+                <div className="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center p-1 border border-slate-100 shrink-0">
+                  <img
+                    src={s.media?.[0]?.url || '/placeholder.png'}
+                    alt={s.sanPham}
+                    className="w-full h-full object-contain mix-blend-multiply drop-shadow-sm group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <div className="text-left flex-1 min-w-0">
+                  <div className="text-[13px] font-bold text-slate-700 group-hover:text-sky-700 line-clamp-1">{s.sanPham}</div>
+                  <div className="text-[11px] text-sky-600 font-extrabold mt-0.5">{s.variants?.[0] ? formatCurrency(s.variants[0].giaBan).replace('₫', 'đ') : 'N/A'}</div>
+                </div>
+                <div className="w-6 h-6 rounded-full bg-slate-50 shrink-0 flex items-center justify-center group-hover:bg-sky-100 transition-colors">
+                  <PlusCircle size={14} className="text-slate-400 group-hover:text-sky-500" strokeWidth={2.5} />
+                </div>
+              </button>
+            ))
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Row of 4 Products */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

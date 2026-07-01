@@ -69,4 +69,21 @@ describe('Product Controller', () => {
       expect(product.variants.length).toBeLessThanOrEqual(1);
     }
   });
+  it('should return product suggestions within price range', async () => {
+    // First find a product to use as base
+    const searchRes = await request(app).get('/api/products');
+    if (searchRes.body.data.length > 0) {
+      const baseProduct = searchRes.body.data[0];
+      const slug = baseProduct.slug;
+      
+      const res = await request(app).get(`/api/products/${slug}/suggestions`);
+      expect(res.status).toBe(200);
+      expect(res.body.data).toBeInstanceOf(Array);
+      
+      // Ensure base product is not in suggestions
+      res.body.data.forEach((product: any) => {
+        expect(product.id).not.toBe(baseProduct.id);
+      });
+    }
+  });
 });

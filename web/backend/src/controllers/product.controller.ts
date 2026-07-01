@@ -194,6 +194,146 @@ export const getProductBySlug = async (req: Request, res: Response): Promise<voi
   }
 };
 
+export const getProductSuggestions = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { slug } = req.params;
+    
+    // Find base product
+    const baseProduct = await prisma.product.findUnique({
+      where: { slug, isActive: true },
+      include: {
+        variants: true
+      }
+    });
+
+    if (!baseProduct || !baseProduct.variants || baseProduct.variants.length === 0) {
+      res.status(200).json({ data: [] });
+      return;
+    }
+
+    const minPrice = Math.min(...baseProduct.variants.map((v: any) => v.giaBan));
+    const lowerBound = Math.round(minPrice * 0.85);
+    const upperBound = Math.round(minPrice * 1.15);
+
+    // Fetch similar products in price range (±15%)
+    let similarProducts = await prisma.product.findMany({
+      where: {
+        isActive: true,
+        id: { not: baseProduct.id },
+        variants: {
+          some: {
+            giaBan: {
+              gte: lowerBound,
+              lte: upperBound
+            }
+          }
+        }
+      },
+      take: 10, // Fetch up to 10 to allow sorting by brand
+      select: {
+        id: true,
+        slug: true,
+        sanPham: true,
+        hang: true,
+        variants: {
+          orderBy: { giaBan: 'asc' },
+          select: { giaBan: true, giaGoc: true, dungLuongGb: true }
+        },
+        media: {
+          where: { isThumbnail: true },
+          take: 1,
+          select: { url: true }
+        }
+      }
+    });
+
+    // Fallback to ±30% if no products found
+    if (similarProducts.length === 0) {
+      const fallbackLowerBound = Math.round(minPrice * 0.70);
+      const fallbackUpperBound = Math.round(minPrice * 1.30);
+      similarProducts = await prisma.product.findMany({
+        where: {
+          isActive: true,
+          id: { not: baseProduct.id },
+          variants: {
+            some: {
+              giaBan: {
+                gte: fallbackLowerBound,
+                lte: fallbackUpperBound
+              }
+            }
+          }
+        },
+        take: 10,
+        select: {
+          id: true,
+          slug: true,
+          sanPham: true,
+          hang: true,
+          variants: {
+            orderBy: { giaBan: 'asc' },
+            select: { giaBan: true, giaGoc: true, dungLuongGb: true }
+          },
+          media: {
+            where: { isThumbnail: true },
+            take: 1,
+            select: { url: true }
+          }
+        }
+      });
+      
+      // If still none, fallback to same brand regardless of price
+      if (similarProducts.length === 0) {
+        similarProducts = await prisma.product.findMany({
+          where: {
+            isActive: true,
+            id: { not: baseProduct.id },
+            hang: baseProduct.hang
+          },
+          take: 10,
+          select: {
+            id: true,
+            slug: true,
+            sanPham: true,
+            hang: true,
+            variants: {
+              orderBy: { giaBan: 'asc' },
+              select: { giaBan: true, giaGoc: true, dungLuongGb: true }
+            },
+            media: {
+              where: { isThumbnail: true },
+              take: 1,
+              select: { url: true }
+            }
+          }
+        });
+      }
+    }
+
+    // Sort by same brand first
+    similarProducts.sort((a, b) => {
+      if (a.hang === baseProduct.hang && b.hang !== baseProduct.hang) return -1;
+      if (a.hang !== baseProduct.hang && b.hang === baseProduct.hang) return 1;
+      return 0;
+    });
+
+    // Take top 5 and apply flash sale prices
+    const topSuggestions = similarProducts.slice(0, 5);
+    if (topSuggestions.length > 0) {
+      for (const p of topSuggestions) {
+        if (p.variants) {
+          p.variants = await applyFlashSalePrices(p.variants) as any;
+          p.variants.sort((a: any, b: any) => a.giaBan - b.giaBan);
+        }
+      }
+    }
+
+    res.status(200).json({ data: topSuggestions });
+  } catch (error: any) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 export const searchProducts = async (req: Request, res: Response): Promise<void> => {
   try {
     const { q } = req.query;
