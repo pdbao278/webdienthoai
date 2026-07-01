@@ -1,25 +1,13 @@
-# M9 — TODO: Tính năng Mở rộng (Flash Sale)
+# Todo: M9 - Tính năng Mở rộng (Flash Sale)
 
-## Phase 1: Database & Foundation
-- [x] Task 1: Cập nhật Prisma Schema (`FlashSale`, `FlashSaleItem`) & run migration
-- [x] Task 2: Backend — Logic giá tự động (override `giaBan` thời gian thực trên API Product, Cart, Checkout)
+## Phase 1: Cấu hình Khuyến mãi Admin
+- [x] Task 1: Flash Sale Schema & API
+- [x] Task 2: Admin Flash Sale UI
 
-### Checkpoint: Database & Foundation
-- [x] Database có schema mới.
-- [x] API lấy sản phẩm tự override giá thành công khi có Flash Sale.
+## Phase 2: Tự động hóa Giá và Khách hàng
+- [x] Task 3: Auto Pricing Mechanism
+- [x] Task 4: Limit Purchase Cart Rule
 
-## Phase 2: Admin Operations
-- [x] Task 3: Backend — API CRUD Flash Sale (`/api/admin/flash-sales`)
-- [x] Task 4: Frontend — UI Quản lý Flash Sale (`/admin/flash-sales`)
-
-### Checkpoint: Admin Operations
-- [x] Admin CRUD được các chiến dịch Flash Sale và Variants kèm theo.
-
-## Phase 3: Customer Discovery (Trang chủ)
-- [x] Task 5: Backend — API Public Flash Sale (`/api/flash-sales/current`)
-- [x] Task 6: Frontend — UI Components (`CountdownTimer`, `FlashSaleProgressBar`)
-- [x] Task 7: Frontend — Tích hợp Section Flash Sale vào Trang chủ (giữa 2 Banner)
-
-### Checkpoint: Customer Discovery & Final Polish
-- [x] Trang chủ hiển thị Flash Sale với đếm ngược mượt mà.
-- [x] Ready for review M9.
+## Phase 3: Giao diện Trang chủ (Nổi bật)
+- [x] Task 5: Flash Sale Timeline UI
+- [x] Task 6: Progress Bar & Countdown
