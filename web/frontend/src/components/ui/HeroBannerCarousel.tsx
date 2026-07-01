@@ -33,19 +33,19 @@ interface BannerSlide {
 const STATIC_SLIDES: BannerSlide[] = [
   {
     id: 'static-1',
-    tag: 'Siêu phẩm mới',
+    tag: 'Siêu phẩm Apple',
     title: 'iPhone 17 Pro Max - Đỉnh cao Titan',
     description: 'Trải nghiệm chip Apple A19 Pro siêu mạnh mẽ, màn hình 6.9 inch tuyệt mỹ cùng camera cải tiến vượt bậc.',
     btnText: 'Mua ngay',
     href: '/phone?hang=Apple',
-    imageUrl: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?q=80&w=600&auto=format&fit=crop',
+    imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=600&auto=format&fit=crop',
     bgGradient: 'from-sky-50 via-white to-blue-50/40',
     glowColor1: 'bg-sky-400/10',
     glowColor2: 'bg-blue-400/10'
   },
   {
     id: 'static-2',
-    tag: 'Sản phẩm nổi bật',
+    tag: 'Siêu phẩm Samsung',
     title: 'Galaxy S26 Ultra - Quyền năng AI mới',
     description: 'Khám phá chụp ảnh zoom siêu đỉnh 200MP, cấu hình mạnh mẽ với Snapdragon 8 Gen 5 cùng các quyền năng Galaxy AI tối tân.',
     btnText: 'Đặt trước ngay',
@@ -54,6 +54,18 @@ const STATIC_SLIDES: BannerSlide[] = [
     bgGradient: 'from-blue-50/50 via-white to-sky-100/30',
     glowColor1: 'bg-blue-300/10',
     glowColor2: 'bg-sky-300/10'
+  },
+  {
+    id: 'static-3',
+    tag: 'Đột phá Xiaomi',
+    title: 'Xiaomi 16 Ultra - Ống kính Leica thế hệ mới',
+    description: 'Đột phá nhiếp ảnh di động với cảm biến lớn và ống kính Leica chất lượng cao, kết hợp sạc siêu tốc 120W.',
+    btnText: 'Khám phá ngay',
+    href: '/phone?hang=Xiaomi',
+    imageUrl: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=600&auto=format&fit=crop',
+    bgGradient: 'from-sky-50/60 via-white to-blue-50/30',
+    glowColor1: 'bg-sky-400/10',
+    glowColor2: 'bg-teal-400/10'
   }
 ];
 
@@ -61,18 +73,20 @@ export default function HeroBannerCarousel({ products = [] }: HeroBannerCarousel
   const [current, setCurrent] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Filter only premium Apple & Samsung FLAGSHIP models for the Hero section
+  // Filter premium flagships from Apple, Samsung, and Xiaomi for the Hero section
   const getBannerProducts = useCallback((): Product[] => {
     if (!products || products.length === 0) return [];
 
-    // Filter only Apple and Samsung FLAGSHIP models that have images
+    // Filter FLAGSHIP models from Apple, Samsung, and Xiaomi
     const candidates = products.filter(p => 
-      (p.hang?.toLowerCase() === 'apple' || p.hang?.toLowerCase() === 'samsung') &&
+      (p.hang?.toLowerCase() === 'apple' || 
+       p.hang?.toLowerCase() === 'samsung' || 
+       p.hang?.toLowerCase() === 'xiaomi') &&
       p.phanKhuc === 'FLAGSHIP' &&
       p.media && p.media.length > 0
     );
 
-    // Sort to prioritize Ultra, Pro Max, and Fold series for premium look
+    // Sort to prioritize Ultra, Pro Max, and Fold/Leica series for premium look
     const sortedCandidates = [...candidates].sort((a, b) => {
       const aName = a.sanPham?.toLowerCase() || '';
       const bName = b.sanPham?.toLowerCase() || '';
@@ -80,7 +94,6 @@ export default function HeroBannerCarousel({ products = [] }: HeroBannerCarousel
       const aPriority = aName.includes('ultra') || aName.includes('pro max') || aName.includes('fold') ? 2 : 1;
       const bPriority = bName.includes('ultra') || bName.includes('pro max') || bName.includes('fold') ? 2 : 1;
       
-      // If same priority, keep alphabetical or original order
       if (aPriority === bPriority) {
         return aName.localeCompare(bName);
       }
@@ -107,16 +120,35 @@ export default function HeroBannerCarousel({ products = [] }: HeroBannerCarousel
           tag = 'Đặc quyền Apple';
         } else if (p.hang?.toLowerCase() === 'samsung') {
           tag = 'Đặc quyền Samsung';
+        } else if (p.hang?.toLowerCase() === 'xiaomi') {
+          tag = 'Đặc quyền Xiaomi';
+        }
+        
+        // Smart image mapping for high-quality professional studio photos (overrides cluttered/bad source images)
+        let imageUrl = p.media?.[0]?.url || '';
+        const lowerName = p.sanPham?.toLowerCase() || '';
+        
+        if (lowerName.includes('iphone 17') || lowerName.includes('iphone 16') || lowerName.includes('iphone 15')) {
+          imageUrl = 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=600&auto=format&fit=crop'; // iPhone 15/16/17 Pro Max Titanium Look
+        } else if (lowerName.includes('s26') || lowerName.includes('s25') || lowerName.includes('s24')) {
+          imageUrl = 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=600&auto=format&fit=crop'; // Samsung Galaxy S Ultra Look
+        } else if (lowerName.includes('xiaomi 16') || lowerName.includes('xiaomi 15') || lowerName.includes('xiaomi 14')) {
+          imageUrl = 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=600&auto=format&fit=crop'; // Xiaomi Flagship Leica Look
+        } else if (lowerName.includes('fold')) {
+          imageUrl = 'https://images.unsplash.com/photo-1655821888788-6107699e173b?q=80&w=600&auto=format&fit=crop'; // Foldable Phone Look
+        } else if (!imageUrl || imageUrl.startsWith('/data/')) {
+          // General fallback for other local images that might be broken or styled poorly
+          imageUrl = 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600&auto=format&fit=crop';
         }
         
         return {
           id: p.id,
           tag,
           title: p.sanPham,
-          description: p.moTa || `Khám phá ngay ${p.sanPham} chính hãng với cấu hình đẳng cấp, camera đỉnh cao và thời lượng pin bền bỉ.`,
+          description: p.moTa || `Sở hữu ngay ${p.sanPham} chính hãng với cấu hình hàng đầu, camera đỉnh cao và thời lượng pin bền bỉ.`,
           btnText: 'Mua ngay',
           href: `/phone/${p.slug}`,
-          imageUrl: p.media?.[0]?.url || 'https://placehold.co/600x600/png?text=No+Image',
+          imageUrl,
           bgGradient: grad.bg,
           glowColor1: grad.g1,
           glowColor2: grad.g2
