@@ -43,7 +43,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/phone/${product.slug}`} className="group bg-white border border-slate-200/60 rounded-2xl p-4 flex flex-col relative transition-all duration-300 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:shadow-elevated hover:border-slate-200">
       {discount > 0 && (
-        <span className="absolute top-3.5 left-3.5 bg-rose-50 text-rose-600 px-2.5 py-0.5 rounded-lg font-semibold text-xs z-10">
+        <span className="absolute top-3.5 left-3.5 bg-rose-50 text-rose-600 border border-rose-100/40 px-2.5 py-0.5 rounded-lg font-semibold text-xs z-10">
           -{discount}%
         </span>
       )}

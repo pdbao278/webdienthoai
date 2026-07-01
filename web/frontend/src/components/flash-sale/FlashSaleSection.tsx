@@ -35,9 +35,9 @@ function BlockCountdown({ targetDate, onExpire }: { targetDate: string, onExpire
 
   return (
     <span className="flex items-center gap-1 font-bold tabular-nums text-sm">
-      <span className="bg-white text-[#ef8318] px-1.5 py-0.5 rounded-md">{timeLeft.h}</span> : 
-      <span className="bg-white text-[#ef8318] px-1.5 py-0.5 rounded-md">{timeLeft.m}</span> : 
-      <span className="bg-white text-[#ef8318] px-1.5 py-0.5 rounded-md">{timeLeft.s}</span>
+      <span className="bg-rose-50 text-rose-600 border border-rose-100/40 px-1.5 py-0.5 rounded-md">{timeLeft.h}</span> : 
+      <span className="bg-rose-50 text-rose-600 border border-rose-100/40 px-1.5 py-0.5 rounded-md">{timeLeft.m}</span> : 
+      <span className="bg-rose-50 text-rose-600 border border-rose-100/40 px-1.5 py-0.5 rounded-md">{timeLeft.s}</span>
     </span>
   );
 }
@@ -129,10 +129,10 @@ export function FlashSaleSection() {
         {/* Top Bar with Badges and Categories */}
         <div className="flex flex-col md:flex-row md:items-center gap-4 mb-6 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1 bg-gradient-to-r from-orange-500 to-rose-500 text-white px-3 py-1.5 rounded-lg font-bold text-sm shadow-md">
+            <div className="flex items-center gap-1 bg-gradient-to-r from-blue-600 to-sky-500 text-white px-3 py-1.5 rounded-lg font-bold text-sm shadow-md">
               <Zap size={16} className="fill-white" /> FLASH SALE
             </div>
-            <div className="bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-lg font-bold text-sm border border-emerald-200">
+            <div className="bg-sky-50 text-sky-600 px-3 py-1.5 rounded-lg font-bold text-sm border border-sky-100">
               GIẢM ĐẾN 50%
             </div>
           </div>
@@ -143,7 +143,7 @@ export function FlashSaleSection() {
                 key={idx} 
                 className={`whitespace-nowrap px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
                   idx === 0 
-                    ? 'bg-slate-800 text-white shadow-md' 
+                    ? 'bg-sky-600 text-white shadow-md' 
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
@@ -168,7 +168,7 @@ export function FlashSaleSection() {
                   onClick={() => setActiveTabId(fs.id)}
                   className={`min-w-[160px] flex flex-col items-center justify-center py-2 px-6 rounded-full transition-all duration-300 ${
                     isSelected
-                      ? 'bg-[#ef8318] text-white shadow-sm'
+                      ? 'bg-sky-600 text-white shadow-sm'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
@@ -211,9 +211,9 @@ export function FlashSaleSection() {
               const isRunning = new Date(currentFlashSale.batDau) <= new Date() && new Date(currentFlashSale.ketThuc) > new Date();
 
               return (
-                <Link key={item.id} href={`/phone/${product.slug}`} className={`bg-white p-4 rounded-2xl border border-slate-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group flex flex-col h-full ${!isRunning ? 'opacity-80 grayscale-[15%]' : ''}`}>
+                <Link key={item.id} href={`/phone/${product.slug}`} className={`bg-white p-4 rounded-2xl border border-slate-100/85 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group flex flex-col h-full ${!isRunning ? 'opacity-80 grayscale-[15%]' : ''}`}>
                   <div className="relative aspect-square mb-4 flex items-center justify-center bg-white rounded-xl p-2 overflow-hidden">
-                    <div className="absolute top-0 left-0 bg-rose-50 text-rose-500 text-[10px] font-bold px-2 py-1 rounded z-10">
+                    <div className="absolute top-0 left-0 bg-rose-50 text-rose-600 text-[10px] font-bold px-2 py-1 rounded border border-rose-100/40 z-10">
                       GIẢM {discountPercent}%
                     </div>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -242,19 +242,19 @@ export function FlashSaleSection() {
                         <span className="text-[13px] text-slate-400 line-through font-medium tabular-nums">
                           {formatCurrency(variant.giaGoc)}
                         </span>
-                        <span className="bg-rose-50 text-rose-500 text-[10px] font-bold px-1.5 py-0.5 rounded">
+                        <span className="bg-rose-50 text-rose-600 text-[10px] font-bold px-1.5 py-0.5 rounded border border-rose-100/40">
                           -{discountPercent}%
                         </span>
                       </div>
                       
-                      {/* Orange Progress Bar with Flame */}
-                      <div className="mt-2 relative w-full h-[22px] bg-orange-200 rounded-full overflow-hidden flex items-center">
+                      {/* Orange/Red Progress Bar with Flame */}
+                      <div className="mt-2 relative w-full h-[22px] bg-orange-100 rounded-full overflow-hidden flex items-center">
                         <div 
                           className="absolute top-0 left-0 h-full bg-gradient-to-r from-orange-400 to-rose-500 rounded-full transition-all duration-1000"
                           style={{ width: `${isRunning ? soldPercent : 0}%` }}
                         ></div>
-                        <div className="absolute inset-0 flex items-center justify-center gap-1 z-10 w-full px-2 drop-shadow-md">
-                          <Flame size={12} className="text-white fill-white" />
+                        <div className="absolute inset-0 flex items-center justify-center gap-1 z-10 w-full px-2">
+                          <Flame size={11} className="text-white fill-white animate-pulse" />
                           <span className="text-[11px] font-bold text-white tracking-wide">
                             {isRunning ? `Còn ${Math.max(0, item.soLuong - item.daBan)}/${item.soLuong} suất` : `Mở bán ${item.soLuong} suất`}
                           </span>

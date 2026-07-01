@@ -26,53 +26,54 @@ const Banner = ({
   const validHref = (!href || href === '#' || href === '') ? '/' : href;
 
   return (
-    <div className={`relative rounded-2xl overflow-hidden group shadow-card hover:shadow-elevated transition-all duration-500 flex items-center p-8 md:p-12 ${
+    <div className={`relative rounded-2xl overflow-hidden group border border-slate-200/50 shadow-card hover:shadow-elevated transition-all duration-500 p-8 md:p-10 ${
       variant === 'primary' 
-        ? 'bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 min-h-[280px]' 
-        : 'bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-700 min-h-[220px]'
+        ? 'bg-gradient-to-br from-sky-50 via-white to-blue-50/40 min-h-[280px]' 
+        : 'bg-gradient-to-br from-blue-50/50 via-white to-sky-100/30 min-h-[280px]'
     } ${className}`}>
       {/* Background Pattern / Effect */}
-      <div className="absolute inset-0 opacity-[0.1] transition-transform duration-700 group-hover:scale-[1.03]" 
+      <div className="absolute inset-0 opacity-[0.03] text-sky-500 transition-transform duration-700 group-hover:scale-[1.03]" 
            style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' }} />
       
       {/* Decorative Glow Elements */}
-      <div className="absolute -top-24 -right-24 w-64 h-64 bg-sky-400/30 rounded-full blur-3xl group-hover:bg-sky-400/50 group-hover:scale-110 transition-all duration-700" />
-      <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl group-hover:bg-purple-500/40 group-hover:scale-110 transition-all duration-700" />
+      <div className="absolute -top-24 -right-24 w-64 h-64 bg-sky-300/10 rounded-full blur-3xl group-hover:bg-sky-300/20 group-hover:scale-110 transition-all duration-700" />
+      <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-300/10 rounded-full blur-3xl group-hover:bg-blue-300/20 group-hover:scale-110 transition-all duration-700" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-[500px]">
-        {badge && (
-          <span className={`inline-block px-3.5 py-1.5 rounded-lg font-semibold text-xs mb-4 tracking-wide shadow-sm border border-white/20 backdrop-blur-md ${
-            variant === 'primary' ? 'bg-indigo-500/30 text-indigo-200' : 'bg-white/20 text-white'
-          }`}>
-            {badge}
-          </span>
-        )}
-        <h3 className={`font-[var(--font-outfit)] text-2xl md:text-3xl font-bold leading-tight mb-3 tracking-tight transition-all duration-300 ${
-          variant === 'primary' ? 'text-white group-hover:text-indigo-200' : 'text-white group-hover:text-sky-100'
-        }`}>
-          {title}
-        </h3>
-        <p className={`mb-6 text-sm leading-relaxed max-w-[380px] transition-colors duration-300 ${
-          variant === 'primary' ? 'text-slate-300 group-hover:text-slate-200' : 'text-blue-100 group-hover:text-white'
-        }`}>
-          {description}
-        </p>
-        <Link href={validHref} className="inline-flex items-center justify-center bg-white text-slate-800 border border-transparent px-6 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-slate-50 hover:shadow-lg active:scale-[0.97] group-hover:scale-105 group-hover:shadow-sky-500/20">
-          {ctaText}
-        </Link>
-      </div>
-
-      {/* Image (if provided) */}
-      {imageUrl && (
-        <div className="absolute right-4 bottom-0 top-0 w-[40%] hidden md:flex items-center justify-center pointer-events-none z-0">
-           <img 
-             src={imageUrl} 
-             alt={title} 
-             className="max-h-[80%] w-auto object-contain transition-all duration-700 group-hover:scale-110 group-hover:-translate-y-2 group-hover:rotate-3" 
-           />
+      {/* Grid Layout to isolate text and image */}
+      <div className="grid grid-cols-1 md:grid-cols-[1.35fr_1fr] gap-6 items-center h-full relative z-10 w-full">
+        {/* Content */}
+        <div className="flex flex-col justify-center">
+          {badge && (
+            <span className="inline-block self-start px-3.5 py-1.5 rounded-lg font-semibold text-xs mb-4 tracking-wide shadow-sm border border-sky-100 bg-sky-50 text-sky-600">
+              {badge}
+            </span>
+          )}
+          <h3 className="font-[var(--font-outfit)] text-2xl md:text-3xl font-bold leading-tight mb-3 tracking-tight text-slate-800 transition-all duration-300 group-hover:text-sky-600">
+            {title}
+          </h3>
+          <p className="mb-6 text-sm leading-relaxed text-slate-500 transition-colors duration-300">
+            {description}
+          </p>
+          <div>
+            <Link href={validHref} className="inline-flex items-center justify-center bg-sky-600 text-white border border-transparent px-6 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:bg-sky-700 hover:shadow-md active:scale-[0.97] group-hover:scale-105">
+              {ctaText}
+            </Link>
+          </div>
         </div>
-      )}
+
+        {/* Image (if provided) */}
+        {imageUrl ? (
+          <div className="hidden md:flex items-center justify-center pointer-events-none h-full min-h-[200px]">
+             <img 
+               src={imageUrl} 
+               alt={title} 
+               className="max-h-[220px] w-auto object-contain transition-all duration-700 group-hover:scale-105 group-hover:-translate-y-2 group-hover:rotate-2" 
+             />
+          </div>
+        ) : (
+          <div className="hidden md:block" />
+        )}
+      </div>
     </div>
   );
 };

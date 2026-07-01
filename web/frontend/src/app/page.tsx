@@ -103,7 +103,7 @@ export default async function Home() {
             ctaText="Tìm hiểu thêm" 
             href="/phone?hang=Samsung"
             variant="secondary"
-            imageUrl="/banners/samsung_banner.png"
+            imageUrl="/data/dienthoai/Samsung/galaxy-s26-ultra-256gb/images/front.png"
           />
           <Banner 
             title="Đặc Quyền Premium" 
@@ -111,7 +111,7 @@ export default async function Home() {
             ctaText="Xem chi tiết" 
             href="/chinh-sach-bao-hanh"
             variant="primary"
-            imageUrl="/banners/iphone_banner.png"
+            imageUrl="/data/dienthoai/Apple/iphone-16-pro-max-256gb/images/front.png"
           />
         </div>
       </section>
@@ -140,7 +140,7 @@ export default async function Home() {
 
               {products.length > 8 && (
                 <div className="text-center mt-12">
-                  <Link href="/phone" className="inline-flex items-center justify-center bg-slate-800 text-white px-8 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 hover:bg-slate-900 hover:shadow-card active:scale-[0.97]">
+                  <Link href="/phone" className="inline-flex items-center justify-center bg-sky-600 text-white px-8 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 hover:bg-sky-700 hover:shadow-md active:scale-[0.97]">
                     Xem tất cả sản phẩm
                   </Link>
                 </div>
@@ -151,19 +151,20 @@ export default async function Home() {
       {/* Premium Click & Collect Service Intro Banner */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-8 md:p-12 text-white shadow-xl">
-            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-            <div className="absolute -top-24 -right-24 w-80 h-80 bg-sky-500/20 rounded-full blur-3xl" />
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-sky-50 via-white to-blue-50/40 border border-slate-200/50 p-8 md:p-12 text-slate-800 shadow-card">
+            <div className="absolute inset-0 opacity-[0.02] text-sky-500" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+            <div className="absolute -top-24 -right-24 w-80 h-80 bg-sky-300/10 rounded-full blur-3xl" />
+            <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-blue-300/10 rounded-full blur-3xl" />
             
             <div className="max-w-[600px] relative z-10">
-              <span className="bg-sky-500/10 text-sky-300 border border-sky-500/20 px-3.5 py-1 rounded-lg font-bold text-xs mb-4 tracking-wide inline-block">Trải nghiệm mua sắm mới</span>
-              <h2 className="font-[var(--font-outfit)] text-2xl md:text-3xl font-bold leading-tight mb-4 tracking-tight">Đặt Online - Nhận Tại Cửa Hàng cực nhanh</h2>
-              <p className="text-slate-300 text-sm leading-relaxed mb-6">
+              <span className="bg-sky-50 text-sky-600 border border-sky-100/80 px-3.5 py-1 rounded-lg font-bold text-xs mb-4 tracking-wide inline-block">Trải nghiệm mua sắm mới</span>
+              <h2 className="font-[var(--font-outfit)] text-2xl md:text-3xl font-bold leading-tight mb-4 tracking-tight text-slate-800">Đặt Online - Nhận Tại Cửa Hàng cực nhanh</h2>
+              <p className="text-slate-500 text-sm leading-relaxed mb-6">
                 Chỉ với vài thao tác đơn giản, bạn có thể giữ trước chiếc máy mình yêu thích với mức giá ưu đãi nhất. Đến cửa hàng trải nghiệm thực tế, nhận tư vấn trực tiếp từ nhân viên và thanh toán dễ dàng tại quầy.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/phone" className="bg-sky-600 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-sky-700 transition-all duration-200">Tìm cửa hàng gần nhất</Link>
-                <Link href="/phone" className="bg-white/10 hover:bg-white/20 border border-white/10 px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200">Xem chính sách đặt mua</Link>
+                <Link href="/phone" className="bg-sky-600 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-sky-700 transition-all duration-200 shadow-md hover:shadow-sky-500/10">Tìm cửa hàng gần nhất</Link>
+                <Link href="/phone" className="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200">Xem chính sách đặt mua</Link>
               </div>
             </div>
           </div>

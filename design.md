@@ -40,19 +40,19 @@ Hệ thống thiết kế của PhoneStore hướng tới sự chuyên nghiệp,
 
 ### 1.1 Bảng Màu Dịu Mắt (Soothing Color Palette)
 
-Hệ thống sử dụng các tông màu pastel dịu nhẹ, kết hợp giữa Slate (xám đá) và Soft Ocean Blue/Teal (xanh đại dương/xanh lục bảo dịu) làm chủ đạo.
+Hệ thống sử dụng thiết kế nền sáng thanh lịch (Bright Light Theme) làm chủ đạo, kết hợp tông màu xanh dương bầu trời (Sky/Blue) để tạo cảm giác tin cậy và màu đỏ/cam (Rose/Orange) ở các nhãn giá/giảm giá để kích thích hiệu ứng tâm lý mua sắm gấp gáp.
 
 | Loại màu | Light Mode (Nền sáng thanh lịch) | Dark Mode (Nền tối chống mỏi mắt) | Ứng dụng & Cảm xúc |
 |---|---|---|---|
-| **Primary (Chủ đạo)** | `#0284C7` (Sky-600) | `#38BDF8` (Sky-400) | Xanh bầu trời dịu nhẹ: Dùng cho các nút hành động chính, các trạng thái active, thanh tiến trình. |
-| **Secondary (Phụ)** | `#0D9488` (Teal-600) | `#2DD4BF` (Teal-400) | Xanh lục bảo dịu mát: Dùng cho các badge khuyến mãi, nhãn tiết kiệm, giá khuyến mãi. |
+| **Primary (Chủ đạo)** | `#0284C7` (Sky-600) | `#38BDF8` (Sky-400) | Xanh bầu trời dịu nhẹ: Dùng cho thanh điều hướng, các nút hành động chính, trạng thái active. |
+| **Secondary (Phụ)** | `#2563EB` (Blue-600) | `#60A5FA` (Blue-400) | Xanh dương đậm: Dùng cho liên kết, trạng thái hover của menu và các tab điều hướng phụ. |
 | **Neutral Dark (Chữ chính)** | `#1E293B` (Slate-800) | `#F1F5F9` (Slate-100) | Xám đá đậm: Đảm bảo độ tương phản vừa phải, không bị gắt như màu đen thuần `#000`. |
 | **Neutral Light (Chữ phụ)** | `#64748B` (Slate-500) | `#94A3B8` (Slate-400) | Xám trung tính: Dùng cho mô tả phụ, thông số kỹ thuật, đường kẻ phân cách. |
-| **Background (Nền chính)** | `#F8FAFC` (Slate-50) | `#0F172A` (Slate-900) | Màu nền nhẹ nhàng, ngả xanh slate nhẹ giúp dịu mắt hơn màu trắng tinh hoặc đen tối thui. |
+| **Background (Nền chính)** | `#F8FAFC` (Slate-50) | `#0F172A` (Slate-900) | Màu nền nhẹ nhàng, ngả xanh slate nhẹ giúp dịu mắt hơn màu trắng tinh. |
 | **Surface (Nền thẻ/Card)** | `#FFFFFF` (White) | `#1E293B` (Slate-800) | Nền cho các khối sản phẩm, khung chi tiết sản phẩm. |
 | **Borders (Đường viền)** | `#E2E8F0` (Slate-200) | `#334155` (Slate-300/10%) | Viền mảnh tinh tế, tạo cảm giác ngăn cách mềm mại. |
 | **Success (Thành công)** | `#059669` (Emerald-600) | `#34D399` (Emerald-400) | Màu xanh lá dịu cho thông báo thành công, nhãn "Còn hàng". |
-| **Warning/Price (Nhấn mạnh)** | `#E11D48` (Rose-600) | `#FB7185` (Rose-400) | Đỏ hoa hồng dịu: Dùng cho nhãn giảm giá và giá khuyến mãi (thay cho màu đỏ tươi gắt). |
+| **Warning/Price (Nhấn mạnh)** | `#E11D48` (Rose-600) | `#FB7185` (Rose-400) | Đỏ hoa hồng / Đỏ cam rực rỡ: Dùng cho nhãn giảm giá, giá khuyến mãi và bộ đếm ngược Flash Sale để tạo hiệu ứng tâm lý kích thích tiêu dùng. |
 
 ### 1.2 Typography & Fonts
 
@@ -125,18 +125,21 @@ Mặc dù danh mục đầy đủ gồm cả Điện thoại, Laptop và Phụ k
 *   **Thanh Hãng Điện Thoại (Brand Row)**:
     *   Các thương hiệu điện thoại hiển thị dưới dạng card nhỏ bo góc mềm mại, nền trong suốt với viền mảnh. Khi hover sẽ hiển thị hiệu ứng đổi màu viền sang xanh Sky nhẹ nhàng.
 *   **Grid Điện Thoại Nổi Bật (Hot Deals Grid)**:
-    *   Thay vì dùng các nhãn lửa màu đỏ cam gắt, hệ thống dùng nhãn tinh tế: `Giảm 10%` hoặc `Trả góp 0%` màu xanh Teal hoặc Rose nhạt trên nền pastel dịu (`bg-teal-50 text-teal-700`).
+    *   Sử dụng nhãn giảm giá tinh tế màu đỏ hồng nổi bật trên nền hồng nhạt (`bg-rose-50 text-rose-600 border border-rose-100/40`) để tạo điểm nhấn thị giác kích thích mua sắm.
     *   **Product Card**: 
-        *   Hình ảnh sản phẩm nằm trên nền xám siêu nhạt (`bg-slate-50/50`) để nổi bật máy.
+        *   Hình ảnh sản phẩm nằm trên nền xám siêu nhạt (`bg-slate-50/80`) để nổi bật máy.
         *   Tên sản phẩm màu xám đá đậm (`text-slate-800`).
-        *   Giá bán khuyến mãi màu Rose nhạt, giá gốc màu xám nhạt gạch ngang.
+        *   Giá bán khuyến mãi màu đỏ Rose cuốn hút (`text-rose-600`), giá gốc màu xám nhạt gạch ngang.
         *   Rating hiển thị bằng các ngôi sao màu vàng cát dịu (`text-amber-400`), không chói.
 *   **Khối Flash Sale (Khuyến mãi online)**:
-    *   **Tiêu đề & Top Bar**: Tiêu đề "Khuyến mãi online" ở góc trái. Bar ngang chứa các logo badge đặc trưng (FLASH SALE nền cam đỏ, GIẢM ĐẾN 50% xanh lá). Bên cạnh là các Tab danh mục (Điện Thoại, Apple, Laptop...).
-    *   **Thanh Timeline**: Luôn hiển thị 5 mốc giờ cố định (00:00, 09:00, 12:00, 15:00, 18:00) cho dù có sản phẩm hay không, thiết kế dạng Segmented Control bo tròn trên nền `bg-slate-100`. Khung giờ đang Active sẽ có nền màu cam sáng, chứa bộ đếm ngược định dạng khối `00 : 39 : 30` (chữ cam nền trắng). Hệ thống có tính năng cuộn ngang tự động (auto-scroll) tới khung giờ hiện hành.
-    *   **Product Card**: Thẻ trắng phẳng, giá giảm màu đỏ cam nổi bật. Phía trên giá giảm là tên sản phẩm, phía dưới là giá gốc gạch ngang kèm tag % màu đỏ nhạt. **Lưu ý**: Nếu khung giờ chưa bắt đầu, giá sẽ bị ẩn một phần (vd: `1?.???.??? ₫`) để tạo sự tò mò.
-    *   **Progress Bar**: Thanh trạng thái số lượng nằm ở đáy card, hình viên thuốc nền vàng cam, biểu tượng ngọn lửa/sét. Nếu đang diễn ra: "Còn X/Y suất", nếu chưa diễn ra: "Mở bán X suất" (mức progress ở 0%).
+    *   **Tiêu đề & Top Bar**: Tiêu đề "Khuyến mãi online" ở góc trái. Bar ngang chứa các logo badge đặc trưng (FLASH SALE nền xanh dương gradient `from-blue-600 to-sky-500`, GIẢM ĐẾN 50% xanh nhạt `bg-sky-50 text-sky-600`). Bên cạnh là các Tab danh mục (Điện Thoại, Apple, Laptop...).
+    *   **Thanh Timeline**: Luôn hiển thị 5 mốc giờ cố định (00:00, 09:00, 12:00, 15:00, 18:00) cho dù có sản phẩm hay không, thiết kế dạng Segmented Control bo tròn trên nền `bg-slate-100`. Khung giờ đang Active sẽ có nền màu xanh dương `bg-sky-600 text-white shadow-sm`, bên cạnh chứa bộ đếm ngược định dạng khối `00 : 39 : 30` (số đỏ chữ đỏ nền đỏ hồng nhạt `bg-rose-50 text-rose-600 border border-rose-100/40` nhằm thôi thúc mua hàng). Hệ thống có tính năng cuộn ngang tự động (auto-scroll) tới khung giờ hiện hành.
+    *   **Product Card**: Thẻ trắng phẳng, tên sản phẩm hover đổi màu đỏ hồng (`group-hover:text-rose-600`). Giá giảm màu đỏ nổi bật (`text-rose-600`). Phía dưới là giá gốc gạch ngang kèm tag % giảm giá màu đỏ (`bg-rose-50 text-rose-600`). **Lưu ý**: Nếu khung giờ chưa bắt đầu, giá sẽ bị ẩn một phần (vd: `1?.???.??? ₫`) để tạo sự tò mò.
+    *   **Progress Bar & Flame Icon**: Thanh trạng thái số lượng nằm ở đáy card, hình viên thuốc nền cam nhạt (`bg-orange-100`), gradient từ cam đến đỏ hồng (`from-orange-400 to-rose-500`) biểu trưng ngọn lửa cùng icon `Flame` chuyển động nhấp nháy (pulse) nhằm tối ưu hiệu ứng tâm lý khan hiếm. Nếu đang diễn ra: "Còn X/Y suất", nếu chưa diễn ra: "Mở bán X suất" (mức progress ở 0%).
     *   **Trạng thái rỗng**: Nếu một khung giờ chưa có sản phẩm Flash Sale, khối UI sản phẩm sẽ hiện thông báo "Chưa có sản phẩm flash sale.. Vui lòng quay lại sau nhé!".
+*   **Các Banner phụ (Secondary Banners)**:
+    *   Bố cục: Sử dụng Grid 2 cột responsive (`grid-cols-1 md:grid-cols-[1.35fr_1fr] gap-6`) tách biệt hoàn toàn cột chữ mô tả bên trái và cột ảnh sản phẩm bên phải. Điều này triệt tiêu hoàn toàn lỗi chữ đè lên ảnh.
+    *   Màu nền: Sử dụng gradient nhẹ nhàng, sáng và sang trọng (`from-sky-50 via-white to-blue-50/40` hoặc `from-blue-50/50 via-white to-sky-100/30`) đồng bộ với hệ thống.
 *   **Điện Thoại Theo Loại (Category Tabs)**:
     *   Các tab phân loại (Flagship, Tầm trung, Gaming...) chuyển đổi bằng hiệu ứng trượt mượt mà (smooth indicator).
 

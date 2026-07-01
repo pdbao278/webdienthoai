@@ -24,22 +24,22 @@ const SLIDES: BannerSlide[] = [
     description: 'Chất liệu Titan cấp hàng không bền nhẹ tuyệt đối, nút Camera Control độc đáo nâng tầm trải nghiệm quay chụp chuyên nghiệp.',
     btnText: 'Mua ngay',
     href: '/phone?hang=Apple',
-    imageUrl: '/banners/iphone_banner.png',
-    bgGradient: 'from-slate-950 via-zinc-900 to-slate-900',
-    glowColor1: 'bg-amber-500/10',
-    glowColor2: 'bg-slate-400/20'
+    imageUrl: '/data/dienthoai/Apple/iphone-16-pro-max-256gb/images/front.png',
+    bgGradient: 'from-sky-50 via-white to-blue-50/40',
+    glowColor1: 'bg-sky-400/10',
+    glowColor2: 'bg-blue-400/10'
   },
   {
     id: 2,
     tag: 'Sản phẩm nổi bật',
     title: 'Galaxy S26 Ultra - Tuyệt tác công nghệ',
-    description: 'Mở ra kỷ nguyên di động tối tân cùng vi xử lý Snapdragon mạnh mẽ, camera 200MP siêu zoom bắt trọn mọi chi tiết đêm.',
+    description: 'Mở ra kỷ nguyên di động tối tân cùng vi xử lý Snapdragon mạnh mẽ, camera 200MP siêu zoom bắt trọn mọi chi tiết.',
     btnText: 'Đặt trước ngay',
     href: '/phone?hang=Samsung',
-    imageUrl: '/banners/samsung_banner.png',
-    bgGradient: 'from-slate-950 via-sky-950 to-indigo-950',
-    glowColor1: 'bg-sky-500/20',
-    glowColor2: 'bg-indigo-500/20'
+    imageUrl: '/data/dienthoai/Samsung/galaxy-s26-ultra-256gb/images/front.png',
+    bgGradient: 'from-blue-50/50 via-white to-sky-100/30',
+    glowColor1: 'bg-blue-300/10',
+    glowColor2: 'bg-sky-300/10'
   },
   {
     id: 3,
@@ -48,10 +48,10 @@ const SLIDES: BannerSlide[] = [
     description: 'Đột phá nhiếp ảnh cùng ống kính Leica quang học thế hệ mới, cảm biến siêu lớn và công nghệ sạc siêu tốc 120W.',
     btnText: 'Khám phá ngay',
     href: '/phone?hang=Xiaomi',
-    imageUrl: '/banners/xiaomi_banner.png',
-    bgGradient: 'from-slate-950 via-neutral-900 to-emerald-950',
-    glowColor1: 'bg-emerald-500/20',
-    glowColor2: 'bg-teal-500/15'
+    imageUrl: '/data/dienthoai/Xiaomi/xiaomi-16-ultra-512gb/images/front.png',
+    bgGradient: 'from-sky-50/60 via-white to-blue-50/30',
+    glowColor1: 'bg-sky-400/10',
+    glowColor2: 'bg-teal-400/10'
   }
 ];
 
@@ -76,7 +76,7 @@ export default function HeroBannerCarousel() {
 
   return (
     <div
-      className="relative rounded-2xl overflow-hidden shadow-xl min-h-[380px] flex items-center p-8 md:p-12 transition-all duration-700 ease-in-out select-none"
+      className="relative rounded-2xl overflow-hidden border border-slate-200/50 bg-white min-h-[380px] flex items-center p-8 md:p-12 transition-all duration-700 ease-in-out select-none shadow-card hover:shadow-elevated"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -92,7 +92,7 @@ export default function HeroBannerCarousel() {
           >
             {/* Subtle grid pattern */}
             <div
-              className="absolute inset-0 opacity-[0.04]"
+              className="absolute inset-0 opacity-[0.03] text-sky-500"
               style={{
                 backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
                 backgroundSize: '32px 32px',
@@ -110,25 +110,25 @@ export default function HeroBannerCarousel() {
       <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-6 items-center relative z-10">
         
         {/* Left text section */}
-        <div className="md:col-span-7 text-white flex flex-col items-start justify-center">
-          <span className="inline-block bg-white/10 text-sky-300 border border-white/10 px-3.5 py-1 rounded-lg font-semibold text-xs mb-4 tracking-wide backdrop-blur-md">
+        <div className="md:col-span-7 flex flex-col items-start justify-center">
+          <span className="inline-block bg-sky-50 text-sky-600 border border-sky-100/80 px-3.5 py-1 rounded-lg font-bold text-xs mb-4 tracking-wide">
             {SLIDES[current].tag}
           </span>
           <h1 
             key={`title-${current}`}
-            className="font-[var(--font-outfit)] text-3xl md:text-4xl font-bold leading-tight mb-4 text-white tracking-tight animate-[fadeIn_0.5s_ease-out]"
+            className="font-[var(--font-outfit)] text-3xl md:text-4xl font-bold leading-tight mb-4 text-slate-800 tracking-tight animate-[fadeIn_0.5s_ease-out]"
           >
             {SLIDES[current].title}
           </h1>
           <p 
             key={`desc-${current}`}
-            className="text-slate-300 mb-6 text-sm leading-relaxed max-w-[420px] animate-[fadeIn_0.6s_ease-out]"
+            className="text-slate-500 mb-6 text-sm leading-relaxed max-w-[420px] animate-[fadeIn_0.6s_ease-out]"
           >
             {SLIDES[current].description}
           </p>
           <Link 
             href={SLIDES[current].href}
-            className="inline-block bg-sky-600 text-white hover:bg-sky-700 active:scale-95 px-7 py-3 rounded-xl font-semibold text-sm transition-all duration-200 shadow-lg hover:shadow-sky-500/20"
+            className="inline-block bg-sky-600 text-white hover:bg-sky-700 active:scale-95 px-7 py-3 rounded-xl font-semibold text-sm transition-all duration-200 shadow-md hover:shadow-sky-500/10"
           >
             {SLIDES[current].btnText}
           </Link>
@@ -143,7 +143,7 @@ export default function HeroBannerCarousel() {
                 key={slide.id}
                 src={slide.imageUrl}
                 alt={slide.title}
-                className={`absolute max-h-[280px] w-auto object-contain transition-all duration-700 ease-out transform ${
+                className={`absolute max-h-[260px] w-auto object-contain transition-all duration-700 ease-out transform ${
                   isCurrent 
                     ? 'opacity-100 translate-x-0 scale-100 rotate-0' 
                     : 'opacity-0 translate-x-12 scale-90 rotate-6 pointer-events-none'
@@ -162,7 +162,7 @@ export default function HeroBannerCarousel() {
             key={idx}
             onClick={() => setCurrent(idx)}
             className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-              idx === current ? 'bg-sky-500 w-6' : 'bg-white/40 hover:bg-white/70'
+              idx === current ? 'bg-sky-600 w-6' : 'bg-slate-300 hover:bg-slate-400'
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />
@@ -173,13 +173,13 @@ export default function HeroBannerCarousel() {
       <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-300">
         <button
           onClick={prevSlide}
-          className="pointer-events-auto w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all duration-200 active:scale-90"
+          className="pointer-events-auto w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200/40 flex items-center justify-center transition-all duration-200 active:scale-90"
         >
           &larr;
         </button>
         <button
           onClick={nextSlide}
-          className="pointer-events-auto w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all duration-200 active:scale-90"
+          className="pointer-events-auto w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200/40 flex items-center justify-center transition-all duration-200 active:scale-90"
         >
           &rarr;
         </button>
