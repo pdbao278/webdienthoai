@@ -65,16 +65,12 @@ const Banner = ({
 
       {/* Image (if provided) */}
       {imageUrl && (
-        <div className="absolute right-0 bottom-0 top-0 w-1/2 hidden md:block">
+        <div className="absolute right-4 bottom-0 top-0 w-[40%] hidden md:flex items-center justify-center pointer-events-none z-0">
            <img 
              src={imageUrl} 
              alt={title} 
-             className="w-full h-full object-cover object-center opacity-90 transition-transform duration-700 group-hover:scale-[1.02] group-hover:-translate-x-1" 
+             className="max-h-[80%] w-auto object-contain transition-all duration-700 group-hover:scale-110 group-hover:-translate-y-2 group-hover:rotate-3" 
            />
-           {/* Fade overlay to blend image with background */}
-           <div className={`absolute inset-0 transition-opacity duration-500 ${
-             variant === 'primary' ? 'bg-gradient-to-r from-slate-900 via-slate-900/40 to-transparent group-hover:from-slate-900/60' : 'bg-gradient-to-r from-sky-600 via-sky-600/40 to-transparent group-hover:from-sky-600/60'
-           }`} />
         </div>
       )}
     </div>

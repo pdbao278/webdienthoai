@@ -72,6 +72,9 @@ export const createFlashSale = async (req: AuthRequest, res: Response): Promise<
   } catch (error: any) {
     if (error.name === 'ZodError') {
       res.status(400).json({ error: error.issues || error.errors });
+    } else if (error.code === 'P2002') {
+      // Unique constraint on batDau — duplicate time slot
+      res.status(409).json({ error: 'Đã tồn tại Flash Sale trong khung giờ này. Vui lòng chọn khung giờ khác.' });
     } else {
       res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
     }
@@ -151,6 +154,9 @@ export const updateFlashSale = async (req: AuthRequest, res: Response): Promise<
   } catch (error: any) {
     if (error.name === 'ZodError') {
       res.status(400).json({ error: error.issues || error.errors });
+    } else if (error.code === 'P2002') {
+      // Unique constraint on batDau — duplicate time slot
+      res.status(409).json({ error: 'Đã tồn tại Flash Sale trong khung giờ này. Vui lòng chọn khung giờ khác.' });
     } else {
       res.status(500).json({ error: 'Lỗi hệ thống nội bộ' });
     }

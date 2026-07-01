@@ -5,6 +5,7 @@ import ProductCard from '@/components/product/ProductCard';
 import Banner from '@/components/ui/Banner';
 import { Smartphone, Laptop, Cable, ChevronRight, Lock } from 'lucide-react';
 import { FlashSaleSection } from '@/components/flash-sale/FlashSaleSection';
+import HeroBannerCarousel from '@/components/ui/HeroBannerCarousel';
 
 import type { Metadata } from 'next';
 
@@ -86,31 +87,8 @@ export default async function Home() {
                 </ul>
             </div>
 
-            {/* Right Banner */}
-            <div className="relative rounded-2xl overflow-hidden shadow-card min-h-[380px] bg-gradient-to-br from-sky-50 via-slate-50 to-emerald-50/50 flex items-center p-8 md:p-12">
-                {/* Subtle background pattern */}
-                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-                <div className="max-w-[450px] relative z-10">
-                    <span className="inline-block bg-sky-600/8 text-sky-600 px-3.5 py-1 rounded-lg font-semibold text-xs mb-4 tracking-wide">Sản phẩm nổi bật</span>
-                    <h1 className="font-[var(--font-outfit)] text-3xl md:text-4xl font-bold leading-tight mb-4 text-slate-800 tracking-tight">Galaxy S24 Ultra - Đỉnh cao công nghệ AI</h1>
-                    <p className="text-slate-500 mb-6 text-sm leading-relaxed max-w-[380px]">Khám phá quyền năng Galaxy AI giúp dịch thuật trực tiếp, tìm kiếm thông minh và chụp zoom chuyên nghiệp.</p>
-                    <button className="bg-sky-600 text-white px-7 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-sky-700 active:scale-[0.97] shadow-card hover:shadow-elevated">Đặt trước ngay</button>
-                </div>
-            </div>
-        </div>
-      </section>
-
-      {/* Promotional Banner */}
-      <section className="py-4">
-        <div className="container mx-auto px-4 lg:px-6">
-          <Banner 
-            title="Săn Mùa Hè Sôi Động" 
-            description="Ưu đãi lên đến 40% cho các dòng điện thoại Flagship. Khám phá các phần quà hấp dẫn đi kèm, số lượng có hạn!" 
-            ctaText="Săn ngay" 
-            href="/phone?minPrice=15000000"
-            badge="Khuyến mãi Hot"
-            variant="primary"
-          />
+            {/* Right Banner Carousel */}
+            <HeroBannerCarousel />
         </div>
       </section>
 
@@ -121,10 +99,11 @@ export default async function Home() {
         <div className="container mx-auto px-4 lg:px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           <Banner 
             title="Thế Hệ Galaxy Mới" 
-            description="Trải nghiệm quyền năng AI mạnh mẽ cùng dòng điện thoại Samsung Galaxy S24 Series mới nhất." 
+            description="Trải nghiệm quyền năng AI mạnh mẽ cùng dòng điện thoại Samsung Galaxy S26 Series mới nhất." 
             ctaText="Tìm hiểu thêm" 
             href="/phone?hang=Samsung"
             variant="secondary"
+            imageUrl="/banners/samsung_banner.png"
           />
           <Banner 
             title="Đặc Quyền Premium" 
@@ -132,53 +111,63 @@ export default async function Home() {
             ctaText="Xem chi tiết" 
             href="/chinh-sach-bao-hanh"
             variant="primary"
+            imageUrl="/banners/iphone_banner.png"
           />
         </div>
       </section>
 
       {/* Products Grid Section */}
-      <section className="py-12">
+      <section className="py-12 bg-slate-50 border-t border-slate-200/40">
           <div className="container mx-auto px-4 lg:px-6">
-              <div className="flex justify-between items-center mb-6">
-                  <div className="flex items-center gap-4">
-                      <h2 className="font-[var(--font-outfit)] text-xl font-bold text-slate-800 tracking-tight">Danh sách điện thoại</h2>
-                      {/* Category Tabs */}
-                      <div className="hidden md:flex gap-1.5 bg-slate-100/80 p-1 rounded-xl">
-                          <Link href="/phone" className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-white text-sky-600 shadow-xs transition-all duration-200">Tất cả</Link>
-                          <Link href="/phone?minPrice=15000000" className="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-700 transition-colors duration-200">Flagship nổi bật</Link>
-                          <Link href="/phone?minPrice=5000000&maxPrice=15000000" className="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-700 transition-colors duration-200">Tầm trung</Link>
-                      </div>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+                  <div>
+                      <h2 className="font-[var(--font-outfit)] text-xl font-bold text-slate-800 tracking-tight">Sản phẩm nổi bật</h2>
+                      <p className="text-xs text-slate-400 mt-1">Tổng hợp những mẫu điện thoại được quan tâm và săn đón nhất</p>
+                  </div>
+                  {/* Category Tabs */}
+                  <div className="flex gap-1.5 bg-slate-200/50 p-1 rounded-xl">
+                      <Link href="/phone" className="px-4 py-2 rounded-lg text-xs font-bold bg-white text-sky-600 shadow-xs transition-all duration-200">Tất cả</Link>
+                      <Link href="/phone?minPrice=15000000" className="px-4 py-2 rounded-lg text-xs font-bold text-slate-500 hover:text-slate-700 transition-colors duration-200">Flagship</Link>
+                      <Link href="/phone?minPrice=5000000&maxPrice=15000000" className="px-4 py-2 rounded-lg text-xs font-bold text-slate-500 hover:text-slate-700 transition-colors duration-200">Tầm trung</Link>
                   </div>
               </div>
 
-              {/* Brands Row */}
-              <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide mb-6 items-center">
-                  <Link href="/phone" className="shrink-0 w-[100px] h-[44px] bg-white border border-blue-400 rounded-xl flex items-center justify-center font-[var(--font-outfit)] font-semibold text-[0.95rem] text-blue-500 transition-all hover:bg-blue-50 hover:-translate-y-0.5 active:scale-[0.97]">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-                      Lọc
-                  </Link>
-
-                  {[
-                    { brand: 'Samsung', node: <span className="font-black text-slate-900 tracking-tighter text-lg uppercase">Samsung</span> },
-                    { brand: 'Apple', node: <span className="flex items-center gap-1.5 font-medium text-slate-700"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none" className="text-slate-400"><path d="M12 20.92c-1.35 0-2.69-.96-3.83-1.63-1.07-.63-2.14-1.25-3.08-1.25-1.54 0-2.91.82-3.88 2.05-1.55 1.95-2.26 4.74-1.6 7.42.54 2.15 1.57 4.09 3.01 5.39 1.45 1.3 3.07 1.87 4.54 1.87 1.25 0 2.51-.81 3.55-1.38 1.05-.58 2.09-1.16 3.08-1.16.94 0 1.94.57 2.97 1.15 1.05.58 2.36 1.39 3.65 1.39 1.54 0 3.25-.63 4.75-2.02 1.63-1.5 2.76-3.66 3.32-5.96-1.56-.63-3.1-1.74-3.1-3.6 0-1.87 1.2-3.16 2.45-4.14-1.35-1.92-3.44-2.31-4.32-2.31-1.35 0-2.69.96-3.83 1.63-1.07.63-2.14 1.25-3.08 1.25zM15.42 21.05c.78-1.02 1.24-2.33 1.14-3.61-1.22.06-2.58.74-3.41 1.76-.7.86-1.25 2.16-1.11 3.44 1.31.06 2.58-.6 3.38-1.59z"/></svg>iPhone</span> },
-                    { brand: 'Xiaomi', node: <span className="font-semibold text-slate-500 tracking-[0.2em] text-[15px] lowercase">XIAOMI</span> },
-                    { brand: 'OPPO', node: <span className="font-bold text-[#008154] tracking-widest text-[17px] lowercase">oppo</span> },
-                    { brand: 'Vivo', node: <span className="font-black text-[#415FFF] italic tracking-wide text-xl lowercase">vivo</span> },
-                    { brand: 'Realme', node: <span className="font-bold text-slate-800 text-[17px] lowercase">realme</span> },
-                    { brand: 'Honor', node: <span className="font-black text-slate-900 tracking-[0.1em] text-lg uppercase">HONOR</span> },
-                  ].map(({ brand, node }) => (
-                    <Link key={brand} href={`/phone?hang=${brand}`} className="shrink-0 px-6 h-[44px] bg-slate-50 rounded-xl flex items-center justify-center transition-all hover:bg-slate-100 hover:-translate-y-0.5 active:scale-[0.97]">
-                      {node}
-                    </Link>
-                  ))}
-              </div>
-
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-                  {products.map((p: any) => (
+                  {products.slice(0, 8).map((p: any) => (
                     <ProductCard key={p.id} product={p} />
                   ))}
               </div>
+
+              {products.length > 8 && (
+                <div className="text-center mt-12">
+                  <Link href="/phone" className="inline-flex items-center justify-center bg-slate-800 text-white px-8 py-3.5 rounded-xl font-bold text-sm transition-all duration-200 hover:bg-slate-900 hover:shadow-card active:scale-[0.97]">
+                    Xem tất cả sản phẩm
+                  </Link>
+                </div>
+              )}
           </div>
+      </section>
+
+      {/* Premium Click & Collect Service Intro Banner */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-8 md:p-12 text-white shadow-xl">
+            <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+            <div className="absolute -top-24 -right-24 w-80 h-80 bg-sky-500/20 rounded-full blur-3xl" />
+            
+            <div className="max-w-[600px] relative z-10">
+              <span className="bg-sky-500/10 text-sky-300 border border-sky-500/20 px-3.5 py-1 rounded-lg font-bold text-xs mb-4 tracking-wide inline-block">Trải nghiệm mua sắm mới</span>
+              <h2 className="font-[var(--font-outfit)] text-2xl md:text-3xl font-bold leading-tight mb-4 tracking-tight">Đặt Online - Nhận Tại Cửa Hàng cực nhanh</h2>
+              <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                Chỉ với vài thao tác đơn giản, bạn có thể giữ trước chiếc máy mình yêu thích với mức giá ưu đãi nhất. Đến cửa hàng trải nghiệm thực tế, nhận tư vấn trực tiếp từ nhân viên và thanh toán dễ dàng tại quầy.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/phone" className="bg-sky-600 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-sky-700 transition-all duration-200">Tìm cửa hàng gần nhất</Link>
+                <Link href="/phone" className="bg-white/10 hover:bg-white/20 border border-white/10 px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200">Xem chính sách đặt mua</Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <Footer />

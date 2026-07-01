@@ -12,6 +12,8 @@ const FilterBar = dynamic(() => import('@/components/product/FilterBar'), {
   loading: () => <div className="h-16 bg-white rounded-2xl shadow-card border border-slate-200/60 animate-pulse mb-6"></div>
 });
 
+import HeroBannerCarousel from '@/components/ui/HeroBannerCarousel';
+
 export const metadata: Metadata = {
   title: 'Điện thoại di động chính hãng | PhoneStore',
   description: 'Khám phá các dòng điện thoại thông minh mới nhất từ Apple, Samsung, Xiaomi, OPPO. Giá tốt, bảo hành chính hãng.',
@@ -104,15 +106,7 @@ export default async function PhonePage({
             </div>
 
             {/* Right Banner Carousel */}
-            <div className="relative rounded-2xl overflow-hidden shadow-card min-h-[380px] bg-gradient-to-br from-sky-50 via-slate-50 to-emerald-50/50 flex items-center p-8 md:p-12">
-                <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-                <div className="max-w-[450px] relative z-10">
-                    <span className="inline-block bg-sky-600/8 text-sky-600 px-3.5 py-1 rounded-lg font-semibold text-xs mb-4 tracking-wide">Sản phẩm nổi bật</span>
-                    <h1 className="font-[var(--font-outfit)] text-3xl md:text-4xl font-bold leading-tight mb-4 text-slate-800 tracking-tight">Galaxy S24 Ultra - Đỉnh cao công nghệ AI</h1>
-                    <p className="text-slate-500 mb-6 text-sm leading-relaxed max-w-[380px]">Khám phá quyền năng Galaxy AI giúp dịch thuật trực tiếp, tìm kiếm thông minh và chụp zoom chuyên nghiệp.</p>
-                    <button className="bg-sky-600 text-white px-7 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:bg-sky-700 active:scale-[0.97] shadow-card hover:shadow-elevated">Đặt trước ngay</button>
-                </div>
-            </div>
+            <HeroBannerCarousel />
         </div>
       </section>
 

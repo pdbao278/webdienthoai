@@ -263,6 +263,7 @@ model FlashSale {
 
   items FlashSaleItem[]
 
+  @@unique([batDau])
   @@map("flash_sales")
 }
 

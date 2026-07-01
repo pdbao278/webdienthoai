@@ -56,7 +56,6 @@ export default function AdminFlashSalesPage() {
   const [editingFlashSale, setEditingFlashSale] = useState<FlashSaleData | null>(null);
   
   const [formData, setFormData] = useState({
-    ten: '',
     ngay: '',
     khungGio: '',
     isActive: true,
@@ -117,7 +116,6 @@ export default function AdminFlashSalesPage() {
   const handleOpenAddModal = () => {
     setEditingFlashSale(null);
     setFormData({
-      ten: '',
       ngay: dayOptions[0].value,
       khungGio: timeSlots[0],
       isActive: true,
@@ -141,7 +139,6 @@ export default function AdminFlashSalesPage() {
       const m = String(batDauDate.getMinutes()).padStart(2, '0');
       
       setFormData({
-        ten: fullFS.ten,
         ngay: ngay,
         khungGio: `${h}:${m}`,
         isActive: fullFS.isActive,
@@ -170,8 +167,8 @@ export default function AdminFlashSalesPage() {
   };
 
   const handleSubmit = async () => {
-    if (!formData.ten || !formData.ngay || !formData.khungGio || formData.items.length === 0) {
-      toast.error('Vui lòng nhập đủ thông tin và chọn ít nhất 1 sản phẩm');
+    if (!formData.ngay || !formData.khungGio || formData.items.length === 0) {
+      toast.error('Vui lòng chọn ngày, khung giờ và ít nhất 1 sản phẩm');
       return;
     }
     
@@ -199,8 +196,14 @@ export default function AdminFlashSalesPage() {
       const url = editingFlashSale ? `/admin/flash-sales/${editingFlashSale.id}` : '/admin/flash-sales';
       const method = editingFlashSale ? 'PUT' : 'POST';
 
+      // Auto-generate ten from date + time slot
+      const [d2, m2, y2] = [day, month, year];
+      const dateLabel = `${String(d2).padStart(2,'0')}/${String(m2).padStart(2,'0')}/${y2}`;
+      const autoTen = `Flash Sale ${formData.khungGio} ${dateLabel}`;
+
       const payload = {
         ...formData,
+        ten: autoTen,
         batDau: batDau.toISOString(),
         ketThuc: ketThuc.toISOString(),
         items: formData.items.map(i => ({
@@ -337,8 +340,7 @@ export default function AdminFlashSalesPage() {
               </button>
             </div>
             <div className="p-6 md:p-8 space-y-5 overflow-y-auto">
-              <Input label="Tên chương trình" value={formData.ten} onChange={e => setFormData({...formData, ten: e.target.value})} required />
-              
+
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">Ngày diễn ra</label>
