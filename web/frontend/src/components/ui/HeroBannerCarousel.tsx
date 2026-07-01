@@ -34,7 +34,7 @@ const STATIC_SLIDES: BannerSlide[] = [
   {
     id: 'static-1',
     tag: 'Siêu phẩm mới',
-    title: 'iPhone 17 Pro Max - Đỉnh cao công nghệ',
+    title: 'iPhone 17 Pro Max - Đỉnh cao Titan',
     description: 'Trải nghiệm chip Apple A19 Pro siêu mạnh mẽ, màn hình 6.9 inch tuyệt mỹ cùng camera cải tiến vượt bậc.',
     btnText: 'Mua ngay',
     href: '/phone?hang=Apple',
@@ -61,56 +61,34 @@ export default function HeroBannerCarousel({ products = [] }: HeroBannerCarousel
   const [current, setCurrent] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Smart filtering logic to fetch the exact flagship hot products requested by user
+  // Filter only premium Apple & Samsung FLAGSHIP models for the Hero section
   const getBannerProducts = useCallback((): Product[] => {
     if (!products || products.length === 0) return [];
-    
-    const bannerItems: Product[] = [];
 
-    // 1. Search for Apple flagships (iPhone 17 Pro/Max, 16 Pro/Max, 15 Pro/Max)
-    const iphone = products.find(p => 
-      p.hang?.toLowerCase() === 'apple' && 
-      (p.sanPham?.toLowerCase().includes('17 pro') || 
-       p.sanPham?.toLowerCase().includes('16 pro') || 
-       p.sanPham?.toLowerCase().includes('15 pro'))
-    ) || products.find(p => p.hang?.toLowerCase() === 'apple');
+    // Filter only Apple and Samsung FLAGSHIP models that have images
+    const candidates = products.filter(p => 
+      (p.hang?.toLowerCase() === 'apple' || p.hang?.toLowerCase() === 'samsung') &&
+      p.phanKhuc === 'FLAGSHIP' &&
+      p.media && p.media.length > 0
+    );
 
-    if (iphone) bannerItems.push(iphone);
-
-    // 2. Search for Samsung flagships (Galaxy S26 Ultra, S25 Ultra, S24 Ultra, Z Fold)
-    const samsung = products.find(p => 
-      p.hang?.toLowerCase() === 'samsung' && 
-      (p.sanPham?.toLowerCase().includes('s26 ultra') || 
-       p.sanPham?.toLowerCase().includes('s25 ultra') || 
-       p.sanPham?.toLowerCase().includes('s24 ultra') ||
-       p.sanPham?.toLowerCase().includes('z fold'))
-    ) || products.find(p => p.hang?.toLowerCase() === 'samsung' && p.phanKhuc === 'FLAGSHIP');
-
-    if (samsung) bannerItems.push(samsung);
-
-    // 3. Search for third flagship (Xiaomi 16, Xiaomi 15, Oppo Find, or any other flagship)
-    const thirdFlagship = products.find(p => 
-      p.id !== iphone?.id && 
-      p.id !== samsung?.id && 
-      (p.sanPham?.toLowerCase().includes('xiaomi 16') || 
-       p.sanPham?.toLowerCase().includes('xiaomi 15') || 
-       p.sanPham?.toLowerCase().includes('find n3') ||
-       p.phanKhuc === 'FLAGSHIP')
-    ) || products.find(p => p.id !== iphone?.id && p.id !== samsung?.id);
-
-    if (thirdFlagship) bannerItems.push(thirdFlagship);
-
-    // Fill remaining slides if less than 3
-    if (bannerItems.length < 3) {
-      for (const p of products) {
-        if (!bannerItems.some(item => item.id === p.id) && p.media && p.media.length > 0) {
-          bannerItems.push(p);
-          if (bannerItems.length >= 3) break;
-        }
+    // Sort to prioritize Ultra, Pro Max, and Fold series for premium look
+    const sortedCandidates = [...candidates].sort((a, b) => {
+      const aName = a.sanPham?.toLowerCase() || '';
+      const bName = b.sanPham?.toLowerCase() || '';
+      
+      const aPriority = aName.includes('ultra') || aName.includes('pro max') || aName.includes('fold') ? 2 : 1;
+      const bPriority = bName.includes('ultra') || bName.includes('pro max') || bName.includes('fold') ? 2 : 1;
+      
+      // If same priority, keep alphabetical or original order
+      if (aPriority === bPriority) {
+        return aName.localeCompare(bName);
       }
-    }
+      
+      return bPriority - aPriority; // Higher priority first
+    });
 
-    return bannerItems.slice(0, 3);
+    return sortedCandidates.slice(0, 3);
   }, [products]);
 
   const featuredProducts = getBannerProducts();
@@ -124,17 +102,18 @@ export default function HeroBannerCarousel({ products = [] }: HeroBannerCarousel
         ];
         const grad = gradients[idx % gradients.length];
         
-        // Refined tag/description mapping
-        let tag = 'Sản phẩm nổi bật';
-        if (p.phanKhuc === 'FLAGSHIP') {
-          tag = p.hang?.toLowerCase() === 'apple' ? 'Đỉnh cao Apple' : 'Siêu phẩm flagship';
+        let tag = 'Siêu phẩm flagship';
+        if (p.hang?.toLowerCase() === 'apple') {
+          tag = 'Đặc quyền Apple';
+        } else if (p.hang?.toLowerCase() === 'samsung') {
+          tag = 'Đặc quyền Samsung';
         }
         
         return {
           id: p.id,
           tag,
           title: p.sanPham,
-          description: p.moTa || `Sở hữu ngay ${p.sanPham} chính hãng với cấu hình hàng đầu, camera đỉnh cao và thời lượng pin bền bỉ.`,
+          description: p.moTa || `Khám phá ngay ${p.sanPham} chính hãng với cấu hình đẳng cấp, camera đỉnh cao và thời lượng pin bền bỉ.`,
           btnText: 'Mua ngay',
           href: `/phone/${p.slug}`,
           imageUrl: p.media?.[0]?.url || 'https://placehold.co/600x600/png?text=No+Image',
